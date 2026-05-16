@@ -1,0 +1,12 @@
+services:
+  jetbrains-help:
+    build: .
+    image: jetbrains-help:latest
+    container_name: Jetbrains-Help
+    environment:
+      - XBASE64_DOMAIN=mihuyo.cc
+    ports:
+      - 10768:10768
+    volumes:
+      - ./external:/app/external
+      - ./logs:/app/logs

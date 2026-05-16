@@ -1,0 +1,446 @@
+/* 全局样式 */
+body {
+    font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'PingFang SC', sans-serif;
+}
+
+/* 自定义滚动条 */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+/* 动画效果 */
+.fade-enter-active, .fade-leave-active {
+    transition: opacity 0.3s ease;
+}
+
+.fade-enter-from, .fade-leave-to {
+    opacity: 0;
+}
+
+/* 卡片悬停效果 */
+.card-hover {
+    transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* 按钮动画 */
+.btn-primary {
+    transition: all 0.2s ease;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+/* 渐变背景 */
+.gradient-bg {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.gradient-text {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* 毛玻璃效果 */
+.glass {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* 加载动画 */
+.loading {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* 模态框动画 */
+.modal-enter-active, .modal-leave-active {
+    transition: all 0.3s ease;
+}
+
+.modal-enter-from, .modal-leave-to {
+    opacity: 0;
+    transform: scale(0.9);
+}
+
+/* 产品图标样式 */
+.product-icon {
+    width: 64px;
+    height: 64px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* 激活码展示区域 */
+.license-code-display {
+    background: #1f2937;
+    color: #f9fafb;
+    border-radius: 8px;
+    padding: 16px;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    word-break: break-all;
+    line-height: 1.6;
+    max-height: 300px;
+    overflow-y: auto;
+    font-size: 14px;
+}
+
+/* 通知样式 */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+    max-width: 400px;
+    padding: 16px 20px;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    animation: slideInRight 0.3s ease;
+}
+
+.notification.success {
+    background: #10b981;
+    color: white;
+}
+
+.notification.error {
+    background: #ef4444;
+    color: white;
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* 搜索框样式 */
+.search-container {
+    position: relative;
+}
+
+.search-input {
+    padding-left: 44px;
+}
+
+.search-icon {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #9ca3af;
+    z-index: 1;
+    pointer-events: none;
+    font-size: 14px;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .license-code-display {
+        font-size: 12px;
+        padding: 12px;
+        max-height: 200px;
+    }
+    
+    .notification {
+        right: 10px;
+        left: 10px;
+        max-width: none;
+    }
+}
+
+/* 返回顶部按钮 */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: none;
+}
+
+.back-to-top.show {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: all;
+}
+
+.back-to-top:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 768px) {
+    .back-to-top {
+        bottom: 90px;  /* 避开底部导航栏 */
+        right: 20px;
+        width: 45px;
+        height: 45px;
+    }
+}
+
+/* JRebel页面特殊样式 */
+.jrebel-container {
+    overflow-x: auto;
+}
+
+.jrebel-step {
+    min-width: 0;
+    word-wrap: break-word;
+}
+
+/* 配置说明区域 */
+.config-section {
+    background: #f8fafc;
+    border-left: 4px solid #3b82f6;
+    padding: 16px;
+    margin: 16px 0;
+    border-radius: 0 8px 8px 0;
+}
+
+.config-code {
+    background: #1f2937;
+    color: #f9fafb;
+    padding: 12px;
+    border-radius: 6px;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 13px;
+    line-height: 1.4;
+    white-space: pre-wrap;
+    overflow-x: auto;
+    word-break: break-all;
+}
+
+/* 配置步骤优化 */
+.config-step {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.config-step-content {
+    min-width: 0;
+    flex: 1;
+}
+
+/* 暗黑模式样式 */
+html.dark {
+    filter: invert(1) hue-rotate(180deg);
+}
+
+/* 只有在没有View Transition时才使用CSS过渡 */
+html:not(.view-transition-active) {
+    transition: filter 300ms ease;
+}
+
+html.dark img,
+html.dark video,
+html.dark .avatar,
+html.dark .image,
+html.dark .thumb,
+html.dark [class*="icon-"],
+html.dark .product-icon {
+    filter: invert(1) hue-rotate(180deg);
+}
+
+/* 主题切换按钮样式 */
+.theme-toggle {
+    position: relative;
+    width: 50px;
+    height: 26px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 13px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 4px;
+}
+
+.theme-toggle::before {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 22px;
+    height: 22px;
+    background: white;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+html.dark .theme-toggle::before {
+    transform: translateX(24px);
+}
+
+.theme-toggle .theme-icon {
+    font-size: 12px;
+    color: white;
+    z-index: 1;
+    transition: opacity 0.3s ease;
+}
+
+.theme-toggle .sun-icon {
+    opacity: 1;
+}
+
+.theme-toggle .moon-icon {
+    opacity: 0;
+}
+
+html.dark .theme-toggle .sun-icon {
+    opacity: 0;
+}
+
+html.dark .theme-toggle .moon-icon {
+    opacity: 1;
+}
+
+/* View Transition API 动画样式 */
+::view-transition-old(root),
+::view-transition-new(root) {
+    animation: none;
+    mix-blend-mode: normal;
+}
+
+::view-transition-old(root) {
+    z-index: 1;
+}
+
+::view-transition-new(root) {
+    z-index: 2147483646;
+}
+
+html.dark::view-transition-old(root) {
+    z-index: 2147483646;
+}
+
+html.dark::view-transition-new(root) {
+    z-index: 1;
+}
+
+/* 移动端优化 */
+@media (max-width: 768px) {
+    .license-code-display {
+        font-size: 12px;
+        padding: 12px;
+        max-height: 200px;
+    }
+
+    .notification {
+        right: 10px;
+        left: 10px;
+        max-width: none;
+    }
+
+    .config-code {
+        font-size: 11px;
+        padding: 8px;
+        white-space: pre-wrap;
+        word-break: break-all;
+        overflow-wrap: break-word;
+    }
+
+    .config-section {
+        padding: 12px;
+        margin: 12px 0;
+    }
+
+    /* 配置步骤移动端优化 */
+    .config-step-mobile {
+        flex-direction: column;
+        space-y: 12px;
+    }
+
+    .config-step-mobile .config-step-content {
+        margin-left: 0;
+        margin-top: 8px;
+    }
+
+    /* 首页内容移动端优化 */
+    .home-section {
+        padding: 16px;
+        margin-bottom: 16px;
+    }
+
+    .home-title {
+        font-size: 28px;
+        line-height: 1.2;
+    }
+
+    .home-subtitle {
+        font-size: 16px;
+        line-height: 1.4;
+    }
+
+    /* 主题切换按钮移动端优化 */
+    .theme-toggle {
+        width: 45px;
+        height: 24px;
+        border-radius: 12px;
+    }
+
+    .theme-toggle::before {
+        width: 20px;
+        height: 20px;
+    }
+
+    html.dark .theme-toggle::before {
+        transform: translateX(21px);
+    }
+
+    .theme-toggle .theme-icon {
+        font-size: 10px;
+    }
+}

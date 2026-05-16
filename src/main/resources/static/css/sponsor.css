@@ -1,0 +1,246 @@
+/* 赞助页面样式 */
+.sponsor-page {
+  min-height: 60vh;
+}
+
+.sponsor-item {
+  position: relative;
+  transform: translateY(0);
+  transition: all 0.3s ease;
+}
+
+.sponsor-item:hover {
+  transform: translateY(-4px);
+}
+
+.sponsor-price-tag {
+  position: absolute;
+  top: -8px;
+  right: 16px;
+  background: linear-gradient(135deg, #ec4899, #be185d);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  z-index: 10;
+}
+
+.sponsor-price-tag.custom {
+  background: linear-gradient(135deg, #10b981, #059669);
+}
+
+.sponsor-icon {
+  font-size: 3rem;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+/* 支付弹窗样式 */
+.payment-modal {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 20px;
+  padding: 0;
+  overflow: hidden;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  max-width: 380px;
+  width: 100%;
+}
+
+.payment-modal-header {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 20px 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.payment-modal-content {
+  background: white;
+  padding: 24px;
+}
+
+.payment-title {
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.close-button {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.close-button:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+}
+
+.qr-code-container {
+  background: #f8fafc;
+  border-radius: 16px;
+  padding: 20px;
+  margin: 20px 0;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.qr-code-frame {
+  background: white;
+  border-radius: 12px;
+  padding: 16px;
+  display: inline-block;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.qr-code-image {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+  border-radius: 8px;
+  display: block;
+}
+
+.payment-info {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.sponsor-title {
+  background: linear-gradient(135deg, #ec4899, #be185d);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.amount-info {
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.payment-methods {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.payment-method-btn {
+  flex: 1;
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 2px solid transparent;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.payment-method-btn.wechat {
+  background: #f0f9ff;
+  color: #0369a1;
+  border-color: #e0f2fe;
+}
+
+.payment-method-btn.wechat.active {
+  background: #07bc0c;
+  color: white;
+  border-color: #07bc0c;
+  box-shadow: 0 4px 12px rgba(7, 188, 12, 0.3);
+}
+
+.payment-method-btn.alipay {
+  background: #fefce8;
+  color: #a16207;
+  border-color: #fef3c7;
+}
+
+.payment-method-btn.alipay.active {
+  background: #1677ff;
+  color: white;
+  border-color: #1677ff;
+  box-shadow: 0 4px 12px rgba(22, 119, 255, 0.3);
+}
+
+.payment-method-btn:hover {
+  transform: translateY(-1px);
+}
+
+.qr-tip {
+  text-align: center;
+  color: #9ca3af;
+  font-size: 13px;
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.modal-enter-active, .modal-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.modal-enter-from, .modal-leave-to {
+  opacity: 0;
+}
+
+.modal-enter-active .payment-modal,
+.modal-leave-active .payment-modal {
+  transition: transform 0.3s ease;
+}
+
+.modal-enter-from .payment-modal,
+.modal-leave-to .payment-modal {
+  transform: scale(0.9) translateY(-20px);
+}
+
+/* 二维码容器样式 */
+.sponsor-item img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* 响应式适配 */
+@media (max-width: 768px) {
+  .sponsor-page {
+    padding: 0 1rem;
+  }
+  
+  .sponsor-item {
+    margin-bottom: 1rem;
+  }
+  
+  .sponsor-icon {
+    font-size: 2.5rem;
+  }
+  
+  .payment-modal {
+    margin: 1rem;
+    max-width: calc(100% - 2rem);
+  }
+  
+  .qr-code-image {
+    width: 180px;
+    height: 180px;
+  }
+  
+  .payment-methods {
+    flex-direction: column;
+  }
+}

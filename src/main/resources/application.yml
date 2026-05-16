@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: Jetbrains-Help
+xbase64:
+  domain: mihuyo.cc
+server:
+  port: 10768
+  # 插件信息获取配置
+  plugins:
+    # 是否启用定时刷新任务（true/false）
+    refresh-enabled: true
+    # 分页大小（每次请求获取的插件数量，建议不超过20）
+    page-size: 20
+    # 并发线程数（用于并行请求不同页面的插件数据）
+    thread-count: 20
+    # 请求超时时间（毫秒）
+    timeout: 30000
