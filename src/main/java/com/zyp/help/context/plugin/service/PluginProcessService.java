@@ -12,6 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 /**
@@ -41,18 +42,20 @@ public class PluginProcessService {
      * </ul>
      *
      * @param pluginList 原始插件列表
-     * @param existingCache 现有缓存数据
      * @return 过滤后的插件列表
      */
-    public static List<PluginList.Plugin> filterPlugins(PluginList pluginList, List<PluginCache> existingCache) {
+    public static List<PluginList.Plugin> filterPlugins(PluginList pluginList) {
         if (pluginList == null || pluginList.getPlugins() == null) {
             log.warn("插件列表为空，返回空结果");
             return Collections.emptyList();
         }
 
+        // ID以逗号分割的字符串
+        String existingCacheIds = ","+PluginConfig.pluginCacheList.stream().map(PluginCache::getIdStr).collect(Collectors.joining(","));
+
         List<PluginList.Plugin> filteredPlugins = pluginList.getPlugins()
             .stream()
-            .filter(plugin -> !isPluginExists(plugin, existingCache))
+            .filter(plugin -> !isPluginExists(plugin, existingCacheIds))
             .filter(plugin -> !isFreePlugin(plugin))
             .collect(Collectors.toList());
 
@@ -77,7 +80,7 @@ public class PluginProcessService {
         List<PluginCache> cacheList = pluginList
             .parallelStream()
             .map(PluginProcessService::convertSinglePlugin)
-            .filter(cache -> cache != null)
+            .filter(Objects::nonNull)
             .collect(Collectors.toList());
 
         log.info("插件转换完成 -> 转换数量: {}", cacheList.size());
@@ -103,13 +106,21 @@ public class PluginProcessService {
                 log.warn("插件产品代码为空，跳过插件: {}", plugin.getName());
                 return null;
             }
-
             return new PluginCache()
-                .setId(plugin.getId())
-                .setProductCode(productCode)
-                .setName(plugin.getName())
-                .setPricingModel(plugin.getPricingModel())
-                .setIcon(buildIconUrl(plugin.getIcon()));
+                    .setId(plugin.getId())
+                    .setProductCode(productCode)
+                    .setLink(buildUrl(pluginInfo.getLink()))
+                    .setName(plugin.getName())
+                    .setPricingModel(plugin.getPricingModel())
+                    .setIcon(buildUrl(pluginInfo.getIcon()))
+                    .setRating(plugin.getRating())
+                    .setVendor(
+                        new PluginCache.VendorInfo()
+                        .setId(pluginInfo.getVendor().getId())
+                        .setName(pluginInfo.getVendor().getName())
+                        .setIsVerified(pluginInfo.getVendor().getIsVerified())
+                    );
+
 
         } catch (Exception e) {
             log.error("转换插件信息失败: {} (ID: {})", plugin.getName(), plugin.getId(), e);
@@ -118,16 +129,16 @@ public class PluginProcessService {
     }
 
     /**
-     * 构建插件图标完整URL
+     * 构建插件完整URL
      *
-     * @param iconPath 图标路径
-     * @return 完整的图标URL，如果路径为空则返回null
+     * @param path 路径
+     * @return 完整的URL，如果路径为空则返回null
      */
-    private static String buildIconUrl(String iconPath) {
-        if (StrUtil.isBlank(iconPath)) {
+    private static String buildUrl(String path) {
+        if (StrUtil.isBlank(path)) {
             return null;
         }
-        return PluginConfig.PLUGIN_BASIC_URL + iconPath;
+        return PluginConfig.PLUGIN_BASIC_URL + path;
     }
 
     /**
@@ -137,13 +148,12 @@ public class PluginProcessService {
      * @param existingCache 现有缓存
      * @return 如果存在返回true，否则返回false
      */
-    private static boolean isPluginExists(PluginList.Plugin plugin, List<PluginCache> existingCache) {
+    private static boolean isPluginExists(PluginList.Plugin plugin, String existingCache) {
         if (existingCache == null || existingCache.isEmpty()) {
             return false;
         }
 
-        PluginCache targetCache = new PluginCache().setId(plugin.getId());
-        return existingCache.contains(targetCache);
+        return existingCache.contains(plugin.getIdS());
     }
 
     /**

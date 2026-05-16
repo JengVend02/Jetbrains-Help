@@ -1,25 +1,15 @@
 package com.zyp.help.controller;
 
-import cn.hutool.core.collection.CollUtil;
-import cn.hutool.core.text.CharSequenceUtil;
-import cn.hutool.core.util.StrUtil;
-import com.zyp.help.context.LicenseContextHolder;
-import com.zyp.help.context.PluginsContextHolder;
 import com.zyp.help.context.ProductsContextHolder;
+import com.zyp.help.context.plugin.PluginConfig;
 import com.zyp.help.context.plugin.model.PluginCache;
+import com.zyp.help.context.plugin.model.PluginUpdateTimeCache;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.util.Collection;
 import java.util.List;
-import java.util.Objects;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 /**
  * 数据接口控制器
@@ -123,101 +113,32 @@ public class DataController {
      */
     @GetMapping("/plugins")
     public List<PluginCache> getPlugins() {
-        log.debug("获取插件列表，插件数量: {}", PluginsContextHolder.pluginCacheList().size());
-        return PluginsContextHolder.pluginCacheList();
+        log.debug("获取插件列表，插件数量: {}", PluginConfig.pluginCacheList.size());
+        return PluginConfig.pluginCacheList;
     }
 
     /**
-     * 生成JetBrains产品激活码
+     * 获取插件列表最后更新时间
      *
-     * @param productCode 产品代码
-     * @param licenseeName 许可证名称
-     * @param assigneeName 被授权人名称
-     * @param expiryDate 过期日期
-     * @return 激活码字符串
-     */
-    @GetMapping("/generateLicense")
-    public String generateLicense(
-            @RequestParam(required = false) String productCode,
-            @RequestParam String licenseeName,
-            @RequestParam String assigneeName,
-            @RequestParam String expiryDate) {
-        
-        Set<String> productCodeSet;
-        
-        if (CharSequenceUtil.isBlank(productCode)) {
-            // 未指定产品代码，自动包含所有可用产品
-            List<String> productCodeList = ProductsContextHolder.productCacheList()
-                .stream()
-                .map(ProductsContextHolder.ProductCache::getProductCode)
-                .filter(StrUtil::isNotBlank)
-                .map(code -> CharSequenceUtil.splitTrim(code, ","))
-                .flatMap(Collection::stream)
-                .collect(Collectors.toList());
-
-            List<String> pluginCodeList = PluginsContextHolder.pluginCacheList()
-                .stream()
-                .map(PluginCache::getProductCode)
-                .filter(StrUtil::isNotBlank)
-                .collect(Collectors.toList());
-
-            productCodeSet = CollUtil.newHashSet(productCodeList);
-            productCodeSet.addAll(pluginCodeList);
-        } else {
-            productCodeSet = CollUtil.newHashSet(CharSequenceUtil.splitTrim(productCode, ','));
-        }
-
-        return LicenseContextHolder.generateLicense(
-            licenseeName,
-            assigneeName,
-            expiryDate,
-            productCodeSet
-        );
-    }
-
-    /**
-     * 生成JetBrains插件激活码
+     * <p>返回插件信息缓存的最后一次更新时间，
+     * 用于前端展示数据的新鲜度。
      *
-     * @param pluginId 插件ID
-     * @param licenseeName 许可证名称
-     * @param assigneeName 被授权人名称
-     * @param expiryDate 过期日期
-     * @return 插件激活码字符串
+     * <p>请求示例：
+     * <pre>
+     * GET /api/plugins/lastUpdateTime
+     * </pre>
+     *
+     * <p>响应示例：
+     * <pre>
+     * {
+     *   "lastUpdateTime": "2024-01-15 12:00:00"
+     * }
+     * </pre>
+     *
+     * @return 包含更新时间的JSON对象
      */
-    @GetMapping("/generatePluginLicense")
-    public String generatePluginLicense(
-            @RequestParam String pluginId,
-            @RequestParam String licenseeName,
-            @RequestParam String assigneeName,
-            @RequestParam String expiryDate) {
-        
-        String productCode = PluginsContextHolder.pluginCacheList()
-            .stream()
-            .filter(plugin -> Objects.equals(plugin.getId(), pluginId))
-            .map(PluginCache::getProductCode)
-            .filter(StrUtil::isNotBlank)
-            .findFirst()
-            .orElse("");
-
-        if (CharSequenceUtil.isBlank(productCode)) {
-            productCode = "PLUGIN_" + pluginId;
-        }
-
-        Set<String> productCodeSet = CollUtil.newHashSet(productCode);
-
-        return LicenseContextHolder.generateLicense(
-            licenseeName,
-            assigneeName,
-            expiryDate,
-            productCodeSet
-        );
-    }
-
-    /**
-     * 下载ja-netfilter代理工具
-     */
-    @GetMapping("/downloadAgent")
-    public void downloadAgent(HttpServletResponse response) throws IOException {
-        response.sendRedirect("/api/downloadZip");
+    @GetMapping("/plugins/lastUpdateTime")
+    public List<PluginUpdateTimeCache> getPluginLastUpdateTime() {
+        return PluginConfig.pluginUpdateTimeCacheList;
     }
 }

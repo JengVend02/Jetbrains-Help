@@ -1,11 +1,16 @@
 package com.zyp.help.context.plugin;
 
 import cn.hutool.extra.spring.SpringUtil;
+import com.zyp.help.context.plugin.model.PluginCache;
+import com.zyp.help.context.plugin.model.PluginUpdateTimeCache;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.env.Environment;
+
+import java.util.List;
+import java.util.concurrent.ExecutorService;
 
 /**
  * 插件配置管理类
@@ -35,6 +40,19 @@ public class PluginConfig {
 
     /** 插件信息缓存文件路径 */
     public static final String PLUGIN_JSON_FILE_NAME = "external/data/plugin.json";
+
+    /** 插件更新时间信息缓存文件路径 */
+    public static final String PLUGIN_UPDATE_TIME_JSON_FILE_NAME = "external/data/pluginUpdateTime.json";
+
+    // ==================== 静态字段 ====================
+
+    /** 插件信息缓存列表，存储所有已加载的付费插件信息 */
+    public static List<PluginCache> pluginCacheList;
+    /** 插件变更时间信息缓存列表 */
+    public static List<PluginUpdateTimeCache> pluginUpdateTimeCacheList;
+
+    /** 线程池，用于并发请求插件数据 */
+    public static ExecutorService executorService;
 
     // ==================== 配置字段 ====================
 
@@ -98,14 +116,7 @@ public class PluginConfig {
     private void setDefaultValues() {
         this.refreshEnabled = true;
         this.pageSize = 20;
-        this.threadCount = 20;
+        this.threadCount = 5;
         this.timeout = 30000;
-    }
-
-    /**
-     * 重新加载配置
-     */
-    public void reload() {
-        loadConfig();
     }
 }

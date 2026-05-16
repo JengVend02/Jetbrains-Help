@@ -9,6 +9,7 @@ import cn.hutool.core.util.ZipUtil;
 import cn.hutool.crypto.KeyUtil;
 import cn.hutool.crypto.PemUtil;
 import cn.hutool.crypto.digest.DigestUtil;
+import com.zyp.help.context.certificate.CertificateConfig;
 import com.zyp.help.util.FileTools;
 import java.io.File;
 import java.math.BigInteger;
@@ -84,9 +85,6 @@ public class AgentContextHolder {
     /** POWER配置文件路径 */
     private static final String POWER_CONF_FILE_NAME = JA_NETFILTER_FILE_PATH + "/config/power.conf";
 
-    /** XBASE64配置文件路径 */
-    private static final String XBASE64_CONF_FILE_NAME = JA_NETFILTER_FILE_PATH + "/config/xbase64.conf";
-
     // ==================== 静态字段 ====================
     
     /** ja-netfilter工具文件夹对象 */
@@ -95,26 +93,45 @@ public class AgentContextHolder {
     /** ja-netfilter ZIP包文件对象 */
     private static File jaNetfilterZipFile;
 
+    /** POWER配置文件内容 */
+    private static volatile String POWER_CONF_STR = null;
     // ==================== 核心方法 ====================
 
     public static void init() {
-        log.info("初始化中...");
+        log.info("配置初始化中...");
         jaNetfilterZipFile = FileTools.getFileOrCreat(JA_NETFILTER_FILE_PATH + ".zip");
-        if (!FileTools.fileExists(JA_NETFILTER_FILE_PATH)) {
-            unzipJaNetfilter();
-            if (!powerConfHasInit()) {
-                log.info("配置初始化中...");
-                loadPowerConf();
-                loadXbase64Conf();
-                zipJaNetfilter();
-                log.info("配置初始化成功!");
-            }
-        }
-        log.info("初始化成功!");
+        unzipJaNetfilter();
+        loadPowerConf();
+        zipJaNetfilter();
+        log.info("配置初始化成功!");
     }
 
     public static File jaNetfilterZipFile() {
         return AgentContextHolder.jaNetfilterZipFile;
+    }
+
+    /**
+     * 获取 power.conf 文件内容
+     *
+     * @return power.conf 文件内容
+     */
+    public static String getPowerConfContent() {
+        // 第一重检查：如果不为空，直接返回，不走锁，保证性能
+        if (CharSequenceUtil.isBlank(POWER_CONF_STR)) {
+            synchronized (AgentContextHolder.class) {
+                // 第二重检查：进入锁后再次判空，防止排队等待的线程再次读取 IO
+                if (CharSequenceUtil.isBlank(POWER_CONF_STR)) {
+                    File powerConfFile = FileTools.getFileOrCreat(POWER_CONF_FILE_NAME);
+                    try {
+                        log.info("从文件加载配置缓存...");
+                        POWER_CONF_STR = IoUtil.readUtf8(FileUtil.getInputStream(powerConfFile));
+                    } catch (IORuntimeException e) {
+                        throw new IllegalArgumentException(CharSequenceUtil.format("{} 文件读取失败!", POWER_CONF_FILE_NAME), e);
+                    }
+                }
+            }
+        }
+        return POWER_CONF_STR;
     }
 
     private static void unzipJaNetfilter() {
@@ -123,17 +140,6 @@ public class AgentContextHolder {
 
     private static void zipJaNetfilter() {
         jaNetfilterZipFile = ZipUtil.zip(jaNetfilterFile);
-    }
-
-    private static boolean powerConfHasInit() {
-        File powerConfFile = FileTools.getFileOrCreat(POWER_CONF_FILE_NAME);
-        String powerConfStr;
-        try {
-            powerConfStr = IoUtil.readUtf8(FileUtil.getInputStream(powerConfFile));
-        } catch (IORuntimeException e) {
-            throw new IllegalArgumentException(CharSequenceUtil.format("{} 文件读取失败!", POWER_CONF_FILE_NAME), e);
-        }
-        return CharSequenceUtil.containsAll(powerConfStr, "[Result]", "EQUAL,");
     }
 
     private static void loadPowerConf() {
@@ -151,11 +157,11 @@ public class AgentContextHolder {
     @SneakyThrows
     private static String generateCodePowerConfigRule() {
         X509Certificate crt = (X509Certificate) KeyUtil.readX509Certificate(
-            IoUtil.toStream(CertificateContextHolder.codeCrtFile()));
+            IoUtil.toStream(CertificateConfig.codeCrtFile));
         RSAPublicKey publicKey = (RSAPublicKey) PemUtil.readPemPublicKey(
-            IoUtil.toStream(CertificateContextHolder.publicKeyFile()));
+            IoUtil.toStream(CertificateConfig.publicKeyFile));
         RSAPublicKey rootPublicKey = (RSAPublicKey) PemUtil.readPemPublicKey(
-            IoUtil.toStream(CertificateContextHolder.codeRootKeyFile()));
+            IoUtil.toStream(CertificateConfig.codeRootKeyFile));
         BigInteger x = new BigInteger(1, crt.getSignature());
         BigInteger y = BigInteger.valueOf(65537L);
         BigInteger z = rootPublicKey.getModulus();
@@ -166,9 +172,9 @@ public class AgentContextHolder {
     @SneakyThrows
     private static String generateServerPowerConfigRule(String ruleValue) {
         X509Certificate crt = (X509Certificate) KeyUtil.readX509Certificate(
-            IoUtil.toStream(CertificateContextHolder.serverChildCrtFile()));
+            IoUtil.toStream(CertificateConfig.serverChildCrtFile));
         RSAPublicKey rootPublicKey = (RSAPublicKey) PemUtil.readPemPublicKey(
-            IoUtil.toStream(CertificateContextHolder.serverRootKeyFile()));
+            IoUtil.toStream(CertificateConfig.serverRootKeyFile));
         BigInteger x = new BigInteger(1, crt.getSignature());
         BigInteger y = BigInteger.valueOf(65537L);
         BigInteger z = rootPublicKey.getModulus();
@@ -193,25 +199,10 @@ public class AgentContextHolder {
     private static void overridePowerConfFileContent(String configStr) {
         File powerConfFile = FileTools.getFileOrCreat(POWER_CONF_FILE_NAME);
         try {
+            POWER_CONF_STR = configStr;
             FileUtil.writeString(configStr, powerConfFile, StandardCharsets.UTF_8);
         } catch (IORuntimeException e) {
             throw new IllegalArgumentException(CharSequenceUtil.format("{} 文件写入失败!", POWER_CONF_FILE_NAME), e);
-        }
-    }
-
-    private static void loadXbase64Conf() {
-        String domain = SpringContextHolder.getProperty("xbase64.domain");
-        if (CharSequenceUtil.isBlank(domain)) {
-            log.warn("配置 xbase64.domain 未设置，跳过 xbase64.conf 初始化");
-            return;
-        }
-        String configStr = CharSequenceUtil.format("[Decoder]\nEQUAL,{}->jrebel.com", domain);
-        File xbase64ConfFile = FileTools.getFileOrCreat(XBASE64_CONF_FILE_NAME);
-        try {
-            FileUtil.writeString(configStr, xbase64ConfFile, StandardCharsets.UTF_8);
-            log.info("xbase64.conf 初始化成功: {}", domain);
-        } catch (IORuntimeException e) {
-            throw new IllegalArgumentException(CharSequenceUtil.format("{} 文件写入失败!", XBASE64_CONF_FILE_NAME), e);
         }
     }
 

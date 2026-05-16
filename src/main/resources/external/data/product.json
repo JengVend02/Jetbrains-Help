@@ -1,77 +1,107 @@
 [
   {
     "name": "All Jetbrains's Product Or Plugin",
+    "shortName": "al",
     "productCode": "",
-    "iconClass": "icon-al"
+    "iconClass": "icon-al",
+    "icon": "https://resources.jetbrains.com/storage/logos/web/toolbox/toolbox.svg"
   },
   {
     "name": "IntelliJ IDEA",
+    "shortName": "ii",
     "productCode": "II,PCWMP,PSI",
-    "iconClass": "icon-ii"
+    "iconClass": "icon-ii",
+    "icon": "https://resources.jetbrains.com/storage/logos/web/intellij-idea/intellij-idea.svg"
   },
   {
     "name": "PhpStorm",
+    "shortName": "ps",
     "productCode": "PS,PCWMP,PSI",
-    "iconClass": "icon-ps"
+    "iconClass": "icon-ps",
+    "icon": "https://resources.jetbrains.com/storage/logos/web/phpstorm/phpstorm.svg"
   },
   {
     "name": "AppCode",
+    "shortName": "ac",
     "productCode": "AC,PCWMP,PSI",
-    "iconClass": "icon-ac"
+    "iconClass": "icon-ac",
+    "icon": "https://resources.jetbrains.com/storage/logos/web/appcode/appcode.svg"
   },
   {
     "name": "DataGrip",
+    "shortName": "db",
     "productCode": "DB,PSI,PDB",
-    "iconClass": "icon-db"
+    "iconClass": "icon-db",
+    "icon": "https://resources.jetbrains.com/storage/logos/web/datagrip/datagrip.svg"
   },
   {
     "name": "RubyMine",
+    "shortName": "rm",
     "productCode": "RM,PCWMP,PSI",
-    "iconClass": "icon-rm"
+    "iconClass": "icon-rm",
+    "icon": "https://resources.jetbrains.com/storage/logos/web/rubymine/rubymine.svg"
   },
   {
     "name": "WebStorm",
+    "shortName": "ws",
     "productCode": "WS,PCWMP,PSI",
-    "iconClass": "icon-ws"
+    "iconClass": "icon-ws",
+    "icon": "https://resources.jetbrains.com/storage/logos/web/webstorm/webstorm.svg"
   },
   {
     "name": "Rider",
+    "shortName": "rd",
     "productCode": "RD,PDB,PSI,PCWMP",
-    "iconClass": "icon-rd"
+    "iconClass": "icon-rd",
+    "icon": "https://resources.jetbrains.com/storage/logos/web/rider/rider.svg"
   },
   {
     "name": "CLion",
+    "shortName": "cl",
     "productCode": "CL,PSI,PCWMP",
-    "iconClass": "icon-cl"
+    "iconClass": "icon-cl",
+    "icon": "https://resources.jetbrains.com/storage/logos/web/clion/clion.svg"
   },
   {
     "name": "PyCharm",
+    "shortName": "pc",
     "productCode": "PC,PSI,PCWMP",
-    "iconClass": "icon-pc"
+    "iconClass": "icon-pc",
+    "icon": "https://resources.jetbrains.com/storage/logos/web/pycharm/pycharm.svg"
   },
   {
     "name": "GoLand",
+    "shortName": "go",
     "productCode": "GO,PSI,PCWMP",
-    "iconClass": "icon-go"
+    "iconClass": "icon-go",
+    "icon": "https://resources.jetbrains.com/storage/logos/web/goland/goland.svg"
   },
   {
     "name": "DataSpell",
+    "shortName": "ds",
     "productCode": "DS,PSI,PDB,PCWMP",
-    "iconClass": "icon-ds"
+    "iconClass": "icon-ds",
+    "icon": "https://resources.jetbrains.com/storage/logos/web/dataspell/dataspell.svg"
   },
   {
     "name": "dotMemory",
+    "shortName": "dm",
     "productCode": "DM",
-    "iconClass": "icon-dm"
+    "iconClass": "icon-dm",
+    "icon": "https://resources.jetbrains.com/storage/logos/web/dotmemory/dotmemory.svg"
   },
   {
     "name": "Aqua",
+    "shortName": "qa",
     "productCode": "QA,PSI,PCWMP",
-    "iconClass": "icon-qa"
+    "iconClass": "icon-qa",
+    "icon": "https://resources.jetbrains.com/storage/logos/web/aqua/aqua.svg"
   },
   {
     "name": "RustRover",
+    "shortName": "rr",
     "productCode": "RR,PSI,PCWMP",
-    "iconClass": "icon-rr"
+    "iconClass": "icon-rr",
+    "icon": "https://resources.jetbrains.com/storage/logos/web/rustrover/rustrover.svg"
   }
 ]

@@ -1,5 +1,18 @@
 // 工具函数
 const Utils = {
+  // 许可证类型枚举
+  LicenseType: {
+    PERPETUAL: { value: 'PERPETUAL', text: '永久许可证' },
+    ANNUAL: { value: 'ANNUAL', text: '年度许可证' },
+    MONTHLY: { value: 'MONTHLY', text: '月度许可证' }
+  },
+
+  // 根据许可证类型值获取文本
+  getLicenseTypeText(value) {
+    const type = Object.values(this.LicenseType).find(item => item.value === value);
+    return type ? type.text : value;
+  },
+
   // 生成UUID
   generateUUID() {
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
@@ -185,7 +198,7 @@ const Utils = {
   // 路由管理
   getCurrentPage() {
     const hash = window.location.hash.slice(1) // 移除 # 号
-    const validPages = ['home', 'products', 'plugins', 'jrebel', 'sponsor']
+    const validPages = ['home', 'products', 'plugins', 'records', 'jrebel', 'sponsor']
     return validPages.includes(hash) ? hash : 'home'
   },
 
@@ -242,15 +255,23 @@ const ApiService = {
     return await this.get('/api/plugins')
   },
 
+  // 获取插件更新时间
+  async getPluginUpdateTime() {
+    return await this.get('/api/plugins/lastUpdateTime')
+  },
+
   // 生成产品激活码
-  async generateLicense(productCode, licenseeName, assigneeName, expiryDate) {
+  async generateLicense(productCode, licenseeName, assigneeName, expiryDate, licenseType, userCount, activationProduct) {
     const params = new URLSearchParams({
       ...(productCode && { productCode }),
       licenseeName,
       assigneeName,
-      expiryDate
+      expiryDate,
+      licenseType,
+      userCount,
+      activationProduct
     })
-    return await this.getText(`/license-code/generate?${params}`)
+    return await this.get(`/license-code/generate?${params}`)
   },
 
   // 下载代理工具

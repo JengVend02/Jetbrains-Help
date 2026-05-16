@@ -1,19 +1,25 @@
 package com.zyp.help.controller;
 
 import cn.hutool.core.collection.CollUtil;
+import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.text.CharSequenceUtil;
 import cn.hutool.core.util.StrUtil;
+import com.zyp.help.context.AgentContextHolder;
 import com.zyp.help.context.LicenseContextHolder;
-import com.zyp.help.context.PluginsContextHolder;
 import com.zyp.help.context.ProductsContextHolder;
-import com.zyp.help.context.plugin.model.PluginCache;
+
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
+
+import com.zyp.help.context.plugin.PluginConfig;
+import com.zyp.help.context.plugin.model.PluginCache;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.BeanUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -63,7 +69,7 @@ public class LicenseCodeController {
      * <p>使用示例：
      * <pre>
      * {
-     *   "licenseName": "Technology",
+     *   "licenseName": "zyp Technology",
      *   "assigneeName": "张三",
      *   "expiryDate": "2025-12-31",
      *   "productCode": "II,PS,WS,RM,PCC,PC,CLN"
@@ -84,6 +90,46 @@ public class LicenseCodeController {
 
         /** 产品代码（多个代码用逗号分隔，为空时包含所有产品） */
         private String productCode;
+
+        /** 许可证类型（PERPETUAL:永久许可证,ANNUAL:年度许可证,MONTHLY:月度许可证） */
+        private String licenseType;
+
+        /** 并发用户数 1-1000 */
+        private Integer userCount;
+
+        /** 激活产品列表 */
+        private String activationProduct;
+    }
+
+    @Data
+    public static class GenerateLicenseRespBody {
+
+        /** 激活码生成时间 */
+        private String generationTime;
+
+        /** 许可证名称（公司或组织名称） */
+        private String licenseName;
+
+        /** 被授权人名称（使用者名称） */
+        private String assigneeName;
+
+        /** 过期日期（格式：yyyy-MM-dd） */
+        private String expiryDate;
+
+        /** 许可证类型（PERPETUAL:永久许可证,ANNUAL:年度许可证,MONTHLY:月度许可证） */
+        private String licenseType;
+
+        /** 并发用户数 1-1000 */
+        private Integer userCount;
+
+        /** 激活产品列表 */
+        private String activationProduct;
+
+        /** 激活码 */
+        private String activationCode;
+
+        /** power */
+        private String powerConf;
     }
 
     /**
@@ -98,17 +144,23 @@ public class LicenseCodeController {
      * @return JetBrains产品激活码字符串
      */
     @GetMapping("/generate")
-    public String generateLicenseByGet(
+    public GenerateLicenseRespBody generateLicenseByGet(
             @RequestParam(required = false) String productCode,
             @RequestParam String licenseeName,
             @RequestParam String assigneeName,
-            @RequestParam String expiryDate) {
+            @RequestParam String expiryDate,
+            @RequestParam String licenseType,
+            @RequestParam Integer userCount,
+            @RequestParam String activationProduct) {
 
         GenerateLicenseReqBody body = new GenerateLicenseReqBody();
         body.setProductCode(productCode);
         body.setLicenseName(licenseeName);
         body.setAssigneeName(assigneeName);
         body.setExpiryDate(expiryDate);
+        body.setLicenseType(licenseType);
+        body.setUserCount(userCount);
+        body.setActivationProduct(activationProduct);
 
         return generateLicense(body);
     }
@@ -142,7 +194,7 @@ public class LicenseCodeController {
      * Content-Type: application/json
      *
      * {
-     *   "licenseName": "Technology",
+     *   "licenseName": "zyp Technology",
      *   "assigneeName": "张三",
      *   "expiryDate": "2025-12-31",
      *   "productCode": "II,PS,WS"
@@ -158,9 +210,15 @@ public class LicenseCodeController {
      * @return JetBrains产品激活码字符串
      */
     @PostMapping("/generate")
-    public String generateLicense(@RequestBody GenerateLicenseReqBody body) {
+    public GenerateLicenseRespBody generateLicense(@RequestBody GenerateLicenseReqBody body) {
         // 定义产品代码集合，用于存储所有需要包含在许可证中的产品代码
         Set<String> productCodeSet;
+
+        // 定义返回值
+        GenerateLicenseRespBody respBody = new GenerateLicenseRespBody();
+        BeanUtils.copyProperties(body, respBody);
+        respBody.setGenerationTime(DateUtil.format(new Date(), "yyyy-MM-dd HH:mm:ss"));
+        respBody.setPowerConf(AgentContextHolder.getPowerConfContent());
 
         // 判断是否指定了产品代码
         if (CharSequenceUtil.isBlank(body.getProductCode())) {
@@ -176,7 +234,7 @@ public class LicenseCodeController {
                 .collect(Collectors.toList());
 
             // 获取所有付费插件代码
-            List<String> pluginCodeList = PluginsContextHolder.pluginCacheList()
+            List<String> pluginCodeList = PluginConfig.pluginCacheList
                 .stream()
                 .map(PluginCache::getProductCode)  // 提取插件产品代码
                 .filter(StrUtil::isNotBlank)  // 过滤空值
@@ -191,38 +249,8 @@ public class LicenseCodeController {
             productCodeSet = CollUtil.newHashSet(CharSequenceUtil.splitTrim(body.getProductCode(), ','));
         }
 
-        // 调用许可证生成服务，生成最终的激活码
-        return LicenseContextHolder.generateLicense(
-            body.getLicenseName(),     // 许可证名称
-            body.getAssigneeName(),    // 被授权人名称
-            body.getExpiryDate(),      // 过期日期
-            productCodeSet             // 产品代码集合
-        );
+        // 最终的激活码
+        respBody.setActivationCode(LicenseContextHolder.generateLicense(body,productCodeSet));
+        return respBody;
     }
-
-    /**
-     * 插件激活码生成请求体类
-     *
-     * <p>此内部类用于封装生成JetBrains插件激活码时的请求参数。
-     * 专门针对付费插件的激活需求设计。
-     *
-     * @since 1.0.0
-     */
-    @Data
-    @NoArgsConstructor
-    @AllArgsConstructor
-    public static class GeneratePluginLicenseReqBody {
-        /** 许可证名称（组织名称或公司名称） */
-        private String licenseeName;
-
-        /** 被授权人名称（使用者名称） */
-        private String assigneeName;
-
-        /** 过期日期（格式：yyyy-MM-dd） */
-        private String expiryDate;
-
-        /** 插件ID */
-        private String pluginId;
-    }
-
 }

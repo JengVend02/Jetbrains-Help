@@ -1,4 +1,4 @@
-package com.zyp.help.context;
+package com.zyp.help.context.certificate;
 
 import cn.hutool.core.date.DateField;
 import cn.hutool.core.date.DateUtil;
@@ -7,7 +7,6 @@ import cn.hutool.core.io.IoUtil;
 import cn.hutool.crypto.KeyUtil;
 import cn.hutool.crypto.PemUtil;
 import cn.hutool.crypto.SecureUtil;
-import com.zyp.help.context.certificate.CertificateConfig;
 import com.zyp.help.util.FileTools;
 import com.zyp.help.util.LicenseServerUtils;
 import lombok.AccessLevel;
@@ -142,13 +141,13 @@ public class CertificateContextHolder {
     private static boolean isCertificateGenerationRequired() {
         File commonPrivateKeyFile = FileTools.getFileOrCreat(CertificateConfig.COMMON_PRIVATE_KEY_FILE_NAME);
         File privateKeyFile = FileTools.getFileOrCreat(CertificateConfig.PRIVATE_KEY_FILE_NAME);
-
+        
         // 如果非通用文件不存在，需要生成证书
         if (!privateKeyFile.exists()) {
             log.debug("私钥文件不存在，需要生成证书");
             return true;
         }
-
+        
         // 比较两个文件的内容是否相同
         return FileUtil.contentEquals(commonPrivateKeyFile, privateKeyFile);
     }
@@ -307,14 +306,14 @@ public class CertificateContextHolder {
      * @return 生成的授权码签名CA证书
      */
     private static Certificate generateCodeCACertificate(PublicKey publicKey, ContentSigner signer,
-                                                         JcaX509CertificateConverter certConverter) throws Exception {
+        JcaX509CertificateConverter certConverter) throws Exception {
         JcaX509v3CertificateBuilder certificateBuilder = new JcaX509v3CertificateBuilder(
-                new X500Name(CertificateConfig.CODE_CA_DN),                                      // 颁发者DN
-                BigInteger.valueOf(System.currentTimeMillis()),                // 序列号
-                DateUtil.yesterday().toJdkDate(),                                          // 生效日期（昨天，避免时钟偏差）
-                DateUtil.date().offset(DateField.YEAR, CertificateConfig.CERTIFICATE_VALIDITY_YEARS).toJdkDate(), // 过期日期
-                new X500Name(CertificateConfig.APP_SUBJECT_DN),                                   // 主体DN
-                SubjectPublicKeyInfo.getInstance(publicKey.getEncoded()));      // 公钥信息
+            new X500Name(CertificateConfig.CODE_CA_DN),                                      // 颁发者DN
+            BigInteger.valueOf(System.currentTimeMillis()),                // 序列号
+            DateUtil.yesterday().toJdkDate(),                                          // 生效日期（昨天，避免时钟偏差）
+            DateUtil.date().offset(DateField.YEAR, CertificateConfig.CERTIFICATE_VALIDITY_YEARS).toJdkDate(), // 过期日期
+            new X500Name(CertificateConfig.APP_SUBJECT_DN),                                   // 主体DN
+            SubjectPublicKeyInfo.getInstance(publicKey.getEncoded()));      // 公钥信息
 
         return certConverter.getCertificate(certificateBuilder.build(signer));
     }
@@ -328,14 +327,14 @@ public class CertificateContextHolder {
      * @return 生成的许可证服务器CA证书
      */
     private static Certificate generateServerCACertificate(PublicKey publicKey, ContentSigner signer,
-                                                           JcaX509CertificateConverter certConverter) throws Exception {
+        JcaX509CertificateConverter certConverter) throws Exception {
         JcaX509v3CertificateBuilder serversCertBuilder = new JcaX509v3CertificateBuilder(
-                new X500Name(CertificateConfig.LICENSE_SERVER_CA_DN),                            // 颁发者DN
-                BigInteger.valueOf(System.currentTimeMillis()),                // 序列号
-                DateUtil.yesterday().toJdkDate(),                                          // 生效日期
-                DateUtil.date().offset(DateField.YEAR, CertificateConfig.CERTIFICATE_VALIDITY_YEARS).toJdkDate(), // 过期日期
-                new X500Name(CertificateConfig.APP_SUBJECT_DN),                                   // 主体DN
-                SubjectPublicKeyInfo.getInstance(publicKey.getEncoded()));      // 公钥信息
+            new X500Name(CertificateConfig.LICENSE_SERVER_CA_DN),                            // 颁发者DN
+            BigInteger.valueOf(System.currentTimeMillis()),                // 序列号
+            DateUtil.yesterday().toJdkDate(),                                          // 生效日期
+            DateUtil.date().offset(DateField.YEAR, CertificateConfig.CERTIFICATE_VALIDITY_YEARS).toJdkDate(), // 过期日期
+            new X500Name(CertificateConfig.APP_SUBJECT_DN),                                   // 主体DN
+            SubjectPublicKeyInfo.getInstance(publicKey.getEncoded()));      // 公钥信息
 
         return certConverter.getCertificate(serversCertBuilder.build(signer));
     }
@@ -358,14 +357,14 @@ public class CertificateContextHolder {
      * @return 生成的服务器子证书
      */
     private static Certificate generateServerChildCertificate(PublicKey publicKey4096,
-                                                              ContentSigner signer, JcaX509CertificateConverter certConverter) throws Exception {
+        ContentSigner signer, JcaX509CertificateConverter certConverter) throws Exception {
         JcaX509v3CertificateBuilder childCertBuilder = new JcaX509v3CertificateBuilder(
-                new X500Name(CertificateConfig.LICENSE_SERVER_CA_DN),                            // 颁发者DN
-                BigInteger.valueOf(System.currentTimeMillis()),                // 序列号
-                DateUtil.yesterday().toJdkDate(),                                          // 生效日期
-                DateUtil.date().offset(DateField.YEAR, CertificateConfig.CERTIFICATE_VALIDITY_YEARS).toJdkDate(), // 过期日期
-                new X500Name(LicenseServerUtils.LICENSE_SERVER_SUBJECT_DN),                        // 主体DN（具体域名）
-                SubjectPublicKeyInfo.getInstance(publicKey4096.getEncoded()));   // 公钥信息
+            new X500Name(CertificateConfig.LICENSE_SERVER_CA_DN),                            // 颁发者DN
+            BigInteger.valueOf(System.currentTimeMillis()),                // 序列号
+            DateUtil.yesterday().toJdkDate(),                                          // 生效日期
+            DateUtil.date().offset(DateField.YEAR, CertificateConfig.CERTIFICATE_VALIDITY_YEARS).toJdkDate(), // 过期日期
+            new X500Name(LicenseServerUtils.LICENSE_SERVER_SUBJECT_DN),                        // 主体DN（具体域名）
+            SubjectPublicKeyInfo.getInstance(publicKey4096.getEncoded()));   // 公钥信息
 
         // 添加证书扩展
         addCertificateExtensions(childCertBuilder, publicKey4096);
@@ -384,10 +383,10 @@ public class CertificateContextHolder {
 
         // 1. 扩展密钥用途：服务器认证和客户端认证
         certBuilder.addExtension(Extension.extendedKeyUsage, false,
-                new ExtendedKeyUsage(new KeyPurposeId[]{
-                        KeyPurposeId.id_kp_serverAuth,  // 服务器认证
-                        KeyPurposeId.id_kp_clientAuth   // 客户端认证
-                }));
+            new ExtendedKeyUsage(new KeyPurposeId[]{
+                KeyPurposeId.id_kp_serverAuth,  // 服务器认证
+                KeyPurposeId.id_kp_clientAuth   // 客户端认证
+            }));
 
         // 2. 主体备用名称：DNS域名
         GeneralNamesBuilder generalNamesBuilder = new GeneralNamesBuilder();
@@ -398,18 +397,18 @@ public class CertificateContextHolder {
 
         // 3. 密钥用途：数字签名、密钥加密、密钥协商
         certBuilder.addExtension(Extension.keyUsage, true,
-                new KeyUsage(KeyUsage.digitalSignature | KeyUsage.keyEncipherment | KeyUsage.keyAgreement));
+            new KeyUsage(KeyUsage.digitalSignature | KeyUsage.keyEncipherment | KeyUsage.keyAgreement));
 
         // 4. 权威密钥标识符（基于服务器根证书）
         X509Certificate templateCert = (X509Certificate) KeyUtil.readX509Certificate(
-                IoUtil.toStream(CertificateConfig.serverRootKeyFile));
+            IoUtil.toStream(CertificateConfig.serverRootKeyFile));
         certBuilder.addExtension(Extension.authorityKeyIdentifier, false,
-                extUtils.createAuthorityKeyIdentifier(
-                        SubjectPublicKeyInfo.getInstance(templateCert.getPublicKey().getEncoded())));
+            extUtils.createAuthorityKeyIdentifier(
+                SubjectPublicKeyInfo.getInstance(templateCert.getPublicKey().getEncoded())));
 
         // 5. 主体密钥标识符（基于2048位公钥）
         certBuilder.addExtension(Extension.subjectKeyIdentifier, false,
-                extUtils.createSubjectKeyIdentifier(SubjectPublicKeyInfo.getInstance(publicKey4096.getEncoded())));
+            extUtils.createSubjectKeyIdentifier(SubjectPublicKeyInfo.getInstance(publicKey4096.getEncoded())));
 
         log.debug("服务器子证书扩展属性添加完成");
     }
@@ -422,7 +421,7 @@ public class CertificateContextHolder {
      * @param childCertificate  服务器子证书
      */
     private static void saveCertificatesToFiles(Certificate codeCertificate, Certificate serverCertificate,
-                                                Certificate childCertificate) throws Exception {
+        Certificate childCertificate) throws Exception {
         // 创建证书文件对象
         CertificateConfig.codeCrtFile = FileTools.getFileOrCreat(CertificateConfig.CODE_CET_FILE_NAME);
         CertificateConfig.serverCrtFile = FileTools.getFileOrCreat(CertificateConfig.SERVER_CET_FILE_NAME);
@@ -430,15 +429,15 @@ public class CertificateContextHolder {
 
         // 保存授权码签名CA证书
         PemUtil.writePemObject("CERTIFICATE", codeCertificate.getEncoded(),
-                FileUtil.getWriter(CertificateConfig.codeCrtFile, StandardCharsets.UTF_8, false));
+            FileUtil.getWriter(CertificateConfig.codeCrtFile, StandardCharsets.UTF_8, false));
 
         // 保存许可证服务器CA证书
         PemUtil.writePemObject("CERTIFICATE", serverCertificate.getEncoded(),
-                FileUtil.getWriter(CertificateConfig.serverCrtFile, StandardCharsets.UTF_8, false));
+            FileUtil.getWriter(CertificateConfig.serverCrtFile, StandardCharsets.UTF_8, false));
 
         // 保存服务器子证书
         PemUtil.writePemObject("CERTIFICATE", childCertificate.getEncoded(),
-                FileUtil.getWriter(CertificateConfig.serverChildCrtFile, StandardCharsets.UTF_8, false));
+            FileUtil.getWriter(CertificateConfig.serverChildCrtFile, StandardCharsets.UTF_8, false));
 
         log.debug("所有证书文件保存完成");
     }

@@ -9,27 +9,39 @@ const App = {
       showConfigModal: false,
       showLicenseModal: false,
       showResultModal: false,
+      showPowerConfModal: false,
+      powerConfContent: '',
       isGenerating: false,
       config: {
         licenseName: '',
         assigneeName: ''
       },
       licenseConfig: {
-        expiryDate: ''
+        expiryDate: '',
+        licenseType: 'PERPETUAL',
+        userCount: 1
       },
+      licenseTypes: Object.values(Utils.LicenseType),
       selectedItem: null,
+      oldGeneratedLicense: [],
       generatedLicense: '',
+      currentPageNum: 1,
+      pageSize: 10,
+      currentRecordTab: 'code', // 当前记录页面的 Tab: 'code' 或 'plugin'
       products: [],
       plugins: [],
+      pluginsUpdateTime: [],
       filteredProducts: [],
       filteredPlugins: [],
+      lastPluginUpdateTime: "",
       searchQuery: '',
       navItems: [
         { id: 'home', name: '首页', icon: 'fas fa-home' },
         { id: 'products', name: '产品', icon: 'fas fa-cube' },
         { id: 'plugins', name: '插件', icon: 'fas fa-puzzle-piece' },
-        { id: 'jrebel', name: 'JRebel', icon: 'fas fa-fire' },
-        { id: 'sponsor', name: '赞助', icon: 'fas fa-heart' }
+        { id: 'records', name: '记录', icon: 'fas fa-history' },
+        // { id: 'jrebel', name: 'JRebel', icon: 'fas fa-fire' },
+        // { id: 'sponsor', name: '赞助', icon: 'fas fa-heart' }
       ],
       showBackToTop: false
     }
@@ -43,6 +55,25 @@ const App = {
     jrebelServerUrl() {
       const uuid = Utils.generateUUID()
       return `${window.location.origin}/${uuid}`
+    },
+
+    // 排序后的历史记录（按生成时间倒序）
+    sortedLicenseHistory() {
+      return [...this.oldGeneratedLicense].sort((a, b) => {
+        return new Date(b.generationTime) - new Date(a.generationTime);
+      });
+    },
+
+    // 分页后的历史记录
+    paginatedLicenseHistory() {
+      const start = (this.currentPageNum - 1) * this.pageSize;
+      const end = start + this.pageSize;
+      return this.sortedLicenseHistory.slice(start, end);
+    },
+
+    // 总页数
+    totalPages() {
+      return Math.ceil(this.sortedLicenseHistory.length / this.pageSize);
     }
   },
 
@@ -56,6 +87,8 @@ const App = {
       // 重置过滤结果
       this.filteredProducts = [...this.products]
       this.filteredPlugins = [...this.plugins]
+      // 页面切换时滚动到顶部
+      this.scrollToTop()
     }
   },
 
@@ -63,10 +96,16 @@ const App = {
     this.loadConfig()
     this.loadProducts()
     this.loadPlugins()
+    this.loadPluginUpdateTime()
     this.setDefaultExpiryDate()
 
     // 加载主题设置
     Utils.loadTheme()
+    
+    // 如果当前页面是记录页面，加载历史记录
+    if (this.currentPage === 'records') {
+      this.loadLicenseHistory()
+    }
 
     // 监听路由变化
     this.handleHashChange = () => {
@@ -75,6 +114,10 @@ const App = {
       // 重置过滤结果
       this.filteredProducts = [...this.products]
       this.filteredPlugins = [...this.plugins]
+      // 切换到记录页面时加载历史记录
+      if (this.currentPage === 'records') {
+        this.loadLicenseHistory()
+      }
     }
 
     Utils.onHashChange(this.handleHashChange)
@@ -145,6 +188,24 @@ const App = {
       }
     },
 
+    async loadPluginUpdateTime() {
+      try {
+        this.pluginsUpdateTime = await ApiService.getPluginUpdateTime()
+        // 获取数组最后一个元素的更新时间
+        if (this.pluginsUpdateTime && this.pluginsUpdateTime.length > 0) {
+          const lastItem = this.pluginsUpdateTime[this.pluginsUpdateTime.length - 1]
+          this.lastPluginUpdateTime = lastItem.updateTime || ''
+        }
+      } catch (error) {
+        console.error('加载插件更新时间失败:', error)
+      }
+    },
+
+    async getPluginUpdateTime() {
+      await this.loadPluginUpdateTime()
+      Utils.showNotification('更新时间已刷新', 'success')
+    },
+
     // 搜索功能
     filterItems(query) {
       const searchTerm = query.toLowerCase().trim()
@@ -173,13 +234,39 @@ const App = {
       this.showLicenseModal = true
     },
 
+    openPluginLink(plugin) {
+      // 在新标签页打开插件链接
+      if (plugin.link) {
+        window.open(plugin.link, '_blank')
+      }
+    },
+
+    setExpiryDate(days) {
+      const date = new Date()
+      date.setDate(date.getDate() + parseInt(days))
+      this.licenseConfig.expiryDate = date.toISOString().split('T')[0]
+    },
+
     // 生成激活码
     async generateLicense() {
       this.isGenerating = true
-
       try {
-        const result = await ApiService.generateLicense(this.selectedItem.productCode, this.config.licenseName, this.config.assigneeName, this.licenseConfig.expiryDate)
-        this.generatedLicense = result
+        const result = await ApiService.generateLicense(
+            this.selectedItem.productCode,
+            this.config.licenseName,
+            this.config.assigneeName,
+            this.licenseConfig.expiryDate,
+            this.licenseConfig.licenseType,
+            this.licenseConfig.userCount,
+            this.selectedItem.name
+        )
+        this.generatedLicense = result.activationCode
+        
+        // 保存激活码历史记录到 localStorage
+        const licenseHistory = JSON.parse(localStorage.getItem('licenseHistory') || '[]');
+        licenseHistory.push(result);
+        localStorage.setItem('licenseHistory', JSON.stringify(licenseHistory));
+        
         this.showLicenseModal = false
         this.showResultModal = true
       } catch (error) {
@@ -187,6 +274,47 @@ const App = {
         Utils.showNotification('生成激活码失败，请重试', 'error')
       } finally {
         this.isGenerating = false
+      }
+    },
+
+    async viewPowerConf() {
+      try {
+        const response = await fetch(`${ApiService.baseURL}/power-conf`)
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`)
+        }
+        this.powerConfContent = await response.text()
+        this.showPowerConfModal = true
+      } catch (error) {
+        console.error('获取 power.conf 失败:', error)
+        Utils.showNotification('获取配置文件失败', 'error')
+      }
+    },
+
+    // 加载历史记录（用于记录页面）
+    loadLicenseHistory() {
+      this.oldGeneratedLicense = JSON.parse(localStorage.getItem('licenseHistory') || '[]');
+      this.currentPageNum = 1; // 重置到第一页
+    },
+
+    // 跳转到指定页
+    goToPage(page) {
+      if (page >= 1 && page <= this.totalPages) {
+        this.currentPageNum = page;
+      }
+    },
+
+    // 上一页
+    prevPage() {
+      if (this.currentPageNum > 1) {
+        this.currentPageNum--;
+      }
+    },
+
+    // 下一页
+    nextPage() {
+      if (this.currentPageNum < this.totalPages) {
+        this.currentPageNum++;
       }
     },
 
@@ -204,38 +332,8 @@ const App = {
     },
 
     // 图标处理
-    getProductIcon(product) {
-      if (product.iconClass && product.iconClass.startsWith('icon-')) {
-        const iconName = product.iconClass.replace('icon-', '');
-
-        // 图标映射表
-        const iconMap = {
-          'ii': 'https://resources.jetbrains.com/storage/logos/web/intellij-idea/intellij-idea.svg',
-          'ps': 'https://resources.jetbrains.com/storage/logos/web/phpstorm/phpstorm.svg',
-          'ac': 'https://resources.jetbrains.com/storage/logos/web/appcode/appcode.svg',
-          'db': 'https://resources.jetbrains.com/storage/logos/web/datagrip/datagrip.svg',
-          'rm': 'https://resources.jetbrains.com/storage/logos/web/rubymine/rubymine.svg',
-          'ws': 'https://resources.jetbrains.com/storage/logos/web/webstorm/webstorm.svg',
-          'rd': 'https://resources.jetbrains.com/storage/logos/web/rider/rider.svg',
-          'cl': 'https://resources.jetbrains.com/storage/logos/web/clion/clion.svg',
-          'pc': 'https://resources.jetbrains.com/storage/logos/web/pycharm/pycharm.svg',
-          'go': 'https://resources.jetbrains.com/storage/logos/web/goland/goland.svg',
-          'ds': 'https://resources.jetbrains.com/storage/logos/web/dataspell/dataspell.svg',
-          'dc': 'https://resources.jetbrains.com/storage/logos/web/dotcover/dotcover.svg',
-          'dpn': 'https://resources.jetbrains.com/storage/logos/web/dottrace/dottrace.svg',
-          'dm': 'https://resources.jetbrains.com/storage/logos/web/dotmemory/dotmemory.svg',
-          'rr': 'https://resources.jetbrains.com/storage/logos/web/rustrover/rustrover.svg',
-          'qa': 'https://resources.jetbrains.com/storage/logos/web/aqua/aqua.svg',
-          'al': 'https://resources.jetbrains.com/storage/logos/web/toolbox/toolbox.svg'
-        };
-
-        return iconMap[iconName] || '/images/plugin.svg';
-      }
-      return '/images/plugin.svg';
-    },
-
-    getPluginIcon(plugin) {
-      return plugin.icon || '/images/plugin.svg'
+    getIcon(item) {
+      return item.icon || '/images/plugin.svg'
     },
 
     // 页面跳转
@@ -254,6 +352,57 @@ const App = {
     // 主题切换
     toggleTheme(event) {
       Utils.toggleTheme(event)
+    },
+
+    // 格式化日期时间
+    formatDate(dateString) {
+      if (!dateString) return '';
+      const date = new Date(dateString);
+      return date.toLocaleString('zh-CN', {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+      });
+    },
+
+    // 获取许可证类型文本
+    getLicenseTypeText(value) {
+      return Utils.getLicenseTypeText(value);
+    },
+
+    // 删除单条激活码记录
+    deleteLicenseRecord(index) {
+      if (confirm('确定要删除这条激活码记录吗？')) {
+        const licenseHistory = JSON.parse(localStorage.getItem('licenseHistory') || '[]');
+        // 获取当前显示的数据（已排序）
+        const currentRecord = this.paginatedLicenseHistory[index];
+        // 在原始数据中找到该记录的索引
+        const originalIndex = licenseHistory.findIndex(item => item.activationCode === currentRecord.activationCode);
+        if (originalIndex !== -1) {
+          licenseHistory.splice(originalIndex, 1);
+          localStorage.setItem('licenseHistory', JSON.stringify(licenseHistory));
+          // 更新当前显示的数据
+          this.oldGeneratedLicense = licenseHistory;
+          // 如果当前页没有数据了，跳转到上一页
+          if (this.paginatedLicenseHistory.length === 0 && this.currentPageNum > 1) {
+            this.currentPageNum--;
+          }
+          Utils.showNotification('删除成功');
+        }
+      }
+    },
+
+    // 清空所有激活码记录
+    clearAllLicenseRecords() {
+      if (confirm('确定要清空所有激活码记录吗？此操作不可恢复。')) {
+        localStorage.removeItem('licenseHistory');
+        this.oldGeneratedLicense = [];
+        this.currentPageNum = 1;
+        Utils.showNotification('已清空所有记录');
+      }
     }
   }
 }

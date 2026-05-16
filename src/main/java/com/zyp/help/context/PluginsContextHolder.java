@@ -2,6 +2,7 @@ package com.zyp.help.context;
 
 import com.zyp.help.context.plugin.PluginConfig;
 import com.zyp.help.context.plugin.model.PluginCache;
+import com.zyp.help.context.plugin.model.PluginUpdateTimeCache;
 import com.zyp.help.context.plugin.service.PluginApiService;
 import com.zyp.help.context.plugin.service.PluginCacheService;
 import com.zyp.help.context.plugin.service.PluginProcessService;
@@ -9,9 +10,9 @@ import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
@@ -45,14 +46,6 @@ import java.util.concurrent.TimeUnit;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class PluginsContextHolder {
 
-    // ==================== 静态字段 ====================
-
-    /** 插件信息缓存列表，存储所有已加载的付费插件信息 */
-    private static List<PluginCache> pluginCacheList;
-
-    /** 线程池，用于并发请求插件数据 */
-    private static ExecutorService executorService;
-
     // ==================== 核心方法 ====================
 
     /**
@@ -68,8 +61,12 @@ public class PluginsContextHolder {
 
         try {
             // 从缓存加载插件数据
-            pluginCacheList = PluginCacheService.loadFromCache();
-            log.info("插件上下文初始化成功！加载插件数量: {}", pluginCacheList.size());
+            PluginConfig.pluginCacheList = PluginCacheService.loadFromPluginCache();
+            log.info("插件上下文初始化成功！加载插件数量: {}", PluginConfig.pluginCacheList.size());
+
+            // 从缓存加载插件更新时间数据
+            PluginConfig.pluginUpdateTimeCacheList = PluginCacheService.loadFromPluginUpdateTimeCache();
+            log.info("插件上下文初始化成功！加载插件数量: {}", PluginConfig.pluginUpdateTimeCacheList.size());
 
             // 启动异步刷新任务获取最新数据
             // refreshJsonFile();
@@ -80,14 +77,6 @@ public class PluginsContextHolder {
         }
     }
 
-    /**
-     * 获取插件信息缓存列表
-     *
-     * @return 插件信息缓存列表，不为null
-     */
-    public static List<PluginCache> pluginCacheList() {
-        return pluginCacheList;
-    }
 
     /**
      * 刷新插件信息文件
@@ -112,23 +101,20 @@ public class PluginsContextHolder {
         initExecutorService(config.getThreadCount());
 
         // 启动异步刷新任务
+        // 4. 保存到缓存
+        // 3. 转换为缓存对象
+        // 2. 过滤插件（排除已存在和免费的）
         CompletableFuture
             .supplyAsync(() -> {
                 // 1. 从API获取所有插件
-                return PluginApiService.fetchAllPlugins(executorService);
-            }, executorService)
-            .thenApply(pluginList -> {
-                // 2. 过滤插件（排除已存在和免费的）
-                return PluginProcessService.filterPlugins(pluginList, pluginCacheList);
-            })
-            .thenApply(filteredList -> {
+                return PluginApiService.fetchAllPlugins(PluginConfig.executorService);
+            }, PluginConfig.executorService)
+                // 2. 过滤插件列表
+            .thenApply(PluginProcessService::filterPlugins)
                 // 3. 转换为缓存对象
-                return PluginProcessService.convertToCache(filteredList);
-            })
-            .thenAccept(newPlugins -> {
+            .thenApply(PluginProcessService::convertToCache)
                 // 4. 保存到缓存
-                saveNewPlugins(newPlugins);
-            })
+            .thenAccept(PluginsContextHolder::saveNewPlugins)
             .thenRun(() -> log.info("多线程刷新成功!"))
             .exceptionally(throwable -> {
                 log.error("多线程刷新失败!", throwable);
@@ -147,15 +133,31 @@ public class PluginsContextHolder {
             return;
         }
 
-        log.info("源大小 => [{}], 新增大小 => [{}]", pluginCacheList.size(), newPlugins.size());
+        Integer oldNum = PluginConfig.pluginCacheList.size();
+        Integer addNum = newPlugins.size();
+        log.info("源大小 => [{}], 新增大小 => [{}]", oldNum, addNum);
 
         // 合并到内存缓存
-        pluginCacheList = PluginCacheService.mergeCache(pluginCacheList, newPlugins);
+        PluginConfig.pluginCacheList = PluginCacheService.mergeCache(PluginConfig.pluginCacheList, newPlugins);
 
         // 保存到文件
-        PluginCacheService.saveToCache(pluginCacheList);
+        PluginCacheService.saveToCache(PluginConfig.pluginCacheList);
 
-        log.info("插件缓存已更新，当前总数: {}", pluginCacheList.size());
+        // 创建更新时间缓存
+        String updateTime = java.time.LocalDateTime.now().format(java.time.format.DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        List<PluginUpdateTimeCache> newUpdateTimeCacheList = new ArrayList<>();
+        PluginUpdateTimeCache pluginUpdateTimeCache = new PluginUpdateTimeCache();
+        pluginUpdateTimeCache.setOldNum(oldNum);
+        pluginUpdateTimeCache.setAddNum(addNum);
+        pluginUpdateTimeCache.setNewNum(PluginConfig.pluginCacheList.size());
+        pluginUpdateTimeCache.setUpdateTime(updateTime);
+        newUpdateTimeCacheList.add(pluginUpdateTimeCache);
+        PluginConfig.pluginUpdateTimeCacheList = PluginCacheService.mergeCache(PluginConfig.pluginUpdateTimeCacheList, newUpdateTimeCacheList);
+
+        // 保存到文件
+        PluginCacheService.saveToUpdateTimeCache(PluginConfig.pluginUpdateTimeCacheList);
+
+        log.info("插件缓存已更新，当前总数: {}, 更新时间: {}", PluginConfig.pluginCacheList.size(), updateTime);
     }
 
     /**
@@ -164,8 +166,8 @@ public class PluginsContextHolder {
      * @param threadCount 线程数量
      */
     private static void initExecutorService(int threadCount) {
-        if (executorService == null || executorService.isShutdown()) {
-            executorService = Executors.newFixedThreadPool(threadCount, r -> {
+        if (PluginConfig.executorService == null || PluginConfig.executorService.isShutdown()) {
+            PluginConfig.executorService = Executors.newFixedThreadPool(threadCount, r -> {
                 Thread thread = new Thread(r, "PluginRefresh-");
                 thread.setDaemon(true);
                 return thread;
@@ -178,16 +180,16 @@ public class PluginsContextHolder {
      * 清理资源
      */
     public static void shutdown() {
-        if (executorService != null && !executorService.isShutdown()) {
+        if (PluginConfig.executorService != null && !PluginConfig.executorService.isShutdown()) {
             log.info("正在关闭插件刷新线程池...");
-            executorService.shutdown();
+            PluginConfig.executorService.shutdown();
             try {
-                if (!executorService.awaitTermination(10, TimeUnit.SECONDS)) {
-                    executorService.shutdownNow();
+                if (!PluginConfig.executorService.awaitTermination(10, TimeUnit.SECONDS)) {
+                    PluginConfig.executorService.shutdownNow();
                 }
                 log.info("插件刷新线程池已关闭");
             } catch (InterruptedException e) {
-                executorService.shutdownNow();
+                PluginConfig.executorService.shutdownNow();
                 Thread.currentThread().interrupt();
                 log.warn("线程池关闭被中断");
             }

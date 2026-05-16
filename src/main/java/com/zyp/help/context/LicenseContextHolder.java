@@ -10,6 +10,9 @@ import cn.hutool.crypto.SignUtil;
 import cn.hutool.crypto.asymmetric.Sign;
 import cn.hutool.json.JSONUtil;
 import java.util.stream.Collectors;
+
+import com.zyp.help.context.certificate.CertificateConfig;
+import com.zyp.help.controller.LicenseCodeController;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -76,16 +79,16 @@ public class LicenseContextHolder {
      * 
      * <p>激活码格式：{@code 许可证ID-许可证内容Base64-数字签名Base64-证书Base64}
      * 
-     * @param licensesName 许可证名称，通常为公司或组织名称
-     * @param assigneeName 被授权人名称，即许可证的使用者
-     * @param expiryDate 过期日期，格式为 yyyy-MM-dd
+     * @param body 激活码生成请求体
      * @param productCodeSet 产品代码集合，包含所有需要激活的产品
      * @return 符合JetBrains规范的激活码字符串
      * @throws IllegalArgumentException 当密码学操作或证书处理失败时抛出
      */
-    public static String generateLicense(String licensesName, String assigneeName, String expiryDate,
-        Set<String> productCodeSet) {
-        log.info("开始生成许可证 - 许可证名称: {}, 被授权人: {}, 过期日期: {}, 产品数量: {}", 
+    public static String generateLicense(LicenseCodeController.GenerateLicenseReqBody body, Set<String> productCodeSet) {
+        String licensesName = body.getLicenseName();
+        String assigneeName = body.getAssigneeName();
+        String expiryDate = body.getExpiryDate();
+        log.info("开始生成许可证 - 许可证名称: {}, 被授权人: {}, 过期日期: {}, 产品数量: {}",
                  licensesName, assigneeName, expiryDate, productCodeSet.size());
         
         // 1. 生成唯一的许可证ID
@@ -113,10 +116,11 @@ public class LicenseContextHolder {
         log.debug("许可证JSON内容长度: {} 字符", licensePartJson.length());
         
         // 5. 加载密码学组件：私钥、公钥和证书
-        PrivateKey privateKey = PemUtil.readPemPrivateKey(IoUtil.toStream(CertificateContextHolder.privateKeyFile()));
-        PublicKey publicKey = PemUtil.readPemPublicKey(IoUtil.toStream(CertificateContextHolder.publicKeyFile()));
-        Certificate certificate = SecureUtil.readX509Certificate(IoUtil.toStream(CertificateContextHolder.codeCrtFile()));
-        
+        PrivateKey privateKey = PemUtil.readPemPrivateKey(IoUtil.toStream(CertificateConfig.privateKeyFile));
+        PublicKey publicKey = PemUtil.readPemPublicKey(IoUtil.toStream(CertificateConfig.publicKeyFile));
+        Certificate certificate = SecureUtil.readX509Certificate(IoUtil.toStream(CertificateConfig.codeCrtFile));
+
+
         // 6. 使用SHA1withRSA算法进行数字签名
         Sign sign = SignUtil.sign(SHA1withRSA, privateKey.getEncoded(), publicKey.getEncoded());
         String signatureBase64 = Base64.encode(sign.sign(licensePartJson));
