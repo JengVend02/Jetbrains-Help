@@ -198,7 +198,7 @@ const Utils = {
   // 路由管理
   getCurrentPage() {
     const hash = window.location.hash.slice(1) // 移除 # 号
-    const validPages = ['home', 'products', 'plugins', 'records', 'jrebel', 'sponsor']
+    const validPages = ['home', 'products', 'plugins', 'records', 'sponsor']
     return validPages.includes(hash) ? hash : 'home'
   },
 

@@ -604,15 +604,6 @@ input:focus, select:focus, textarea:focus {
     }
 }
 
-/* JRebel页面特殊样式 */
-.jrebel-container {
-    overflow-x: auto;
-}
-
-.jrebel-step {
-    min-width: 0;
-    word-wrap: break-word;
-}
 
 /* 配置说明区域 */
 .config-section {
