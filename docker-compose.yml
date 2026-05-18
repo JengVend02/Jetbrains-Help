@@ -3,8 +3,6 @@ services:
     build: .
     image: jetbrains-help:latest
     container_name: Jetbrains-Help
-    environment:
-      - XBASE64_DOMAIN=mihuyo.cc
     ports:
       - 10768:10768
     volumes:

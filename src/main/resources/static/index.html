@@ -1,87 +1,87 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>JetBrains Help - JetBrains激活助手</title>
-    <link rel='shortcut icon' href='/images/favicon.png'>
-    <link rel='icon' href='/images/favicon.png'>
-    <link rel='apple-touch-icon-precomposed' href='/images/favicon.png'>
-    <meta name='msapplication-TileImage' content='/images/favicon.png'>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JetBrains激活助手</title>
+  <link rel='shortcut icon' href='/images/favicon.png'>
+  <link rel='icon' href='/images/favicon.png'>
+  <link rel='apple-touch-icon-precomposed' href='/images/favicon.png'>
+  <meta name='msapplication-TileImage' content='/images/favicon.png'>
 
-    <!-- 核心技术栈 -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- 核心技术栈 -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
-    <!-- Vue.js 3 -->
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <!-- Vue.js 3 -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
-    <!-- 自定义样式 -->
-    <link rel="stylesheet" href="/css/main.css" />
-    <link rel="stylesheet" href="/css/sponsor.css" />
+  <!-- 自定义样式 -->
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="/css/sponsor.css" />
 
-    <!-- 设置默认路由 -->
-    <script>
-      if (!window.location.hash) {
-        window.location.hash = 'home';
-      }
-    </script>
-  </head>
-  <body class="bg-gray-50">
-    <div id="app">
-      <!-- 配置模态框 -->
-      <transition name="modal">
-        <div v-if="showConfigModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 p-4">
-          <div class="bg-white rounded-2xl p-8 w-full max-w-md shadow-2xl">
-            <div class="text-center mb-6">
-              <div class="w-16 h-16 gradient-bg rounded-full flex items-center justify-center mx-auto mb-4">
-                <i class="fas fa-cog text-white text-2xl"></i>
-              </div>
-              <h2 class="text-2xl font-bold text-gray-900 mb-2">初始配置</h2>
-              <p class="text-gray-600">请配置您的许可证信息</p>
-            </div>
-
-            <div class="space-y-6">
-              <div>
-                <label class="block text-sm font-medium text-gray-700 mb-2">许可证名称</label>
-                <input
-                  v-model="config.licenseName"
-                  type="text"
-                  placeholder="请输入许可证名称"
-                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all" />
-              </div>
-
-              <div>
-                <label class="block text-sm font-medium text-gray-700 mb-2">被许可人</label>
-                <input
-                  v-model="config.assigneeName"
-                  type="text"
-                  placeholder="请输入被许可人姓名"
-                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all" />
-              </div>
-
-              <button
-                @click="saveConfig"
-                :disabled="!config.licenseName || !config.assigneeName"
-                class="w-full btn-primary text-white py-3 px-6 rounded-lg font-medium disabled:opacity-50 disabled:cursor-not-allowed">
-                保存配置
-              </button>
-            </div>
+  <!-- 设置默认路由 -->
+  <script>
+    if (!window.location.hash) {
+      window.location.hash = 'home';
+    }
+  </script>
+</head>
+<body class="bg-gray-50">
+<div id="app">
+  <!-- 配置模态框 -->
+  <transition name="modal">
+    <div v-if="showConfigModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 p-4">
+      <div class="bg-white rounded-2xl p-8 w-full max-w-md shadow-2xl">
+        <div class="text-center mb-6">
+          <div class="w-16 h-16 gradient-bg rounded-full flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-cog text-white text-2xl"></i>
           </div>
+          <h2 class="text-2xl font-bold text-gray-900 mb-2">初始配置</h2>
+          <p class="text-gray-600">请配置您的许可证信息</p>
         </div>
-      </transition>
 
-      <!-- 主导航 -->
-      <nav class="glass sticky top-0 z-40">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="flex justify-between items-center py-4">
-            <div class="flex items-center space-x-4">
-              <div class="w-10 h-10 gradient-bg rounded-xl flex items-center justify-center">
-                <i class="fas fa-rocket text-white text-lg"></i>
-              </div>
-              <h1 class="text-xl font-bold gradient-text">JetBrains Help</h1>
-            </div>
+        <div class="space-y-6">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">许可证名称</label>
+            <input
+                    v-model="config.licenseName"
+                    type="text"
+                    placeholder="请输入许可证名称"
+                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all" />
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">被许可人</label>
+            <input
+                    v-model="config.assigneeName"
+                    type="text"
+                    placeholder="请输入被许可人姓名"
+                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all" />
+          </div>
+
+          <button
+                  @click="saveConfig"
+                  :disabled="!config.licenseName || !config.assigneeName"
+                  class="w-full btn-primary text-white py-3 px-6 rounded-lg font-medium disabled:opacity-50 disabled:cursor-not-allowed">
+            保存配置
+          </button>
+        </div>
+      </div>
+    </div>
+  </transition>
+
+  <!-- 主导航 -->
+  <nav class="glass sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center py-4">
+        <div class="flex items-center space-x-4">
+          <div class="w-10 h-10 gradient-bg rounded-xl flex items-center justify-center">
+            <i class="fas fa-rocket text-white text-lg"></i>
+          </div>
+          <h1 class="text-xl font-bold gradient-text">JetBrains Help</h1>
+        </div>
 
         <div class="flex items-center space-x-6">
           <nav class="hidden md:flex space-x-8">
@@ -95,35 +95,35 @@
             </a>
           </nav>
 
-              <div class="flex items-center space-x-3">
-                <!-- 主题切换按钮 -->
-                <div @click="toggleTheme($event)" class="theme-toggle" title="切换主题">
-                  <i class="fas fa-sun theme-icon sun-icon"></i>
-                  <i class="fas fa-moon theme-icon moon-icon"></i>
-                </div>
-
-                <button @click="showConfigModal = true" class="p-2 text-gray-600 hover:text-purple-600 transition-colors" title="配置">
-                  <i class="fas fa-cog"></i>
-                </button>
-              </div>
+          <div class="flex items-center space-x-3">
+            <!-- 主题切换按钮 -->
+            <div @click="toggleTheme($event)" class="theme-toggle" title="切换主题">
+              <i class="fas fa-sun theme-icon sun-icon"></i>
+              <i class="fas fa-moon theme-icon moon-icon"></i>
             </div>
+
+            <button @click="showConfigModal = true" class="p-2 text-gray-600 hover:text-purple-600 transition-colors" title="配置">
+              <i class="fas fa-cog"></i>
+            </button>
           </div>
         </div>
-      </nav>
-
-      <!-- 移动端导航 -->
-      <div class="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 z-40">
-        <div class="flex">
-          <button
-            v-for="item in navItems"
-            :key="item.id"
-            @click="navigateTo(item.id)"
-            :class="['flex-1 py-3 px-2 text-center transition-colors', currentPage === item.id ? 'text-purple-600 bg-purple-50' : 'text-gray-600']">
-            <i :class="item.icon + ' block text-lg mb-1'"></i>
-            <span class="text-xs">{{ item.name }}</span>
-          </button>
-        </div>
       </div>
+    </div>
+  </nav>
+
+  <!-- 移动端导航 -->
+  <div class="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 z-40">
+    <div class="flex">
+      <button
+              v-for="item in navItems"
+              :key="item.id"
+              @click="navigateTo(item.id)"
+              :class="['flex-1 py-3 px-2 text-center transition-colors', currentPage === item.id ? 'text-purple-600 bg-purple-50' : 'text-gray-600']">
+        <i :class="item.icon + ' block text-lg mb-1'"></i>
+        <span class="text-xs">{{ item.name }}</span>
+      </button>
+    </div>
+  </div>
 
   <!-- 页面内容 -->
   <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pb-24 md:pb-8">
@@ -133,43 +133,35 @@
         <div v-if="currentPage === 'home'">
           <div class="text-center mb-8 md:mb-12">
             <h2 class="home-title text-3xl md:text-4xl font-bold text-gray-900 mb-4">欢迎使用 <span class="gradient-text">JetBrains 激活助手</span></h2>
-            <p class="home-subtitle text-base md:text-lg text-gray-600 max-w-2xl mx-auto px-4">为您提供便捷的 JetBrains 产品激活解决方案</p>
-            <!-- 更新时间展示 -->
-            <div class="flex items-center justify-center space-x-2">
-              <span>插件更新时间：<span class="font-medium text-purple-600">{{ lastPluginUpdateTime || '未加载' }}</span></span>
-              <button @click="getPluginUpdateTime" class="p-1.5 text-purple-600 hover:text-purple-700 hover:bg-purple-50 rounded-lg transition-all" title="刷新更新时间">
-                <i class="fas fa-sync-alt"></i>
-              </button>
-            </div>
           </div>
 
-            <!-- 当前配置信息 -->
-            <div class="home-section bg-white rounded-2xl p-4 md:p-6 shadow-lg mb-6 md:mb-8">
-              <div class="flex items-center justify-between mb-4">
-                <h3 class="text-lg font-semibold text-gray-900">当前配置</h3>
-                <button @click="showConfigModal = true" class="text-sm text-purple-600 hover:text-purple-700 font-medium"><i class="fas fa-edit mr-1"></i>修改配置</button>
-              </div>
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="flex items-center space-x-3">
-                  <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
-                    <i class="fas fa-certificate text-purple-600"></i>
-                  </div>
-                  <div class="min-w-0 flex-1">
-                    <p class="text-sm text-gray-500">许可证名称</p>
-                    <p class="font-medium text-gray-900 truncate">{{ config.licenseName || '未设置' }}</p>
-                  </div>
+          <!-- 当前配置信息 -->
+          <div class="home-section bg-white rounded-2xl p-4 md:p-6 shadow-lg mb-6 md:mb-8">
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="text-lg font-semibold text-gray-900">当前配置</h3>
+              <button @click="showConfigModal = true" class="text-sm text-purple-600 hover:text-purple-700 font-medium"><i class="fas fa-edit mr-1"></i>修改配置</button>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
+                  <i class="fas fa-certificate text-purple-600"></i>
                 </div>
-                <div class="flex items-center space-x-3">
-                  <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-                    <i class="fas fa-user text-blue-600"></i>
-                  </div>
-                  <div class="min-w-0 flex-1">
-                    <p class="text-sm text-gray-500">被许可人</p>
-                    <p class="font-medium text-gray-900 truncate">{{ config.assigneeName || '未设置' }}</p>
-                  </div>
+                <div class="min-w-0 flex-1">
+                  <p class="text-sm text-gray-500">许可证名称</p>
+                  <p class="font-medium text-gray-900 truncate">{{ config.licenseName || '未设置' }}</p>
+                </div>
+              </div>
+              <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                  <i class="fas fa-user text-blue-600"></i>
+                </div>
+                <div class="min-w-0 flex-1">
+                  <p class="text-sm text-gray-500">被许可人</p>
+                  <p class="font-medium text-gray-900 truncate">{{ config.assigneeName || '未设置' }}</p>
                 </div>
               </div>
             </div>
+          </div>
 
           <!-- 激活方式 -->
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 mb-8 md:mb-12">
@@ -245,7 +237,7 @@
               </div>
             </div>
 
-             <!-- 服务器激活 -->
+            <!-- 服务器激活 -->
             <div class="home-section bg-white rounded-2xl p-6 md:p-8 shadow-lg card-hover">
               <div class="text-center mb-6">
                 <div class="w-16 h-16 bg-gradient-to-r from-purple-400 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -351,11 +343,10 @@
           </div>-->
         </div>
 
-          <!-- 产品页面 -->
-          <div v-else-if="currentPage === 'products'">
-            <div class="mb-8">
-              <h2 class="text-3xl font-bold text-gray-900 mb-4">JetBrains 产品</h2>
-              <p class="text-gray-600 mb-6">选择需要激活的 JetBrains 产品</p>
+        <!-- 产品页面 -->
+        <div v-else-if="currentPage === 'products'">
+          <div class="mb-8">
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">JetBrains 产品</h2>
 
             <!-- 搜索框 -->
             <div class="search-container max-w-md relative">
@@ -394,7 +385,7 @@
             找到 <span class="font-medium text-purple-600">{{ filteredProducts.length }}</span> 个匹配的产品
           </div>
 
-        <div v-if="filteredProducts.length === 0" class="text-center py-12 bg-white rounded-2xl shadow-md">
+          <div v-if="filteredProducts.length === 0" class="text-center py-12 bg-white rounded-2xl shadow-md">
             <i class="fas fa-search text-gray-300 text-4xl mb-4"></i>
             <h3 class="text-lg font-medium text-gray-700 mb-2">没有找到匹配的产品</h3>
             <p class="text-gray-500 mb-4">尝试使用其他关键词搜索</p>
@@ -404,11 +395,17 @@
           </div>
         </div>
 
-          <!-- 插件页面 -->
-          <div v-else-if="currentPage === 'plugins'">
-            <div class="mb-8">
-              <h2 class="text-3xl font-bold text-gray-900 mb-4">JetBrains 插件</h2>
-              <p class="text-gray-600 mb-6">选择需要激活的 JetBrains 付费插件</p>
+        <!-- 插件页面 -->
+        <div v-else-if="currentPage === 'plugins'">
+          <div class="mb-8">
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">JetBrains 插件</h2>
+            <!-- 更新时间展示 -->
+            <div class="flex items-left justify-left space-x-2">
+              <span>插件更新时间：<span class="font-medium text-purple-600">{{ lastPluginUpdateTime || '未加载' }}</span></span>
+              <button @click="getPluginUpdateTime" class="p-1.5 text-purple-600 hover:text-purple-700 hover:bg-purple-50 rounded-lg transition-all" title="刷新更新时间">
+                <i class="fas fa-sync-alt"></i>
+              </button>
+            </div>
 
             <!-- 搜索框 -->
             <div class="search-container max-w-md relative">
@@ -436,32 +433,32 @@
                 <i class="fas fa-star text-yellow-500 text-xs"></i>
                 <span class="text-sm font-semibold text-gray-700">{{ plugin.rating ? plugin.rating.toFixed(2) : 'N/A' }}</span>
               </div>
-              
+
               <!-- 右上角：定价模式 -->
               <div class="absolute top-3 right-3">
-                <span :class="[
-                  'px-2 py-1 rounded-lg text-xs font-medium',
-                  plugin.pricingModel === 'PAID' ? 'bg-red-100 text-red-700 border border-red-200' :
-                  plugin.pricingModel === 'FREEMIUM' ? 'bg-blue-100 text-blue-700 border border-blue-200' :
-                  'bg-green-100 text-green-700 border border-green-200'
-                ]">
-                  {{ plugin.pricingModel === 'PAID' ? '付费' : plugin.pricingModel === 'FREEMIUM' ? '免费增值' : '免费' }}
-                </span>
+                    <span :class="[
+                      'px-2 py-1 rounded-lg text-xs font-medium',
+                      plugin.pricingModel === 'PAID' ? 'bg-red-100 text-red-700 border border-red-200' :
+                      plugin.pricingModel === 'FREEMIUM' ? 'bg-blue-100 text-blue-700 border border-blue-200' :
+                      'bg-green-100 text-green-700 border border-green-200'
+                    ]">
+                      {{ plugin.pricingModel === 'PAID' ? '付费' : plugin.pricingModel === 'FREEMIUM' ? '免费增值' : '免费' }}
+                    </span>
               </div>
-              
+
               <div class="text-center pt-8">
                 <div class="w-16 h-16 mx-auto mb-4 rounded-2xl overflow-hidden">
                   <img :src="getIcon(plugin)" :alt="plugin.name" class="w-full h-full object-contain" @error="$event.target.src='/images/plugin.svg'" />
                 </div>
                 <h3 class="text-lg font-bold text-gray-900 mb-3">{{ plugin.name }}</h3>
-                
+
                 <!-- 开发商信息 -->
                 <div class="flex items-center justify-center space-x-2 mb-4">
                   <i class="fas fa-user-circle text-purple-500 text-sm"></i>
                   <span class="text-gray-600 text-sm">{{ plugin.vendor?.name || '未知开发商' }}</span>
                   <i v-if="plugin.vendor?.isVerified" class="fas fa-check-circle text-blue-500 text-sm" title="已认证"></i>
                 </div>
-                
+
                 <button @click.stop="selectPlugin(plugin)" class="w-full btn-primary text-white py-2 px-4 rounded-lg font-medium">生成激活码</button>
               </div>
             </div>
@@ -493,16 +490,16 @@
           <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
             <div class="border-b border-gray-200">
               <nav class="flex -mb-px">
-                <button 
-                  @click="currentRecordTab = 'code'"
-                  :class="['px-6 py-4 text-sm font-medium transition-colors relative',
-                           currentRecordTab === 'code' ? 'text-purple-600 border-b-2 border-purple-600' : 'text-gray-500 hover:text-gray-700']">
+                <button
+                        @click="currentRecordTab = 'code'"
+                        :class="['px-6 py-4 text-sm font-medium transition-colors relative',
+                               currentRecordTab === 'code' ? 'text-purple-600 border-b-2 border-purple-600' : 'text-gray-500 hover:text-gray-700']">
                   <i class="fas fa-key mr-2"></i>激活码
                 </button>
-                <button 
-                  @click="currentRecordTab = 'plugin'"
-                  :class="['px-6 py-4 text-sm font-medium transition-colors relative',
-                           currentRecordTab === 'plugin' ? 'text-purple-600 border-b-2 border-purple-600' : 'text-gray-500 hover:text-gray-700']">
+                <button
+                        @click="currentRecordTab = 'plugin'"
+                        :class="['px-6 py-4 text-sm font-medium transition-colors relative',
+                               currentRecordTab === 'plugin' ? 'text-purple-600 border-b-2 border-purple-600' : 'text-gray-500 hover:text-gray-700']">
                   <i class="fas fa-clock mr-2"></i>插件更新时间
                 </button>
               </nav>
@@ -530,47 +527,47 @@
                 <div class="overflow-x-auto">
                   <table class="min-w-full divide-y divide-gray-200">
                     <thead class="bg-gray-50">
-                      <tr>
-                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">序号</th>
-                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">生成时间</th>
-                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">许可证名称</th>
-                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">被许可人</th>
-                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">到期时间</th>
-                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">许可证类型</th>
-                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">用户数</th>
-<!--                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">激活产品</th>-->
-                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">激活码</th>
-                        <th class="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">操作</th>
-                      </tr>
+                    <tr>
+                      <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">序号</th>
+                      <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">生成时间</th>
+                      <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">许可证名称</th>
+                      <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">被许可人</th>
+                      <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">到期时间</th>
+                      <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">许可证类型</th>
+                      <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">用户数</th>
+                      <!--                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">激活产品</th>-->
+                      <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">激活码</th>
+                      <th class="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">操作</th>
+                    </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
-                      <tr v-for="(record, index) in paginatedLicenseHistory" :key="index" class="hover:bg-gray-50 transition-colors">
-                        <td class="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900">#{{ (currentPageNum - 1) * pageSize + index + 1 }}</td>
-                        <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600">{{ formatDate(record.generationTime) }}</td>
-                        <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-900">{{ record.licenseName }}</td>
-                        <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-900">{{ record.assigneeName }}</td>
-                        <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-900">{{ record.expiryDate }}</td>
-                        <td class="px-4 py-3 whitespace-nowrap">
-                          <span class="px-2 py-1 text-xs bg-purple-100 text-purple-700 rounded-full">{{ getLicenseTypeText(record.licenseType) }}</span>
-                        </td>
-                        <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-900">{{ record.userCount }}</td>
-<!--                        <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-900">{{ record.activationProduct }}</td>-->
-                        <td class="px-4 py-3 text-sm">
-                          <div class="max-w-xs truncate" :title="record.activationCode">
-                            {{ record.activationCode }}
-                          </div>
-                        </td>
-                        <td class="px-4 py-3 whitespace-nowrap text-center">
-                          <div class="flex items-center justify-center space-x-2">
-                            <button @click="copyToClipboard(record.activationCode)" class="text-purple-600 hover:text-purple-700 transition-colors" title="复制激活码">
-                              <i class="fas fa-copy"></i>
-                            </button>
-                            <button @click="deleteLicenseRecord(index)" class="text-red-600 hover:text-red-700 transition-colors" title="删除记录">
-                              <i class="fas fa-trash-alt"></i>
-                            </button>
-                          </div>
-                        </td>
-                      </tr>
+                    <tr v-for="(record, index) in paginatedLicenseHistory" :key="index" class="hover:bg-gray-50 transition-colors">
+                      <td class="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900">#{{ (currentPageNum - 1) * pageSize + index + 1 }}</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600">{{ formatDate(record.generationTime) }}</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-900">{{ record.licenseName }}</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-900">{{ record.assigneeName }}</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-900">{{ record.expiryDate }}</td>
+                      <td class="px-4 py-3 whitespace-nowrap">
+                        <span class="px-2 py-1 text-xs bg-purple-100 text-purple-700 rounded-full">{{ getLicenseTypeText(record.licenseType) }}</span>
+                      </td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-900">{{ record.userCount }}</td>
+                      <!--                        <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-900">{{ record.activationProduct }}</td>-->
+                      <td class="px-4 py-3 text-sm">
+                        <div class="max-w-xs truncate" :title="record.activationCode">
+                          {{ record.activationCode }}
+                        </div>
+                      </td>
+                      <td class="px-4 py-3 whitespace-nowrap text-center">
+                        <div class="flex items-center justify-center space-x-2">
+                          <button @click="copyToClipboard(record.activationCode)" class="text-purple-600 hover:text-purple-700 transition-colors" title="复制激活码">
+                            <i class="fas fa-copy"></i>
+                          </button>
+                          <button @click="deleteLicenseRecord(index)" class="text-red-600 hover:text-red-700 transition-colors" title="删除记录">
+                            <i class="fas fa-trash-alt"></i>
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
                     </tbody>
                   </table>
                 </div>
@@ -578,33 +575,33 @@
                 <!-- 分页控件 -->
                 <div class="mt-6 flex items-center justify-between border-t border-gray-200 pt-4">
                   <div class="flex items-center space-x-2">
-                    <button 
-                      @click="prevPage" 
-                      :disabled="currentPageNum === 1"
-                      class="px-3 py-1 rounded-lg border border-gray-300 text-sm font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50">
+                    <button
+                            @click="prevPage"
+                            :disabled="currentPageNum === 1"
+                            class="px-3 py-1 rounded-lg border border-gray-300 text-sm font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50">
                       <i class="fas fa-chevron-left mr-1"></i>上一页
                     </button>
-                    
+
                     <!-- 页码按钮 -->
                     <div class="flex space-x-1">
-                      <button 
-                        v-for="page in licenseTotalPages" 
-                        :key="page"
-                        @click="goToPage(page)"
-                        :class="['px-3 py-1 rounded-lg text-sm font-medium transition-colors', 
-                                 currentPageNum === page ? 'bg-purple-600 text-white' : 'border border-gray-300 hover:bg-gray-50']">
+                      <button
+                              v-for="page in licenseTotalPages"
+                              :key="page"
+                              @click="goToPage(page)"
+                              :class="['px-3 py-1 rounded-lg text-sm font-medium transition-colors',
+                                     currentPageNum === page ? 'bg-purple-600 text-white' : 'border border-gray-300 hover:bg-gray-50']">
                         {{ page }}
                       </button>
                     </div>
-                    
-                    <button 
-                      @click="nextPage" 
-                      :disabled="currentPageNum === licenseTotalPages"
-                      class="px-3 py-1 rounded-lg border border-gray-300 text-sm font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50">
+
+                    <button
+                            @click="nextPage"
+                            :disabled="currentPageNum === licenseTotalPages"
+                            class="px-3 py-1 rounded-lg border border-gray-300 text-sm font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50">
                       下一页<i class="fas fa-chevron-right ml-1"></i>
                     </button>
                   </div>
-                  
+
                   <div class="text-sm text-gray-600">
                     每页 {{ pageSize }} 条
                   </div>
@@ -631,28 +628,28 @@
                 <div class="overflow-x-auto">
                   <table class="min-w-full divide-y divide-gray-200">
                     <thead class="bg-gray-50">
-                      <tr>
-                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">序号</th>
-                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">原有数量</th>
-                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">新增数量</th>
-                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">最新数量</th>
-                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">更新时间</th>
-                      </tr>
+                    <tr>
+                      <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">序号</th>
+                      <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">原有数量</th>
+                      <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">新增数量</th>
+                      <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">最新数量</th>
+                      <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">更新时间</th>
+                    </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
-                      <tr v-for="(record, index) in pluginsUpdateTime" :key="index" class="hover:bg-gray-50 transition-colors">
-                        <td class="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900">#{{ index + 1 }}</td>
-                        <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-900">
-                          <span class="px-2 py-1 text-xs bg-blue-100 text-blue-700 rounded-full">{{ record.oldNum }}</span>
-                        </td>
-                        <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-900">
-                          <span class="px-2 py-1 text-xs bg-green-100 text-green-700 rounded-full">+{{ record.addNum }}</span>
-                        </td>
-                        <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-900">
-                          <span class="px-2 py-1 text-xs bg-purple-100 text-purple-700 rounded-full">{{ record.newNum }}</span>
-                        </td>
-                        <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600">{{ record.updateTime }}</td>
-                      </tr>
+                    <tr v-for="(record, index) in pluginsUpdateTime" :key="index" class="hover:bg-gray-50 transition-colors">
+                      <td class="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900">#{{ index + 1 }}</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-900">
+                        <span class="px-2 py-1 text-xs bg-blue-100 text-blue-700 rounded-full">{{ record.oldNum }}</span>
+                      </td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-900">
+                        <span class="px-2 py-1 text-xs bg-green-100 text-green-700 rounded-full">+{{ record.addNum }}</span>
+                      </td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-900">
+                        <span class="px-2 py-1 text-xs bg-purple-100 text-purple-700 rounded-full">{{ record.newNum }}</span>
+                      </td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600">{{ record.updateTime }}</td>
+                    </tr>
                     </tbody>
                   </table>
                 </div>
@@ -661,95 +658,95 @@
           </div>
         </div>
 
-          <!-- JRebel页面 -->
-          <div v-else-if="currentPage === 'jrebel'" class="jrebel-container">
-            <div class="mb-8">
-              <h2 class="text-3xl font-bold text-gray-900 mb-4"><i class="fas fa-fire text-orange-500 mr-3"></i>JRebel 激活</h2>
-              <p class="text-gray-600">JRebel 仅支持服务器激活模式</p>
+        <!-- JRebel页面 -->
+        <div v-else-if="currentPage === 'jrebel'" class="jrebel-container">
+          <div class="mb-8">
+            <h2 class="text-3xl font-bold text-gray-900 mb-4"><i class="fas fa-fire text-orange-500 mr-3"></i>JRebel 激活</h2>
+            <p class="text-gray-600">JRebel 仅支持服务器激活模式</p>
+          </div>
+
+          <div class="bg-white rounded-2xl p-6 md:p-8 shadow-lg">
+            <div class="text-center mb-8">
+              <div class="w-20 h-20 bg-gradient-to-r from-orange-400 to-red-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class="fas fa-fire text-white text-3xl"></i>
+              </div>
+              <h3 class="text-2xl font-bold text-gray-900 mb-2">JRebel 服务器激活</h3>
+              <p class="text-gray-600">请按照以下步骤配置 JRebel 服务器激活</p>
             </div>
 
-            <div class="bg-white rounded-2xl p-6 md:p-8 shadow-lg">
-              <div class="text-center mb-8">
-                <div class="w-20 h-20 bg-gradient-to-r from-orange-400 to-red-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <i class="fas fa-fire text-white text-3xl"></i>
+            <div class="space-y-6 mb-8">
+              <div class="flex flex-col sm:flex-row sm:items-start space-y-3 sm:space-y-0 sm:space-x-4">
+                <div class="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center flex-shrink-0">
+                  <span class="text-orange-600 font-bold">1</span>
                 </div>
-                <h3 class="text-2xl font-bold text-gray-900 mb-2">JRebel 服务器激活</h3>
-                <p class="text-gray-600">请按照以下步骤配置 JRebel 服务器激活</p>
-              </div>
-
-              <div class="space-y-6 mb-8">
-                <div class="flex flex-col sm:flex-row sm:items-start space-y-3 sm:space-y-0 sm:space-x-4">
-                  <div class="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center flex-shrink-0">
-                    <span class="text-orange-600 font-bold">1</span>
-                  </div>
-                  <div class="flex-1 jrebel-step">
-                    <h4 class="font-semibold text-gray-900 mb-2">复制服务器地址</h4>
-                    <div class="bg-gray-50 rounded-lg p-4">
-                      <p class="text-sm text-gray-600 mb-2">JRebel 服务器地址：</p>
-                      <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2">
-                        <input :value="jrebelServerUrl" readonly class="flex-1 bg-white border border-gray-300 rounded-lg px-3 py-2 text-sm min-w-0" />
-                        <button @click="copyToClipboard(jrebelServerUrl)" class="px-4 py-2 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition-colors whitespace-nowrap">
-                          <i class="fas fa-copy mr-2"></i>复制
-                        </button>
-                      </div>
+                <div class="flex-1 jrebel-step">
+                  <h4 class="font-semibold text-gray-900 mb-2">复制服务器地址</h4>
+                  <div class="bg-gray-50 rounded-lg p-4">
+                    <p class="text-sm text-gray-600 mb-2">JRebel 服务器地址：</p>
+                    <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2">
+                      <input :value="jrebelServerUrl" readonly class="flex-1 bg-white border border-gray-300 rounded-lg px-3 py-2 text-sm min-w-0" />
+                      <button @click="copyToClipboard(jrebelServerUrl)" class="px-4 py-2 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition-colors whitespace-nowrap">
+                        <i class="fas fa-copy mr-2"></i>复制
+                      </button>
                     </div>
                   </div>
                 </div>
+              </div>
 
-                <div class="flex flex-col sm:flex-row sm:items-start space-y-3 sm:space-y-0 sm:space-x-4">
-                  <div class="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center flex-shrink-0">
-                    <span class="text-orange-600 font-bold">2</span>
-                  </div>
-                  <div class="flex-1 jrebel-step">
-                    <h4 class="font-semibold text-gray-900 mb-2">打开 JRebel 激活界面</h4>
-                    <p class="text-gray-700">在 IDE 中找到 JRebel 插件，选择"Connect to License Server"</p>
-                  </div>
+              <div class="flex flex-col sm:flex-row sm:items-start space-y-3 sm:space-y-0 sm:space-x-4">
+                <div class="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center flex-shrink-0">
+                  <span class="text-orange-600 font-bold">2</span>
                 </div>
-
-                <div class="flex flex-col sm:flex-row sm:items-start space-y-3 sm:space-y-0 sm:space-x-4">
-                  <div class="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center flex-shrink-0">
-                    <span class="text-orange-600 font-bold">3</span>
-                  </div>
-                  <div class="flex-1 jrebel-step">
-                    <h4 class="font-semibold text-gray-900 mb-2">输入服务器地址</h4>
-                    <p class="text-gray-700">将上述服务器地址粘贴到 JRebel 的服务器地址输入框中</p>
-                  </div>
-                </div>
-
-                <div class="flex flex-col sm:flex-row sm:items-start space-y-3 sm:space-y-0 sm:space-x-4">
-                  <div class="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center flex-shrink-0">
-                    <span class="text-orange-600 font-bold">4</span>
-                  </div>
-                  <div class="flex-1 jrebel-step">
-                    <h4 class="font-semibold text-gray-900 mb-2">完成激活</h4>
-                    <p class="text-gray-700">点击"Activate"按钮完成激活，享受 JRebel 热部署功能</p>
-                  </div>
+                <div class="flex-1 jrebel-step">
+                  <h4 class="font-semibold text-gray-900 mb-2">打开 JRebel 激活界面</h4>
+                  <p class="text-gray-700">在 IDE 中找到 JRebel 插件，选择"Connect to License Server"</p>
                 </div>
               </div>
 
-              <div class="bg-orange-50 border border-orange-200 rounded-lg p-4">
-                <div class="flex items-start space-x-3">
-                  <i class="fas fa-info-circle text-orange-600 mt-0.5 flex-shrink-0"></i>
-                  <div>
-                    <h4 class="font-semibold text-orange-800 mb-1">注意事项</h4>
-                    <ul class="text-orange-700 text-sm space-y-1">
-                      <li>• 确保您的网络可以访问本服务器地址</li>
-                      <li>• JRebel 激活后请保持服务器运行状态</li>
-                      <li>• 如有问题，请检查防火墙和网络设置</li>
-                    </ul>
-                  </div>
+              <div class="flex flex-col sm:flex-row sm:items-start space-y-3 sm:space-y-0 sm:space-x-4">
+                <div class="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center flex-shrink-0">
+                  <span class="text-orange-600 font-bold">3</span>
+                </div>
+                <div class="flex-1 jrebel-step">
+                  <h4 class="font-semibold text-gray-900 mb-2">输入服务器地址</h4>
+                  <p class="text-gray-700">将上述服务器地址粘贴到 JRebel 的服务器地址输入框中</p>
+                </div>
+              </div>
+
+              <div class="flex flex-col sm:flex-row sm:items-start space-y-3 sm:space-y-0 sm:space-x-4">
+                <div class="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center flex-shrink-0">
+                  <span class="text-orange-600 font-bold">4</span>
+                </div>
+                <div class="flex-1 jrebel-step">
+                  <h4 class="font-semibold text-gray-900 mb-2">完成激活</h4>
+                  <p class="text-gray-700">点击"Activate"按钮完成激活，享受 JRebel 热部署功能</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-orange-50 border border-orange-200 rounded-lg p-4">
+              <div class="flex items-start space-x-3">
+                <i class="fas fa-info-circle text-orange-600 mt-0.5 flex-shrink-0"></i>
+                <div>
+                  <h4 class="font-semibold text-orange-800 mb-1">注意事项</h4>
+                  <ul class="text-orange-700 text-sm space-y-1">
+                    <li>• 确保您的网络可以访问本服务器地址</li>
+                    <li>• JRebel 激活后请保持服务器运行状态</li>
+                    <li>• 如有问题，请检查防火墙和网络设置</li>
+                  </ul>
                 </div>
               </div>
             </div>
           </div>
+        </div>
 
-          <!-- 赞助页面 -->
-          <div v-if="currentPage === 'sponsor'">
-            <sponsor-component></sponsor-component>
-          </div>
-          </div>
-        </transition>
-      </main>
+        <!-- 赞助页面 -->
+        <div v-if="currentPage === 'sponsor'">
+          <sponsor-component></sponsor-component>
+        </div>
+      </div>
+    </transition>
+  </main>
 
   <!-- 到期时间配置模态框 -->
   <transition name="modal">
@@ -778,7 +775,7 @@
                     class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
                     placeholder="选择到期时间"
                     :title="`默认到期时间：${new Date(licenseConfig.expiryDate).toLocaleDateString()}`" />
-            
+
             <!-- 快捷到期时间选项 -->
             <div class="grid grid-cols-4 gap-2 mt-3">
               <button @click="setExpiryDate('30')" class="px-2 py-1 text-xs text-purple-600 bg-purple-50 rounded-md hover:bg-purple-100 transition-colors">30天</button>
@@ -836,30 +833,30 @@
     </div>
   </transition>
 
-      <!-- 激活码结果模态框 -->
-      <transition name="modal">
-        <div v-if="showResultModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 p-4">
-          <div class="bg-white rounded-2xl p-6 md:p-8 w-full max-w-2xl shadow-2xl max-h-[90vh] overflow-y-auto">
-            <div class="text-center mb-6">
-              <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <i class="fas fa-check text-green-600 text-2xl"></i>
-              </div>
-              <h2 class="text-2xl font-bold text-gray-900 mb-2">激活码生成成功</h2>
-              <p class="text-gray-600">请复制以下激活码到软件中使用</p>
-            </div>
-
-            <div class="mb-6">
-              <div class="flex items-center justify-between mb-2">
-                <span class="text-sm font-medium text-gray-700">激活码：</span>
-                <button @click="copyToClipboard(generatedLicense)" class="text-sm text-purple-600 hover:text-purple-700 font-medium"><i class="fas fa-copy mr-1"></i>复制</button>
-              </div>
-              <div class="license-code-display">{{ generatedLicense }}</div>
-            </div>
-
-            <button @click="showResultModal = false" class="w-full btn-primary text-white py-3 px-6 rounded-lg font-medium">完成</button>
+  <!-- 激活码结果模态框 -->
+  <transition name="modal">
+    <div v-if="showResultModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 p-4">
+      <div class="bg-white rounded-2xl p-6 md:p-8 w-full max-w-2xl shadow-2xl max-h-[90vh] overflow-y-auto">
+        <div class="text-center mb-6">
+          <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-check text-green-600 text-2xl"></i>
           </div>
+          <h2 class="text-2xl font-bold text-gray-900 mb-2">激活码生成成功</h2>
+          <p class="text-gray-600">请复制以下激活码到软件中使用</p>
         </div>
-      </transition>
+
+        <div class="mb-6">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-sm font-medium text-gray-700">激活码：</span>
+            <button @click="copyToClipboard(generatedLicense)" class="text-sm text-purple-600 hover:text-purple-700 font-medium"><i class="fas fa-copy mr-1"></i>复制</button>
+          </div>
+          <div class="license-code-display">{{ generatedLicense }}</div>
+        </div>
+
+        <button @click="showResultModal = false" class="w-full btn-primary text-white py-3 px-6 rounded-lg font-medium">完成</button>
+      </div>
+    </div>
+  </transition>
 
   <!-- power.conf 查看模态框 -->
   <transition name="modal">
@@ -899,8 +896,6 @@
     </div>
   </transition>
 
-
-
   <!-- 返回顶部按钮 -->
   <div @click="scrollToTop" class="back-to-top" :class="showBackToTop ? 'show' : ''">
     <i class="fas fa-arrow-up"></i>
@@ -917,9 +912,9 @@
   </footer>
 </div>
 
-    <!-- 引入工具函数和应用逻辑 -->
-    <script src="/js/utils.js"></script>
-    <script src="/js/sponsor.js"></script>
-    <script src="/js/app.js"></script>
-  </body>
+<!-- 引入工具函数和应用逻辑 -->
+<script src="/js/utils.js"></script>
+<script src="/js/sponsor.js"></script>
+<script src="/js/app.js"></script>
+</body>
 </html>

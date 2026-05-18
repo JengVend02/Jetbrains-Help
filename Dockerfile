@@ -7,7 +7,6 @@ FROM eclipse-temurin:8-jre
 WORKDIR /app
 COPY --from=build /app/target/Jetbrains-Help.jar Jetbrains-Help.jar
 ENV TZ=Asia/Shanghai
-ENV XBASE64_DOMAIN=mihuyo.cc
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 EXPOSE 10768
 ENTRYPOINT ["java", "-jar", "Jetbrains-Help.jar"]
