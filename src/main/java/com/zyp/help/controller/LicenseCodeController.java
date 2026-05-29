@@ -209,8 +209,7 @@ public class LicenseCodeController {
      * @param body 生成许可证的请求参数
      * @return JetBrains产品激活码字符串
      */
-    @PostMapping("/generate")
-    public GenerateLicenseRespBody generateLicense(@RequestBody GenerateLicenseReqBody body) {
+    private GenerateLicenseRespBody generateLicense(@RequestBody GenerateLicenseReqBody body) {
         // 定义产品代码集合，用于存储所有需要包含在许可证中的产品代码
         Set<String> productCodeSet;
 

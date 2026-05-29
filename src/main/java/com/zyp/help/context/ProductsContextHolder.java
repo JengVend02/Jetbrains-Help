@@ -181,5 +181,8 @@ public class ProductsContextHolder {
 
         /** 产品图标 */
         private String icon;
+
+        /** 产品描述 */
+        private String description;
     }
 }
