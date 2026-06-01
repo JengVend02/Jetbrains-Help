@@ -88,8 +88,8 @@ public class LicenseContextHolder {
         String licensesName = body.getLicenseName();
         String assigneeName = body.getAssigneeName();
         String expiryDate = body.getExpiryDate();
-        log.info("开始生成许可证 - 许可证名称: {}, 被授权人: {}, 过期日期: {}, 产品数量: {}",
-                 licensesName, assigneeName, expiryDate, productCodeSet.size());
+        log.info("开始生成许可证 - 许可证名称: {}, 被授权人: {}, 过期日期: {}, 激活内容: {}",
+                 licensesName, assigneeName, expiryDate, body.getActivationProduct());
         
         // 1. 生成唯一的许可证ID
         String licenseId = IdUtil.fastSimpleUUID();
