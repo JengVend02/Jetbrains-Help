@@ -106,7 +106,7 @@
     </root>
 
     <!-- 特定包的日志级别配置 -->
-    <logger name="com.zyp.help" level="DEBUG" additivity="false">
+    <logger name="com.zyp.help" level="INFO" additivity="false">
         <appender-ref ref="CONSOLE" />
         <appender-ref ref="ASYNC_FILE" />
         <appender-ref ref="ERROR_FILE" />
