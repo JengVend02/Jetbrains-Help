@@ -10,6 +10,7 @@ const App = {
       showLicenseModal: false,
       showResultModal: false,
       showPowerConfModal: false,
+      showUsageModal: false,
       powerConfContent: '',
       isGenerating: false,
       config: {
@@ -132,6 +133,14 @@ const App = {
 
     // 保存函数引用以便清理
     this._handleScroll = handleScroll
+    
+    // 监听 ESC 键关闭弹窗
+    this._handleKeydown = (event) => {
+      if (event.key === 'Escape' || event.keyCode === 27) {
+        this.closeAllModals()
+      }
+    }
+    window.addEventListener('keydown', this._handleKeydown)
   },
 
   beforeUnmount() {
@@ -145,9 +154,23 @@ const App = {
       window.removeEventListener('scroll', this._handleScroll)
       document.removeEventListener('scroll', this._handleScroll)
     }
+    
+    // 清理键盘事件监听器
+    if (this._handleKeydown) {
+      window.removeEventListener('keydown', this._handleKeydown)
+    }
   },
 
   methods: {
+    // 关闭所有弹窗
+    closeAllModals() {
+      this.showConfigModal = false
+      this.showLicenseModal = false
+      this.showResultModal = false
+      this.showPowerConfModal = false
+      this.showUsageModal = false
+    },
+    
     // 配置相关
     loadConfig() {
       const config = StorageService.getConfig()
