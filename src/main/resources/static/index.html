@@ -264,7 +264,24 @@
           </div>
 
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div v-for="product in filteredProducts" :key="product.productCode" class="bg-white rounded-2xl p-6 shadow-lg card-hover cursor-pointer">
+            <!-- 特殊产品：All Jetbrains's Product Or Plugin - 独占一行 -->
+            <div v-if="filteredProducts.length > 0 && filteredProducts[0].productCode === ''" 
+                 class="col-span-full bg-gradient-to-r from-purple-500 to-indigo-600 rounded-2xl p-6 shadow-xl cursor-pointer transform hover:scale-[1.01] transition-all duration-300 border-2 border-purple-300">
+              <div class="text-center">
+                <div class="w-16 h-16 mx-auto mb-4 rounded-xl overflow-hidden bg-white p-1.5 shadow-lg">
+                  <img :src="getIcon(filteredProducts[0])" :alt="filteredProducts[0].name" class="w-full h-full object-contain" @error="$event.target.src='/images/plugin.svg'" />
+                </div>
+                <h3 class="text-2xl font-bold text-white mb-2">{{ filteredProducts[0].name }}</h3>
+                <p class="text-purple-100 text-base mb-4">{{ filteredProducts[0].description }}</p>
+                <button @click="selectProduct(filteredProducts[0])" class="bg-white text-purple-600 hover:bg-purple-50 py-2 px-6 rounded-lg font-semibold shadow-lg transition-all hover:shadow-xl transform hover:-translate-y-0.5">生成激活码</button>
+              </div>
+            </div>
+
+            <!-- 其他产品 -->
+            <div v-for="(product, index) in filteredProducts" 
+                 v-show="product.productCode !== ''"
+                 :key="product.productCode" 
+                 class="bg-white rounded-2xl p-6 shadow-lg card-hover cursor-pointer">
               <div class="text-center">
                 <div class="w-16 h-16 mx-auto mb-4 rounded-2xl overflow-hidden">
                   <img :src="getIcon(product)" :alt="product.name" class="w-full h-full object-contain" @error="$event.target.src='/images/plugin.svg'" />
@@ -323,6 +340,20 @@
           </div>
 
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- 特殊产品：All Jetbrains's Product Or Plugin - 独占一行（仅在没有搜索时显示） -->
+            <div v-if="!searchQuery && filteredProducts.length > 0 && filteredProducts[0].productCode === ''" 
+                 class="col-span-full bg-gradient-to-r from-purple-500 to-indigo-600 rounded-2xl p-6 shadow-xl cursor-pointer transform hover:scale-[1.01] transition-all duration-300 border-2 border-purple-300">
+              <div class="text-center">
+                <div class="w-16 h-16 mx-auto mb-4 rounded-xl overflow-hidden bg-white p-1.5 shadow-lg">
+                  <img :src="getIcon(filteredProducts[0])" :alt="filteredProducts[0].name" class="w-full h-full object-contain" @error="$event.target.src='/images/plugin.svg'" />
+                </div>
+                <h3 class="text-2xl font-bold text-white mb-2">{{ filteredProducts[0].name }}</h3>
+                <p class="text-purple-100 text-base mb-4">{{ filteredProducts[0].description }}</p>
+                <button @click="selectProduct(filteredProducts[0])" class="bg-white text-purple-600 hover:bg-purple-50 py-2 px-6 rounded-lg font-semibold shadow-lg transition-all hover:shadow-xl transform hover:-translate-y-0.5">生成激活码</button>
+              </div>
+            </div>
+
+            <!-- 插件列表 -->
             <div v-for="plugin in filteredPlugins" :key="plugin.id" class="bg-white rounded-2xl p-6 shadow-lg card-hover cursor-pointer relative">
               <!-- 左上角：评分 -->
               <div class="absolute top-3 left-3 flex items-center space-x-1 bg-yellow-50 px-2 py-1 rounded-lg border border-yellow-200">

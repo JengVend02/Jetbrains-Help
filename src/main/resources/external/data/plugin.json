@@ -5887,5 +5887,164 @@
       "name": "bht",
       "isVerified": true
     }
+  },
+  {
+    "id": 31859,
+    "productCode": "PAIPROMPTCTX",
+    "link": "https://plugins.jetbrains.com/plugin/31859-ai-context-prompt",
+    "name": "AI Context Prompt",
+    "pricingModel": "FREEMIUM",
+    "icon": "https://plugins.jetbrains.com/files/31859/1052086/icon/default.svg",
+    "vendor":
+    {
+      "id": 18587,
+      "name": "jia-mu-geng-jin",
+      "isVerified": true
+    }
+  },
+  {
+    "id": 32028,
+    "productCode": "PAIREVIEWCOMMIT",
+    "link": "https://plugins.jetbrains.com/plugin/32028-ai-review-and-commit",
+    "name": "AI Review and Commit",
+    "pricingModel": "FREEMIUM",
+    "icon": "https://plugins.jetbrains.com/files/32028/1065116/icon/default.svg",
+    "vendor":
+    {
+      "id": 18587,
+      "name": "jia-mu-geng-jin",
+      "isVerified": true
+    }
+  },
+  {
+    "id": 31743,
+    "productCode": "PANSIBLE",
+    "link": "https://plugins.jetbrains.com/plugin/31743-ansible-pro",
+    "name": "Ansible Pro",
+    "pricingModel": "FREEMIUM",
+    "icon": "https://plugins.jetbrains.com/files/31743/1057416/icon/default.svg",
+    "vendor":
+    {
+      "id": 229,
+      "name": "meanmail",
+      "isVerified": true
+    }
+  },
+  {
+    "id": 31940,
+    "productCode": "PCODEQLJB",
+    "link": "https://plugins.jetbrains.com/plugin/31940-codeql-pro",
+    "name": "CodeQL Pro",
+    "pricingModel": "FREEMIUM",
+    "icon": "https://plugins.jetbrains.com/files/31940/1057292/icon/default.svg",
+    "vendor":
+    {
+      "id": 11263,
+      "name": "code",
+      "isVerified": true
+    }
+  },
+  {
+    "id": 31564,
+    "productCode": "PEASELY",
+    "link": "https://plugins.jetbrains.com/plugin/31564-easely",
+    "name": "Easely",
+    "pricingModel": "PAID",
+    "icon": "https://plugins.jetbrains.com/files/31564/1053039/icon/default.svg",
+    "vendor":
+    {
+      "id": 16851,
+      "name": "amplify-human",
+      "isVerified": true
+    }
+  },
+  {
+    "id": 31556,
+    "productCode": "PFORGEJO",
+    "link": "https://plugins.jetbrains.com/plugin/31556-forgejo",
+    "name": "Forgejo",
+    "pricingModel": "PAID",
+    "icon": "https://plugins.jetbrains.com/files/31556/1052378/icon/default.svg",
+    "rating": 4.39,
+    "vendor":
+    {
+      "id": 18654,
+      "name": "jkamsker",
+      "isVerified": true
+    }
+  },
+  {
+    "id": 13587,
+    "productCode": "PGISTSNIPPET",
+    "link": "https://plugins.jetbrains.com/plugin/13587-gist-snippet",
+    "name": "Gist Snippet",
+    "pricingModel": "FREEMIUM",
+    "icon": "https://plugins.jetbrains.com/files/13587/1058615/icon/default.svg",
+    "rating": 4.84,
+    "vendor":
+    {
+      "id": 18842,
+      "name": "chuntungho",
+      "isVerified": true
+    }
+  },
+  {
+    "id": 31464,
+    "productCode": "PJAVAADKASSISTA",
+    "link": "https://plugins.jetbrains.com/plugin/31464-java-adk-assistant",
+    "name": "Java ADK Assistant",
+    "pricingModel": "FREEMIUM",
+    "icon": "https://plugins.jetbrains.com/files/31464/1050203/icon/default.svg",
+    "vendor":
+    {
+      "id": 18583,
+      "name": "java-adk-assistant",
+      "isVerified": true
+    }
+  },
+  {
+    "id": 31830,
+    "productCode": "PMODELICAHERO",
+    "link": "https://plugins.jetbrains.com/plugin/31830-modelica-hero",
+    "name": "Modelica Hero",
+    "pricingModel": "PAID",
+    "icon": "https://plugins.jetbrains.com/files/31830/1051065/icon/default.svg",
+    "rating": 4.54,
+    "vendor":
+    {
+      "id": 15058,
+      "name": "hubl-hero",
+      "isVerified": true
+    }
+  },
+  {
+    "id": 31943,
+    "productCode": "PMOJOPRO",
+    "link": "https://plugins.jetbrains.com/plugin/31943-mojo-pro",
+    "name": "Mojo Pro",
+    "pricingModel": "PAID",
+    "icon": "https://plugins.jetbrains.com/files/31943/1059361/icon/default.svg",
+    "rating": 4.39,
+    "vendor":
+    {
+      "id": 17192,
+      "name": "jetplugins",
+      "isVerified": true
+    }
+  },
+  {
+    "id": 31649,
+    "productCode": "PNIXPRO",
+    "link": "https://plugins.jetbrains.com/plugin/31649-nix-pro",
+    "name": "Nix Pro",
+    "pricingModel": "PAID",
+    "icon": "https://plugins.jetbrains.com/files/31649/1056927/icon/default.svg",
+    "rating": 4.54,
+    "vendor":
+    {
+      "id": 17192,
+      "name": "jetplugins",
+      "isVerified": true
+    }
   }
 ]
