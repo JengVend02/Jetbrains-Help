@@ -266,14 +266,14 @@
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <!-- 特殊产品：All Jetbrains's Product Or Plugin - 独占一行 -->
             <div v-if="filteredProducts.length > 0 && filteredProducts[0].productCode === ''" 
-                 class="col-span-full bg-gradient-to-r from-purple-500 to-indigo-600 rounded-2xl p-6 shadow-xl cursor-pointer transform hover:scale-[1.01] transition-all duration-300 border-2 border-purple-300">
+                 class="col-span-full bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 rounded-2xl p-6 shadow-xl cursor-pointer transform hover:scale-[1.01] transition-all duration-300 border-2 border-pink-300">
               <div class="text-center">
                 <div class="w-16 h-16 mx-auto mb-4 rounded-xl overflow-hidden bg-white p-1.5 shadow-lg">
                   <img :src="getIcon(filteredProducts[0])" :alt="filteredProducts[0].name" class="w-full h-full object-contain" @error="$event.target.src='/images/plugin.svg'" />
                 </div>
                 <h3 class="text-2xl font-bold text-white mb-2">{{ filteredProducts[0].name }}</h3>
-                <p class="text-purple-100 text-base mb-4">{{ filteredProducts[0].description }}</p>
-                <button @click="selectProduct(filteredProducts[0])" class="bg-white text-purple-600 hover:bg-purple-50 py-2 px-6 rounded-lg font-semibold shadow-lg transition-all hover:shadow-xl transform hover:-translate-y-0.5">生成激活码</button>
+                <p class="text-pink-100 text-base mb-4">{{ filteredProducts[0].description }}</p>
+                <button @click="selectProduct(filteredProducts[0])" class="bg-white text-pink-600 hover:bg-pink-50 py-2 px-6 rounded-lg font-semibold shadow-lg transition-all hover:shadow-xl transform hover:-translate-y-0.5">生成激活码</button>
               </div>
             </div>
 
@@ -342,14 +342,14 @@
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <!-- 特殊产品：All Jetbrains's Product Or Plugin - 独占一行（仅在没有搜索时显示） -->
             <div v-if="!searchQuery && filteredProducts.length > 0 && filteredProducts[0].productCode === ''" 
-                 class="col-span-full bg-gradient-to-r from-purple-500 to-indigo-600 rounded-2xl p-6 shadow-xl cursor-pointer transform hover:scale-[1.01] transition-all duration-300 border-2 border-purple-300">
+                 class="col-span-full bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 rounded-2xl p-6 shadow-xl cursor-pointer transform hover:scale-[1.01] transition-all duration-300 border-2 border-pink-300">
               <div class="text-center">
                 <div class="w-16 h-16 mx-auto mb-4 rounded-xl overflow-hidden bg-white p-1.5 shadow-lg">
                   <img :src="getIcon(filteredProducts[0])" :alt="filteredProducts[0].name" class="w-full h-full object-contain" @error="$event.target.src='/images/plugin.svg'" />
                 </div>
                 <h3 class="text-2xl font-bold text-white mb-2">{{ filteredProducts[0].name }}</h3>
-                <p class="text-purple-100 text-base mb-4">{{ filteredProducts[0].description }}</p>
-                <button @click="selectProduct(filteredProducts[0])" class="bg-white text-purple-600 hover:bg-purple-50 py-2 px-6 rounded-lg font-semibold shadow-lg transition-all hover:shadow-xl transform hover:-translate-y-0.5">生成激活码</button>
+                <p class="text-pink-100 text-base mb-4">{{ filteredProducts[0].description }}</p>
+                <button @click="selectProduct(filteredProducts[0])" class="bg-white text-pink-600 hover:bg-pink-50 py-2 px-6 rounded-lg font-semibold shadow-lg transition-all hover:shadow-xl transform hover:-translate-y-0.5">生成激活码</button>
               </div>
             </div>
 
@@ -719,6 +719,22 @@
           </div>
           <h2 class="text-2xl font-bold text-gray-900 mb-2">激活码生成成功</h2>
           <p class="text-gray-600">请复制以下激活码到软件中使用</p>
+        </div>
+
+        <!-- 醒目提示 -->
+        <div class="bg-gradient-to-r from-yellow-400 via-orange-500 to-pink-500 rounded-lg p-4 mb-6 shadow-lg">
+          <div class="flex items-start space-x-3">
+            <div class="flex-shrink-0">
+              <i class="fas fa-info-circle text-white text-xl mt-0.5"></i>
+            </div>
+            <div class="flex-1">
+              <p class="text-white font-bold text-base mb-1">温馨提示</p>
+              <p class="text-white text-sm font-medium">可在记录页查看生成的历史激活码</p>
+            </div>
+            <button @click="navigateTo('records')" class="flex-shrink-0 px-4 py-2 bg-white text-orange-600 rounded-lg hover:bg-orange-50 transition-all text-sm font-bold shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
+              <i class="fas fa-history mr-1.5"></i>查看记录
+            </button>
+          </div>
         </div>
 
         <div class="mb-6">
