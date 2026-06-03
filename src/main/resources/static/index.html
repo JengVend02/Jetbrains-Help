@@ -424,9 +424,7 @@
                       <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">许可证名称</th>
                       <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">被许可人</th>
                       <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">到期时间</th>
-                      <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">许可证类型</th>
-                      <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">用户数</th>
-                      <!--                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">激活产品</th>-->
+                      <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">激活产品</th>
                       <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">激活码</th>
                       <th class="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">操作</th>
                     </tr>
@@ -438,11 +436,7 @@
                       <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-900">{{ record.licenseName }}</td>
                       <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-900">{{ record.assigneeName }}</td>
                       <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-900">{{ record.expiryDate }}</td>
-                      <td class="px-4 py-3 whitespace-nowrap">
-                        <span class="px-2 py-1 text-xs bg-purple-100 text-purple-700 rounded-full">{{ getLicenseTypeText(record.licenseType) }}</span>
-                      </td>
-                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-900">{{ record.userCount }}</td>
-                      <!--                        <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-900">{{ record.activationProduct }}</td>-->
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-900">{{ record.activationProduct }}</td>
                       <td class="px-4 py-3 text-sm">
                         <div class="max-w-xs truncate" :title="record.activationCode">
                           {{ record.activationCode }}
