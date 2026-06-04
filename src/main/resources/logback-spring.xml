@@ -127,4 +127,7 @@
     
     <!-- BouncyCastle日志级别 -->
     <logger name="org.bouncycastle" level="WARN" />
+    
+    <!-- Tomcat HTTP 解析错误日志（恶意请求）- 降低为 DEBUG 级别 -->
+    <logger name="org.apache.coyote.http11.Http11Processor" level="ERROR" />
 </configuration>
