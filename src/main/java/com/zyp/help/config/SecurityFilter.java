@@ -9,7 +9,9 @@ import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.net.URLDecoder;
 import java.util.Arrays;
+import java.util.Enumeration;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.regex.Pattern;
@@ -39,13 +41,13 @@ public class SecurityFilter {
      * @return FilterRegistrationBean 过滤器注册Bean
      */
     @Bean
-    public FilterRegistrationBean<SecurityFilterImpl> securityFilter() {
+    public FilterRegistrationBean<SecurityFilterImpl> securityFilterRegistration() {
         FilterRegistrationBean<SecurityFilterImpl> registration = new FilterRegistrationBean<>();
         registration.setFilter(new SecurityFilterImpl());
         registration.addUrlPatterns("/*");  // 过滤所有请求
         registration.setOrder(1);  // 设置执行顺序（数字越小越优先）
         registration.setName("securityFilter");
-        log.info("安全过滤器注册完成，拦截路径: /*");
+        // log.info("安全过滤器注册完成，拦截路径: /*");
         return registration;
     }
 
@@ -90,7 +92,15 @@ public class SecurityFilter {
 
         @Override
         public void init(FilterConfig filterConfig) throws ServletException {
-            log.info("安全过滤器初始化完成");
+             log.info("========================================");
+             log.info("安全过滤器初始化完成");
+            // log.info("拦截路径: /*");
+            // log.info("防护功能:");
+            // log.info("  - JNDI注入防护");
+            // log.info("  - 路径遍历防护");
+            // log.info("  - WEB-INF/META-INF访问防护");
+            // log.info("  - HTTP方法限制");
+             log.info("========================================");
         }
 
         @Override
@@ -100,48 +110,93 @@ public class SecurityFilter {
             HttpServletRequest request = (HttpServletRequest) servletRequest;
             HttpServletResponse response = (HttpServletResponse) servletResponse;
             
+            // 获取原始请求URI（包括未解码的路径遍历模式）
+            String rawUri = (String) request.getAttribute("javax.servlet.include.request_uri");
+            if (rawUri == null) {
+                rawUri = request.getRequestURI();
+            }
+            
             String uri = request.getRequestURI();
+            String queryString = request.getQueryString();
             String method = request.getMethod();
+            String remoteAddr = request.getRemoteAddr();
+            
+            // 0. 记录所有请求（用于调试和审计）- 已禁用
+            // if (queryString != null && !queryString.isEmpty()) {
+            //     log.info("收到请求: {} {}?{} from {}", method, uri, queryString, remoteAddr);
+            // } else {
+            //     log.info("收到请求: {} {} from {}", method, uri, remoteAddr);
+            // }
             
             // 1. 检查HTTP方法是否合法
             if (!ALLOWED_METHODS.contains(method.toUpperCase())) {
-                log.warn("拒绝不支持的HTTP方法: {} from {}", method, request.getRemoteAddr());
+                // log.warn("⚠️  [SECURITY] 拒绝不支持的HTTP方法: {} | URI: {} | IP: {}", method, uri, remoteAddr);
                 response.setStatus(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
-                response.getWriter().write("Method Not Allowed");
+                response.setContentType("text/plain;charset=UTF-8");
+                response.getWriter().write("405 Method Not Allowed");
                 return;
             }
             
-            // 2. 检查JNDI注入攻击
-            if (containsJndiInjection(uri) || containsJndiInjection(request.getQueryString())) {
-                log.warn("检测到JNDI注入攻击尝试: {} from {}", uri, request.getRemoteAddr());
+            // 2. 检查JNDI注入攻击 - 检查URI和查询字符串（包括URL解码）
+            if (containsJndiInjection(uri) || containsJndiInjection(queryString)) {
+                // log.warn("⚠️  [SECURITY] 检测到JNDI注入攻击尝试 (URI/Query): {} | Query: {} | IP: {}", uri, queryString, remoteAddr);
                 response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-                response.getWriter().write("Bad Request");
+                response.setContentType("text/plain;charset=UTF-8");
+                response.getWriter().write("400 Bad Request - JNDI Injection Detected");
+                return;
+            }
+            
+            // 2.1 检查URL解码后的内容
+            String decodedUri = decodeUrl(uri);
+            String decodedQuery = decodeUrl(queryString);
+            if (containsJndiInjection(decodedUri) || containsJndiInjection(decodedQuery)) {
+                // log.warn("⚠️  [SECURITY] 检测到JNDI注入攻击尝试 (Decoded): {} | DecodedQuery: {} | IP: {}", uri, decodedQuery, remoteAddr);
+                response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+                response.setContentType("text/plain;charset=UTF-8");
+                response.getWriter().write("400 Bad Request - JNDI Injection Detected");
+                return;
+            }
+            
+            // 2.2 检查所有请求参数
+            if (hasJndiInParameters(request)) {
+                // log.warn("⚠️  [SECURITY] 检测到JNDI注入攻击尝试 (Parameters): {} | IP: {}", uri, remoteAddr);
+                response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+                response.setContentType("text/plain;charset=UTF-8");
+                response.getWriter().write("400 Bad Request - JNDI Injection Detected");
                 return;
             }
             
             // 3. 检查请求头中的JNDI注入
             if (hasJndiInHeaders(request)) {
-                log.warn("检测到请求头中的JNDI注入攻击: {} from {}", uri, request.getRemoteAddr());
+                // log.warn("⚠️  [SECURITY] 检测到请求头中的JNDI注入攻击: {} | IP: {}", uri, remoteAddr);
                 response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-                response.getWriter().write("Bad Request");
+                response.setContentType("text/plain;charset=UTF-8");
+                response.getWriter().write("400 Bad Request - JNDI Injection Detected");
                 return;
             }
             
-            // 4. 检查路径遍历攻击
-            if (containsPathTraversal(uri)) {
-                log.warn("检测到路径遍历攻击尝试: {} from {}", uri, request.getRemoteAddr());
+            // 4. 检查路径遍历攻击 - 检查原始URI和清理后的URI
+            // 注意：Tomcat可能会自动清理/../ ，所以我们需要检查多个来源
+            if (containsPathTraversal(rawUri) || containsPathTraversal(uri) || 
+                containsPathTraversal(queryString)) {
+                // log.warn("⚠️  [SECURITY] 检测到路径遍历攻击尝试: Raw={} | Cleaned={} | IP: {}", rawUri, uri, remoteAddr);
                 response.setStatus(HttpServletResponse.SC_FORBIDDEN);
-                response.getWriter().write("Forbidden");
+                response.setContentType("text/plain;charset=UTF-8");
+                response.getWriter().write("403 Forbidden - Path Traversal Detected");
                 return;
             }
             
             // 5. 检查WEB-INF/META-INF访问尝试
             if (containsWebInfAccess(uri)) {
-                log.warn("检测到WEB-INF/META-INF访问尝试: {} from {}", uri, request.getRemoteAddr());
+                // log.warn("⚠️  [SECURITY] 检测到WEB-INF/META-INF访问尝试: {} | IP: {}", uri, remoteAddr);
                 response.setStatus(HttpServletResponse.SC_FORBIDDEN);
-                response.getWriter().write("Forbidden");
+                response.setContentType("text/plain;charset=UTF-8");
+                response.getWriter().write("403 Forbidden - Access Denied");
                 return;
             }
+            
+            // 所有安全检查通过
+            // log.debug("✓ 请求通过安全检查: {} {}", method, uri);
             
             // 所有安全检查通过，继续处理请求
             filterChain.doFilter(servletRequest, servletResponse);
@@ -149,7 +204,7 @@ public class SecurityFilter {
 
         @Override
         public void destroy() {
-            log.info("安全过滤器销毁");
+             log.info("安全过滤器销毁");
         }
 
         /**
@@ -163,6 +218,53 @@ public class SecurityFilter {
                 return false;
             }
             return JNDI_PATTERN.matcher(value).find();
+        }
+        
+        /**
+         * URL解码
+         * 
+         * @param value 待解码的字符串
+         * @return 解码后的字符串，如果为null则返回null
+         */
+        private String decodeUrl(String value) {
+            if (value == null || value.isEmpty()) {
+                return value;
+            }
+            try {
+                return URLDecoder.decode(value, "UTF-8");
+            } catch (Exception e) {
+                return value;
+            }
+        }
+        
+        /**
+         * 检查请求参数中是否包含JNDI注入
+         * 
+         * @param request HTTP请求对象
+         * @return 如果参数中包含JNDI注入返回true
+         */
+        private boolean hasJndiInParameters(HttpServletRequest request) {
+            Enumeration<String> parameterNames = request.getParameterNames();
+            while (parameterNames.hasMoreElements()) {
+                String paramName = parameterNames.nextElement();
+                String[] paramValues = request.getParameterValues(paramName);
+                    
+                if (paramValues != null) {
+                    for (String paramValue : paramValues) {
+                        if (containsJndiInjection(paramValue)) {
+                            // log.debug("检测到JNDI注入参数: {}={}", paramName, paramValue);
+                            return true;
+                        }
+                        // 也检查解码后的值
+                        String decodedValue = decodeUrl(paramValue);
+                        if (containsJndiInjection(decodedValue)) {
+                            // log.debug("检测到JNDI注入参数(解码后): {}={}", paramName, decodedValue);
+                            return true;
+                        }
+                    }
+                }
+            }
+            return false;
         }
 
         /**
