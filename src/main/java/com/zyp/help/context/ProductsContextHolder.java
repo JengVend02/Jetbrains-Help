@@ -143,7 +143,6 @@ public class ProductsContextHolder {
      * <ul>
      *   <li>name - 产品显示名称，如 "IntelliJ IDEA Ultimate"</li>
      *   <li>productCode - 产品代码，如 "II" 或用逗号分隔的多个代码</li>
-     *   <li>iconClass - CSS图标类名，用于前端界面显示</li>
      * </ul>
      *
      * <p>产品代码示例：
@@ -170,14 +169,8 @@ public class ProductsContextHolder {
         /** 产品显示名称，如 "IntelliJ IDEA Ultimate" */
         private String name;
 
-        /** 产品简称，如 "ii" */
-        private String shortName;
-
         /** 产品代码，单个或多个用逗号分隔，如 "II" 或 "II,IC" */
         private String productCode;
-
-        /** CSS图标类名，用于前端界面显示产品图标 */
-        private String iconClass;
 
         /** 产品图标 */
         private String icon;

@@ -81,15 +81,6 @@ const Utils = {
     return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i]
   },
 
-  // 设置产品图标
-  setProductIcon(element, iconClass) {
-    if (iconClass && iconClass.startsWith('icon-')) {
-      const iconName = iconClass.replace('icon-', '')
-      element.style.backgroundImage = `url('/images/${iconName}.svg')`
-      element.className = 'product-icon mx-auto mb-4 rounded-2xl'
-    }
-  },
-
   // 防抖函数
   debounce(func, wait) {
     let timeout

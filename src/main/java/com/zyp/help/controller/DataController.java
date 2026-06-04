@@ -44,7 +44,6 @@ public class DataController {
      * <ul>
      *   <li>name - 产品显示名称</li>
      *   <li>productCode - 产品代码（用于许可证生成）</li>
-     *   <li>iconClass - 图标CSS类名</li>
      * </ul>
      *
      * <p>请求示例：
@@ -57,13 +56,11 @@ public class DataController {
      * [
      *   {
      *     "name": "IntelliJ IDEA Ultimate",
-     *     "productCode": "II",
-     *     "iconClass": "icon-idea"
+     *     "productCode": "II"
      *   },
      *   {
      *     "name": "PhpStorm",
-     *     "productCode": "PS", 
-     *     "iconClass": "icon-phpstorm"
+     *     "productCode": "PS"
      *   }
      * ]
      * </pre>

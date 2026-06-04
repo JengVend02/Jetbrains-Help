@@ -1,121 +1,91 @@
 [
   {
     "name": "All Jetbrains's Product Or Plugin",
-    "shortName": "al",
     "productCode": "",
-    "iconClass": "icon-al",
     "icon": "https://resources.jetbrains.com/storage/logos/web/toolbox/toolbox.svg",
     "description": "通用激活码,可用于激活所有的产品和插件"
   },
   {
     "name": "IntelliJ IDEA",
-    "shortName": "ii",
     "productCode": "II,PCWMP,PSI",
-    "iconClass": "icon-ii",
     "icon": "https://resources.jetbrains.com/storage/logos/web/intellij-idea/intellij-idea.svg",
     "description": "Java 和 Kotlin 专业发展领域的领先集成开发环境"
   },
   {
     "name": "PhpStorm",
-    "shortName": "ps",
     "productCode": "PS,PCWMP,PSI",
-    "iconClass": "icon-ps",
     "icon": "https://resources.jetbrains.com/storage/logos/web/phpstorm/phpstorm.svg",
     "description": "PHP 集成开发环境"
   },
   {
     "name": "AppCode",
-    "shortName": "ac",
     "productCode": "AC,PCWMP,PSI",
-    "iconClass": "icon-ac",
     "icon": "https://resources.jetbrains.com/storage/logos/web/appcode/appcode.svg",
     "description": "适用于iOS/macOS 开发的智能集成开发环境"
   },
   {
     "name": "DataGrip",
-    "shortName": "db",
     "productCode": "DB,PSI,PDB",
-    "iconClass": "icon-db",
     "icon": "https://resources.jetbrains.com/storage/logos/web/datagrip/datagrip.svg",
     "description": "多数据库，一工具"
   },
   {
     "name": "RubyMine",
-    "shortName": "rm",
     "productCode": "RM,PCWMP,PSI",
-    "iconClass": "icon-rm",
     "icon": "https://resources.jetbrains.com/storage/logos/web/rubymine/rubymine.svg",
     "description": "最智能的Ruby 集成开发环境"
   },
   {
     "name": "WebStorm",
-    "shortName": "ws",
     "productCode": "WS,PCWMP,PSI",
-    "iconClass": "icon-ws",
     "icon": "https://resources.jetbrains.com/storage/logos/web/webstorm/webstorm.svg",
     "description": "JavaScript 和 TypeScript 集成开发环境"
   },
   {
     "name": "Rider",
-    "shortName": "rd",
     "productCode": "RD,PDB,PSI,PCWMP",
-    "iconClass": "icon-rd",
     "icon": "https://resources.jetbrains.com/storage/logos/web/rider/rider.svg",
     "description": "跨平台.NET 集成开发环境"
   },
   {
     "name": "CLion",
-    "shortName": "cl",
     "productCode": "CL,PSI,PCWMP",
-    "iconClass": "icon-cl",
     "icon": "https://resources.jetbrains.com/storage/logos/web/clion/clion.svg",
     "description": "一个面向 C 和 C++ 的智能跨平台集成开发环境"
   },
   {
     "name": "PyCharm",
-    "shortName": "pc",
     "productCode": "PC,PSI,PCWMP",
-    "iconClass": "icon-pc",
     "icon": "https://resources.jetbrains.com/storage/logos/web/pycharm/pycharm.svg",
     "description": "你唯一需要的 Python 集成开发环境"
   },
   {
     "name": "GoLand",
-    "shortName": "go",
     "productCode": "GO,PSI,PCWMP",
-    "iconClass": "icon-go",
     "icon": "https://resources.jetbrains.com/storage/logos/web/goland/goland.svg",
     "description": "Go 专业发展的集成开发环境"
   },
   {
     "name": "DataSpell",
-    "shortName": "ds",
     "productCode": "DS,PSI,PDB,PCWMP",
-    "iconClass": "icon-ds",
     "icon": "https://resources.jetbrains.com/storage/logos/web/dataspell/dataspell.svg",
     "description": "您的AI驱动工具，用于分析数据和分享洞察"
   },
   {
     "name": "dotMemory",
-    "shortName": "dm",
     "productCode": "DM",
-    "iconClass": "icon-dm",
     "icon": "https://resources.jetbrains.com/storage/logos/web/dotmemory/dotmemory.svg",
     "description": ".NET 内存分析器"
   },
   {
     "name": "Aqua",
-    "shortName": "qa",
     "productCode": "QA,PSI,PCWMP",
-    "iconClass": "icon-qa",
     "icon": "https://resources.jetbrains.com/storage/logos/web/aqua/aqua.svg",
     "description": "自动化测试QA工程师专用集成开发环境"
   },
   {
     "name": "RustRover",
-    "shortName": "rr",
     "productCode": "RR,PSI,PCWMP",
-    "iconClass": "icon-rr",
     "icon": "https://resources.jetbrains.com/storage/logos/web/rustrover/rustrover.svg",
     "description": "一个强大的Rust集成开发环境"
   }
