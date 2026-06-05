@@ -9,6 +9,13 @@ help:
   certificate:
     # 是否使用通用证书（true/false）当为false时自动生成新的证书
     common: true
+  # 产品信息配置
+  product:
+    # 是否启用定时刷新任务（true/false）
+    refresh-enabled: true
+    # 请求超时时间（毫秒）
+    timeout: 30000
+
   # 插件信息获取配置
   plugins:
     # 是否启用定时刷新任务（true/false）

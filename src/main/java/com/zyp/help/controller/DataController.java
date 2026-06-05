@@ -1,9 +1,10 @@
 package com.zyp.help.controller;
 
-import com.zyp.help.context.ProductsContextHolder;
 import com.zyp.help.context.plugin.PluginConfig;
 import com.zyp.help.context.plugin.model.PluginCache;
 import com.zyp.help.context.plugin.model.PluginUpdateTimeCache;
+import com.zyp.help.context.product.ProductConfig;
+import com.zyp.help.context.product.model.ProductCache;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -68,9 +69,9 @@ public class DataController {
      * @return JetBrains产品信息列表
      */
     @GetMapping("/products")
-    public List<ProductsContextHolder.ProductCache> getProducts() {
-        log.debug("获取产品列表，产品数量: {}", ProductsContextHolder.productCacheList().size());
-        return ProductsContextHolder.productCacheList();
+    public List<ProductCache> getProducts() {
+        log.debug("获取产品列表，产品数量: {}", ProductConfig.productCacheList.size());
+        return ProductConfig.productCacheList;
     }
 
     /**

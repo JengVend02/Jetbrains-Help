@@ -6,7 +6,6 @@ import cn.hutool.core.text.CharSequenceUtil;
 import cn.hutool.core.util.StrUtil;
 import com.zyp.help.context.AgentContextHolder;
 import com.zyp.help.context.LicenseContextHolder;
-import com.zyp.help.context.ProductsContextHolder;
 
 import java.util.Collection;
 import java.util.Date;
@@ -16,12 +15,11 @@ import java.util.stream.Collectors;
 
 import com.zyp.help.context.plugin.PluginConfig;
 import com.zyp.help.context.plugin.model.PluginCache;
-import lombok.AllArgsConstructor;
+import com.zyp.help.context.product.ProductConfig;
+import com.zyp.help.context.product.model.ProductCache;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.springframework.beans.BeanUtils;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -224,9 +222,9 @@ public class LicenseCodeController {
             // 未指定产品代码，自动包含所有可用产品
 
             // 获取所有JetBrains IDE产品代码
-            List<String> productCodeList = ProductsContextHolder.productCacheList()
+            List<String> productCodeList = ProductConfig.productCacheList
                 .stream()
-                .map(ProductsContextHolder.ProductCache::getProductCode)  // 提取产品代码
+                .map(ProductCache::getProductCode)  // 提取产品代码
                 .filter(StrUtil::isNotBlank)  // 过滤空值
                 .map(productCode -> CharSequenceUtil.splitTrim(productCode, ","))  // 按逗号分割
                 .flatMap(Collection::stream)  // 展平成一维数据流

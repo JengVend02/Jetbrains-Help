@@ -1,19 +1,17 @@
 package com.zyp.help.context;
 
-import cn.hutool.core.io.FileUtil;
-import cn.hutool.core.io.IORuntimeException;
-import cn.hutool.core.io.IoUtil;
-import cn.hutool.core.text.CharSequenceUtil;
-import cn.hutool.json.JSONUtil;
-import com.zyp.help.util.FileTools;
-import java.util.ArrayList;
+import com.zyp.help.context.product.ProductConfig;
+import com.zyp.help.context.product.model.ProductCache;
+import com.zyp.help.context.product.model.ProductProcessService;
+import com.zyp.help.context.product.service.ProductApiService;
+import com.zyp.help.context.product.service.ProductCacheService;
 import lombok.AccessLevel;
-import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
-import java.io.File;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
+
 
 /**
  * JetBrains产品信息上下文管理器
@@ -56,126 +54,79 @@ import java.util.List;
 @Slf4j(topic = "产品上下文")
 @NoArgsConstructor(access = AccessLevel.PRIVATE)  // 防止实例化
 public class ProductsContextHolder {
-
-    // ==================== 常量定义 ====================
-
-    /** 产品信息配置文件路径 */
-    private static final String PRODUCT_JSON_FILE_NAME = "external/data/product.json";
-
-    // ==================== 静态字段 ====================
-
-    /** 产品信息缓存列表，存储所有加载的产品信息 */
-    private static List<ProductCache> productCacheList;
-
-    // TODO 通过该接口可以获取付费IDE的CODE
-    // TODO https://data.services.jetbrains.com/products?fields=name,salesCode
-
     public static void init() {
         log.info("开始初始化产品上下文...");
 
-        // 获取或创建产品配置文件
-        File productJsonFile = FileTools.getFileOrCreat(PRODUCT_JSON_FILE_NAME);
-        log.debug("产品配置文件路径: {}", productJsonFile.getAbsolutePath());
-
-        // 读取JSON文件内容
-        String productJsonArray;
         try {
-            productJsonArray = IoUtil.readUtf8(FileUtil.getInputStream(productJsonFile));
-            log.debug("成功读取产品配置文件，内容长度: {} 字符", productJsonArray.length());
-        } catch (IORuntimeException e) {
-            throw new IllegalArgumentException(
-                CharSequenceUtil.format("{} 文件读取失败!", PRODUCT_JSON_FILE_NAME), e);
-        }
+            // 从缓存加载产品数据
+            ProductConfig.productCacheList = ProductCacheService.loadFromProductCache();
+            log.info("产品上下文初始化成功！加载产品数量: {}", ProductConfig.productCacheList.size());
 
-        // 验证JSON文件内容并解析
-        if (CharSequenceUtil.isBlank(productJsonArray) || !JSONUtil.isTypeJSON(productJsonArray)) {
-            log.error("产品数据不存在或格式错误！配置文件: {}", PRODUCT_JSON_FILE_NAME);
-            // 初始化为空列表，避免空指针异常
-            productCacheList = new ArrayList<>();
-        } else {
-            // 解析JSON数据为产品对象列表
-            productCacheList = JSONUtil.toList(productJsonArray, ProductCache.class);
-            log.info("产品上下文初始化成功！加载产品数量: {}", productCacheList.size());
+            // 启动异步刷新任务获取最新数据
+            // refreshJsonFile();
 
-            // 输出加载的产品信息（调试级别）
-            if (log.isDebugEnabled()) {
-                productCacheList.forEach(product ->
-                    log.debug("加载产品: {} ({})", product.getName(), product.getProductCode()));
-            }
+        } catch (Exception e) {
+            log.error("产品上下文初始化失败", e);
+            throw e;
         }
     }
 
     /**
-     * 获取产品信息缓存列表
-     *
-     * <p>返回已加载的所有JetBrains产品信息列表。
-     * 该列表包含产品名称、产品代码和图标等信息。
-     *
-     * <p>使用场景：
-     * <ul>
-     *   <li>许可证生成时选择产品代码</li>
-     *   <li>前端界面显示产品列表</li>
-     *   <li>产品代码到产品名称的映射</li>
-     * </ul>
-     *
-     * <p>注意事项：
-     * <ul>
-     *   <li>返回的是不可变列表，不能直接修改</li>
-     *   <li>如果初始化失败，可能返回空列表</li>
-     *   <li>需要在 {@link #init()} 方法调用后使用</li>
-     * </ul>
-     *
-     * @return 产品信息缓存列表，不为null
+     * 刷新产品信息文件
      */
-    public static List<ProductCache> productCacheList() {
-        return ProductsContextHolder.productCacheList;
+    public static void refreshJsonFile() {
+        ProductConfig config = ProductConfig.getInstance();
+
+        // 检查是否启用刷新功能
+        if (!config.isRefreshEnabled()) {
+            log.info("产品刷新功能已禁用，跳过刷新任务");
+            return;
+        }
+
+        log.info("开始刷新产品信息...");
+        log.info("刷新配置 -> 超时时间: {}ms", config.getTimeout());
+
+        // 1. 从API获取所有产品
+        // 2. 过滤产品（排除已存在）
+        // 3. 转换为缓存对象
+        // 4. 保存到缓存
+        CompletableFuture.supplyAsync(ProductApiService::fetchAllProducts)
+                // 2. 过滤产品列表
+                .thenApply(ProductProcessService::filterProducts)
+                // 3. 转换为缓存对象
+                .thenApply(ProductProcessService::convertToCache)
+                // 4. 保存到缓存
+                .thenAccept(ProductsContextHolder::saveNewProducts)
+                .thenRun(() -> log.info("产品刷新成功!"))
+                .exceptionally(throwable -> {
+                    log.error("产品刷新失败!", throwable);
+                    return null;
+                });
     }
 
-    // ==================== 内部数据类 ====================
-
     /**
-     * 产品信息缓存实体类
-     *
-     * <p>封装了单个JetBrains产品的基本信息，包括产品名称、产品代码和图标类名。
-     * 该类的实例从 JSON 配置文件中反序列化得到。
-     *
-     * <p>字段说明：
-     * <ul>
-     *   <li>name - 产品显示名称，如 "IntelliJ IDEA Ultimate"</li>
-     *   <li>productCode - 产品代码，如 "II" 或用逗号分隔的多个代码</li>
-     * </ul>
-     *
-     * <p>产品代码示例：
-     * <ul>
-     *   <li>"II" - IntelliJ IDEA Ultimate</li>
-     *   <li>"PS" - PhpStorm</li>
-     *   <li>"WS" - WebStorm</li>
-     *   <li>"PY" - PyCharm Professional</li>
-     *   <li>"RM" - RubyMine</li>
-     *   <li>"CL" - CLion</li>
-     *   <li>"DB" - DataGrip</li>
-     *   <li>"GO" - GoLand</li>
-     *   <li>"RD" - Rider</li>
-     *   <li>"AC" - AppCode</li>
-     * </ul>
-     *
-     * <p>数据来源：
-     * 可以通过JetBrains官方API获取最新产品信息：
-     * {@code https://data.services.jetbrains.com/products?fields=name,salesCode}
+     * 保存新产品到缓存
+     * @param newProducts 新获取的产品列表
      */
-    @Data
-    public static class ProductCache {
+    private static void saveNewProducts(List<ProductCache> newProducts) {
+        if (newProducts == null || newProducts.isEmpty()) {
+            log.info("没有新的产品需要保存");
+            return;
+        }
 
-        /** 产品显示名称，如 "IntelliJ IDEA Ultimate" */
-        private String name;
+        Integer oldNum = ProductConfig.productCacheList.size();
+        Integer addNum = newProducts.size();
+        log.info("源大小 => [{}], 新增大小 => [{}]", oldNum, addNum);
 
-        /** 产品代码，单个或多个用逗号分隔，如 "II" 或 "II,IC" */
-        private String productCode;
+        // 合并到内存缓存
+        ProductConfig.productCacheList = ProductCacheService.mergeCache(ProductConfig.productCacheList, newProducts);
 
-        /** 产品图标 */
-        private String icon;
+        // 保存到文件
+        ProductCacheService.saveToCache(ProductConfig.productCacheList);
 
-        /** 产品描述 */
-        private String description;
+        // 创建更新时间缓存
+        String updateTime = java.time.LocalDateTime.now().format(java.time.format.DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+
+        log.info("产品缓存已更新，当前总数: {}, 更新时间: {}", ProductConfig.productCacheList.size(), updateTime);
     }
 }

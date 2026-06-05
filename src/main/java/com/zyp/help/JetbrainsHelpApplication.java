@@ -9,6 +9,8 @@ import com.zyp.help.context.PluginsContextHolder;
 import com.zyp.help.context.ProductsContextHolder;
 import com.zyp.help.context.plugin.PluginConfig;
 import java.net.InetAddress;
+
+import com.zyp.help.context.product.ProductConfig;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
@@ -103,27 +105,9 @@ public class JetbrainsHelpApplication {
      * <p>每天中午12点执行一次，从JetBrains官网获取最新的插件信息。
      * 此任务采用异步执行方式，不会阻塞应用程序的正常运行。
      * 支持通过配置文件开关控制是否启用该定时任务。
-     *
-     * <p>Cron表达式说明："0 0 12 * * ?"
-     * <ul>
-     *   <li>0 - 秒（第0秒）</li>
-     *   <li>0 - 分钟（第0分钟）</li>
-     *   <li>12 - 小时（12点）</li>
-     *   <li>* - 日期（每一天）</li>
-     *   <li>* - 月份（每个月）</li>
-     *   <li>? - 星期（任意）</li>
-     * </ul>
-     *
-     * <p>配置说明：
-     * <ul>
-     *   <li>help.plugins.refresh-enabled: 控制定时任务是否启用</li>
-     *   <li>help.plugins.page-size: 分页大小，建议不超过20</li>
-     *   <li>help.plugins.thread-count: 并发线程数</li>
-     *   <li>help.plugins.timeout: 请求超时时间</li>
-     * </ul>
      */
     @Scheduled(cron = "0 0 12 * * ?")
-    public void refresh() {
+    public void refreshPlugin() {
         // 检查是否启用定时刷新功能
         PluginConfig config = PluginConfig.getInstance();
         if (!config.isRefreshEnabled()) {
@@ -134,6 +118,26 @@ public class JetbrainsHelpApplication {
         log.info("开始执行定时刷新插件信息任务...");
         // 异步执行插件信息刷新任务，避免阻塞主线程
         ThreadUtil.execute(PluginsContextHolder::refreshJsonFile);
+    }
+
+    /**
+     * 定时刷新产品信息任务
+     *
+     * <p>每月1号中午12点执行一次，从JetBrains官网获取最新的产品信息。
+     * 支持通过配置文件开关控制是否启用该定时任务。
+     */
+    @Scheduled(cron = "0 0 12 1 * ?")
+    public void refreshProduct() {
+        // 检查是否启用定时刷新功能
+        ProductConfig config = ProductConfig.getInstance();
+        if (!config.isRefreshEnabled()) {
+            log.info("产品定时刷新功能已禁用，跳过本次刷新任务");
+            return;
+        }
+
+        log.info("开始执行定时刷新产品信息任务...");
+        // 异步执行插件信息刷新任务，避免阻塞主线程
+        ThreadUtil.execute(ProductsContextHolder::refreshJsonFile);
     }
 
     /**

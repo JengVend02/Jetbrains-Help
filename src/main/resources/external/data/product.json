@@ -2,91 +2,171 @@
   {
     "name": "All Jetbrains's Product Or Plugin",
     "productCode": "",
-    "icon": "https://resources.jetbrains.com/storage/logos/web/toolbox/toolbox.svg",
-    "description": "通用激活码,可用于激活所有的产品和插件"
+    "link": "https://www.jetbrains.com/all",
+    "description": "通用激活码,可用于激活所有的产品和插件",
+    "icon": "https://resources.jetbrains.com/storage/logos/web/toolbox/toolbox.svg"
   },
   {
     "name": "IntelliJ IDEA",
-    "productCode": "II,PCWMP,PSI",
-    "icon": "https://resources.jetbrains.com/storage/logos/web/intellij-idea/intellij-idea.svg",
-    "description": "Java 和 Kotlin 专业发展领域的领先集成开发环境"
-  },
-  {
-    "name": "PhpStorm",
-    "productCode": "PS,PCWMP,PSI",
-    "icon": "https://resources.jetbrains.com/storage/logos/web/phpstorm/phpstorm.svg",
-    "description": "PHP 集成开发环境"
-  },
-  {
-    "name": "AppCode",
-    "productCode": "AC,PCWMP,PSI",
-    "icon": "https://resources.jetbrains.com/storage/logos/web/appcode/appcode.svg",
-    "description": "适用于iOS/macOS 开发的智能集成开发环境"
+    "productCode": "IIU",
+    "link": "https://www.jetbrains.com/idea",
+    "description": "The IDE for pro Java and Kotlin development",
+    "icon": "https://resources.jetbrains.com/storage/logos/web/intellij-idea/intellij-idea.svg"
   },
   {
     "name": "DataGrip",
-    "productCode": "DB,PSI,PDB",
-    "icon": "https://resources.jetbrains.com/storage/logos/web/datagrip/datagrip.svg",
-    "description": "多数据库，一工具"
-  },
-  {
-    "name": "RubyMine",
-    "productCode": "RM,PCWMP,PSI",
-    "icon": "https://resources.jetbrains.com/storage/logos/web/rubymine/rubymine.svg",
-    "description": "最智能的Ruby 集成开发环境"
-  },
-  {
-    "name": "WebStorm",
-    "productCode": "WS,PCWMP,PSI",
-    "icon": "https://resources.jetbrains.com/storage/logos/web/webstorm/webstorm.svg",
-    "description": "JavaScript 和 TypeScript 集成开发环境"
-  },
-  {
-    "name": "Rider",
-    "productCode": "RD,PDB,PSI,PCWMP",
-    "icon": "https://resources.jetbrains.com/storage/logos/web/rider/rider.svg",
-    "description": "跨平台.NET 集成开发环境"
-  },
-  {
-    "name": "CLion",
-    "productCode": "CL,PSI,PCWMP",
-    "icon": "https://resources.jetbrains.com/storage/logos/web/clion/clion.svg",
-    "description": "一个面向 C 和 C++ 的智能跨平台集成开发环境"
+    "productCode": "DG",
+    "link": "https://www.jetbrains.com/datagrip",
+    "description": "The IDE for databases and SQL",
+    "icon": "https://resources.jetbrains.com/storage/logos/web/datagrip/datagrip.svg"
   },
   {
     "name": "PyCharm",
-    "productCode": "PC,PSI,PCWMP",
-    "icon": "https://resources.jetbrains.com/storage/logos/web/pycharm/pycharm.svg",
-    "description": "你唯一需要的 Python 集成开发环境"
+    "productCode": "PCP",
+    "link": "https://www.jetbrains.com/pycharm",
+    "description": "The Only Python IDE you need",
+    "icon": "https://resources.jetbrains.com/storage/logos/web/pycharm/pycharm.svg"
   },
   {
-    "name": "GoLand",
-    "productCode": "GO,PSI,PCWMP",
-    "icon": "https://resources.jetbrains.com/storage/logos/web/goland/goland.svg",
-    "description": "Go 专业发展的集成开发环境"
+    "name": "PhpStorm",
+    "productCode": "PS",
+    "link": "https://www.jetbrains.com/phpstorm",
+    "description": "A smart IDE for PHP and Web",
+    "icon": "https://resources.jetbrains.com/storage/logos/web/phpstorm/phpstorm.svg"
+  },
+  {
+    "name": "WebStorm",
+    "productCode": "WS",
+    "link": "https://www.jetbrains.com/webstorm",
+    "description": "A JavaScript and TypeScript IDE",
+    "icon": "https://resources.jetbrains.com/storage/logos/web/webstorm/webstorm.svg"
+  },
+
+
+  {
+    "name": "Air",
+    "productCode": "AIR",
+    "link": "https://air.jetbrains.com",
+    "description": "An Agentic Development Environment",
+    "icon": "https://resources.jetbrains.com/storage/logos/web/air/air.svg"
+  },
+  {
+    "name": "AppCode",
+    "productCode": "AC",
+    "link": "https://www.jetbrains.com/objc",
+    "description": "A smart IDE for iOS and macOS",
+    "icon": "https://resources.jetbrains.com/storage/logos/web/appcode/appcode.svg"
+  },
+  {
+    "name": "CLion",
+    "productCode": "CL",
+    "link": "https://www.jetbrains.com/clion",
+    "description": "A cross-platform C and C++ IDE",
+    "icon": "https://resources.jetbrains.com/storage/logos/web/clion/clion.svg"
+  },
+  {
+    "name": "Code With Me Lobby",
+    "productCode": "CWML",
+    "link": "https://www.jetbrains.com/code-with-me/on-prem",
+    "description": "Lobby Server for Code With Me",
+    "icon": "https://resources.jetbrains.com/storage/logos/web/code-with-me/code-with-me.svg"
   },
   {
     "name": "DataSpell",
-    "productCode": "DS,PSI,PDB,PCWMP",
-    "icon": "https://resources.jetbrains.com/storage/logos/web/dataspell/dataspell.svg",
-    "description": "您的AI驱动工具，用于分析数据和分享洞察"
+    "productCode": "DS",
+    "link": "https://www.jetbrains.com/dataspell",
+    "description": "The IDE for data analysis",
+    "icon": "https://resources.jetbrains.com/storage/logos/web/dataspell/dataspell.svg"
+  },
+  {
+    "name": "dotCover",
+    "productCode": "DC",
+    "link": "https://www.jetbrains.com/dotcover",
+    "description": ".NET code coverage tool",
+    "icon": "https://resources.jetbrains.com/storage/logos/web/dotcover/dotcover.svg"
   },
   {
     "name": "dotMemory",
     "productCode": "DM",
-    "icon": "https://resources.jetbrains.com/storage/logos/web/dotmemory/dotmemory.svg",
-    "description": ".NET 内存分析器"
+    "link": "https://www.jetbrains.com/dotmemory",
+    "description": ".NET memory profiler",
+    "icon": "https://resources.jetbrains.com/storage/logos/web/dotmemory/dotmemory.svg"
   },
   {
-    "name": "Aqua",
-    "productCode": "QA,PSI,PCWMP",
-    "icon": "https://resources.jetbrains.com/storage/logos/web/aqua/aqua.svg",
-    "description": "自动化测试QA工程师专用集成开发环境"
+    "name": "dotTrace",
+    "productCode": "DP",
+    "link": "https://www.jetbrains.com/profiler",
+    "description": ".NET performance profiler",
+    "icon": "https://resources.jetbrains.com/storage/logos/web/dottrace/dottrace.svg"
+  },
+  {
+    "name": "Fleet",
+    "productCode": "FL",
+    "link": "https://www.jetbrains.com/fleet",
+    "description": "More than a code editor",
+    "icon": "https://resources.jetbrains.com/storage/logos/web/fleet/fleet.svg"
+  },
+  {
+    "name": "GoLand",
+    "productCode": "GO",
+    "link": "https://www.jetbrains.com/go",
+    "description": "An IDE for Go and Web",
+    "icon": "https://resources.jetbrains.com/storage/logos/web/goland/goland.svg"
+  },
+  {
+    "name": "ReSharper",
+    "productCode": "RS",
+    "link": "https://www.jetbrains.com/resharper",
+    "description": "Visual Studio extensions",
+    "icon": "https://resources.jetbrains.com/storage/logos/web/resharper/resharper.svg"
+  },
+  {
+    "name": "ReSharper C++",
+    "productCode": "RC",
+    "link": "https://www.jetbrains.com/resharper-cpp",
+    "description": "Visual Studio extension for C++ developers",
+    "icon": "https://resources.jetbrains.com/storage/logos/web/resharper-cpp/resharper-cpp.svg"
+  },
+  {
+    "name": "ReSharper Tools",
+    "productCode": "RSU",
+    "link": "https://www.jetbrains.com/dotnet",
+    "description": "All individual .NET tools combined in one license",
+    "icon": "https://resources.jetbrains.com/storage/logos/web/resharper/resharper.svg"
+  },
+  {
+    "name": "Rider",
+    "productCode": "RD",
+    "link": "https://www.jetbrains.com/rider",
+    "description": "All-in-one IDE for .NET and game development",
+    "icon": "https://resources.jetbrains.com/storage/logos/web/rider/rider.svg"
+  },
+  {
+    "name": "RubyMine",
+    "productCode": "RM",
+    "link": "https://www.jetbrains.com/ruby",
+    "description": "A Ruby and Rails IDE",
+    "icon": "https://resources.jetbrains.com/storage/logos/web/rubymine/rubymine.svg"
   },
   {
     "name": "RustRover",
-    "productCode": "RR,PSI,PCWMP",
-    "icon": "https://resources.jetbrains.com/storage/logos/web/rustrover/rustrover.svg",
-    "description": "一个强大的Rust集成开发环境"
+    "productCode": "RR",
+    "link": "https://www.jetbrains.com/rust",
+    "description": "A powerful IDE for Rust",
+    "icon": "https://resources.jetbrains.com/storage/logos/web/rustrover/rustrover.svg"
+  },
+  {
+    "name": "TeamCity Cloud<br>TeamCity",
+    "productCode": "TCC,TC",
+    "link": "https://www.jetbrains.com/teamcity",
+    "description": "Powerful Continuous Integration out of the box",
+    "icon": "https://resources.jetbrains.com/storage/logos/web/teamcity/teamcity.svg"
+  },
+  {
+    "name": "YouTrack",
+    "productCode": "YTD",
+    "link": "https://www.jetbrains.com/youtrack",
+    "description": "Issue tracker designed for development teams",
+    "icon": "https://resources.jetbrains.com/storage/logos/web/youtrack/youtrack.svg"
   }
 ]
