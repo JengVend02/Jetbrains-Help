@@ -256,10 +256,10 @@ const App = {
       this.showLicenseModal = true
     },
 
-    openPluginLink(plugin) {
-      // 在新标签页打开插件链接
-      if (plugin.link) {
-        window.open(plugin.link, '_blank')
+    openLink(object) {
+      // 在新标签页打开链接
+      if (object.link) {
+        window.open(object.link, '_blank')
       }
     },
 

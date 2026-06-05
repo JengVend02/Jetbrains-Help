@@ -36,7 +36,7 @@ public class ProductConfig {
     public static final String PRODUCT_BASIC_URL = "https://data.services.jetbrains.com";
 
     /** 产品列表API地址模板 */
-    public static final String PRODUCT_LIST_URL_TEMPLATE = PRODUCT_BASIC_URL + "/products?fields=code,name,link,description,forSale";
+    public static final String PRODUCT_LIST_URL_TEMPLATE = PRODUCT_BASIC_URL + "/products?fields=code,salesCode,name,link,description,forSale";
 
     /** 产品icon地址模板 */
     public static final String PRODUCT_ICON_URL = "https://resources.jetbrains.com/storage/logos/web/{product}/{product}.svg";

@@ -8,21 +8,21 @@
   },
   {
     "name": "IntelliJ IDEA",
-    "productCode": "IIU",
+    "productCode": "II",
     "link": "https://www.jetbrains.com/idea",
     "description": "The IDE for pro Java and Kotlin development",
     "icon": "https://resources.jetbrains.com/storage/logos/web/intellij-idea/intellij-idea.svg"
   },
   {
     "name": "DataGrip",
-    "productCode": "DG",
+    "productCode": "DB",
     "link": "https://www.jetbrains.com/datagrip",
     "description": "The IDE for databases and SQL",
     "icon": "https://resources.jetbrains.com/storage/logos/web/datagrip/datagrip.svg"
   },
   {
     "name": "PyCharm",
-    "productCode": "PCP",
+    "productCode": "PC",
     "link": "https://www.jetbrains.com/pycharm",
     "description": "The Only Python IDE you need",
     "icon": "https://resources.jetbrains.com/storage/logos/web/pycharm/pycharm.svg"
@@ -66,7 +66,7 @@
   },
   {
     "name": "Code With Me Lobby",
-    "productCode": "CWML",
+    "productCode": "CWME",
     "link": "https://www.jetbrains.com/code-with-me/on-prem",
     "description": "Lobby Server for Code With Me",
     "icon": "https://resources.jetbrains.com/storage/logos/web/code-with-me/code-with-me.svg"
@@ -115,7 +115,7 @@
   },
   {
     "name": "ReSharper",
-    "productCode": "RS",
+    "productCode": "RS0",
     "link": "https://www.jetbrains.com/resharper",
     "description": "Visual Studio extensions",
     "icon": "https://resources.jetbrains.com/storage/logos/web/resharper/resharper.svg"
@@ -157,7 +157,7 @@
   },
   {
     "name": "TeamCity Cloud<br>TeamCity",
-    "productCode": "TCC,TC",
+    "productCode": "TCC0,TC",
     "link": "https://www.jetbrains.com/teamcity",
     "description": "Powerful Continuous Integration out of the box",
     "icon": "https://resources.jetbrains.com/storage/logos/web/teamcity/teamcity.svg"

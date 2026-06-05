@@ -18,6 +18,9 @@ public class ProductInfo {
     /** 产品代码，单个或多个用逗号分隔，如 "II" 或 "II,IC" */
     private String code;
 
+    /** 产品代码，单个或多个用逗号分隔，如 "II" 或 "II,IC" */
+    private String salesCode;
+
     /** 产品链接 */
     private String link;
 

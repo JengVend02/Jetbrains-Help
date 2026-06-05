@@ -59,6 +59,7 @@ public class ProductProcessService {
         // 使用英文逗号拼接同短名的code
         for (Map.Entry<String, List<ProductInfo>> entry : map.entrySet()) {
             String code = entry.getValue().stream().map(ProductInfo::getCode).collect(Collectors.joining(","));
+            String salesCode = entry.getValue().stream().map(ProductInfo::getSalesCode).collect(Collectors.joining(","));
             // 以换行符为分隔符
             String name = entry.getValue().stream().map(ProductInfo::getName).collect(Collectors.joining("<br>"));
             // 去除重复描述
@@ -71,6 +72,7 @@ public class ProductProcessService {
             ProductInfo productInfo = new ProductInfo();
             productInfo.setLink(entry.getKey());
             productInfo.setCode(code);
+            productInfo.setSalesCode(salesCode);
             productInfo.setName(name);
             productInfo.setDescription(description);
             filtered.add(productInfo);
@@ -96,6 +98,7 @@ public class ProductProcessService {
             .parallelStream()
             .map(ProductProcessService::convertSingle)
             .filter(Objects::nonNull)
+            .sorted(Comparator.comparing(ProductCache::getName))
             .collect(Collectors.toList());
 
         log.info("产品转换完成 -> 转换数量: {}", cacheList.size());
@@ -111,7 +114,7 @@ public class ProductProcessService {
         try {
             return new ProductCache()
                     .setName(product.getName())
-                    .setProductCode(product.getCode())
+                    .setProductCode(product.getSalesCode())
                     .setDescription(product.getDescription())
                     .setLink(product.getLink())
                     .setIcon(setIcon(product.getLink()));
