@@ -1,6 +1,8 @@
-package com.zyp.help.context.product.model;
+package com.zyp.help.context.product.service;
 
 import com.zyp.help.context.product.ProductConfig;
+import com.zyp.help.context.product.model.ProductCache;
+import com.zyp.help.context.product.model.ProductInfo;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

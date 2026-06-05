@@ -51,7 +51,7 @@ public class PluginProcessService {
         }
 
         // ID以逗号分割的字符串
-        String existingCacheIds = ","+PluginConfig.pluginCacheList.stream().map(PluginCache::getIdStr).collect(Collectors.joining(","));
+        String existingCacheIds = ","+PluginConfig.pluginCache.getPlugin().stream().map(PluginCache::getIdStr).collect(Collectors.joining(","));
 
         List<PluginList.Plugin> filteredPlugins = pluginList.getPlugins()
             .stream()

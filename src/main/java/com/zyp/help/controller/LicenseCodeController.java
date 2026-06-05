@@ -231,7 +231,7 @@ public class LicenseCodeController {
                 .collect(Collectors.toList());
 
             // 获取所有付费插件代码
-            List<String> pluginCodeList = PluginConfig.pluginCacheList
+            List<String> pluginCodeList = PluginConfig.pluginCache.getPlugin()
                 .stream()
                 .map(PluginCache::getProductCode)  // 提取插件产品代码
                 .filter(StrUtil::isNotBlank)  // 过滤空值

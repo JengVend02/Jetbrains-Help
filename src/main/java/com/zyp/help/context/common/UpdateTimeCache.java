@@ -1,4 +1,4 @@
-package com.zyp.help.context.plugin.model;
+package com.zyp.help.context.common;
 
 import lombok.Data;
 import lombok.experimental.Accessors;
@@ -9,7 +9,7 @@ import lombok.experimental.Accessors;
  */
 @Data
 @Accessors(chain = true)
-public class PluginUpdateTimeCache {
+public class UpdateTimeCache {
 
     /** 原有数量 */
     private Integer oldNum;

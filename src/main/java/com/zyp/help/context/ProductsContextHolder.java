@@ -2,7 +2,7 @@ package com.zyp.help.context;
 
 import com.zyp.help.context.product.ProductConfig;
 import com.zyp.help.context.product.model.ProductCache;
-import com.zyp.help.context.product.model.ProductProcessService;
+import com.zyp.help.context.product.service.ProductProcessService;
 import com.zyp.help.context.product.service.ProductApiService;
 import com.zyp.help.context.product.service.ProductCacheService;
 import lombok.AccessLevel;

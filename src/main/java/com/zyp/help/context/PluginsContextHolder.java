@@ -2,7 +2,7 @@ package com.zyp.help.context;
 
 import com.zyp.help.context.plugin.PluginConfig;
 import com.zyp.help.context.plugin.model.PluginCache;
-import com.zyp.help.context.plugin.model.PluginUpdateTimeCache;
+import com.zyp.help.context.common.UpdateTimeCache;
 import com.zyp.help.context.plugin.service.PluginApiService;
 import com.zyp.help.context.plugin.service.PluginCacheService;
 import com.zyp.help.context.plugin.service.PluginProcessService;
@@ -60,13 +60,9 @@ public class PluginsContextHolder {
         log.info("开始初始化插件上下文...");
 
         try {
-            // 从缓存加载插件数据
-            PluginConfig.pluginCacheList = PluginCacheService.loadFromPluginCache();
-            log.info("插件上下文初始化成功！加载插件数量: {}", PluginConfig.pluginCacheList.size());
-
-            // 从缓存加载插件更新时间数据
-            PluginConfig.pluginUpdateTimeCacheList = PluginCacheService.loadFromPluginUpdateTimeCache();
-            log.info("插件上下文初始化成功！加载插件数量: {}", PluginConfig.pluginUpdateTimeCacheList.size());
+            // 从缓存加载插件数据,插件更新时间数据
+            PluginConfig.pluginCache = PluginCacheService.loadFromPluginCache();
+            log.info("插件上下文初始化成功！加载插件数量: {}", PluginConfig.pluginCache.getPlugin().size());
 
             // 启动异步刷新任务获取最新数据
             // refreshJsonFile();
@@ -133,31 +129,28 @@ public class PluginsContextHolder {
             return;
         }
 
-        Integer oldNum = PluginConfig.pluginCacheList.size();
+        Integer oldNum = PluginConfig.pluginCache.getPlugin().size();
         Integer addNum = newPlugins.size();
         log.info("源大小 => [{}], 新增大小 => [{}]", oldNum, addNum);
 
         // 合并到内存缓存
-        PluginConfig.pluginCacheList = PluginCacheService.mergeCache(PluginConfig.pluginCacheList, newPlugins);
-
-        // 保存到文件
-        PluginCacheService.saveToCache(PluginConfig.pluginCacheList);
+        PluginConfig.pluginCache.setPlugin(PluginCacheService.mergeCache(PluginConfig.pluginCache.getPlugin(), newPlugins));
 
         // 创建更新时间缓存
         String updateTime = java.time.LocalDateTime.now().format(java.time.format.DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-        List<PluginUpdateTimeCache> newUpdateTimeCacheList = new ArrayList<>();
-        PluginUpdateTimeCache pluginUpdateTimeCache = new PluginUpdateTimeCache();
+        List<UpdateTimeCache> newUpdateTimeCacheList = new ArrayList<>();
+        UpdateTimeCache pluginUpdateTimeCache = new UpdateTimeCache();
         pluginUpdateTimeCache.setOldNum(oldNum);
         pluginUpdateTimeCache.setAddNum(addNum);
-        pluginUpdateTimeCache.setNewNum(PluginConfig.pluginCacheList.size());
+        pluginUpdateTimeCache.setNewNum(PluginConfig.pluginCache.getPlugin().size());
         pluginUpdateTimeCache.setUpdateTime(updateTime);
         newUpdateTimeCacheList.add(pluginUpdateTimeCache);
-        PluginConfig.pluginUpdateTimeCacheList = PluginCacheService.mergeCache(PluginConfig.pluginUpdateTimeCacheList, newUpdateTimeCacheList);
+        PluginConfig.pluginCache.setUpdateTime(PluginCacheService.mergeCache(PluginConfig.pluginCache.getUpdateTime(), newUpdateTimeCacheList));
 
         // 保存到文件
-        PluginCacheService.saveToUpdateTimeCache(PluginConfig.pluginUpdateTimeCacheList);
+        PluginCacheService.saveToCache(PluginConfig.pluginCache);
 
-        log.info("插件缓存已更新，当前总数: {}, 更新时间: {}", PluginConfig.pluginCacheList.size(), updateTime);
+        log.info("插件缓存已更新，当前总数: {}, 更新时间: {}", PluginConfig.pluginCache.getPlugin().size(), updateTime);
     }
 
     /**

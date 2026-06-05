@@ -2,7 +2,7 @@ package com.zyp.help.controller;
 
 import com.zyp.help.context.plugin.PluginConfig;
 import com.zyp.help.context.plugin.model.PluginCache;
-import com.zyp.help.context.plugin.model.PluginUpdateTimeCache;
+import com.zyp.help.context.common.UpdateTimeCache;
 import com.zyp.help.context.product.ProductConfig;
 import com.zyp.help.context.product.model.ProductCache;
 import lombok.extern.slf4j.Slf4j;
@@ -111,8 +111,8 @@ public class DataController {
      */
     @GetMapping("/plugins")
     public List<PluginCache> getPlugins() {
-        log.debug("获取插件列表，插件数量: {}", PluginConfig.pluginCacheList.size());
-        return PluginConfig.pluginCacheList;
+        log.debug("获取插件列表，插件数量: {}", PluginConfig.pluginCache.getPlugin().size());
+        return PluginConfig.pluginCache.getPlugin();
     }
 
     /**
@@ -136,7 +136,7 @@ public class DataController {
      * @return 包含更新时间的JSON对象
      */
     @GetMapping("/plugins/lastUpdateTime")
-    public List<PluginUpdateTimeCache> getPluginLastUpdateTime() {
-        return PluginConfig.pluginUpdateTimeCacheList;
+    public List<UpdateTimeCache> getPluginLastUpdateTime() {
+        return PluginConfig.pluginCache.getUpdateTime();
     }
 }

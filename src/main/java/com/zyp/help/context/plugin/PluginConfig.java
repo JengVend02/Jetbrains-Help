@@ -1,8 +1,9 @@
 package com.zyp.help.context.plugin;
 
 import cn.hutool.extra.spring.SpringUtil;
+import com.zyp.help.context.plugin.model.Plugin;
 import com.zyp.help.context.plugin.model.PluginCache;
-import com.zyp.help.context.plugin.model.PluginUpdateTimeCache;
+import com.zyp.help.context.common.UpdateTimeCache;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -41,15 +42,10 @@ public class PluginConfig {
     /** 插件信息缓存文件路径 */
     public static final String PLUGIN_JSON_FILE_NAME = "external/data/plugin.json";
 
-    /** 插件更新时间信息缓存文件路径 */
-    public static final String PLUGIN_UPDATE_TIME_JSON_FILE_NAME = "external/data/pluginUpdateTime.json";
-
     // ==================== 静态字段 ====================
 
     /** 插件信息缓存列表，存储所有已加载的付费插件信息 */
-    public static List<PluginCache> pluginCacheList;
-    /** 插件变更时间信息缓存列表 */
-    public static List<PluginUpdateTimeCache> pluginUpdateTimeCacheList;
+    public static Plugin pluginCache;
 
     /** 线程池，用于并发请求插件数据 */
     public static ExecutorService executorService;
