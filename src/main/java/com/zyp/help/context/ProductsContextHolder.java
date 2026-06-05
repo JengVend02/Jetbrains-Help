@@ -1,5 +1,7 @@
 package com.zyp.help.context;
 
+import com.zyp.help.context.common.UpdateTimeCache;
+import com.zyp.help.context.plugin.service.PluginCacheService;
 import com.zyp.help.context.product.ProductConfig;
 import com.zyp.help.context.product.model.ProductCache;
 import com.zyp.help.context.product.service.ProductProcessService;
@@ -9,6 +11,7 @@ import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
@@ -59,8 +62,8 @@ public class ProductsContextHolder {
 
         try {
             // 从缓存加载产品数据
-            ProductConfig.productCacheList = ProductCacheService.loadFromProductCache();
-            log.info("产品上下文初始化成功！加载产品数量: {}", ProductConfig.productCacheList.size());
+            ProductConfig.productCache = ProductCacheService.loadFromProductCache();
+            log.info("产品上下文初始化成功！加载产品数量: {}", ProductConfig.productCache.getProduct().size());
 
             // 启动异步刷新任务获取最新数据
             // refreshJsonFile();
@@ -114,19 +117,27 @@ public class ProductsContextHolder {
             return;
         }
 
-        Integer oldNum = ProductConfig.productCacheList.size();
+        Integer oldNum = ProductConfig.productCache.getProduct().size();
         Integer addNum = newProducts.size();
         log.info("源大小 => [{}], 新增大小 => [{}]", oldNum, addNum);
 
         // 合并到内存缓存
-        ProductConfig.productCacheList = ProductCacheService.mergeCache(ProductConfig.productCacheList, newProducts);
-
-        // 保存到文件
-        ProductCacheService.saveToCache(ProductConfig.productCacheList);
+        ProductConfig.productCache.setProduct(ProductCacheService.mergeCache(ProductConfig.productCache.getProduct(), newProducts));
 
         // 创建更新时间缓存
         String updateTime = java.time.LocalDateTime.now().format(java.time.format.DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        List<UpdateTimeCache> newUpdateTimeCacheList = new ArrayList<>();
+        UpdateTimeCache pluginUpdateTimeCache = new UpdateTimeCache();
+        pluginUpdateTimeCache.setOldNum(oldNum);
+        pluginUpdateTimeCache.setAddNum(addNum);
+        pluginUpdateTimeCache.setNewNum(ProductConfig.productCache.getProduct().size());
+        pluginUpdateTimeCache.setUpdateTime(updateTime);
+        newUpdateTimeCacheList.add(pluginUpdateTimeCache);
+        ProductConfig.productCache.setUpdateTime(PluginCacheService.mergeCache(ProductConfig.productCache.getUpdateTime(), newUpdateTimeCacheList));
 
-        log.info("产品缓存已更新，当前总数: {}, 更新时间: {}", ProductConfig.productCacheList.size(), updateTime);
+        // 保存到文件
+        ProductCacheService.saveToCache(ProductConfig.productCache);
+
+        log.info("产品缓存已更新，当前总数: {}, 更新时间: {}", ProductConfig.productCache.getProduct().size(), updateTime);
     }
 }

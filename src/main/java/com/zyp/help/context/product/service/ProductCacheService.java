@@ -6,7 +6,7 @@ import cn.hutool.core.io.IoUtil;
 import cn.hutool.core.text.CharSequenceUtil;
 import cn.hutool.json.JSONUtil;
 import com.zyp.help.context.product.ProductConfig;
-import com.zyp.help.context.product.model.ProductCache;
+import com.zyp.help.context.product.model.Product;
 import com.zyp.help.util.FileTools;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -56,19 +56,19 @@ public class ProductCacheService {
      * @return 产品缓存列表
      * @throws IllegalArgumentException 当文件读取失败时
      */
-    public static List<ProductCache> loadFromProductCache() {
+    public static Product loadFromProductCache() {
         initCacheFile();
         try {
             String jsonContent = IoUtil.readUtf8(FileUtil.getInputStream(cacheFile));
 
             if (CharSequenceUtil.isBlank(jsonContent) || !JSONUtil.isTypeJSON(jsonContent)) {
                 log.warn("产品缓存文件为空或格式错误，返回空列表");
-                return new ArrayList<>();
+                return new Product();
             }
 
-            List<ProductCache> cacheList = JSONUtil.toList(jsonContent, ProductCache.class);
-            log.info("从缓存加载产品数据成功，产品数量: {}", cacheList.size());
-            return cacheList;
+            Product cache = JSONUtil.toBean(jsonContent, Product.class);
+            log.info("从缓存加载产品数据成功，产品数量: {}", cache.getProduct().size());
+            return cache;
 
         } catch (IORuntimeException e) {
             throw new IllegalArgumentException(
@@ -80,18 +80,18 @@ public class ProductCacheService {
     /**
      * 保存产品数据到缓存文件
      *
-     * @param productCaches 要保存的产品数据列表
+     * @param productCache 要保存的产品数据列表
      * @throws IllegalArgumentException 当文件写入失败时
      */
-    public static void saveToCache(List<ProductCache> productCaches) {
+    public static void saveToCache(Product productCache) {
         initCacheFile();
 
         try {
-            String jsonStr = JSONUtil.toJsonStr(productCaches);
+            String jsonStr = JSONUtil.toJsonStr(productCache);
             String formattedJson = JSONUtil.formatJsonStr(jsonStr);
 
             FileUtil.writeString(formattedJson, cacheFile, StandardCharsets.UTF_8);
-            log.info("产品数据保存到缓存成功，产品数量: {}", productCaches.size());
+            log.info("产品数据保存到缓存成功，产品数量: {}", productCache.getProduct().size());
 
         } catch (IORuntimeException e) {
             throw new IllegalArgumentException(

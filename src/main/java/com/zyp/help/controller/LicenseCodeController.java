@@ -222,7 +222,7 @@ public class LicenseCodeController {
             // 未指定产品代码，自动包含所有可用产品
 
             // 获取所有JetBrains IDE产品代码
-            List<String> productCodeList = ProductConfig.productCacheList
+            List<String> productCodeList = ProductConfig.productCache.getProduct()
                 .stream()
                 .map(ProductCache::getProductCode)  // 提取产品代码
                 .filter(StrUtil::isNotBlank)  // 过滤空值

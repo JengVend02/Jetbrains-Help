@@ -1,6 +1,7 @@
 package com.zyp.help.context.product;
 
 import cn.hutool.extra.spring.SpringUtil;
+import com.zyp.help.context.product.model.Product;
 import com.zyp.help.context.product.model.ProductCache;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -44,7 +45,7 @@ public class ProductConfig {
     // ==================== 静态字段 ====================
 
     /** 产品信息缓存列表，存储所有加载的产品信息 */
-    public static List<ProductCache> productCacheList;
+    public static Product productCache;
 
     // ==================== 配置字段 ====================
 

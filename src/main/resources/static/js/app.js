@@ -32,9 +32,11 @@ const App = {
       products: [],
       plugins: [],
       pluginsUpdateTime: [],
+      productsUpdateTime: [],
       filteredProducts: [],
       filteredPlugins: [],
       lastPluginUpdateTime: "",
+      lastProductUpdateTime: "",
       searchQuery: '',
       navItems: [
         { id: 'home', name: '首页', icon: 'fas fa-home' },
@@ -97,6 +99,7 @@ const App = {
     this.loadProducts()
     this.loadPlugins()
     this.loadPluginUpdateTime()
+    this.loadProductUpdateTime()
     this.setDefaultExpiryDate()
 
     // 加载主题设置
@@ -225,6 +228,24 @@ const App = {
 
     async getPluginUpdateTime() {
       await this.loadPluginUpdateTime()
+      Utils.showNotification('更新时间已刷新', 'success')
+    },
+
+    async loadProductUpdateTime() {
+      try {
+        this.productsUpdateTime = await ApiService.getProductUpdateTime()
+        // 获取数组最后一个元素的更新时间
+        if (this.productsUpdateTime && this.productsUpdateTime.length > 0) {
+          const lastItem = this.productsUpdateTime[this.productsUpdateTime.length - 1]
+          this.lastProductUpdateTime = lastItem.updateTime || ''
+        }
+      } catch (error) {
+        console.error('加载插件更新时间失败:', error)
+      }
+    },
+
+    async getProductUpdateTime() {
+      await this.loadProductUpdateTime()
       Utils.showNotification('更新时间已刷新', 'success')
     },
 

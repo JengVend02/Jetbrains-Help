@@ -70,8 +70,8 @@ public class DataController {
      */
     @GetMapping("/products")
     public List<ProductCache> getProducts() {
-        log.debug("获取产品列表，产品数量: {}", ProductConfig.productCacheList.size());
-        return ProductConfig.productCacheList;
+        log.debug("获取产品列表，产品数量: {}", ProductConfig.productCache.getProduct().size());
+        return ProductConfig.productCache.getProduct();
     }
 
     /**
@@ -138,5 +138,10 @@ public class DataController {
     @GetMapping("/plugins/lastUpdateTime")
     public List<UpdateTimeCache> getPluginLastUpdateTime() {
         return PluginConfig.pluginCache.getUpdateTime();
+    }
+
+    @GetMapping("/products/lastUpdateTime")
+    public List<UpdateTimeCache> getProductLastUpdateTime() {
+        return ProductConfig.productCache.getUpdateTime();
     }
 }

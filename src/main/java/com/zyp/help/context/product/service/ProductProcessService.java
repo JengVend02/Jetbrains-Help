@@ -45,7 +45,7 @@ public class ProductProcessService {
         }
 
         // 缓存列表：以逗号分割的字符串
-        String existingCacheLinks = ","+ ProductConfig.productCacheList.stream()
+        String existingCacheLinks = ","+ ProductConfig.productCache.getProduct().stream()
         .map(productCache -> productCache.getLink().endsWith("/") ? productCache.getLink().substring(0, productCache.getLink().length() - 1) : productCache.getLink())
         .collect(Collectors.joining(","));
 
