@@ -65,7 +65,7 @@ public class PluginsContextHolder {
             log.info("插件上下文初始化成功！加载插件数量: {}", PluginConfig.pluginCache.getPlugin().size());
 
             // 启动异步刷新任务获取最新数据
-            // refreshJsonFile();
+            refreshJsonFile();
 
         } catch (Exception e) {
             log.error("插件上下文初始化失败", e);
@@ -97,14 +97,9 @@ public class PluginsContextHolder {
         initExecutorService(config.getThreadCount());
 
         // 启动异步刷新任务
-        // 4. 保存到缓存
-        // 3. 转换为缓存对象
-        // 2. 过滤插件（排除已存在和免费的）
         CompletableFuture
-            .supplyAsync(() -> {
                 // 1. 从API获取所有插件
-                return PluginApiService.fetchAllPlugins(PluginConfig.executorService);
-            }, PluginConfig.executorService)
+            .supplyAsync(PluginApiService::fetchAllPlugins, PluginConfig.executorService)
                 // 2. 过滤插件列表
             .thenApply(PluginProcessService::filterPlugins)
                 // 3. 转换为缓存对象
@@ -133,24 +128,18 @@ public class PluginsContextHolder {
         Integer addNum = newPlugins.size();
         log.info("源大小 => [{}], 新增大小 => [{}]", oldNum, addNum);
 
-        // 合并到内存缓存
+        // 新增插件合并到内存缓存
         PluginConfig.pluginCache.setPlugin(PluginCacheService.mergeCache(PluginConfig.pluginCache.getPlugin(), newPlugins));
 
         // 创建更新时间缓存
-        String updateTime = java.time.LocalDateTime.now().format(java.time.format.DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-        List<UpdateTimeCache> newUpdateTimeCacheList = new ArrayList<>();
-        UpdateTimeCache pluginUpdateTimeCache = new UpdateTimeCache();
-        pluginUpdateTimeCache.setOldNum(oldNum);
-        pluginUpdateTimeCache.setAddNum(addNum);
-        pluginUpdateTimeCache.setNewNum(PluginConfig.pluginCache.getPlugin().size());
-        pluginUpdateTimeCache.setUpdateTime(updateTime);
-        newUpdateTimeCacheList.add(pluginUpdateTimeCache);
-        PluginConfig.pluginCache.setUpdateTime(PluginCacheService.mergeCache(PluginConfig.pluginCache.getUpdateTime(), newUpdateTimeCacheList));
+        UpdateTimeCache updateTimeCache = new UpdateTimeCache(oldNum, addNum);
+        // 更新时间合并到内存缓存
+        PluginConfig.pluginCache.addUpdateTime(updateTimeCache);
 
         // 保存到文件
         PluginCacheService.saveToCache(PluginConfig.pluginCache);
 
-        log.info("插件缓存已更新，当前总数: {}, 更新时间: {}", PluginConfig.pluginCache.getPlugin().size(), updateTime);
+        log.info("插件缓存已更新，当前总数: {}, 更新时间: {}", updateTimeCache.getNewNum(),updateTimeCache.getUpdateTime());
     }
 
     /**

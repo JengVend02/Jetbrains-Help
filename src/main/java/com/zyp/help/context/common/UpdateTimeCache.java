@@ -22,4 +22,14 @@ public class UpdateTimeCache {
 
     /** 更新时间 */
     private String updateTime;
+
+    public UpdateTimeCache() {
+    }
+
+    public UpdateTimeCache(Integer oldNum, Integer addNum) {
+        this.oldNum = oldNum;
+        this.addNum = addNum;
+        this.newNum = oldNum + addNum;
+        this.updateTime = java.time.LocalDateTime.now().format(java.time.format.DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+    }
 }

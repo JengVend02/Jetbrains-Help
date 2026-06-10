@@ -43,11 +43,10 @@ public class PluginApiService {
     /**
      * 使用多线程分页获取所有插件信息
      *
-     * @param executorService 线程池
      * @return 包含所有插件的PluginList对象
      * @throws RuntimeException 当无法获取插件数据时
      */
-    public static PluginList fetchAllPlugins(ExecutorService executorService) {
+    public static PluginList fetchAllPlugins() {
         log.info("开始多线程获取插件列表，分页大小: {}, 线程数: {}",
                 config.getPageSize(), config.getThreadCount());
 
@@ -77,7 +76,7 @@ public class PluginApiService {
                     log.error("获取插件页面失败 (offset: {})", offset, e);
                     return null;
                 }
-            }, executorService);
+            }, PluginConfig.executorService);
 
             futures.add(future);
         }

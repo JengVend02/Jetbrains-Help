@@ -125,19 +125,13 @@ public class ProductsContextHolder {
         ProductConfig.productCache.setProduct(ProductCacheService.mergeCache(ProductConfig.productCache.getProduct(), newProducts));
 
         // 创建更新时间缓存
-        String updateTime = java.time.LocalDateTime.now().format(java.time.format.DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-        List<UpdateTimeCache> newUpdateTimeCacheList = new ArrayList<>();
-        UpdateTimeCache pluginUpdateTimeCache = new UpdateTimeCache();
-        pluginUpdateTimeCache.setOldNum(oldNum);
-        pluginUpdateTimeCache.setAddNum(addNum);
-        pluginUpdateTimeCache.setNewNum(ProductConfig.productCache.getProduct().size());
-        pluginUpdateTimeCache.setUpdateTime(updateTime);
-        newUpdateTimeCacheList.add(pluginUpdateTimeCache);
-        ProductConfig.productCache.setUpdateTime(PluginCacheService.mergeCache(ProductConfig.productCache.getUpdateTime(), newUpdateTimeCacheList));
+        UpdateTimeCache updateTimeCache = new UpdateTimeCache(oldNum, addNum);
+        // 合并到更新时间缓存
+        ProductConfig.productCache.addUpdateTime(updateTimeCache);
 
         // 保存到文件
         ProductCacheService.saveToCache(ProductConfig.productCache);
 
-        log.info("产品缓存已更新，当前总数: {}, 更新时间: {}", ProductConfig.productCache.getProduct().size(), updateTime);
+        log.info("产品缓存已更新，当前总数: {}, 更新时间: {}", updateTimeCache.getNewNum(), updateTimeCache.getUpdateTime());
     }
 }
