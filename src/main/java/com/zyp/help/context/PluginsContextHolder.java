@@ -129,7 +129,7 @@ public class PluginsContextHolder {
         log.info("源大小 => [{}], 新增大小 => [{}]", oldNum, addNum);
 
         // 新增插件合并到内存缓存
-        PluginConfig.pluginCache.setPlugin(PluginCacheService.mergeCache(PluginConfig.pluginCache.getPlugin(), newPlugins));
+        PluginConfig.pluginCache.addPluginCache(newPlugins);
 
         // 创建更新时间缓存
         UpdateTimeCache updateTimeCache = new UpdateTimeCache(oldNum, addNum);

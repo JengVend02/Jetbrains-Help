@@ -122,7 +122,7 @@ public class ProductsContextHolder {
         log.info("源大小 => [{}], 新增大小 => [{}]", oldNum, addNum);
 
         // 合并到内存缓存
-        ProductConfig.productCache.setProduct(ProductCacheService.mergeCache(ProductConfig.productCache.getProduct(), newProducts));
+        ProductConfig.productCache.addProductCache(newProducts);
 
         // 创建更新时间缓存
         UpdateTimeCache updateTimeCache = new UpdateTimeCache(oldNum, addNum);

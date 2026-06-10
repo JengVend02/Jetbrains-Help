@@ -91,29 +91,10 @@ public class ProductCacheService {
             String formattedJson = JSONUtil.formatJsonStr(jsonStr);
 
             FileUtil.writeString(formattedJson, cacheFile, StandardCharsets.UTF_8);
-            log.info("产品数据保存到缓存成功，产品数量: {}", productCache.getProduct().size());
 
         } catch (IORuntimeException e) {
             throw new IllegalArgumentException(
                 CharSequenceUtil.format("{} 文件写入失败!", ProductConfig.PRODUCT_JSON_FILE_NAME), e);
         }
-    }
-
-    /**
-     * 合并新数据到现有缓存
-     *
-     * @param existingCache 现有缓存数据
-     * @param newData 新的产品数据
-     * @return 合并后的数据列表
-     */
-    public static <T> List<T> mergeCache(List<T> existingCache, List<T> newData) {
-        if (existingCache == null) {
-            existingCache = new ArrayList<>();
-        }
-
-        log.info("合并缓存数据 -> 原有数量: {}, 新增数量: {}", existingCache.size(), newData.size());
-
-        existingCache.addAll(newData);
-        return existingCache;
     }
 }
