@@ -25,7 +25,7 @@ import java.util.List;
  * @author zyp
  * @version 1.0.0
  */
-@Slf4j
+@Slf4j(topic = "产品API")
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class ProductApiService {
 

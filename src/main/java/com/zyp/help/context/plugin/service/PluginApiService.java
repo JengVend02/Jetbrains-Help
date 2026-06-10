@@ -16,7 +16,6 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutorService;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -34,7 +33,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * @author zyp
  * @version 1.0.0
  */
-@Slf4j
+@Slf4j(topic = "插件API")
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class PluginApiService {
 

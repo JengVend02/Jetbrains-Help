@@ -28,7 +28,7 @@ import java.util.stream.Collectors;
  * @author zyp
  * @version 1.0.0
  */
-@Slf4j
+@Slf4j(topic = "插件处理")
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class PluginProcessService {
 

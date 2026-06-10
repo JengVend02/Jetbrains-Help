@@ -2,14 +2,12 @@ package com.zyp.help.context.product;
 
 import cn.hutool.extra.spring.SpringUtil;
 import com.zyp.help.context.product.model.Product;
-import com.zyp.help.context.product.model.ProductCache;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.env.Environment;
 
-import java.util.List;
 
 /**
  * 产品配置管理类
@@ -20,7 +18,7 @@ import java.util.List;
  * @author zyp
  * @version 1.0.0
  */
-@Slf4j
+@Slf4j(topic = "产品配置")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class ProductConfig {

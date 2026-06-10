@@ -23,7 +23,7 @@ import java.util.stream.Collectors;
  * @author zyp
  * @version 1.0.0
  */
-@Slf4j
+@Slf4j(topic = "产品处理")
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class ProductProcessService {
 

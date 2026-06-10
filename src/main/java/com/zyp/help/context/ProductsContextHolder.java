@@ -1,7 +1,6 @@
 package com.zyp.help.context;
 
 import com.zyp.help.context.common.UpdateTimeCache;
-import com.zyp.help.context.plugin.service.PluginCacheService;
 import com.zyp.help.context.product.ProductConfig;
 import com.zyp.help.context.product.model.ProductCache;
 import com.zyp.help.context.product.service.ProductProcessService;
@@ -11,7 +10,6 @@ import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 

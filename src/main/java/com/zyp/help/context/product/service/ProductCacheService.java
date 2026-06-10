@@ -15,8 +15,6 @@ import lombok.extern.slf4j.Slf4j;
 
 import java.io.File;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * 产品缓存服务类
@@ -31,7 +29,7 @@ import java.util.List;
  * @author zyp
  * @version 1.0.0
  */
-@Slf4j
+@Slf4j(topic = "产品缓存")
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @Getter
 public class ProductCacheService {

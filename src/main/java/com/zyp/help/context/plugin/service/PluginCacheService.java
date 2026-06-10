@@ -7,8 +7,6 @@ import cn.hutool.core.text.CharSequenceUtil;
 import cn.hutool.json.JSONUtil;
 import com.zyp.help.context.plugin.PluginConfig;
 import com.zyp.help.context.plugin.model.Plugin;
-import com.zyp.help.context.plugin.model.PluginCache;
-import com.zyp.help.context.common.UpdateTimeCache;
 import com.zyp.help.util.FileTools;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -17,8 +15,6 @@ import lombok.extern.slf4j.Slf4j;
 
 import java.io.File;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * 插件缓存服务类
@@ -33,7 +29,7 @@ import java.util.List;
  * @author zyp
  * @version 1.0.0
  */
-@Slf4j
+@Slf4j(topic = "插件缓存")
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @Getter
 public class PluginCacheService {

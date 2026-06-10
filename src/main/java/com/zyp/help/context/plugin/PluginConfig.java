@@ -2,15 +2,12 @@ package com.zyp.help.context.plugin;
 
 import cn.hutool.extra.spring.SpringUtil;
 import com.zyp.help.context.plugin.model.Plugin;
-import com.zyp.help.context.plugin.model.PluginCache;
-import com.zyp.help.context.common.UpdateTimeCache;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.env.Environment;
 
-import java.util.List;
 import java.util.concurrent.ExecutorService;
 
 /**
@@ -22,7 +19,7 @@ import java.util.concurrent.ExecutorService;
  * @author zyp
  * @version 1.0.0
  */
-@Slf4j
+@Slf4j(topic = "插件配置")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class PluginConfig {
