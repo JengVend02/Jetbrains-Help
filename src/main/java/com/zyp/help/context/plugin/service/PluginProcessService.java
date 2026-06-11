@@ -56,7 +56,6 @@ public class PluginProcessService {
         List<PluginList.Plugin> filteredPlugins = pluginList.getPlugins()
             .stream()
             .filter(plugin -> !isPluginExists(plugin, existingCacheIds))
-            .filter(plugin -> !isFreePlugin(plugin))
             .collect(Collectors.toList());
 
         log.info("插件过滤完成 -> 原始数量: {}, 过滤后数量: {}",
@@ -154,15 +153,5 @@ public class PluginProcessService {
         }
 
         return existingCache.contains(plugin.getIdS());
-    }
-
-    /**
-     * 检查是否为免费插件
-     *
-     * @param plugin 插件基本信息
-     * @return 如果是免费插件返回true，否则返回false
-     */
-    private static boolean isFreePlugin(PluginList.Plugin plugin) {
-        return CharSequenceUtil.equals(plugin.getPricingModel(), "FREE");
     }
 }
