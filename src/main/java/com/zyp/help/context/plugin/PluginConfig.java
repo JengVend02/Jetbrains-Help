@@ -31,7 +31,7 @@ public class PluginConfig {
 
     /** 插件列表API地址模板 */
     public static final String PLUGIN_LIST_URL_TEMPLATE =
-        PLUGIN_BASIC_URL + "/api/searchPlugins?max=%d&offset=%d&orderBy=name";
+        PLUGIN_BASIC_URL + "/api/searchPlugins?max=%d&offset=%d&orderBy=name&pricingModels=PAID&pricingModels=FREEMIUM";
 
     /** 插件详情API地址模板 */
     public static final String PLUGIN_INFO_URL = PLUGIN_BASIC_URL + "/api/plugins/";
