@@ -64,7 +64,7 @@ public class PluginsContextHolder {
             log.info("插件上下文初始化成功！加载插件数量: {}", PluginConfig.pluginCache.getPlugin().size());
 
             // 启动异步刷新任务获取最新数据
-            refreshJsonFile();
+            // refreshJsonFile();
 
         } catch (Exception e) {
             log.error("插件上下文初始化失败", e);
