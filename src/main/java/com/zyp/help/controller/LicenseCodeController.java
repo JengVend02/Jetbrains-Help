@@ -120,6 +120,9 @@ public class LicenseCodeController {
         /** 并发用户数 1-1000 */
         private Integer userCount;
 
+        /** 产品代码（多个代码用逗号分隔，为空时包含所有产品） */
+        private String productCode;
+
         /** 激活产品列表 */
         private String activationProduct;
 
