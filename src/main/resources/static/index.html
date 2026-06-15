@@ -220,8 +220,8 @@
                   <p class="text-sm text-gray-600 mb-2">JRebel 服务器地址：</p>
                   <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2">
                     <input :value="jrebelServerUrl" readonly class="flex-1 bg-white border border-gray-300 rounded-lg px-3 py-2 text-sm min-w-0" />
-                    <button @click="copyToClipboard(jrebelServerUrl)" class="px-4 py-2 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition-colors whitespace-nowrap">
-                      <i class="fas fa-copy mr-2"></i>复制
+                    <button @click="copyToClipboard(jrebelServerUrl)" class="px-3 py-2 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition-colors whitespace-nowrap" title="复制">
+                      <i class="fas fa-copy"></i>
                     </button>
                   </div>
                 </div>
@@ -872,15 +872,15 @@
         <div class="overflow-y-auto p-6 md:p-8">
 
         <div class="space-y-6 text-left">
-          <!-- 方法1 -->
+          <!-- 代理配置-windows -->
           <div class="bg-gradient-to-r from-green-50 to-blue-50 rounded-lg p-5 border-l-4 border-green-500">
             <h3 class="text-lg font-bold text-gray-900 mb-3 flex items-center">
-              <span class="bg-green-500 text-white px-2 py-1 rounded text-sm mr-2">推荐</span>
-              方法1
+              <i class="fas fa-cog text-purple-600 mr-2"></i>
+              代理配置-windows
             </h3>
             <ol class="space-y-3 text-sm text-gray-700 list-decimal list-inside">
               <li class="pl-2">
-                <span class="font-medium">直接下载</span>
+                <span class="font-medium">下载</span>
                 <button @click="downloadAgent" class="inline-flex items-center gap-1.5 px-3 py-1.5 ml-2 text-xs font-medium text-purple-600 bg-purple-50 hover:bg-purple-100 border border-purple-200 rounded-lg transition-all">
                   <i class="fas fa-download"></i>
                   <span>ja-netfilter.zip</span>
@@ -913,103 +913,34 @@
             </ol>
           </div>
 
-          <!-- 方法2 -->
+          <!-- 代理配置-mac -->
           <div class="bg-gray-50 rounded-lg p-5 border-l-4 border-gray-400">
             <h3 class="text-lg font-bold text-gray-900 mb-3 flex items-center">
-              <span class="bg-gray-500 text-white px-2 py-1 rounded text-sm mr-2">备选</span>
-              方法2
+              <i class="fas fa-cog text-purple-600 mr-2"></i>
+              代理配置-mac
             </h3>
             <ol class="space-y-3 text-sm text-gray-700 list-decimal list-inside">
               <li class="pl-2">
-                <span class="font-medium">下载最新版原始工具</span>
-                <a href="https://gitee.com/ja-netfilter/ja-netfilter/releases" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-700 underline ml-1 inline-flex items-center gap-1">
-                  ja-netfilter <i class="fas fa-external-link-alt text-xs"></i>
-                </a>
-                <span class="font-medium">，解压后放入</span> <strong class="text-red-600">不包含中文路径</strong> <span class="font-medium">的任意目录</span>
+                <span class="font-medium">下载</span>
+                <button @click="downloadAgent" class="inline-flex items-center gap-1.5 px-3 py-1.5 ml-2 text-xs font-medium text-purple-600 bg-purple-50 hover:bg-purple-100 border border-purple-200 rounded-lg transition-all">
+                  <i class="fas fa-download"></i>
+                  <span>ja-netfilter.zip</span>
+                </button>
+                <span class="font-medium">工具包</span>
               </li>
+              <li class="pl-2"><span class="font-medium">解压后放入</span> <strong class="text-red-600">不包含中文路径</strong> <span class="font-medium">的任意目录</span></li>
               <li class="pl-2">
-                <span class="font-medium">配置工具包</span> <code class="bg-gray-100 px-2 py-0.5 rounded text-xs">\config\dns.conf</code>
-                <pre class="bg-gray-800 text-green-400 p-3 rounded-lg mt-2 text-xs overflow-x-auto"><code>[DNS]
-
-EQUAL,jetbrains.com
-EQUAL,dbeaver.com
-EQUAL,plugin.obroom.com</code></pre>
-              </li>
-              <li class="pl-2">
-                <span class="font-medium">配置工具包</span> <code class="bg-gray-100 px-2 py-0.5 rounded text-xs">\config\url.conf</code>
-                <pre class="bg-gray-800 text-green-400 p-3 rounded-lg mt-2 text-xs overflow-x-auto"><code>[URL]
-
-PREFIX,https://check-license.squaretest.com
-
-PREFIX,https://account.jetbrains.com/lservice/rpc/validateKey.action
-PREFIX,https://account.jetbrains.com/lservice/rpc/validateLicense.action
-PREFIX,https://account.jetbrains.com/lservice/rpc/obtainAgreement.action
-PREFIX,https://account.jetbrains.com/lservice/rpc/obtainLicense.action
-PREFIX,https://account.jetbrains.com/lservice/rpc/fetchData.action
-
-PREFIX,https://account.jetbrains.com.cn/lservice/rpc/validateKey.action
-PREFIX,https://account.jetbrains.com.cn/lservice/rpc/validateLicense.action
-PREFIX,https://account.jetbrains.com.cn/lservice/rpc/obtainAgreement.action
-PREFIX,https://account.jetbrains.com.cn/lservice/rpc/obtainLicense.action
-PREFIX,https://account.jetbrains.com.cn/lservice/rpc/fetchData.action</code></pre>
-              </li>
-              <li class="pl-2">
-                <span class="font-medium">配置工具包</span> <code class="bg-gray-100 px-2 py-0.5 rounded text-xs">\config\power.conf</code>
-                <div class="mt-2 ml-2">
-                  <button @click="viewPowerConf" class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-blue-600 bg-blue-50 hover:bg-blue-100 border border-blue-200 rounded-lg transition-all">
-                    <i class="fas fa-file-code"></i>
-                    <span>获取 power.conf 配置值</span>
-                  </button>
-                </div>
-              </li>
-              <li class="pl-2">
-                <span class="font-medium">配置工具包</span> <code class="bg-gray-100 px-2 py-0.5 rounded text-xs">\vmoptions</code>
+                <span class="font-medium">之前使用过代理工具：</span>
                 <ul class="list-disc list-inside ml-4 mt-1 space-y-1 text-xs">
-                  <li><code class="bg-gray-100 px-1.5 py-0.5 rounded">vmoptions</code> 目录下所有文件均在最后一行添加 <code class="bg-yellow-100 px-1.5 py-0.5 rounded">-javaagent:破解包里ja-netfilter.jar的绝对路径</code></li>
-                  <li>例如：<code class="bg-gray-100 px-1.5 py-0.5 rounded">-javaagent:D:\ja-netfilter\ja-netfilter.jar</code></li>
+                  <li>调用控制台先执行 <code class="bg-gray-100 px-1.5 py-0.5 rounded">/scripts/uninstall.sh</code> 等待 <code class="bg-green-100 px-1.5 py-0.5 rounded">Done</code> 输出</li>
+                  <li>再调用控制台先执行 <code class="bg-gray-100 px-1.5 py-0.5 rounded">/scripts/install.sh</code> 等待 <code class="bg-green-100 px-1.5 py-0.5 rounded">Done</code> 输出</li>
                 </ul>
               </li>
               <li class="pl-2">
-                <span class="font-medium">配置电脑【用户变量】</span>
-                <p class="text-xs text-gray-600 mt-1 ml-2">右键我的电脑 → 属性 → 高级系统设置 → 环境变量 → 用户变量 → 新建</p>
-                <div class="mt-2 overflow-x-auto">
-                  <table class="min-w-full text-xs border-collapse">
-                    <thead>
-                    <tr class="bg-gray-200">
-                      <th class="border border-gray-300 px-2 py-1.5 text-left font-semibold">变量名</th>
-                      <th class="border border-gray-300 px-2 py-1.5 text-left font-semibold">变量值</th>
-                    </tr>
-                    </thead>
-                    <tbody class="bg-white">
-                    <tr><td class="border border-gray-300 px-2 py-1.5 font-mono text-xs">APPCODE_VM_OPTIONS</td><td class="border border-gray-300 px-2 py-1.5">破解包路径\vmoptions\appcode.vmoptions</td></tr>
-                    <tr><td class="border border-gray-300 px-2 py-1.5 font-mono text-xs">CLION_VM_OPTIONS</td><td class="border border-gray-300 px-2 py-1.5">破解包路径\vmoptions\clion.vmoptions</td></tr>
-                    <tr><td class="border border-gray-300 px-2 py-1.5 font-mono text-xs">DATAGRIP_VM_OPTIONS</td><td class="border border-gray-300 px-2 py-1.5">破解包路径\vmoptions\datagrip.vmoptions</td></tr>
-                    <tr><td class="border border-gray-300 px-2 py-1.5 font-mono text-xs">DATASPELL_VM_OPTIONS</td><td class="border border-gray-300 px-2 py-1.5">破解包路径\vmoptions\dataspell.vmoptions</td></tr>
-                    <tr><td class="border border-gray-300 px-2 py-1.5 font-mono text-xs">DEVECOSTUDIO_VM_OPTIONS</td><td class="border border-gray-300 px-2 py-1.5">破解包路径\vmoptions\devecostudio.vmoptions</td></tr>
-                    <tr><td class="border border-gray-300 px-2 py-1.5 font-mono text-xs">GATEWAY_VM_OPTIONS</td><td class="border border-gray-300 px-2 py-1.5">破解包路径\vmoptions\gateway.vmoptions</td></tr>
-                    <tr><td class="border border-gray-300 px-2 py-1.5 font-mono text-xs">GOLAND_VM_OPTIONS</td><td class="border border-gray-300 px-2 py-1.5">破解包路径\vmoptions\goland.vmoptions</td></tr>
-                    <tr><td class="border border-gray-300 px-2 py-1.5 font-mono text-xs">IDEA_VM_OPTIONS</td><td class="border border-gray-300 px-2 py-1.5">破解包路径\vmoptions\idea.vmoptions</td></tr>
-                    <tr><td class="border border-gray-300 px-2 py-1.5 font-mono text-xs">JETBRAINS_CLIENT_VM_OPTIONS</td><td class="border border-gray-300 px-2 py-1.5">破解包路径\vmoptions\jetbrains_client.vmoptions</td></tr>
-                    <tr><td class="border border-gray-300 px-2 py-1.5 font-mono text-xs">JETBRAINSCLIENT_VM_OPTIONS</td><td class="border border-gray-300 px-2 py-1.5">破解包路径\vmoptions\jetbrainsclient.vmoptions</td></tr>
-                    <tr><td class="border border-gray-300 px-2 py-1.5 font-mono text-xs">PHPSTORM_VM_OPTIONS</td><td class="border border-gray-300 px-2 py-1.5">破解包路径\vmoptions\phpstorm.vmoptions</td></tr>
-                    <tr><td class="border border-gray-300 px-2 py-1.5 font-mono text-xs">PYCHARM_VM_OPTIONS</td><td class="border border-gray-300 px-2 py-1.5">破解包路径\vmoptions\pycharm.vmoptions</td></tr>
-                    <tr><td class="border border-gray-300 px-2 py-1.5 font-mono text-xs">RIDER_VM_OPTIONS</td><td class="border border-gray-300 px-2 py-1.5">破解包路径\vmoptions\rider.vmoptions</td></tr>
-                    <tr><td class="border border-gray-300 px-2 py-1.5 font-mono text-xs">RUBYMINE_VM_OPTIONS</td><td class="border border-gray-300 px-2 py-1.5">破解包路径\vmoptions\rubymine.vmoptions</td></tr>
-                    <tr><td class="border border-gray-300 px-2 py-1.5 font-mono text-xs">STUDIO_VM_OPTIONS</td><td class="border border-gray-300 px-2 py-1.5">破解包路径\vmoptions\studio.vmoptions</td></tr>
-                    <tr><td class="border border-gray-300 px-2 py-1.5 font-mono text-xs">WEBIDE_VM_OPTIONS</td><td class="border border-gray-300 px-2 py-1.5">破解包路径\vmoptions\webide.vmoptions</td></tr>
-                    <tr><td class="border border-gray-300 px-2 py-1.5 font-mono text-xs">WEBSTORM_VM_OPTIONS</td><td class="border border-gray-300 px-2 py-1.5">破解包路径\vmoptions\webstorm.vmoptions</td></tr>
-                    </tbody>
-                  </table>
-                </div>
-              </li>
-              <li class="pl-2">
-                <div class="mt-3 p-3 bg-red-50 border-l-4 border-red-500 rounded-r-lg">
-                  <div class="flex items-center gap-2">
-                    <i class="fas fa-exclamation-triangle text-red-600"></i>
-                    <span class="font-bold text-red-700">重启电脑（重要）</span>
-                  </div>
-                  <p class="text-xs text-red-600 mt-1 ml-6">必须重启才能使配置生效！</p>
-                </div>
+                <span class="font-medium">之前未使用过代理工具：</span>
+                <ul class="list-disc list-inside ml-4 mt-1 text-xs">
+                  <li>调用控制台先执行 <code class="bg-gray-100 px-1.5 py-0.5 rounded">/scripts/install.sh</code> 等待 <code class="bg-green-100 px-1.5 py-0.5 rounded">Done</code> 输出</li>
+                </ul>
               </li>
             </ol>
           </div>
@@ -1022,13 +953,28 @@ PREFIX,https://account.jetbrains.com.cn/lservice/rpc/fetchData.action</code></pr
             </h3>
             <ol class="space-y-3 text-sm text-gray-700 list-decimal list-inside">
               <li class="pl-2">
-                <span class="font-medium">激活码方式：</span>在Web界面生成产品或插件激活码
+                <span class="font-medium">激活码方式：</span>在
+                <button @click="navigateTo('products')" class="inline-flex items-center gap-1.5 px-3 py-1.5 ml-2 text-xs font-medium text-purple-600 bg-purple-50 hover:bg-purple-100 border border-purple-200 rounded-lg transition-all">
+                  <i class="fas fa-cube mr-2"></i>
+                  激活产品
+                </button>
+                页面生成产品或插件激活码
               </li>
               <li class="pl-2">
-                <span class="font-medium">服务器方式：</span>配置许可证服务器地址为应用根地址
+                <span class="font-medium">服务器方式：</span>将
+                <input :value="serverUrl" readonly class="flex-1 bg-white border border-gray-300 rounded-lg px-3 py-2 text-sm min-w-0" />
+                <button @click="copyToClipboard(serverUrl)" class="px-3 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors whitespace-nowrap" title="复制">
+                  <i class="fas fa-copy"></i>
+                </button>
+                填入【许可证服务器-服务器地址】
               </li>
               <li class="pl-2">
-                <span class="font-medium">JRebel激活：</span>使用 <code class="bg-purple-100 px-2 py-0.5 rounded">{服务器地址}/{uuid}</code> 格式
+                <span class="font-medium">JRebel激活：</span>将
+                <input :value="jrebelServerUrl" readonly class="flex-1 bg-white border border-gray-300 rounded-lg px-3 py-2 text-sm min-w-0" />
+                <button @click="copyToClipboard(jrebelServerUrl)" class="px-3 py-2 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition-colors whitespace-nowrap" title="复制">
+                  <i class="fas fa-copy"></i>
+                </button>
+                填入【Team URL】，邮箱随意填写
               </li>
             </ol>
           </div>
