@@ -10,7 +10,7 @@ const App = {
       showLicenseModal: false,
       showResultModal: false,
       showPowerConfModal: false,
-      showUsageModal: false,
+      showUsageModal: true,
       powerConfContent: '',
       isGenerating: false,
       config: {
