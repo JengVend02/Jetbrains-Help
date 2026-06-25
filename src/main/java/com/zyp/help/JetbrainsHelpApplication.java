@@ -121,12 +121,12 @@ public class JetbrainsHelpApplication {
     }
 
     /**
-     * 定时刷新产品信息任务
+     * 定时刷新产品信息任务 - 20260625(产品列表不完善,不刷新产品)
      *
      * <p>每月1号中午12点执行一次，从JetBrains官网获取最新的产品信息。
      * 支持通过配置文件开关控制是否启用该定时任务。
      */
-    @Scheduled(cron = "0 0 12 1 * ?")
+    // @Scheduled(cron = "0 0 12 1 * ?")
     public void refreshProduct() {
         // 检查是否启用定时刷新功能
         ProductConfig config = ProductConfig.getInstance();

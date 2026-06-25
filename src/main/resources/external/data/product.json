@@ -43,13 +43,6 @@
       "icon": "https://resources.jetbrains.com/storage/logos/web/webstorm/webstorm.svg"
     },
     {
-      "name": "Air",
-      "productCode": "AIR",
-      "link": "https://air.jetbrains.com",
-      "description": "An Agentic Development Environment",
-      "icon": "https://resources.jetbrains.com/storage/logos/web/air/air.svg"
-    },
-    {
       "name": "AppCode",
       "productCode": "AC",
       "link": "https://www.jetbrains.com/objc",
@@ -64,18 +57,55 @@
       "icon": "https://resources.jetbrains.com/storage/logos/web/clion/clion.svg"
     },
     {
-      "name": "Code With Me Lobby",
-      "productCode": "CWME",
-      "link": "https://www.jetbrains.com/code-with-me/on-prem",
-      "description": "Lobby Server for Code With Me",
-      "icon": "https://resources.jetbrains.com/storage/logos/web/code-with-me/code-with-me.svg"
-    },
-    {
       "name": "DataSpell",
       "productCode": "DS",
       "link": "https://www.jetbrains.com/dataspell",
       "description": "The IDE for data analysis",
       "icon": "https://resources.jetbrains.com/storage/logos/web/dataspell/dataspell.svg"
+    },
+    {
+      "name": "GoLand",
+      "productCode": "GO",
+      "link": "https://www.jetbrains.com/go",
+      "description": "An IDE for Go and Web",
+      "icon": "https://resources.jetbrains.com/storage/logos/web/goland/goland.svg"
+    },
+    {
+      "name": "Rider",
+      "productCode": "RD",
+      "link": "https://www.jetbrains.com/rider",
+      "description": "All-in-one IDE for .NET and game development",
+      "icon": "https://resources.jetbrains.com/storage/logos/web/rider/rider.svg"
+    },
+    {
+      "name": "RubyMine",
+      "productCode": "RM",
+      "link": "https://www.jetbrains.com/ruby",
+      "description": "A Ruby and Rails IDE",
+      "icon": "https://resources.jetbrains.com/storage/logos/web/rubymine/rubymine.svg"
+    },
+    {
+      "name": "RustRover",
+      "productCode": "RR",
+      "link": "https://www.jetbrains.com/rust",
+      "description": "A powerful IDE for Rust",
+      "icon": "https://resources.jetbrains.com/storage/logos/web/rustrover/rustrover.svg"
+    }
+  ],
+  "exclude": [
+    {
+      "name": "Air",
+      "productCode": "AIR",
+      "link": "https://air.jetbrains.com",
+      "description": "An Agentic Development Environment",
+      "icon": "https://resources.jetbrains.com/storage/logos/web/air/air.svg"
+    },
+    {
+      "name": "Code With Me Lobby",
+      "productCode": "CWME",
+      "link": "https://www.jetbrains.com/code-with-me/on-prem",
+      "description": "Lobby Server for Code With Me",
+      "icon": "https://resources.jetbrains.com/storage/logos/web/code-with-me/code-with-me.svg"
     },
     {
       "name": "dotCover",
@@ -106,13 +136,6 @@
       "icon": "https://resources.jetbrains.com/storage/logos/web/fleet/fleet.svg"
     },
     {
-      "name": "GoLand",
-      "productCode": "GO",
-      "link": "https://www.jetbrains.com/go",
-      "description": "An IDE for Go and Web",
-      "icon": "https://resources.jetbrains.com/storage/logos/web/goland/goland.svg"
-    },
-    {
       "name": "ReSharper",
       "productCode": "RS0",
       "link": "https://www.jetbrains.com/resharper",
@@ -134,27 +157,6 @@
       "icon": "https://resources.jetbrains.com/storage/logos/web/resharper/resharper.svg"
     },
     {
-      "name": "Rider",
-      "productCode": "RD",
-      "link": "https://www.jetbrains.com/rider",
-      "description": "All-in-one IDE for .NET and game development",
-      "icon": "https://resources.jetbrains.com/storage/logos/web/rider/rider.svg"
-    },
-    {
-      "name": "RubyMine",
-      "productCode": "RM",
-      "link": "https://www.jetbrains.com/ruby",
-      "description": "A Ruby and Rails IDE",
-      "icon": "https://resources.jetbrains.com/storage/logos/web/rubymine/rubymine.svg"
-    },
-    {
-      "name": "RustRover",
-      "productCode": "RR",
-      "link": "https://www.jetbrains.com/rust",
-      "description": "A powerful IDE for Rust",
-      "icon": "https://resources.jetbrains.com/storage/logos/web/rustrover/rustrover.svg"
-    },
-    {
       "name": "TeamCity Cloud<br>TeamCity",
       "productCode": "TCC0,TC",
       "link": "https://www.jetbrains.com/teamcity",
@@ -169,8 +171,7 @@
       "icon": "https://resources.jetbrains.com/storage/logos/web/youtrack/youtrack.svg"
     }
   ],
-  "updateTime":
-  [
+  "updateTime":[
     {
       "oldNum": 0,
       "addNum": 24,

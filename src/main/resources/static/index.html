@@ -239,12 +239,12 @@
           <div class="mb-8">
             <h2 class="text-3xl font-bold text-gray-900 mb-4">JetBrains 产品</h2>
             <!-- 更新时间展示 -->
-            <div class="flex items-left justify-left space-x-2">
+            <!--<div class="flex items-left justify-left space-x-2">
               <span>产品更新时间：<span class="font-medium text-purple-600">{{ lastProductUpdateTime || '未加载' }}</span></span>
               <button @click="getProductUpdateTime" class="p-1.5 text-purple-600 hover:text-purple-700 hover:bg-purple-50 rounded-lg transition-all" title="刷新更新时间">
                 <i class="fas fa-sync-alt"></i>
               </button>
-            </div>
+            </div>-->
 
             <!-- 搜索框 -->
             <div class="search-container max-w-md relative">
@@ -425,12 +425,12 @@
                                currentRecordTab === 'code' ? 'text-purple-600 border-b-2 border-purple-600' : 'text-gray-500 hover:text-gray-700']">
                   <i class="fas fa-key mr-2"></i>激活码
                 </button>
-                <button
+                <!--<button
                         @click="currentRecordTab = 'product'"
                         :class="['px-6 py-4 text-sm font-medium transition-colors relative',
                                currentRecordTab === 'product' ? 'text-purple-600 border-b-2 border-purple-600' : 'text-gray-500 hover:text-gray-700']">
                   <i class="fas fa-clock mr-2"></i>产品
-                </button>
+                </button>-->
                 <button
                         @click="currentRecordTab = 'plugin'"
                         :class="['px-6 py-4 text-sm font-medium transition-colors relative',
