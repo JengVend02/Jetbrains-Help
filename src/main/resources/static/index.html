@@ -872,11 +872,11 @@
         <div class="overflow-y-auto p-6 md:p-8">
 
         <div class="space-y-6 text-left">
-          <!-- 代理配置-windows -->
+          <!-- 代理配置 -->
           <div class="bg-gradient-to-r from-green-50 to-blue-50 rounded-lg p-5 border-l-4 border-green-500">
             <h3 class="text-lg font-bold text-gray-900 mb-3 flex items-center">
               <i class="fas fa-cog text-purple-600 mr-2"></i>
-              代理配置-windows
+              代理配置
             </h3>
             <ol class="space-y-3 text-sm text-gray-700 list-decimal list-inside">
               <li class="pl-2">
@@ -891,14 +891,37 @@
               <li class="pl-2">
                 <span class="font-medium">之前使用过代理工具：</span>
                 <ul class="list-disc list-inside ml-4 mt-1 space-y-1 text-xs">
-                  <li>先执行 <code class="bg-gray-100 px-1.5 py-0.5 rounded">/scripts/uninstall-all-users.vbs</code> 等待 <code class="bg-green-100 px-1.5 py-0.5 rounded">Done</code> 弹窗</li>
-                  <li>再执行 <code class="bg-gray-100 px-1.5 py-0.5 rounded">/scripts/install-current-user.vbs</code> 等待 <code class="bg-green-100 px-1.5 py-0.5 rounded">Done</code> 弹窗</li>
-                </ul>
+                  <li>
+                    windows
+                    <ul class="list-disc list-inside ml-4 mt-1 space-y-1 text-xs">
+                      <li>先执行 <code class="bg-gray-100 px-1.5 py-0.5 rounded">/scripts/uninstall-all-users.vbs</code> 等待 <code class="bg-green-100 px-1.5 py-0.5 rounded">Done</code> 弹窗</li>
+                      <li>再执行 <code class="bg-gray-100 px-1.5 py-0.5 rounded">/scripts/install-current-user.vbs</code> 等待 <code class="bg-green-100 px-1.5 py-0.5 rounded">Done</code> 弹窗</li>
+                    </ul>
+                  </li>
+                  <li>
+                    mac
+                    <ul class="list-disc list-inside ml-4 mt-1 space-y-1 text-xs">
+                      <li>调用控制台执行 <code class="bg-gray-100 px-1.5 py-0.5 rounded">/scripts/uninstall.sh</code> 等待 <code class="bg-green-100 px-1.5 py-0.5 rounded">Done</code> 输出</li>
+                      <li>再调用控制台执行 <code class="bg-gray-100 px-1.5 py-0.5 rounded">/scripts/install.sh</code> 等待 <code class="bg-green-100 px-1.5 py-0.5 rounded">Done</code> 输出</li>
+                    </ul>
+                  </li>
+                 </ul>
               </li>
               <li class="pl-2">
                 <span class="font-medium">之前未使用过代理工具：</span>
                 <ul class="list-disc list-inside ml-4 mt-1 text-xs">
-                  <li>执行 <code class="bg-gray-100 px-1.5 py-0.5 rounded">/scripts/install-current-user.vbs</code> 等待 <code class="bg-green-100 px-1.5 py-0.5 rounded">Done</code> 弹窗</li>
+                  <li>
+                    windows
+                    <ul class="list-disc list-inside ml-4 mt-1 text-xs">
+                      <li>执行 <code class="bg-gray-100 px-1.5 py-0.5 rounded">/scripts/install-current-user.vbs</code> 等待 <code class="bg-green-100 px-1.5 py-0.5 rounded">Done</code> 弹窗</li>
+                    </ul>
+                  </li>
+                  <li>
+                    mac
+                    <ul class="list-disc list-inside ml-4 mt-1 text-xs">
+                      <li>调用控制台执行 <code class="bg-gray-100 px-1.5 py-0.5 rounded">/scripts/install.sh</code> 等待 <code class="bg-green-100 px-1.5 py-0.5 rounded">Done</code> 输出</li>
+                    </ul>
+                  </li>
                 </ul>
               </li>
               <li class="pl-2">
@@ -909,38 +932,6 @@
                   </div>
                   <p class="text-xs text-red-600 mt-1 ml-6">必须重启才能使配置生效！</p>
                 </div>
-              </li>
-            </ol>
-          </div>
-
-          <!-- 代理配置-mac -->
-          <div class="bg-gray-50 rounded-lg p-5 border-l-4 border-gray-400">
-            <h3 class="text-lg font-bold text-gray-900 mb-3 flex items-center">
-              <i class="fas fa-cog text-purple-600 mr-2"></i>
-              代理配置-mac
-            </h3>
-            <ol class="space-y-3 text-sm text-gray-700 list-decimal list-inside">
-              <li class="pl-2">
-                <span class="font-medium">下载</span>
-                <button @click="downloadAgent" class="inline-flex items-center gap-1.5 px-3 py-1.5 ml-2 text-xs font-medium text-purple-600 bg-purple-50 hover:bg-purple-100 border border-purple-200 rounded-lg transition-all">
-                  <i class="fas fa-download"></i>
-                  <span>ja-netfilter.zip</span>
-                </button>
-                <span class="font-medium">工具包</span>
-              </li>
-              <li class="pl-2"><span class="font-medium">解压后放入</span> <strong class="text-red-600">不包含中文路径</strong> <span class="font-medium">的任意目录</span></li>
-              <li class="pl-2">
-                <span class="font-medium">之前使用过代理工具：</span>
-                <ul class="list-disc list-inside ml-4 mt-1 space-y-1 text-xs">
-                  <li>调用控制台先执行 <code class="bg-gray-100 px-1.5 py-0.5 rounded">/scripts/uninstall.sh</code> 等待 <code class="bg-green-100 px-1.5 py-0.5 rounded">Done</code> 输出</li>
-                  <li>再调用控制台先执行 <code class="bg-gray-100 px-1.5 py-0.5 rounded">/scripts/install.sh</code> 等待 <code class="bg-green-100 px-1.5 py-0.5 rounded">Done</code> 输出</li>
-                </ul>
-              </li>
-              <li class="pl-2">
-                <span class="font-medium">之前未使用过代理工具：</span>
-                <ul class="list-disc list-inside ml-4 mt-1 text-xs">
-                  <li>调用控制台先执行 <code class="bg-gray-100 px-1.5 py-0.5 rounded">/scripts/install.sh</code> 等待 <code class="bg-green-100 px-1.5 py-0.5 rounded">Done</code> 输出</li>
-                </ul>
               </li>
             </ol>
           </div>
