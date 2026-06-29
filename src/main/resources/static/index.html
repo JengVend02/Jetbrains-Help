@@ -148,10 +148,21 @@
                 </div>
                 <h3 class="text-lg font-bold text-gray-900">使用说明</h3>
               </div>
-              <button @click="showUsageModal = true" class="w-full px-4 py-2.5 text-sm text-white bg-gradient-to-r from-purple-500 to-indigo-600 hover:from-purple-600 hover:to-indigo-700 font-medium rounded-lg inline-flex items-center justify-center gap-2 transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
-                <i class="fas fa-question-circle"></i> 
-                <span>查看详细说明</span>
-              </button>
+              <div class="flex items-center gap-2">
+                <button @click="showUsageModal = true" class="w-1/2 px-4 py-2.5 text-sm text-white bg-gradient-to-r from-purple-500 to-indigo-600 hover:from-purple-600 hover:to-indigo-700 font-medium rounded-lg inline-flex items-center justify-center gap-2 transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
+                  <i class="fas fa-question-circle"></i>
+                  <span>查看详细说明</span>
+                </button>
+
+                <p class="w-1/2 px-4 py-2.5 text-sm text-white bg-gradient-to-r from-purple-500 to-indigo-600 hover:from-purple-600 hover:to-indigo-700 font-medium rounded-lg inline-flex items-center justify-center gap-2 transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
+                  <a href="https://github.com/JengVend02/Jetbrains-Help/issues/new" target="_blank" rel="noopener noreferrer">
+                    <i class="fas fa-bug mr-1"></i>
+                    <span>报告激活问题</span>
+                  </a>
+                </p>
+              </div>
+
+              <!---->
             </div>
           </div>
 
@@ -867,7 +878,7 @@
             <i class="fas fa-times text-gray-600 group-hover:text-gray-800 text-lg"></i>
           </button>
         </div>
-        
+
         <!-- 可滚动内容区域 -->
         <div class="overflow-y-auto p-6 md:p-8">
 
