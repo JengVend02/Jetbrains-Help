@@ -9,10 +9,9 @@ import com.zyp.help.context.plugin.model.PluginList;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.util.ObjectUtils;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -38,7 +37,7 @@ public class PluginProcessService {
      * <p>过滤条件：
      * <ul>
      *   <li>排除已存在于缓存中的插件</li>
-     *   <li>只保留付费插件（排除FREE类型）</li>
+     *   <li>更新插件评分</li>
      * </ul>
      *
      * @param pluginList 原始插件列表
@@ -50,12 +49,16 @@ public class PluginProcessService {
             return Collections.emptyList();
         }
 
-        // ID以逗号分割的字符串
-        String existingCacheIds = ","+PluginConfig.pluginCache.getPlugin().stream().map(PluginCache::getIdStr).collect(Collectors.joining(","));
+        // Map<id,index> id(插件的唯一标识) index(插件在缓存中的索引)
+        Map<Long, Integer> existingCache  = new HashMap<>();
+        for (int i = 0; i < PluginConfig.pluginCache.getPlugin().size(); i++) {
+            PluginCache pluginCache = PluginConfig.pluginCache.getPlugin().get(i);
+            existingCache.put(pluginCache.getId(),i);
+        }
 
         List<PluginList.Plugin> filteredPlugins = pluginList.getPlugins()
             .stream()
-            .filter(plugin -> !isPluginExists(plugin, existingCacheIds))
+            .filter(plugin -> !isPluginExists(plugin, existingCache))
             .collect(Collectors.toList());
 
         log.info("插件过滤完成 -> 原始数量: {}, 过滤后数量: {}",
@@ -141,17 +144,24 @@ public class PluginProcessService {
     }
 
     /**
-     * 检查插件是否已存在于缓存中
+     * 检查插件是否已存在于缓存中,并更新已存在插件的评分
      *
      * @param plugin 插件基本信息
      * @param existingCache 现有缓存
      * @return 如果存在返回true，否则返回false
      */
-    private static boolean isPluginExists(PluginList.Plugin plugin, String existingCache) {
+    private static boolean isPluginExists(PluginList.Plugin plugin, Map<Long, Integer> existingCache) {
         if (existingCache == null || existingCache.isEmpty()) {
             return false;
         }
-
-        return existingCache.contains(plugin.getIdS());
+        // 获取缓存中该插件的索引
+        Integer index = existingCache.get(plugin.getId());
+        // 缓存中存在插件索引
+        if (!ObjectUtils.isEmpty(index)) {
+            // 更新插件评分
+            PluginConfig.pluginCache.getPlugin().get(index).setRating(plugin.getRating());
+            return true;
+        }
+        return false;
     }
 }

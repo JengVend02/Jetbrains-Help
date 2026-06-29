@@ -39,9 +39,5 @@ public class PluginList {
 
         /** 定价模式（FREE/FREEMIUM/PAID） */
         private String pricingModel;
-
-        public String getIdS() {
-            return String.valueOf(id);
-        }
     }
 }

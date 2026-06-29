@@ -99,7 +99,7 @@ public class PluginsContextHolder {
         CompletableFuture
                 // 1. 从API获取所有插件
             .supplyAsync(PluginApiService::fetchAllPlugins, PluginConfig.executorService)
-                // 2. 过滤插件列表
+                // 2. 过滤并更新插件(评分)列表
             .thenApply(PluginProcessService::filterPlugins)
                 // 3. 转换为缓存对象
             .thenApply(PluginProcessService::convertToCache)
