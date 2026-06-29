@@ -80,6 +80,8 @@ mvn spring-boot:run
      -  \vmoptions目录下所有文件均在最后一行添加 `-javaagent:破解包里ja-netfilter.jar的绝对路径`
      - 例如：`-javaagent:D:\ja-netfilter\ja-netfilter.jar`
   6. 配置电脑【用户变量】
+       - 如何查看应用程序对应的变量名称
+         - 打开`应用程序安装目录\bin\应用程序名称.bat`,搜索`SET USER_VM_OPTIONS_FILE=`
        - 右键我的电脑 -> 属性 -> 高级系统设置 -> 环境变量 -> 用户变量 -> 新建
 
          | 变量名                         | 变量值                                        |
