@@ -291,7 +291,16 @@
                 </div>
                 <h3 class="text-2xl font-bold text-white mb-2">{{ filteredProducts[0].name }}</h3>
                 <p class="text-pink-100 text-base mb-4">{{ filteredProducts[0].description }}</p>
-                <button @click="selectProduct(filteredProducts[0])" class="bg-white text-pink-600 hover:bg-pink-50 py-2 px-6 rounded-lg font-semibold shadow-lg transition-all hover:shadow-xl transform hover:-translate-y-0.5">生成激活码</button>
+                <div class="flex items-center justify-center gap-2">
+                  <button @click="selectProduct(filteredProducts[0])" class="bg-white text-pink-600 hover:bg-pink-50 py-2 px-6 rounded-lg font-semibold shadow-lg transition-all hover:shadow-xl transform hover:-translate-y-0.5">生成激活码</button>
+
+                  <p class="max-w-xs px-4 py-2.5 text-sm text-white bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 font-medium rounded-lg inline-flex items-center justify-center gap-2 transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
+                    <a href="https://github.com/JengVend02/Jetbrains-Help/issues/new" target="_blank" rel="noopener noreferrer">
+                      <i class="fas fa-bug mr-1"></i>
+                      <span>报告激活问题</span>
+                    </a>
+                  </p>
+                </div>
               </div>
             </div>
 
@@ -367,7 +376,16 @@
                 </div>
                 <h3 class="text-2xl font-bold text-white mb-2">{{ filteredProducts[0].name }}</h3>
                 <p class="text-pink-100 text-base mb-4">{{ filteredProducts[0].description }}</p>
-                <button @click="selectProduct(filteredProducts[0])" class="bg-white text-pink-600 hover:bg-pink-50 py-2 px-6 rounded-lg font-semibold shadow-lg transition-all hover:shadow-xl transform hover:-translate-y-0.5">生成激活码</button>
+                <div class="flex items-center justify-center gap-2">
+                  <button @click="selectProduct(filteredProducts[0])" class="bg-white text-pink-600 hover:bg-pink-50 py-2 px-6 rounded-lg font-semibold shadow-lg transition-all hover:shadow-xl transform hover:-translate-y-0.5">生成激活码</button>
+
+                  <p class="max-w-xs px-4 py-2.5 text-sm text-white bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 font-medium rounded-lg inline-flex items-center justify-center gap-2 transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
+                    <a href="https://github.com/JengVend02/Jetbrains-Help/issues/new" target="_blank" rel="noopener noreferrer">
+                      <i class="fas fa-bug mr-1"></i>
+                      <span>报告激活问题</span>
+                    </a>
+                  </p>
+                </div>
               </div>
             </div>
 
