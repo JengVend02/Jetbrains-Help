@@ -160,6 +160,7 @@ public class PluginProcessService {
         if (!ObjectUtils.isEmpty(index)) {
             // 更新插件评分
             PluginConfig.pluginCache.getPlugin().get(index).setRating(plugin.getRating());
+            PluginConfig.pluginCache.getPlugin().get(index).setIcon(buildUrl(plugin.getIcon()));
             return true;
         }
         return false;

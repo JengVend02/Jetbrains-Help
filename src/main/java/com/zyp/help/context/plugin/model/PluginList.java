@@ -34,6 +34,9 @@ public class PluginList {
         /** 插件名称 */
         private String name;
 
+        /** 插件图标 */
+        private String icon;
+
         /** 评分 */
         private Double rating;
 
