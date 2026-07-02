@@ -63,8 +63,4 @@ public class PluginCache {
     public int hashCode() {
         return id.hashCode();
     }
-
-    public String getIdStr() {
-        return String.valueOf(id);
-    }
 }
