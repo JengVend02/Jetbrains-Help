@@ -7,8 +7,8 @@
       "link": "https://plugins.jetbrains.com/plugin/25828--log",
       "name": ".log",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/25828/1009977/icon/default.svg",
-      "rating": 4.41,
+      "icon": "https://plugins.jetbrains.com/files/25828/1098302/icon/default.svg",
+      "rating": 3.79,
       "vendor":
       {
         "id": 12527,
@@ -37,7 +37,7 @@
       "link": "https://plugins.jetbrains.com/plugin/28974-accessibility-compliance-helper-pro",
       "name": "Accessibility Compliance Helper Pro",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/28974/1029898/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/28974/1083601/icon/default.svg",
       "vendor":
       {
         "id": 16537,
@@ -61,12 +61,26 @@
       }
     },
     {
+      "id": 32100,
+      "productCode": "PADBPRO",
+      "link": "https://plugins.jetbrains.com/plugin/32100-adb-pro",
+      "name": "ADB Pro",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/32100/1097658/icon/default.svg",
+      "vendor":
+      {
+        "id": 15190,
+        "name": "4624269c-50f9-4161-a140-4112356bc5bd",
+        "isVerified": true
+      }
+    },
+    {
       "id": 30189,
       "productCode": "PADRCOMPANION",
       "link": "https://plugins.jetbrains.com/plugin/30189-adr-companion",
       "name": "ADR Companion",
       "pricingModel": "FREEMIUM",
-      "icon": "https://plugins.jetbrains.com/files/30189/1024595/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/30189/1095057/icon/default.svg",
       "vendor":
       {
         "id": 16537,
@@ -80,7 +94,7 @@
       "link": "https://plugins.jetbrains.com/plugin/10650-advanced-json-studio",
       "name": "Advanced JSON Studio",
       "pricingModel": "FREEMIUM",
-      "icon": "https://plugins.jetbrains.com/files/10650/1035467/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/10650/1077828/icon/default.svg",
       "rating": 4.88,
       "vendor":
       {
@@ -95,7 +109,7 @@
       "link": "https://plugins.jetbrains.com/plugin/9269-aem-ide",
       "name": "AEM IDE",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/9269/984114/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/9269/1051890/icon/default.svg",
       "rating": 4.84,
       "vendor":
       {
@@ -148,15 +162,16 @@
       }
     },
     {
-      "id": 31227,
-      "productCode": "PAICODEQUALITY",
-      "link": "https://plugins.jetbrains.com/plugin/31227-ai-code-quality-risk",
-      "name": "AI Code Quality Risk",
-      "pricingModel": "FREEMIUM",
+      "id": 32116,
+      "productCode": "PENTETAIWG",
+      "link": "https://plugins.jetbrains.com/plugin/32116-ai-agent-workspace-guard",
+      "name": "AI Agent Workspace Guard",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/32116/1084586/icon/default.svg",
       "vendor":
       {
-        "id": 17446,
-        "name": "adrian-m",
+        "id": 19009,
+        "name": "entet",
         "isVerified": true
       }
     },
@@ -180,12 +195,26 @@
       "link": "https://plugins.jetbrains.com/plugin/21263-ai-coding",
       "name": "AI Coding",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/21263/973956/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/21263/1051413/icon/default.svg",
       "rating": 3.97,
       "vendor":
       {
         "id": 38,
         "name": "YinZhengFei",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 31859,
+      "productCode": "PAIPROMPTCTX",
+      "link": "https://plugins.jetbrains.com/plugin/31859-ai-context-prompt",
+      "name": "AI Context Prompt",
+      "pricingModel": "FREEMIUM",
+      "icon": "https://plugins.jetbrains.com/files/31859/1052086/icon/default.svg",
+      "vendor":
+      {
+        "id": 18587,
+        "name": "jia-mu-geng-jin",
         "isVerified": true
       }
     },
@@ -204,12 +233,26 @@
       }
     },
     {
+      "id": 32028,
+      "productCode": "PAIREVIEWCOMMIT",
+      "link": "https://plugins.jetbrains.com/plugin/32028-ai-review-and-commit",
+      "name": "AI Review and Commit",
+      "pricingModel": "FREEMIUM",
+      "icon": "https://plugins.jetbrains.com/files/32028/1067155/icon/default.svg",
+      "vendor":
+      {
+        "id": 18587,
+        "name": "jia-mu-geng-jin",
+        "isVerified": true
+      }
+    },
+    {
       "id": 31281,
       "productCode": "PAISTRINGTRANSL",
       "link": "https://plugins.jetbrains.com/plugin/31281-ai-string-translator-for-android",
       "name": "AI String Translator for Android",
       "pricingModel": "FREEMIUM",
-      "icon": "https://plugins.jetbrains.com/files/31281/1034344/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/31281/1052080/icon/default.svg",
       "vendor":
       {
         "id": 18442,
@@ -238,12 +281,27 @@
       "link": "https://plugins.jetbrains.com/plugin/21289-aicommit",
       "name": "AICommit",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/21289/1026737/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/21289/1057131/icon/default.svg",
       "rating": 4.54,
       "vendor":
       {
         "id": 858,
         "name": "aicommit",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 29206,
+      "productCode": "PAIVORYARCHITEC",
+      "link": "https://plugins.jetbrains.com/plugin/29206-aivory-architect",
+      "name": "AIVory Architect",
+      "pricingModel": "FREEMIUM",
+      "icon": "https://plugins.jetbrains.com/files/29206/1086110/icon/default.svg",
+      "rating": 4.41,
+      "vendor":
+      {
+        "id": 16362,
+        "name": "aivory",
         "isVerified": true
       }
     },
@@ -267,8 +325,8 @@
       "link": "https://plugins.jetbrains.com/plugin/30132-all-in-one-themes",
       "name": "All In One Themes",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/30132/1041223/icon/default.svg",
-      "rating": 4.55,
+      "icon": "https://plugins.jetbrains.com/files/30132/1090526/icon/default.svg",
+      "rating": 4.74,
       "vendor":
       {
         "id": 9079,
@@ -320,6 +378,20 @@
       }
     },
     {
+      "id": 22931,
+      "productCode": "PANDROIDSUPPORT",
+      "link": "https://plugins.jetbrains.com/plugin/22931-androidsupportframework",
+      "name": "AndroidSupportFramework",
+      "pricingModel": "FREEMIUM",
+      "icon": "https://plugins.jetbrains.com/files/22931/1087949/icon/default.svg",
+      "vendor":
+      {
+        "id": 9467,
+        "name": "250275ea-754c-4102-a8be-7d20f4586a1e",
+        "isVerified": true
+      }
+    },
+    {
       "id": 30422,
       "productCode": "PANDROMEDA",
       "link": "https://plugins.jetbrains.com/plugin/30422-andromeda-dark-theme",
@@ -355,7 +427,7 @@
       "link": "https://plugins.jetbrains.com/plugin/9707-ansi-highlighter-premium",
       "name": "ANSI Highlighter Premium",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/9707/993008/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/9707/1055895/icon/default.svg",
       "rating": 4.87,
       "vendor":
       {
@@ -375,6 +447,34 @@
       {
         "id": 16537,
         "name": "jakub-jirak",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 31743,
+      "productCode": "PANSIBLE",
+      "link": "https://plugins.jetbrains.com/plugin/31743-ansible-pro",
+      "name": "Ansible Pro",
+      "pricingModel": "FREEMIUM",
+      "icon": "https://plugins.jetbrains.com/files/31743/1090199/icon/default.svg",
+      "vendor":
+      {
+        "id": 229,
+        "name": "meanmail",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 32227,
+      "productCode": "PANTLRHELPER",
+      "link": "https://plugins.jetbrains.com/plugin/32227-antlr4-helper",
+      "name": "ANTLR4 Helper",
+      "pricingModel": "PAID",
+      "rating": 4.05,
+      "vendor":
+      {
+        "id": 19206,
+        "name": "maien",
         "isVerified": true
       }
     },
@@ -399,7 +499,7 @@
       "link": "https://plugins.jetbrains.com/plugin/28202-api-blueprint-lifetime-",
       "name": "API Blueprint (Lifetime)",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/28202/946407/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/28202/1065923/icon/default.svg",
       "vendor":
       {
         "id": 469,
@@ -413,7 +513,7 @@
       "link": "https://plugins.jetbrains.com/plugin/29479-api-blueprint-viewer-lifetime-",
       "name": "API Blueprint Viewer (Lifetime)",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/29479/987369/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/29479/1051001/icon/default.svg",
       "vendor":
       {
         "id": 469,
@@ -468,11 +568,25 @@
       "link": "https://plugins.jetbrains.com/plugin/29515-appearance-controls",
       "name": "Appearance Controls",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/29515/1001188/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/29515/1045364/icon/default.svg",
       "vendor":
       {
         "id": 11263,
         "name": "code",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 32123,
+      "productCode": "PAPPLESCRIPT",
+      "link": "https://plugins.jetbrains.com/plugin/32123-applescript-toolkit",
+      "name": "AppleScript Toolkit",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/32123/1097642/icon/default.svg",
+      "vendor":
+      {
+        "id": 19121,
+        "name": "barad1tos-software",
         "isVerified": true
       }
     },
@@ -488,20 +602,6 @@
       {
         "id": 736,
         "name": "Japplis",
-        "isVerified": true
-      }
-    },
-    {
-      "id": 30190,
-      "productCode": "PARCHBREADCRMBS",
-      "link": "https://plugins.jetbrains.com/plugin/30190-architecture-breadcrumbs",
-      "name": "Architecture Breadcrumbs",
-      "pricingModel": "FREEMIUM",
-      "icon": "https://plugins.jetbrains.com/files/30190/983232/icon/default.svg",
-      "vendor":
-      {
-        "id": 16537,
-        "name": "jakub-jirak",
         "isVerified": true
       }
     },
@@ -554,7 +654,7 @@
       "link": "https://plugins.jetbrains.com/plugin/30142-asciidoc-pro",
       "name": "AsciiDoc Pro",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/30142/1034356/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/30142/1097920/icon/default.svg",
       "rating": 4.74,
       "vendor":
       {
@@ -583,8 +683,8 @@
       "link": "https://plugins.jetbrains.com/plugin/30290-astro-pro",
       "name": "Astro Pro",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/30290/1007730/icon/default.svg",
-      "rating": 4.64,
+      "icon": "https://plugins.jetbrains.com/files/30290/1085471/icon/default.svg",
+      "rating": 4.5200000000000005,
       "vendor":
       {
         "id": 17192,
@@ -598,7 +698,7 @@
       "link": "https://plugins.jetbrains.com/plugin/15673-asyncapi",
       "name": "AsyncAPI",
       "pricingModel": "FREEMIUM",
-      "icon": "https://plugins.jetbrains.com/files/15673/1029098/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/15673/1093529/icon/default.svg",
       "rating": 3.92,
       "vendor":
       {
@@ -686,8 +786,8 @@
       "link": "https://plugins.jetbrains.com/plugin/30373-ayu-islands",
       "name": "Ayu Islands",
       "pricingModel": "FREEMIUM",
-      "icon": "https://plugins.jetbrains.com/files/30373/1044073/icon/default.svg",
-      "rating": 4.74,
+      "icon": "https://plugins.jetbrains.com/files/30373/1093753/icon/default.svg",
+      "rating": 4.7700000000000005,
       "vendor":
       {
         "id": 17703,
@@ -701,8 +801,8 @@
       "link": "https://plugins.jetbrains.com/plugin/22319-azd",
       "name": "Azd",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/22319/1041635/icon/default.svg",
-      "rating": 4.72,
+      "icon": "https://plugins.jetbrains.com/files/22319/1098278/icon/default.svg",
+      "rating": 4.71,
       "vendor":
       {
         "id": 483,
@@ -759,26 +859,12 @@
       "link": "https://plugins.jetbrains.com/plugin/13841-bashsupport-pro",
       "name": "BashSupport Pro",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/13841/1042771/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/13841/1045344/icon/default.svg",
       "rating": 4.91,
       "vendor":
       {
         "id": 40,
         "name": "joachim_ansorg",
-        "isVerified": true
-      }
-    },
-    {
-      "id": 29042,
-      "productCode": "PBDDTESTAUTOMAT",
-      "link": "https://plugins.jetbrains.com/plugin/29042-bdd-test-automation-pro",
-      "name": "BDD Test Automation Pro",
-      "pricingModel": "FREEMIUM",
-      "icon": "https://plugins.jetbrains.com/files/29042/983233/icon/default.svg",
-      "vendor":
-      {
-        "id": 16537,
-        "name": "jakub-jirak",
         "isVerified": true
       }
     },
@@ -803,7 +889,7 @@
       "link": "https://plugins.jetbrains.com/plugin/12895-better-highlights",
       "name": "Better Highlights",
       "pricingModel": "FREEMIUM",
-      "icon": "https://plugins.jetbrains.com/files/12895/986119/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/12895/1087293/icon/default.svg",
       "rating": 4.7700000000000005,
       "vendor":
       {
@@ -818,8 +904,8 @@
       "link": "https://plugins.jetbrains.com/plugin/13538-bitbucket-integration-pro",
       "name": "Bitbucket Integration Pro",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/13538/1029510/icon/default.svg",
-      "rating": 4.75,
+      "icon": "https://plugins.jetbrains.com/files/13538/1095748/icon/default.svg",
+      "rating": 4.76,
       "vendor":
       {
         "id": 13,
@@ -843,16 +929,16 @@
       }
     },
     {
-      "id": 30191,
-      "productCode": "PBRANCHHEALTH",
-      "link": "https://plugins.jetbrains.com/plugin/30191-branch-health-dashboard",
-      "name": "Branch Health Dashboard",
+      "id": 31868,
+      "productCode": "PBOOKMARKAI",
+      "link": "https://plugins.jetbrains.com/plugin/31868-bookmarkai",
+      "name": "BookmarkAI",
       "pricingModel": "FREEMIUM",
-      "icon": "https://plugins.jetbrains.com/files/30191/983234/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/31868/1093812/icon/default.svg",
       "vendor":
       {
-        "id": 16537,
-        "name": "jakub-jirak",
+        "id": 18902,
+        "name": "dylanoy",
         "isVerified": true
       }
     },
@@ -862,7 +948,7 @@
       "link": "https://plugins.jetbrains.com/plugin/20061-brew-bundle",
       "name": "Brew Bundle",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/20061/945296/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/20061/1070025/icon/default.svg",
       "rating": 4.41,
       "vendor":
       {
@@ -937,7 +1023,7 @@
       "name": "Chinese (Traditional) Language Pack / IDE 本地化為繁體中文",
       "pricingModel": "PAID",
       "icon": "https://plugins.jetbrains.com/files/25810/1020461/icon/default.svg",
-      "rating": 4.4,
+      "rating": 4.54,
       "vendor":
       {
         "id": 11263,
@@ -980,7 +1066,7 @@
       "link": "https://plugins.jetbrains.com/plugin/29739-close-without-breakpoints-lifetime-",
       "name": "Close Without Breakpoints (Lifetime)",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/29739/1031027/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/29739/1084128/icon/default.svg",
       "vendor":
       {
         "id": 469,
@@ -994,7 +1080,7 @@
       "link": "https://plugins.jetbrains.com/plugin/12869-cmake-plus",
       "name": "CMake Plus",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/12869/1032928/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/12869/1065738/icon/default.svg",
       "rating": 4.44,
       "vendor":
       {
@@ -1009,7 +1095,7 @@
       "link": "https://plugins.jetbrains.com/plugin/17501-code-notes-project-notes-java-pin-notes",
       "name": "Code Notes:Project Notes, Java Pin Notes",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/17501/987286/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/17501/1061463/icon/default.svg",
       "rating": 4.76,
       "vendor":
       {
@@ -1038,7 +1124,7 @@
       "link": "https://plugins.jetbrains.com/plugin/29361-code-review-plus",
       "name": "Code Review Plus",
       "pricingModel": "FREEMIUM",
-      "icon": "https://plugins.jetbrains.com/files/29361/1037674/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/29361/1088518/icon/default.svg",
       "vendor":
       {
         "id": 16828,
@@ -1052,25 +1138,11 @@
       "link": "https://plugins.jetbrains.com/plugin/23390-codecov",
       "name": "Codecov",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/23390/1037081/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/23390/1098094/icon/default.svg",
       "vendor":
       {
         "id": 483,
         "name": "jonatha1983",
-        "isVerified": true
-      }
-    },
-    {
-      "id": 19097,
-      "productCode": "PWGCODECREATOR",
-      "link": "https://plugins.jetbrains.com/plugin/19097-codecreator",
-      "name": "codeCreator",
-      "pricingModel": "FREEMIUM",
-      "rating": 3.0700000000000003,
-      "vendor":
-      {
-        "id": 572,
-        "name": "warren-gates",
         "isVerified": true
       }
     },
@@ -1122,7 +1194,7 @@
       "name": "CodeMR",
       "pricingModel": "PAID",
       "icon": "https://plugins.jetbrains.com/files/10811/585540/icon/default.svg",
-      "rating": 4.87,
+      "rating": 4.74,
       "vendor":
       {
         "id": 145,
@@ -1136,11 +1208,25 @@
       "link": "https://plugins.jetbrains.com/plugin/24958-codeql",
       "name": "CodeQL",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/24958/1009431/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/24958/1065183/icon/default.svg",
       "vendor":
       {
         "id": 469,
         "name": "Anbora-labs",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 31940,
+      "productCode": "PCODEQLJB",
+      "link": "https://plugins.jetbrains.com/plugin/31940-codeql-pro",
+      "name": "CodeQL Pro",
+      "pricingModel": "FREEMIUM",
+      "icon": "https://plugins.jetbrains.com/files/31940/1072530/icon/default.svg",
+      "vendor":
+      {
+        "id": 11263,
+        "name": "code",
         "isVerified": true
       }
     },
@@ -1221,7 +1307,7 @@
       "link": "https://plugins.jetbrains.com/plugin/30551-compose-hotswan",
       "name": "Compose HotSwan",
       "pricingModel": "FREEMIUM",
-      "icon": "https://plugins.jetbrains.com/files/30551/1043645/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/30551/1090963/icon/default.svg",
       "vendor":
       {
         "id": 16379,
@@ -1322,6 +1408,7 @@
       "name": "Czech Language Pack / Lokalizace IDE Do Češtiny",
       "pricingModel": "PAID",
       "icon": "https://plugins.jetbrains.com/files/25811/1020747/icon/default.svg",
+      "rating": 3.06,
       "vendor":
       {
         "id": 11263,
@@ -1354,6 +1441,21 @@
       {
         "id": 742,
         "name": "softsense",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 31226,
+      "productCode": "PDATAPREPROCESS",
+      "link": "https://plugins.jetbrains.com/plugin/31226-data-preprocessor",
+      "name": "Data Preprocessor",
+      "pricingModel": "FREEMIUM",
+      "icon": "https://plugins.jetbrains.com/files/31226/1076563/icon/default.svg",
+      "rating": 4.38,
+      "vendor":
+      {
+        "id": 18396,
+        "name": "keencodelabs",
         "isVerified": true
       }
     },
@@ -1392,8 +1494,8 @@
       "link": "https://plugins.jetbrains.com/plugin/19161-database-tool",
       "name": "Database Tool",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/19161/984329/icon/default.svg",
-      "rating": 3.0700000000000003,
+      "icon": "https://plugins.jetbrains.com/files/19161/1086154/icon/default.svg",
+      "rating": 2.54,
       "vendor":
       {
         "id": 513,
@@ -1407,26 +1509,12 @@
       "link": "https://plugins.jetbrains.com/plugin/22472-datagraph",
       "name": "DataGraph",
       "pricingModel": "FREEMIUM",
-      "icon": "https://plugins.jetbrains.com/files/22472/993068/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/22472/1045356/icon/default.svg",
       "rating": 4.24,
       "vendor":
       {
         "id": 261,
         "name": "Anton_Shuvaev",
-        "isVerified": true
-      }
-    },
-    {
-      "id": 30193,
-      "productCode": "PDEADCODERADAR",
-      "link": "https://plugins.jetbrains.com/plugin/30193-dead-code--drift-radar",
-      "name": "Dead Code & Drift Radar",
-      "pricingModel": "FREEMIUM",
-      "icon": "https://plugins.jetbrains.com/files/30193/983235/icon/default.svg",
-      "vendor":
-      {
-        "id": 16537,
-        "name": "jakub-jirak",
         "isVerified": true
       }
     },
@@ -1480,7 +1568,7 @@
       "link": "https://plugins.jetbrains.com/plugin/28160-direnv-pro",
       "name": "DirEnv Pro",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/28160/1030996/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/28160/1070027/icon/default.svg",
       "rating": 3.4,
       "vendor":
       {
@@ -1539,25 +1627,11 @@
       "link": "https://plugins.jetbrains.com/plugin/31590-docker-manager",
       "name": "Docker Manager",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/31590/1038447/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/31590/1077646/icon/default.svg",
       "vendor":
       {
         "id": 229,
         "name": "meanmail",
-        "isVerified": true
-      }
-    },
-    {
-      "id": 30195,
-      "productCode": "PDOCFRESHNESS",
-      "link": "https://plugins.jetbrains.com/plugin/30195-docstring-freshness-monitor",
-      "name": "Docstring Freshness Monitor",
-      "pricingModel": "FREEMIUM",
-      "icon": "https://plugins.jetbrains.com/files/30195/983237/icon/default.svg",
-      "vendor":
-      {
-        "id": 16537,
-        "name": "jakub-jirak",
         "isVerified": true
       }
     },
@@ -1591,26 +1665,12 @@
       }
     },
     {
-      "id": 29772,
-      "productCode": "PDOTPLUS",
-      "link": "https://plugins.jetbrains.com/plugin/29772-dot-plus",
-      "name": "Dot Plus",
-      "pricingModel": "FREEMIUM",
-      "icon": "https://plugins.jetbrains.com/files/29772/1034404/icon/default.svg",
-      "vendor":
-      {
-        "id": 17006,
-        "name": "rework-biz",
-        "isVerified": true
-      }
-    },
-    {
       "id": 22884,
       "productCode": "PDRYPUSH",
       "link": "https://plugins.jetbrains.com/plugin/22884-drypush-aws--gcp--alibaba-deploy--upload",
       "name": "DryPush: AWS | GCP | Alibaba Deploy & Upload",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/22884/1041642/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/22884/1083801/icon/default.svg",
       "rating": 4.63,
       "vendor":
       {
@@ -1639,12 +1699,26 @@
       "link": "https://plugins.jetbrains.com/plugin/18896-dynamodb",
       "name": "DynamoDB",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/18896/993065/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/18896/1079518/icon/default.svg",
       "rating": 4.41,
       "vendor":
       {
         "id": 261,
         "name": "Anton_Shuvaev",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 31564,
+      "productCode": "PEASELY",
+      "link": "https://plugins.jetbrains.com/plugin/31564-easely",
+      "name": "Easely",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/31564/1053039/icon/default.svg",
+      "vendor":
+      {
+        "id": 16851,
+        "name": "amplify-human",
         "isVerified": true
       }
     },
@@ -1674,20 +1748,6 @@
       {
         "id": 11171,
         "name": "ljyxp",
-        "isVerified": true
-      }
-    },
-    {
-      "id": 31171,
-      "productCode": "PEGGSHELL",
-      "link": "https://plugins.jetbrains.com/plugin/31171-eggshell",
-      "name": "EggShell",
-      "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/31171/1030253/icon/default.svg",
-      "vendor":
-      {
-        "id": 18346,
-        "name": "best-practice",
         "isVerified": true
       }
     },
@@ -1750,6 +1810,21 @@
       }
     },
     {
+      "id": 32247,
+      "productCode": "PELIXIRPRO",
+      "link": "https://plugins.jetbrains.com/plugin/32247-elixir-pro",
+      "name": "Elixir Pro",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/32247/1097613/icon/default.svg",
+      "rating": 4.69,
+      "vendor":
+      {
+        "id": 17192,
+        "name": "jetplugins",
+        "isVerified": true
+      }
+    },
+    {
       "id": 30358,
       "productCode": "PROUTEMDENVDS",
       "link": "https://plugins.jetbrains.com/plugin/30358-env-desk",
@@ -1778,12 +1853,26 @@
       }
     },
     {
+      "id": 31941,
+      "productCode": "PENVSWITCH",
+      "link": "https://plugins.jetbrains.com/plugin/31941-envswitch",
+      "name": "EnvSwitch",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/31941/1056112/icon/default.svg",
+      "vendor":
+      {
+        "id": 18969,
+        "name": "luyiming",
+        "isVerified": true
+      }
+    },
+    {
       "id": 31217,
       "productCode": "PENVY",
       "link": "https://plugins.jetbrains.com/plugin/31217-envy",
       "name": "EnvY",
       "pricingModel": "FREEMIUM",
-      "icon": "https://plugins.jetbrains.com/files/31217/1033771/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/31217/1061799/icon/default.svg",
       "rating": 4.39,
       "vendor":
       {
@@ -1843,7 +1932,7 @@
       "link": "https://plugins.jetbrains.com/plugin/11058-extra-icons",
       "name": "Extra Icons",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/11058/1031107/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/11058/1090655/icon/default.svg",
       "rating": 4.92,
       "vendor":
       {
@@ -1858,7 +1947,7 @@
       "link": "https://plugins.jetbrains.com/plugin/31005-extra-icons-lifetime",
       "name": "Extra Icons Lifetime",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/31005/1031112/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/31005/1090661/icon/default.svg",
       "rating": 4.39,
       "vendor":
       {
@@ -1873,7 +1962,7 @@
       "link": "https://plugins.jetbrains.com/plugin/23927-extra-ide-tweaks",
       "name": "Extra IDE Tweaks",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/23927/1031110/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/23927/1090657/icon/default.svg",
       "rating": 4.5600000000000005,
       "vendor":
       {
@@ -1888,7 +1977,7 @@
       "link": "https://plugins.jetbrains.com/plugin/27808-extra-ide-tweaks-lifetime",
       "name": "Extra IDE Tweaks Lifetime",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/27808/1031111/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/27808/1090659/icon/default.svg",
       "vendor":
       {
         "id": 552,
@@ -1902,7 +1991,7 @@
       "link": "https://plugins.jetbrains.com/plugin/24559-extra-tools-pack",
       "name": "Extra Tools Pack",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/24559/1033103/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/24559/1090656/icon/default.svg",
       "rating": 4.82,
       "vendor":
       {
@@ -1917,8 +2006,8 @@
       "link": "https://plugins.jetbrains.com/plugin/31004-extra-tools-pack-lifetime",
       "name": "Extra Tools Pack Lifetime",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/31004/1033102/icon/default.svg",
-      "rating": 4.4,
+      "icon": "https://plugins.jetbrains.com/files/31004/1090660/icon/default.svg",
+      "rating": 4.54,
       "vendor":
       {
         "id": 552,
@@ -1932,8 +2021,8 @@
       "link": "https://plugins.jetbrains.com/plugin/16604-extra-toolwindow-colorful-icons",
       "name": "Extra ToolWindow Colorful Icons",
       "pricingModel": "FREEMIUM",
-      "icon": "https://plugins.jetbrains.com/files/16604/1033093/icon/default.svg",
-      "rating": 4.93,
+      "icon": "https://plugins.jetbrains.com/files/16604/1090654/icon/default.svg",
+      "rating": 4.86,
       "vendor":
       {
         "id": 552,
@@ -1947,7 +2036,7 @@
       "link": "https://plugins.jetbrains.com/plugin/26404-extra-toolwindow-colorful-icons-lifetime",
       "name": "Extra ToolWindow Colorful Icons Lifetime",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/26404/1033094/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/26404/1090658/icon/default.svg",
       "rating": 4.7700000000000005,
       "vendor":
       {
@@ -1976,7 +2065,7 @@
       "link": "https://plugins.jetbrains.com/plugin/30145-faker-quick",
       "name": "Faker Quick",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/30145/993252/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/30145/1051015/icon/default.svg",
       "vendor":
       {
         "id": 469,
@@ -1990,7 +2079,7 @@
       "link": "https://plugins.jetbrains.com/plugin/16988-fast-request--api-buddy-http-client-",
       "name": "Fast Request – API Buddy(HTTP client)",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/16988/1042762/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/16988/1096647/icon/default.svg",
       "rating": 4.93,
       "vendor":
       {
@@ -2077,7 +2166,7 @@
       "link": "https://plugins.jetbrains.com/plugin/28937-firebase-pro",
       "name": "Firebase Pro",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/28937/1043843/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/28937/1083778/icon/default.svg",
       "rating": 4.41,
       "vendor":
       {
@@ -2092,7 +2181,7 @@
       "link": "https://plugins.jetbrains.com/plugin/15189-firebase-rules",
       "name": "Firebase Rules",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/15189/982253/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/15189/1063611/icon/default.svg",
       "rating": 4.51,
       "vendor":
       {
@@ -2102,26 +2191,12 @@
       }
     },
     {
-      "id": 30205,
-      "productCode": "PFLAKYTESTDTCTR",
-      "link": "https://plugins.jetbrains.com/plugin/30205-flaky-test-detector",
-      "name": "Flaky Test Detector",
-      "pricingModel": "FREEMIUM",
-      "icon": "https://plugins.jetbrains.com/files/30205/983238/icon/default.svg",
-      "vendor":
-      {
-        "id": 16537,
-        "name": "jakub-jirak",
-        "isVerified": true
-      }
-    },
-    {
       "id": 30488,
       "productCode": "PILSCABAP",
       "link": "https://plugins.jetbrains.com/plugin/30488-flexible-abap",
       "name": "Flexible ABAP",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/30488/1040866/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/30488/1092659/icon/default.svg",
       "vendor":
       {
         "id": 4,
@@ -2135,7 +2210,7 @@
       "link": "https://plugins.jetbrains.com/plugin/30043-flexible-elixir",
       "name": "Flexible Elixir",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/30043/1042652/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/30043/1097221/icon/default.svg",
       "rating": 4.39,
       "vendor":
       {
@@ -2150,8 +2225,36 @@
       "link": "https://plugins.jetbrains.com/plugin/31027-flexible-for-arduino",
       "name": "Flexible For Arduino",
       "pricingModel": "FREEMIUM",
-      "icon": "https://plugins.jetbrains.com/files/31027/1030821/icon/default.svg",
-      "rating": 4.39,
+      "icon": "https://plugins.jetbrains.com/files/31027/1092624/icon/default.svg",
+      "rating": 4.69,
+      "vendor":
+      {
+        "id": 4,
+        "name": "ilscipio",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 32195,
+      "productCode": "PSCIPIOBUI",
+      "link": "https://plugins.jetbrains.com/plugin/32195-flexible-for-base-ui",
+      "name": "Flexible For Base UI",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/32195/1071406/icon/default.svg",
+      "vendor":
+      {
+        "id": 4,
+        "name": "ilscipio",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 32216,
+      "productCode": "PSCIPIODASIY",
+      "link": "https://plugins.jetbrains.com/plugin/32216-flexible-for-daisy-ui",
+      "name": "Flexible For Daisy UI",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/32216/1072506/icon/default.svg",
       "vendor":
       {
         "id": 4,
@@ -2165,7 +2268,35 @@
       "link": "https://plugins.jetbrains.com/plugin/31388-flexible-for-flox",
       "name": "Flexible for Flox",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/31388/1042433/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/31388/1044419/icon/default.svg",
+      "vendor":
+      {
+        "id": 4,
+        "name": "ilscipio",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 32232,
+      "productCode": "PSCIPIOMT",
+      "link": "https://plugins.jetbrains.com/plugin/32232-flexible-for-mantine",
+      "name": "Flexible For Mantine",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/32232/1074488/icon/default.svg",
+      "vendor":
+      {
+        "id": 4,
+        "name": "ilscipio",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 32015,
+      "productCode": "PSCIPIOSC",
+      "link": "https://plugins.jetbrains.com/plugin/32015-flexible-for-openscad",
+      "name": "Flexible For OpenSCAD",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/32015/1088522/icon/default.svg",
       "vendor":
       {
         "id": 4,
@@ -2179,7 +2310,7 @@
       "link": "https://plugins.jetbrains.com/plugin/23685-flexible-freemarker",
       "name": "Flexible Freemarker",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/23685/1041649/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/23685/1089192/icon/default.svg",
       "rating": 4.5600000000000005,
       "vendor":
       {
@@ -2208,8 +2339,8 @@
       "link": "https://plugins.jetbrains.com/plugin/30630-flexible-haskell",
       "name": "Flexible Haskell",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/30630/1034363/icon/default.svg",
-      "rating": 4.39,
+      "icon": "https://plugins.jetbrains.com/files/30630/1085623/icon/default.svg",
+      "rating": 4.54,
       "vendor":
       {
         "id": 4,
@@ -2223,7 +2354,7 @@
       "link": "https://plugins.jetbrains.com/plugin/29356-flexible-julia",
       "name": "Flexible Julia",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/29356/1042691/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/29356/1098549/icon/default.svg",
       "rating": 4.74,
       "vendor":
       {
@@ -2252,7 +2383,7 @@
       "link": "https://plugins.jetbrains.com/plugin/28744-flexible-solidity",
       "name": "Flexible Solidity",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/28744/983301/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/28744/1079422/icon/default.svg",
       "rating": 3.0700000000000003,
       "vendor":
       {
@@ -2267,7 +2398,7 @@
       "link": "https://plugins.jetbrains.com/plugin/31023-flexible-swift",
       "name": "Flexible Swift",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/31023/1042660/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/31023/1086128/icon/default.svg",
       "vendor":
       {
         "id": 4,
@@ -2317,6 +2448,35 @@
       {
         "id": 151,
         "name": "BeanSoft",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 31556,
+      "productCode": "PFORGEJO",
+      "link": "https://plugins.jetbrains.com/plugin/31556-forgejo",
+      "name": "Forgejo",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/31556/1078672/icon/default.svg",
+      "rating": 3.79,
+      "vendor":
+      {
+        "id": 18654,
+        "name": "jkamsker",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 31231,
+      "productCode": "PFREEMARKERIDEA",
+      "link": "https://plugins.jetbrains.com/plugin/31231-freemarker-support",
+      "name": "FreeMarker Support",
+      "pricingModel": "FREEMIUM",
+      "icon": "https://plugins.jetbrains.com/files/31231/1090196/icon/default.svg",
+      "vendor":
+      {
+        "id": 18388,
+        "name": "toby-tan",
         "isVerified": true
       }
     },
@@ -2594,7 +2754,7 @@
       "link": "https://plugins.jetbrains.com/plugin/19668-gerry-themes-pro",
       "name": "Gerry Themes Pro",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/19668/1040475/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/19668/1052191/icon/default.svg",
       "rating": 4.95,
       "vendor":
       {
@@ -2609,12 +2769,27 @@
       "link": "https://plugins.jetbrains.com/plugin/26472-gerry-themes-pro-lifetime-",
       "name": "Gerry Themes Pro (Lifetime)",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/26472/1040477/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/26472/1052192/icon/default.svg",
       "rating": 4.87,
       "vendor":
       {
         "id": 661,
         "name": "gerry",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 13587,
+      "productCode": "PGISTSNIPPET",
+      "link": "https://plugins.jetbrains.com/plugin/13587-gist-snippet",
+      "name": "Gist Snippet",
+      "pricingModel": "FREEMIUM",
+      "icon": "https://plugins.jetbrains.com/files/13587/1066189/icon/default.svg",
+      "rating": 4.84,
+      "vendor":
+      {
+        "id": 18842,
+        "name": "chuntungho",
         "isVerified": true
       }
     },
@@ -2660,26 +2835,12 @@
       }
     },
     {
-      "id": 30197,
-      "productCode": "PGITWORKFLOW",
-      "link": "https://plugins.jetbrains.com/plugin/30197-git-workflow-enforcer",
-      "name": "Git Workflow Enforcer",
-      "pricingModel": "FREEMIUM",
-      "icon": "https://plugins.jetbrains.com/files/30197/983241/icon/default.svg",
-      "vendor":
-      {
-        "id": 16537,
-        "name": "jakub-jirak",
-        "isVerified": true
-      }
-    },
-    {
       "id": 23813,
       "productCode": "PGITWORKTREE",
       "link": "https://plugins.jetbrains.com/plugin/23813-git-worktree",
       "name": "Git Worktree",
       "pricingModel": "FREEMIUM",
-      "icon": "https://plugins.jetbrains.com/files/23813/1019285/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/23813/1096286/icon/default.svg",
       "rating": 4.41,
       "vendor":
       {
@@ -2694,25 +2855,11 @@
       "link": "https://plugins.jetbrains.com/plugin/30798-git-worktree-toolbox",
       "name": "Git Worktree Toolbox",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/30798/1034403/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/30798/1090964/icon/default.svg",
       "vendor":
       {
         "id": 18045,
         "name": "bala-kumar",
-        "isVerified": true
-      }
-    },
-    {
-      "id": 30196,
-      "productCode": "PDEVJOURNAL",
-      "link": "https://plugins.jetbrains.com/plugin/30196-git-aware-dev-journal",
-      "name": "Git-Aware Dev Journal",
-      "pricingModel": "FREEMIUM",
-      "icon": "https://plugins.jetbrains.com/files/30196/983240/icon/default.svg",
-      "vendor":
-      {
-        "id": 16537,
-        "name": "jakub-jirak",
         "isVerified": true
       }
     },
@@ -2750,8 +2897,8 @@
       "link": "https://plugins.jetbrains.com/plugin/19347-github-actions-manager",
       "name": "GitHub Actions Manager",
       "pricingModel": "FREEMIUM",
-      "icon": "https://plugins.jetbrains.com/files/19347/1029083/icon/default.svg",
-      "rating": 4.6000000000000005,
+      "icon": "https://plugins.jetbrains.com/files/19347/1092621/icon/default.svg",
+      "rating": 4.63,
       "vendor":
       {
         "id": 11135,
@@ -2765,7 +2912,7 @@
       "link": "https://plugins.jetbrains.com/plugin/31300-github-prs-monitor",
       "name": "GitHub PRs Monitor",
       "pricingModel": "FREEMIUM",
-      "icon": "https://plugins.jetbrains.com/files/31300/1043895/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/31300/1095769/icon/default.svg",
       "vendor":
       {
         "id": 11,
@@ -2780,7 +2927,7 @@
       "name": "GitLab CICD - Pipelines & Jobs, Builds Run Cancel Retry View Log",
       "pricingModel": "PAID",
       "icon": "https://plugins.jetbrains.com/files/22202/995877/icon/default.svg",
-      "rating": 4.78,
+      "rating": 4.79,
       "vendor":
       {
         "id": 8838,
@@ -2818,6 +2965,21 @@
       }
     },
     {
+      "id": 29096,
+      "productCode": "PGITLABPIPELINE",
+      "link": "https://plugins.jetbrains.com/plugin/29096-gitlab-pipeline-monitor--action--log--deployment--schedule",
+      "name": "GitLab Pipeline Monitor - Action & Log & Deployment & Schedule",
+      "pricingModel": "FREEMIUM",
+      "icon": "https://plugins.jetbrains.com/files/29096/1093999/icon/default.svg",
+      "rating": 4.05,
+      "vendor":
+      {
+        "id": 16641,
+        "name": "dogdrinkwater",
+        "isVerified": true
+      }
+    },
+    {
       "id": 30719,
       "productCode": "PARGOCD",
       "link": "https://plugins.jetbrains.com/plugin/30719-gitops-cockpit-for-argo-cd",
@@ -2838,12 +3000,26 @@
       "link": "https://plugins.jetbrains.com/plugin/7499-gittoolbox",
       "name": "GitToolBox",
       "pricingModel": "FREEMIUM",
-      "icon": "https://plugins.jetbrains.com/files/7499/1001197/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/7499/1098832/icon/default.svg",
       "rating": 4.65,
       "vendor":
       {
         "id": 753,
         "name": "LukaszZielinski",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 32088,
+      "productCode": "PGLOWTRACE",
+      "link": "https://plugins.jetbrains.com/plugin/32088-glowtrace-for-python",
+      "name": "Glowtrace for Python",
+      "pricingModel": "FREEMIUM",
+      "icon": "https://plugins.jetbrains.com/files/32088/1067341/icon/default.svg",
+      "vendor":
+      {
+        "id": 11263,
+        "name": "code",
         "isVerified": true
       }
     },
@@ -2912,7 +3088,7 @@
       "link": "https://plugins.jetbrains.com/plugin/29099-gradle-with-me-pro-gpvp-",
       "name": "Gradle With Me Pro(GPVP)",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/29099/1028735/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/29099/1070632/icon/default.svg",
       "vendor":
       {
         "id": 16643,
@@ -2941,7 +3117,7 @@
       "name": "Grazie Pro",
       "pricingModel": "FREEMIUM",
       "icon": "https://plugins.jetbrains.com/files/16136/933049/icon/default.svg",
-      "rating": 4.04,
+      "rating": 4.0200000000000005,
       "vendor":
       {
         "id": 1,
@@ -2970,7 +3146,8 @@
       "link": "https://plugins.jetbrains.com/plugin/31108-gruvppuccin-theme",
       "name": "Gruvppuccin Theme",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/31108/1020828/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/31108/1090056/icon/default.svg",
+      "rating": 4.39,
       "vendor":
       {
         "id": 18291,
@@ -2984,7 +3161,7 @@
       "link": "https://plugins.jetbrains.com/plugin/28521-hex-editor",
       "name": "Hex Editor",
       "pricingModel": "FREEMIUM",
-      "icon": "https://plugins.jetbrains.com/files/28521/1024651/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/28521/1098577/icon/default.svg",
       "rating": 4.41,
       "vendor":
       {
@@ -3020,6 +3197,35 @@
       {
         "id": 11672,
         "name": "honkanen-dev",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 32547,
+      "productCode": "PHTTPCOMPANION",
+      "link": "https://plugins.jetbrains.com/plugin/32547-http-client-companion",
+      "name": "HTTP Client Companion",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/32547/1091065/icon/default.svg",
+      "vendor":
+      {
+        "id": 261,
+        "name": "Anton_Shuvaev",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 31844,
+      "productCode": "PHTTPREQUESTGEN",
+      "link": "https://plugins.jetbrains.com/plugin/31844-http-request-generator",
+      "name": "HTTP Request Generator",
+      "pricingModel": "FREEMIUM",
+      "icon": "https://plugins.jetbrains.com/files/31844/1053433/icon/default.svg",
+      "rating": 4.39,
+      "vendor":
+      {
+        "id": 18892,
+        "name": "umarmuhendis",
         "isVerified": true
       }
     },
@@ -3101,7 +3307,7 @@
       "link": "https://plugins.jetbrains.com/plugin/27856-i18n-translate-pro-jvm",
       "name": "i18n Translate Pro: JVM",
       "pricingModel": "FREEMIUM",
-      "icon": "https://plugins.jetbrains.com/files/27856/1006446/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/27856/1076868/icon/default.svg",
       "vendor":
       {
         "id": 15300,
@@ -3115,7 +3321,7 @@
       "link": "https://plugins.jetbrains.com/plugin/28020-i18n-translate-pro-web",
       "name": "i18n Translate Pro: Web",
       "pricingModel": "FREEMIUM",
-      "icon": "https://plugins.jetbrains.com/files/28020/1006447/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/28020/1076867/icon/default.svg",
       "rating": 3.0700000000000003,
       "vendor":
       {
@@ -3257,7 +3463,7 @@
       "link": "https://plugins.jetbrains.com/plugin/26785-ireport-6",
       "name": "IReport 6",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/26785/1010585/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/26785/1065180/icon/default.svg",
       "rating": 4.4,
       "vendor":
       {
@@ -3301,11 +3507,25 @@
       "link": "https://plugins.jetbrains.com/plugin/30093-jakarta-migration-javax--jakarta-",
       "name": "Jakarta Migration (javax → jakarta)",
       "pricingModel": "FREEMIUM",
-      "icon": "https://plugins.jetbrains.com/files/30093/1036710/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/30093/1058290/icon/default.svg",
       "vendor":
       {
         "id": 17446,
         "name": "adrian-m",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 31464,
+      "productCode": "PJAVAADKASSISTA",
+      "link": "https://plugins.jetbrains.com/plugin/31464-java-adk-assistant",
+      "name": "Java ADK Assistant",
+      "pricingModel": "FREEMIUM",
+      "icon": "https://plugins.jetbrains.com/files/31464/1050203/icon/default.svg",
+      "vendor":
+      {
+        "id": 18583,
+        "name": "java-adk-assistant",
         "isVerified": true
       }
     },
@@ -3416,7 +3636,7 @@
       "link": "https://plugins.jetbrains.com/plugin/26270-jenkinsfile",
       "name": "Jenkinsfile",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/26270/983867/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/26270/1070033/icon/default.svg",
       "rating": 4.17,
       "vendor":
       {
@@ -3431,7 +3651,7 @@
       "link": "https://plugins.jetbrains.com/plugin/26405-jenkinsfile-linter-offline",
       "name": "Jenkinsfile Linter Offline",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/26405/949483/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/26405/1065831/icon/default.svg",
       "vendor":
       {
         "id": 469,
@@ -3445,26 +3665,11 @@
       "link": "https://plugins.jetbrains.com/plugin/26583-jenkinsfile-pro",
       "name": "Jenkinsfile Pro",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/26583/1033179/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/26583/1065119/icon/default.svg",
       "vendor":
       {
         "id": 469,
         "name": "Anbora-labs",
-        "isVerified": true
-      }
-    },
-    {
-      "id": 22282,
-      "productCode": "AIP",
-      "link": "https://plugins.jetbrains.com/plugin/22282-jetbrains-ai-assistant",
-      "name": "JetBrains AI Assistant",
-      "pricingModel": "FREEMIUM",
-      "icon": "https://plugins.jetbrains.com/files/22282/1044279/icon/default.svg",
-      "rating": 2.16,
-      "vendor":
-      {
-        "id": 1,
-        "name": "JetBrains",
         "isVerified": true
       }
     },
@@ -3474,8 +3679,8 @@
       "link": "https://plugins.jetbrains.com/plugin/21173-jetclient--the-ultimate-rest-client",
       "name": "JetClient - The Ultimate REST Client",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/21173/1004815/icon/default.svg",
-      "rating": 4.44,
+      "icon": "https://plugins.jetbrains.com/files/21173/1046249/icon/default.svg",
+      "rating": 4.46,
       "vendor":
       {
         "id": 261,
@@ -3489,7 +3694,7 @@
       "link": "https://plugins.jetbrains.com/plugin/9238-jetforcer--the-smartest-force-com-ide",
       "name": "JetForcer | The Smartest Force.com IDE",
       "pricingModel": "PAID",
-      "rating": 3.94,
+      "rating": 3.85,
       "vendor":
       {
         "id": 130,
@@ -3503,7 +3708,7 @@
       "link": "https://plugins.jetbrains.com/plugin/18689-jetlab--integration-for-gitlab",
       "name": "JetLab — Integration for GitLab",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/18689/1010752/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/18689/1095746/icon/default.svg",
       "rating": 4.82,
       "vendor":
       {
@@ -3547,7 +3752,7 @@
       "link": "https://plugins.jetbrains.com/plugin/29804-jinja2-enhanced-support",
       "name": "Jinja2 Enhanced Support",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/29804/1004957/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/29804/1086119/icon/default.svg",
       "vendor":
       {
         "id": 17224,
@@ -3561,7 +3766,7 @@
       "link": "https://plugins.jetbrains.com/plugin/23812-jmeter-manager",
       "name": "JMeter Manager",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/23812/1004428/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/23812/1065182/icon/default.svg",
       "rating": 4.41,
       "vendor":
       {
@@ -3576,7 +3781,7 @@
       "link": "https://plugins.jetbrains.com/plugin/23855-jmeter-runner",
       "name": "JMeter Runner",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/23855/992222/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/23855/1050038/icon/default.svg",
       "rating": 4.64,
       "vendor":
       {
@@ -3591,7 +3796,7 @@
       "link": "https://plugins.jetbrains.com/plugin/22087-jmeter-viewer",
       "name": "JMeter Viewer",
       "pricingModel": "FREEMIUM",
-      "icon": "https://plugins.jetbrains.com/files/22087/1000474/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/22087/1048193/icon/default.svg",
       "rating": 4.65,
       "vendor":
       {
@@ -3651,7 +3856,7 @@
       "link": "https://plugins.jetbrains.com/plugin/15064-json-key-finder",
       "name": "JSON Key Finder",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/15064/992694/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/15064/1068559/icon/default.svg",
       "rating": 4.74,
       "vendor":
       {
@@ -3666,7 +3871,7 @@
       "link": "https://plugins.jetbrains.com/plugin/28145-json-log-viewer",
       "name": "Json Log Viewer",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/28145/825689/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/28145/1077848/icon/default.svg",
       "vendor":
       {
         "id": 13466,
@@ -3840,7 +4045,7 @@
       "link": "https://plugins.jetbrains.com/plugin/30805-kchang-azure-deploy",
       "name": "KChang Azure Deploy",
       "pricingModel": "FREEMIUM",
-      "icon": "https://plugins.jetbrains.com/files/30805/1036538/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/30805/1091584/icon/default.svg",
       "vendor":
       {
         "id": 18050,
@@ -3854,7 +4059,7 @@
       "link": "https://plugins.jetbrains.com/plugin/29067-kei--api-contract-testing",
       "name": "Kei - API Contract Testing",
       "pricingModel": "FREEMIUM",
-      "icon": "https://plugins.jetbrains.com/files/29067/980175/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/29067/1072827/icon/default.svg",
       "vendor":
       {
         "id": 16537,
@@ -3874,6 +4079,20 @@
       {
         "id": 16788,
         "name": "dpt-software",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 31786,
+      "productCode": "PKMPPROJECTWIZA",
+      "link": "https://plugins.jetbrains.com/plugin/31786-kmp-project-wizard",
+      "name": "KMP Project Wizard",
+      "pricingModel": "FREEMIUM",
+      "icon": "https://plugins.jetbrains.com/files/31786/1097919/icon/default.svg",
+      "vendor":
+      {
+        "id": 18850,
+        "name": "aoreshkov",
         "isVerified": true
       }
     },
@@ -3906,31 +4125,32 @@
       }
     },
     {
+      "id": 29886,
+      "productCode": "PKRONKCMS",
+      "link": "https://plugins.jetbrains.com/plugin/29886-kronk-cms",
+      "name": "Kronk CMS",
+      "pricingModel": "FREEMIUM",
+      "icon": "https://plugins.jetbrains.com/files/29886/1088527/icon/default.svg",
+      "rating": 2.5500000000000003,
+      "vendor":
+      {
+        "id": 16362,
+        "name": "aivory",
+        "isVerified": true
+      }
+    },
+    {
       "id": 18286,
       "productCode": "PKSEXPLORER",
       "link": "https://plugins.jetbrains.com/plugin/18286-ks-explorer",
       "name": "KS-Explorer",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/18286/940664/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/18286/1045723/icon/default.svg",
       "rating": 3.48,
       "vendor":
       {
         "id": 469,
         "name": "Anbora-labs",
-        "isVerified": true
-      }
-    },
-    {
-      "id": 30204,
-      "productCode": "PKUBECONTEXTGRD",
-      "link": "https://plugins.jetbrains.com/plugin/30204-kubecontext-safety",
-      "name": "KubeContext Safety",
-      "pricingModel": "FREEMIUM",
-      "icon": "https://plugins.jetbrains.com/files/30204/983243/icon/default.svg",
-      "vendor":
-      {
-        "id": 16537,
-        "name": "jakub-jirak",
         "isVerified": true
       }
     },
@@ -3946,6 +4166,21 @@
       {
         "id": 229,
         "name": "meanmail",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 32146,
+      "productCode": "PKUSTOHERO",
+      "link": "https://plugins.jetbrains.com/plugin/32146-kusto-hero",
+      "name": "Kusto Hero",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/32146/1068875/icon/default.svg",
+      "rating": 4.54,
+      "vendor":
+      {
+        "id": 15058,
+        "name": "hubl-hero",
         "isVerified": true
       }
     },
@@ -3970,7 +4205,7 @@
       "link": "https://plugins.jetbrains.com/plugin/19661-latte-pro",
       "name": "Latte Pro",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/19661/918204/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/19661/1057540/icon/default.svg",
       "rating": 3.43,
       "vendor":
       {
@@ -4015,7 +4250,7 @@
       "link": "https://plugins.jetbrains.com/plugin/27826-liquid-hero",
       "name": "Liquid Hero",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/27826/1038806/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/27826/1067841/icon/default.svg",
       "rating": 4.64,
       "vendor":
       {
@@ -4025,12 +4260,26 @@
       }
     },
     {
+      "id": 30048,
+      "productCode": "PLIVECOVERAGE",
+      "link": "https://plugins.jetbrains.com/plugin/30048-live-coverage",
+      "name": "Live Coverage",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/30048/1077637/icon/default.svg",
+      "vendor":
+      {
+        "id": 17422,
+        "name": "showen-development",
+        "isVerified": true
+      }
+    },
+    {
       "id": 31304,
       "productCode": "PLLAMATIKCODE",
       "link": "https://plugins.jetbrains.com/plugin/31304-llamatik-code",
       "name": "Llamatik Code",
       "pricingModel": "FREEMIUM",
-      "icon": "https://plugins.jetbrains.com/files/31304/1043300/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/31304/1074169/icon/default.svg",
       "vendor":
       {
         "id": 18462,
@@ -4044,7 +4293,7 @@
       "link": "https://plugins.jetbrains.com/plugin/30909-lnr",
       "name": "Lnr",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/30909/1010735/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/30909/1052144/icon/default.svg",
       "vendor":
       {
         "id": 18105,
@@ -4058,7 +4307,7 @@
       "link": "https://plugins.jetbrains.com/plugin/30199-local-secrets-tripwire",
       "name": "Local Secrets Tripwire",
       "pricingModel": "FREEMIUM",
-      "icon": "https://plugins.jetbrains.com/files/30199/983244/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/30199/1071841/icon/default.svg",
       "vendor":
       {
         "id": 16537,
@@ -4072,7 +4321,7 @@
       "link": "https://plugins.jetbrains.com/plugin/29341-localdevtools",
       "name": "LocalDevTools",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/29341/911760/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/29341/1077830/icon/default.svg",
       "vendor":
       {
         "id": 13450,
@@ -4086,7 +4335,7 @@
       "link": "https://plugins.jetbrains.com/plugin/24979-locale-sphere",
       "name": "Locale Sphere",
       "pricingModel": "FREEMIUM",
-      "icon": "https://plugins.jetbrains.com/files/24979/890731/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/24979/1062851/icon/default.svg",
       "rating": 4.5600000000000005,
       "vendor":
       {
@@ -4101,7 +4350,7 @@
       "link": "https://plugins.jetbrains.com/plugin/22223-localstack-toolkit",
       "name": "LocalStack Toolkit",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/22223/1001597/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/22223/1093748/icon/default.svg",
       "rating": 4.4,
       "vendor":
       {
@@ -4131,7 +4380,7 @@
       "link": "https://plugins.jetbrains.com/plugin/29050-logparser-pro",
       "name": "LogParser Pro",
       "pricingModel": "FREEMIUM",
-      "icon": "https://plugins.jetbrains.com/files/29050/1030092/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/29050/1077640/icon/default.svg",
       "rating": 3.06,
       "vendor":
       {
@@ -4205,7 +4454,7 @@
       "link": "https://plugins.jetbrains.com/plugin/31208-madock-integration",
       "name": "Madock Integration",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/31208/1022279/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/31208/1089362/icon/default.svg",
       "vendor":
       {
         "id": 18379,
@@ -4234,7 +4483,7 @@
       "link": "https://plugins.jetbrains.com/plugin/23556-magnolia-cms-integration",
       "name": "Magnolia CMS Integration",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/23556/1036884/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/23556/1097606/icon/default.svg",
       "rating": 4.5600000000000005,
       "vendor":
       {
@@ -4412,7 +4661,7 @@
       "link": "https://plugins.jetbrains.com/plugin/30022-matrix-hero--matlab-ide",
       "name": "Matrix Hero - MATLAB IDE",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/30022/957417/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/30022/1091200/icon/default.svg",
       "rating": 4.55,
       "vendor":
       {
@@ -4427,7 +4676,7 @@
       "link": "https://plugins.jetbrains.com/plugin/26139-maven-plug-in-extensions",
       "name": "Maven Plug-in Extensions",
       "pricingModel": "FREEMIUM",
-      "icon": "https://plugins.jetbrains.com/files/26139/1031819/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/26139/1081976/icon/default.svg",
       "vendor":
       {
         "id": 13329,
@@ -4441,7 +4690,7 @@
       "link": "https://plugins.jetbrains.com/plugin/29270-maven-search-pro-mpvp-",
       "name": "Maven Search Pro(MPVP)",
       "pricingModel": "FREEMIUM",
-      "icon": "https://plugins.jetbrains.com/files/29270/1029554/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/29270/1088145/icon/default.svg",
       "vendor":
       {
         "id": 16643,
@@ -4455,7 +4704,7 @@
       "link": "https://plugins.jetbrains.com/plugin/29271-maven-update-pro-mpvp-",
       "name": "Maven Update Pro(MPVP)",
       "pricingModel": "FREEMIUM",
-      "icon": "https://plugins.jetbrains.com/files/29271/1029555/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/29271/1088146/icon/default.svg",
       "vendor":
       {
         "id": 16643,
@@ -4469,7 +4718,7 @@
       "link": "https://plugins.jetbrains.com/plugin/29269-maven-with-me-pro-mpvp-",
       "name": "Maven With Me Pro(MPVP)",
       "pricingModel": "FREEMIUM",
-      "icon": "https://plugins.jetbrains.com/files/29269/1029557/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/29269/1088147/icon/default.svg",
       "vendor":
       {
         "id": 16643,
@@ -4498,7 +4747,7 @@
       "link": "https://plugins.jetbrains.com/plugin/28071-mcp-servers-for-ai-assistants",
       "name": "MCP Servers for AI Assistants",
       "pricingModel": "FREEMIUM",
-      "icon": "https://plugins.jetbrains.com/files/28071/1006430/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/28071/1058609/icon/default.svg",
       "rating": 4.41,
       "vendor":
       {
@@ -4508,12 +4757,25 @@
       }
     },
     {
+      "id": 32363,
+      "productCode": "PMERMAIDEDITORP",
+      "link": "https://plugins.jetbrains.com/plugin/32363-mermaid-editor-pro",
+      "name": "Mermaid Editor Pro",
+      "pricingModel": "FREEMIUM",
+      "vendor":
+      {
+        "id": 19254,
+        "name": "haizy-labs",
+        "isVerified": true
+      }
+    },
+    {
       "id": 29870,
       "productCode": "PMERMAIDSTUDIO",
       "link": "https://plugins.jetbrains.com/plugin/29870-mermaid-studio",
       "name": "Mermaid Studio",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/29870/1042045/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/29870/1098051/icon/default.svg",
       "rating": 4.29,
       "vendor":
       {
@@ -4528,7 +4790,8 @@
       "link": "https://plugins.jetbrains.com/plugin/30883-mermaid-studio-core",
       "name": "Mermaid Studio Core",
       "pricingModel": "FREEMIUM",
-      "icon": "https://plugins.jetbrains.com/files/30883/1042046/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/30883/1098049/icon/default.svg",
+      "rating": 4.39,
       "vendor":
       {
         "id": 16230,
@@ -4567,26 +4830,12 @@
       }
     },
     {
-      "id": 30266,
-      "productCode": "PMETALGPUMON",
-      "link": "https://plugins.jetbrains.com/plugin/30266-metal-gpu-monitor",
-      "name": "Metal GPU Monitor",
-      "pricingModel": "FREEMIUM",
-      "icon": "https://plugins.jetbrains.com/files/30266/983245/icon/default.svg",
-      "vendor":
-      {
-        "id": 16537,
-        "name": "jakub-jirak",
-        "isVerified": true
-      }
-    },
-    {
       "id": 29038,
       "productCode": "PMETALSHADERSUP",
       "link": "https://plugins.jetbrains.com/plugin/29038-metal-shader-support",
       "name": "Metal Shader Support",
       "pricingModel": "FREEMIUM",
-      "icon": "https://plugins.jetbrains.com/files/29038/999461/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/29038/1072839/icon/default.svg",
       "vendor":
       {
         "id": 16537,
@@ -4666,6 +4915,36 @@
       }
     },
     {
+      "id": 31830,
+      "productCode": "PMODELICAHERO",
+      "link": "https://plugins.jetbrains.com/plugin/31830-modelica-hero",
+      "name": "Modelica Hero",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/31830/1051065/icon/default.svg",
+      "rating": 4.54,
+      "vendor":
+      {
+        "id": 15058,
+        "name": "hubl-hero",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 31943,
+      "productCode": "PMOJOPRO",
+      "link": "https://plugins.jetbrains.com/plugin/31943-mojo-pro",
+      "name": "Mojo Pro",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/31943/1059361/icon/default.svg",
+      "rating": 4.54,
+      "vendor":
+      {
+        "id": 17192,
+        "name": "jetplugins",
+        "isVerified": true
+      }
+    },
+    {
       "id": 23999,
       "productCode": "PMONGODB",
       "link": "https://plugins.jetbrains.com/plugin/23999-mongo-db",
@@ -4686,7 +4965,7 @@
       "link": "https://plugins.jetbrains.com/plugin/20761-mongoexpert",
       "name": "MongoExpert",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/20761/945014/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/20761/1058331/icon/default.svg",
       "rating": 4.78,
       "vendor":
       {
@@ -4701,7 +4980,7 @@
       "link": "https://plugins.jetbrains.com/plugin/13643-monokai-pro",
       "name": "Monokai Pro",
       "pricingModel": "FREEMIUM",
-      "icon": "https://plugins.jetbrains.com/files/13643/1000863/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/13643/1085457/icon/default.svg",
       "rating": 2.97,
       "vendor":
       {
@@ -4716,8 +4995,8 @@
       "link": "https://plugins.jetbrains.com/plugin/28734-monokai-pro-lifetime",
       "name": "Monokai Pro Lifetime",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/28734/1000864/icon/default.svg",
-      "rating": 4.78,
+      "icon": "https://plugins.jetbrains.com/files/28734/1085456/icon/default.svg",
+      "rating": 4.8,
       "vendor":
       {
         "id": 12044,
@@ -4759,7 +5038,7 @@
       "link": "https://plugins.jetbrains.com/plugin/13905-mybatis-log",
       "name": "MyBatis Log",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/13905/1001581/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/13905/1074616/icon/default.svg",
       "rating": 4.29,
       "vendor":
       {
@@ -4789,7 +5068,7 @@
       "link": "https://plugins.jetbrains.com/plugin/26550-mybatis-log-ultra",
       "name": "Mybatis Log Ultra",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/26550/1027051/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/26550/1056363/icon/default.svg",
       "rating": 4.76,
       "vendor":
       {
@@ -4819,7 +5098,7 @@
       "link": "https://plugins.jetbrains.com/plugin/14522-mybatiscodehelperpro-marketplace-edition-",
       "name": "MyBatisCodeHelperPro (Marketplace Edition)",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/14522/1014801/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/14522/1073066/icon/default.svg",
       "rating": 4.91,
       "vendor":
       {
@@ -4863,7 +5142,7 @@
       "link": "https://plugins.jetbrains.com/plugin/18387-neon-nette-support",
       "name": "NEON Nette Support",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/18387/916590/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/18387/1044889/icon/default.svg",
       "rating": 4.64,
       "vendor":
       {
@@ -4893,7 +5172,7 @@
       "link": "https://plugins.jetbrains.com/plugin/28485-neumorphism-theme-collection",
       "name": "Neumorphism Theme Collection",
       "pricingModel": "FREEMIUM",
-      "icon": "https://plugins.jetbrains.com/files/28485/1007163/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/28485/1076873/icon/default.svg",
       "vendor":
       {
         "id": 15300,
@@ -4907,7 +5186,7 @@
       "link": "https://plugins.jetbrains.com/plugin/18280-nginx-configuration-pro",
       "name": "Nginx Configuration Pro",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/18280/1043890/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/18280/1090214/icon/default.svg",
       "rating": 4.41,
       "vendor":
       {
@@ -4922,12 +5201,27 @@
       "link": "https://plugins.jetbrains.com/plugin/19205-ngrok",
       "name": "Ngrok",
       "pricingModel": "FREEMIUM",
-      "icon": "https://plugins.jetbrains.com/files/19205/1033997/icon/default.svg",
-      "rating": 4.75,
+      "icon": "https://plugins.jetbrains.com/files/19205/1049788/icon/default.svg",
+      "rating": 4.4,
       "vendor":
       {
         "id": 469,
         "name": "Anbora-labs",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 31649,
+      "productCode": "PNIXPRO",
+      "link": "https://plugins.jetbrains.com/plugin/31649-nix-pro",
+      "name": "Nix Pro",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/31649/1074179/icon/default.svg",
+      "rating": 4.54,
+      "vendor":
+      {
+        "id": 17192,
+        "name": "jetplugins",
         "isVerified": true
       }
     },
@@ -4952,8 +5246,8 @@
       "link": "https://plugins.jetbrains.com/plugin/22150-noctule-the-swift-ide",
       "name": "Noctule, the Swift IDE",
       "pricingModel": "FREEMIUM",
-      "icon": "https://plugins.jetbrains.com/files/22150/1042017/icon/default.svg",
-      "rating": 4.32,
+      "icon": "https://plugins.jetbrains.com/files/22150/1097605/icon/default.svg",
+      "rating": 4.43,
       "vendor":
       {
         "id": 40,
@@ -4982,7 +5276,7 @@
       "link": "https://plugins.jetbrains.com/plugin/30984-notification-bridge",
       "name": "Notification Bridge",
       "pricingModel": "FREEMIUM",
-      "icon": "https://plugins.jetbrains.com/files/30984/1014774/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/30984/1089373/icon/default.svg",
       "vendor":
       {
         "id": 17942,
@@ -4996,7 +5290,7 @@
       "link": "https://plugins.jetbrains.com/plugin/31165-nu-lint",
       "name": "Nu Lint",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/31165/1018498/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/31165/1051002/icon/default.svg",
       "vendor":
       {
         "id": 469,
@@ -5010,11 +5304,25 @@
       "link": "https://plugins.jetbrains.com/plugin/31106-nu-lsp",
       "name": "Nu LSP",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/31106/1031019/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/31106/1068840/icon/default.svg",
       "vendor":
       {
         "id": 469,
         "name": "Anbora-labs",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 31592,
+      "productCode": "POBRANUNJUCKS",
+      "link": "https://plugins.jetbrains.com/plugin/31592-nunjucks",
+      "name": "Nunjucks",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/31592/1081969/icon/default.svg",
+      "vendor":
+      {
+        "id": 18682,
+        "name": "obra",
         "isVerified": true
       }
     },
@@ -5039,7 +5347,7 @@
       "link": "https://plugins.jetbrains.com/plugin/31238-nushell-object-notation",
       "name": "Nushell Object Notation",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/31238/1018310/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/31238/1065926/icon/default.svg",
       "vendor":
       {
         "id": 469,
@@ -5053,7 +5361,7 @@
       "link": "https://plugins.jetbrains.com/plugin/31650-nuxt-pro",
       "name": "Nuxt Pro",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/31650/1042543/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/31650/1076201/icon/default.svg",
       "rating": 4.7,
       "vendor":
       {
@@ -5068,7 +5376,7 @@
       "link": "https://plugins.jetbrains.com/plugin/30234-obfuscateguard",
       "name": "ObfuscateGuard",
       "pricingModel": "FREEMIUM",
-      "icon": "https://plugins.jetbrains.com/files/30234/983248/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/30234/1072824/icon/default.svg",
       "rating": 3.06,
       "vendor":
       {
@@ -5083,7 +5391,7 @@
       "link": "https://plugins.jetbrains.com/plugin/31647-obfuscation-pro",
       "name": "Obfuscation Pro",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/31647/1042127/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/31647/1059408/icon/default.svg",
       "rating": 4.7,
       "vendor":
       {
@@ -5112,7 +5420,7 @@
       "link": "https://plugins.jetbrains.com/plugin/13499-odoo-ide",
       "name": "Odoo IDE",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/13499/1039553/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/13499/1074157/icon/default.svg",
       "rating": 4.91,
       "vendor":
       {
@@ -5141,7 +5449,7 @@
       "link": "https://plugins.jetbrains.com/plugin/28550-omni-viewer",
       "name": "Omni Viewer",
       "pricingModel": "FREEMIUM",
-      "icon": "https://plugins.jetbrains.com/files/28550/1039422/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/28550/1090211/icon/default.svg",
       "rating": 4.54,
       "vendor":
       {
@@ -5156,7 +5464,7 @@
       "link": "https://plugins.jetbrains.com/plugin/21410-onegai-copilot",
       "name": "Onegai Copilot",
       "pricingModel": "FREEMIUM",
-      "icon": "https://plugins.jetbrains.com/files/21410/912987/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/21410/1080859/icon/default.svg",
       "rating": 3.12,
       "vendor":
       {
@@ -5186,7 +5494,7 @@
       "link": "https://plugins.jetbrains.com/plugin/27118-openapi-gui-editor",
       "name": "OpenAPI GUI Editor",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/27118/1044052/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/27118/1098820/icon/default.svg",
       "rating": 4.36,
       "vendor":
       {
@@ -5225,21 +5533,6 @@
       }
     },
     {
-      "id": 31126,
-      "productCode": "PPKGDEPSEARCH",
-      "link": "https://plugins.jetbrains.com/plugin/31126-package-dependency-explorer",
-      "name": "Package Dependency Explorer",
-      "pricingModel": "FREEMIUM",
-      "icon": "https://plugins.jetbrains.com/files/31126/1012228/icon/default.svg",
-      "rating": 4.54,
-      "vendor":
-      {
-        "id": 18307,
-        "name": "sirius",
-        "isVerified": true
-      }
-    },
-    {
       "id": 30492,
       "productCode": "PPANDATHEME",
       "link": "https://plugins.jetbrains.com/plugin/30492-panda-dark-theme",
@@ -5251,6 +5544,20 @@
       {
         "id": 17192,
         "name": "jetplugins",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 32155,
+      "productCode": "PPASCAL",
+      "link": "https://plugins.jetbrains.com/plugin/32155-pascal-flow",
+      "name": "Pascal Flow",
+      "pricingModel": "FREEMIUM",
+      "icon": "https://plugins.jetbrains.com/files/32155/1086127/icon/default.svg",
+      "vendor":
+      {
+        "id": 229,
+        "name": "meanmail",
         "isVerified": true
       }
     },
@@ -5427,12 +5734,26 @@
       }
     },
     {
+      "id": 32391,
+      "productCode": "PPROCFILE",
+      "link": "https://plugins.jetbrains.com/plugin/32391-procfile",
+      "name": "Procfile",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/32391/1084834/icon/default.svg",
+      "vendor":
+      {
+        "id": 469,
+        "name": "Anbora-labs",
+        "isVerified": true
+      }
+    },
+    {
       "id": 30895,
       "productCode": "PPROJECTINTELL",
       "link": "https://plugins.jetbrains.com/plugin/30895-project-intelligence-bridge",
       "name": "Project Intelligence Bridge",
       "pricingModel": "FREEMIUM",
-      "icon": "https://plugins.jetbrains.com/files/30895/1014775/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/30895/1089371/icon/default.svg",
       "vendor":
       {
         "id": 17942,
@@ -5446,7 +5767,7 @@
       "link": "https://plugins.jetbrains.com/plugin/28622-pyarchinit-docugenius--ai-documentation-generator",
       "name": "PyArchInit DocuGenius - AI Documentation Generator",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/28622/1037305/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/28622/1061775/icon/default.svg",
       "vendor":
       {
         "id": 16211,
@@ -5475,8 +5796,8 @@
       "link": "https://plugins.jetbrains.com/plugin/29536-pyui-helper",
       "name": "PyUI Helper",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/29536/1019229/icon/default.svg",
-      "rating": 4.4,
+      "icon": "https://plugins.jetbrains.com/files/29536/1079420/icon/default.svg",
+      "rating": 4.04,
       "vendor":
       {
         "id": 4,
@@ -5490,7 +5811,7 @@
       "link": "https://plugins.jetbrains.com/plugin/28407-qdrant",
       "name": "Qdrant",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/28407/913147/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/28407/1092819/icon/default.svg",
       "vendor":
       {
         "id": 229,
@@ -5564,7 +5885,7 @@
       "link": "https://plugins.jetbrains.com/plugin/10080-rainbow-brackets",
       "name": "Rainbow Brackets",
       "pricingModel": "FREEMIUM",
-      "icon": "https://plugins.jetbrains.com/files/10080/1014856/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/10080/1089311/icon/default.svg",
       "rating": 4.58,
       "vendor":
       {
@@ -5607,7 +5928,7 @@
       "link": "https://plugins.jetbrains.com/plugin/13838-rdf-and-sparql",
       "name": "RDF and SPARQL",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/13838/1031080/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/13838/1093746/icon/default.svg",
       "rating": 4.7700000000000005,
       "vendor":
       {
@@ -5628,6 +5949,20 @@
       {
         "id": 151,
         "name": "BeanSoft",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 32389,
+      "productCode": "PRECAP",
+      "link": "https://plugins.jetbrains.com/plugin/32389-recap--ai-agent-sessions",
+      "name": "Recap - AI Agent Sessions",
+      "pricingModel": "FREEMIUM",
+      "icon": "https://plugins.jetbrains.com/files/32389/1083768/icon/default.svg",
+      "vendor":
+      {
+        "id": 11263,
+        "name": "code",
         "isVerified": true
       }
     },
@@ -5739,7 +6074,7 @@
       "link": "https://plugins.jetbrains.com/plugin/29979-restructuredtext-pro",
       "name": "reStructuredText Pro",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/29979/1034337/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/29979/1062461/icon/default.svg",
       "rating": 4.7700000000000005,
       "vendor":
       {
@@ -5782,7 +6117,7 @@
       "link": "https://plugins.jetbrains.com/plugin/29046-robot-framework-professional",
       "name": "Robot Framework Professional",
       "pricingModel": "FREEMIUM",
-      "icon": "https://plugins.jetbrains.com/files/29046/999454/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/29046/1077601/icon/default.svg",
       "vendor":
       {
         "id": 16537,
@@ -5810,7 +6145,7 @@
       "link": "https://plugins.jetbrains.com/plugin/30842-run-configuration-bridge",
       "name": "Run Configuration Bridge",
       "pricingModel": "FREEMIUM",
-      "icon": "https://plugins.jetbrains.com/files/30842/1014773/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/30842/1089370/icon/default.svg",
       "vendor":
       {
         "id": 17942,
@@ -5891,40 +6226,43 @@
       }
     },
     {
-      "id": 31859,
-      "productCode": "PAIPROMPTCTX",
-      "link": "https://plugins.jetbrains.com/plugin/31859-ai-context-prompt",
-      "name": "AI Context Prompt",
-      "pricingModel": "FREEMIUM",
-      "icon": "https://plugins.jetbrains.com/files/31859/1052086/icon/default.svg",
+      "id": 13668,
+      "productCode": "PSFCC",
+      "link": "https://plugins.jetbrains.com/plugin/13668-salesforce-b2c-commerce-sfcc-",
+      "name": "Salesforce B2C Commerce (SFCC)",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/13668/1001216/icon/default.svg",
+      "rating": 4.87,
       "vendor":
       {
-        "id": 18587,
-        "name": "jia-mu-geng-jin",
+        "id": 7,
+        "name": "Artage",
         "isVerified": true
       }
     },
     {
-      "id": 32028,
-      "productCode": "PAIREVIEWCOMMIT",
-      "link": "https://plugins.jetbrains.com/plugin/32028-ai-review-and-commit",
-      "name": "AI Review and Commit",
-      "pricingModel": "FREEMIUM",
-      "icon": "https://plugins.jetbrains.com/files/32028/1065116/icon/default.svg",
+      "id": 30291,
+      "productCode": "PSALTSTACK",
+      "link": "https://plugins.jetbrains.com/plugin/30291-saltstack",
+      "name": "SaltStack",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/30291/1006783/icon/default.svg",
+      "rating": 3.06,
       "vendor":
       {
-        "id": 18587,
-        "name": "jia-mu-geng-jin",
+        "id": 17224,
+        "name": "someblackmagic",
         "isVerified": true
       }
     },
     {
-      "id": 31743,
-      "productCode": "PANSIBLE",
-      "link": "https://plugins.jetbrains.com/plugin/31743-ansible-pro",
-      "name": "Ansible Pro",
-      "pricingModel": "FREEMIUM",
-      "icon": "https://plugins.jetbrains.com/files/31743/1057416/icon/default.svg",
+      "id": 27936,
+      "productCode": "PSAVE",
+      "link": "https://plugins.jetbrains.com/plugin/27936-save",
+      "name": "Save",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/27936/862842/icon/default.svg",
+      "rating": 3.56,
       "vendor":
       {
         "id": 229,
@@ -5933,12 +6271,608 @@
       }
     },
     {
-      "id": 31940,
-      "productCode": "PCODEQLJB",
-      "link": "https://plugins.jetbrains.com/plugin/31940-codeql-pro",
-      "name": "CodeQL Pro",
+      "id": 22748,
+      "productCode": "PSCHEMAREGVIEW",
+      "link": "https://plugins.jetbrains.com/plugin/22748-schema-registry-viewer",
+      "name": "Schema Registry Viewer",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/22748/496140/icon/default.svg",
+      "rating": 4.07,
+      "vendor":
+      {
+        "id": 9286,
+        "name": "supernova",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 12108,
+      "productCode": "PSCIPIO",
+      "link": "https://plugins.jetbrains.com/plugin/12108-scipio-erp-integration",
+      "name": "Scipio ERP Integration",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/12108/965032/icon/default.svg",
+      "rating": 4.78,
+      "vendor":
+      {
+        "id": 4,
+        "name": "ilscipio",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 19556,
+      "productCode": "PSCREENCODEPRO",
+      "link": "https://plugins.jetbrains.com/plugin/19556-screencodepro",
+      "name": "ScreenCodePro",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/19556/198086/icon/default.svg",
+      "rating": 4.04,
+      "vendor":
+      {
+        "id": 649,
+        "name": "KikiManjaro",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 31471,
+      "productCode": "PSCREENSHOTAI",
+      "link": "https://plugins.jetbrains.com/plugin/31471-screenshot-",
+      "name": "Screenshot+",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/31471/1049534/icon/default.svg",
+      "vendor":
+      {
+        "id": 18587,
+        "name": "jia-mu-geng-jin",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 32467,
+      "productCode": "PSCRIPTDOCK",
+      "link": "https://plugins.jetbrains.com/plugin/32467-scriptdock",
+      "name": "ScriptDock",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/32467/1098903/icon/default.svg",
+      "vendor":
+      {
+        "id": 18969,
+        "name": "luyiming",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 32358,
+      "productCode": "PSECRETBRIDGE",
+      "link": "https://plugins.jetbrains.com/plugin/32358-secret-bridge",
+      "name": "Secret Bridge",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/32358/1089832/icon/default.svg",
+      "vendor":
+      {
+        "id": 19317,
+        "name": "supercolo123",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 29049,
+      "productCode": "PSELENIUMIQAIPO",
+      "link": "https://plugins.jetbrains.com/plugin/29049-seleniumiq--ai-powered-test-automation",
+      "name": "SeleniumIQ - AI-Powered Test Automation",
       "pricingModel": "FREEMIUM",
-      "icon": "https://plugins.jetbrains.com/files/31940/1057292/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/29049/1051456/icon/default.svg",
+      "vendor":
+      {
+        "id": 16537,
+        "name": "jakub-jirak",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 22232,
+      "productCode": "PSENTRY",
+      "link": "https://plugins.jetbrains.com/plugin/22232-sentry",
+      "name": "Sentry",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/22232/993026/icon/default.svg",
+      "rating": 4.07,
+      "vendor":
+      {
+        "id": 261,
+        "name": "Anton_Shuvaev",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 25807,
+      "productCode": "PSEQUENCECPP",
+      "link": "https://plugins.jetbrains.com/plugin/25807-sequencediagram-c-c-",
+      "name": "SequenceDiagram C/C++",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/25807/1081218/icon/default.svg",
+      "vendor":
+      {
+        "id": 813,
+        "name": "VanStudio",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 8286,
+      "productCode": "PSEQUENCEDIAGRA",
+      "link": "https://plugins.jetbrains.com/plugin/8286-sequencediagram-core",
+      "name": "SequenceDiagram Core",
+      "pricingModel": "FREEMIUM",
+      "icon": "https://plugins.jetbrains.com/files/8286/1080664/icon/default.svg",
+      "rating": 4.36,
+      "vendor":
+      {
+        "id": 813,
+        "name": "VanStudio",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 25623,
+      "productCode": "PSEQUENCEGO",
+      "link": "https://plugins.jetbrains.com/plugin/25623-sequencediagram-go",
+      "name": "SequenceDiagram Go",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/25623/1080860/icon/default.svg",
+      "vendor":
+      {
+        "id": 813,
+        "name": "VanStudio",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 24973,
+      "productCode": "PSEQUENCEJS",
+      "link": "https://plugins.jetbrains.com/plugin/24973-sequencediagram-js",
+      "name": "SequenceDiagram JS",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/24973/1080885/icon/default.svg",
+      "vendor":
+      {
+        "id": 813,
+        "name": "VanStudio",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 25978,
+      "productCode": "PSEQUENCEPYTHON",
+      "link": "https://plugins.jetbrains.com/plugin/25978-sequencediagram-python",
+      "name": "SequenceDiagram Python",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/25978/1080862/icon/default.svg",
+      "vendor":
+      {
+        "id": 813,
+        "name": "VanStudio",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 25376,
+      "productCode": "PSEQUENCERUST",
+      "link": "https://plugins.jetbrains.com/plugin/25376-sequencediagram-rust",
+      "name": "SequenceDiagram Rust",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/25376/1082029/icon/default.svg",
+      "vendor":
+      {
+        "id": 813,
+        "name": "VanStudio",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 23115,
+      "productCode": "PSEQDIAORG",
+      "link": "https://plugins.jetbrains.com/plugin/23115-sequencediagram-org",
+      "name": "SequenceDiagram.org",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/23115/830548/icon/default.svg",
+      "rating": 3.8000000000000003,
+      "vendor":
+      {
+        "id": 9673,
+        "name": "NoSpareTimeAB",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 19727,
+      "productCode": "PSEQUENCEOUTLIN",
+      "link": "https://plugins.jetbrains.com/plugin/19727-sequenceoutline",
+      "name": "SequenceOutline",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/19727/1040411/icon/default.svg",
+      "rating": 3.0700000000000003,
+      "vendor":
+      {
+        "id": 10932,
+        "name": "moorror",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 28946,
+      "productCode": "PSERENA",
+      "link": "https://plugins.jetbrains.com/plugin/28946-serena",
+      "name": "Serena",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/28946/1030808/icon/default.svg",
+      "rating": 4.3,
+      "vendor":
+      {
+        "id": 15791,
+        "name": "oraios-ai",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 28063,
+      "productCode": "PSERVERLESSIN",
+      "link": "https://plugins.jetbrains.com/plugin/28063-serverless-insight",
+      "name": "Serverless Insight",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/28063/1065176/icon/default.svg",
+      "rating": 4.4,
+      "vendor":
+      {
+        "id": 469,
+        "name": "Anbora-labs",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 29795,
+      "productCode": "PSERVICELINKS",
+      "link": "https://plugins.jetbrains.com/plugin/29795-service-links",
+      "name": "Service Links",
+      "pricingModel": "FREEMIUM",
+      "icon": "https://plugins.jetbrains.com/files/29795/947648/icon/default.svg",
+      "vendor":
+      {
+        "id": 17216,
+        "name": "chris-binder",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 29996,
+      "productCode": "PSCIPIOSHADCN",
+      "link": "https://plugins.jetbrains.com/plugin/29996-shadcn-helper",
+      "name": "shadcn Helper",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/29996/1061984/icon/default.svg",
+      "rating": 3.83,
+      "vendor":
+      {
+        "id": 4,
+        "name": "ilscipio",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 14437,
+      "productCode": "PSI",
+      "link": "https://plugins.jetbrains.com/plugin/14437-shared-project-indexes",
+      "name": "Shared Project Indexes",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/14437/903141/icon/default.svg",
+      "rating": 3.36,
+      "vendor":
+      {
+        "id": 1,
+        "name": "JetBrains",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 7410,
+      "productCode": "PSWPLUGIN",
+      "link": "https://plugins.jetbrains.com/plugin/7410-shopware",
+      "name": "Shopware",
+      "pricingModel": "FREEMIUM",
+      "icon": "https://plugins.jetbrains.com/files/7410/1067140/icon/default.svg",
+      "rating": 3.02,
+      "vendor":
+      {
+        "id": 17,
+        "name": "espend_de",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 18151,
+      "productCode": "PBEANCONVERTER",
+      "link": "https://plugins.jetbrains.com/plugin/18151-simple-object-copy",
+      "name": "Simple Object Copy",
+      "pricingModel": "PAID",
+      "rating": 3.47,
+      "vendor":
+      {
+        "id": 472,
+        "name": "com-cs-org",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 28201,
+      "productCode": "PSIMPLIFORGEMAN",
+      "link": "https://plugins.jetbrains.com/plugin/28201-simpli-forge-manifest-validator",
+      "name": "Simpli Forge Manifest Validator",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/28201/913682/icon/default.svg",
+      "vendor":
+      {
+        "id": 15666,
+        "name": "simpli_fyi",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 20243,
+      "productCode": "PSKOL",
+      "link": "https://plugins.jetbrains.com/plugin/20243-skol",
+      "name": "Skol",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/20243/1057135/icon/default.svg",
+      "rating": 4.73,
+      "vendor":
+      {
+        "id": 738,
+        "name": "kreuzercode",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 31227,
+      "productCode": "PAICODEQUALITY",
+      "link": "https://plugins.jetbrains.com/plugin/31227-slopguard-formerly-entropyguard-",
+      "name": "SlopGuard [formerly EntropyGuard]",
+      "pricingModel": "FREEMIUM",
+      "vendor":
+      {
+        "id": 17446,
+        "name": "adrian-m",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 23694,
+      "productCode": "PSMARTHUGO",
+      "link": "https://plugins.jetbrains.com/plugin/23694-smart-hugo",
+      "name": "Smart Hugo",
+      "pricingModel": "FREEMIUM",
+      "icon": "https://plugins.jetbrains.com/files/23694/983015/icon/default.svg",
+      "rating": 4.5600000000000005,
+      "vendor":
+      {
+        "id": 10364,
+        "name": "exprun",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 25751,
+      "productCode": "PSMARTINPUT",
+      "link": "https://plugins.jetbrains.com/plugin/25751-smart-input-pro-japan-south-korea-russia--more-",
+      "name": "Smart Input Pro (Japan, South Korea, Russia & more)",
+      "pricingModel": "FREEMIUM",
+      "icon": "https://plugins.jetbrains.com/files/25751/850924/icon/default.svg",
+      "rating": 4.58,
+      "vendor":
+      {
+        "id": 10595,
+        "name": "xiaolvpuzi",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 14053,
+      "productCode": "PSMARTJUMP",
+      "link": "https://plugins.jetbrains.com/plugin/14053-smart-jump",
+      "name": "Smart Jump",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/14053/1016695/icon/default.svg",
+      "rating": 4.8,
+      "vendor":
+      {
+        "id": 55,
+        "name": "abc",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 27596,
+      "productCode": "PSMARTCHANGELIS",
+      "link": "https://plugins.jetbrains.com/plugin/27596-smartchangelist-ai",
+      "name": "SmartChangelist AI",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/27596/912519/icon/default.svg",
+      "rating": 3.81,
+      "vendor":
+      {
+        "id": 229,
+        "name": "meanmail",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 29617,
+      "productCode": "PSMARTIGNORE",
+      "link": "https://plugins.jetbrains.com/plugin/29617-smartignoregenerator",
+      "name": "SmartIgnoreGenerator",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/29617/924964/icon/default.svg",
+      "vendor":
+      {
+        "id": 768,
+        "name": "geetesh-gupta-org",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 24555,
+      "productCode": "PSMARTTOMCATPRO",
+      "link": "https://plugins.jetbrains.com/plugin/24555-smarttomcat-pro",
+      "name": "SmartTomcat Pro",
+      "pricingModel": "FREEMIUM",
+      "icon": "https://plugins.jetbrains.com/files/24555/1091645/icon/default.svg",
+      "rating": 4.29,
+      "vendor":
+      {
+        "id": 11342,
+        "name": "smart-tomcat",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 24889,
+      "productCode": "PSNAPSHOTSFORAI",
+      "link": "https://plugins.jetbrains.com/plugin/24889-snapshots-for-ai",
+      "name": "Snapshots for AI",
+      "pricingModel": "PAID",
+      "rating": 4.41,
+      "vendor":
+      {
+        "id": 11711,
+        "name": "gbti-network",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 20565,
+      "productCode": "PTAILWINDTOOLS",
+      "link": "https://plugins.jetbrains.com/plugin/20565-snippet-toolkit-for-tailwind-css",
+      "name": "Snippet Toolkit for Tailwind CSS",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/20565/1005335/icon/default.svg",
+      "rating": 4.5600000000000005,
+      "vendor":
+      {
+        "id": 779,
+        "name": "sparkweb-technologies",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 29915,
+      "productCode": "PROUTEMDSOAPK",
+      "link": "https://plugins.jetbrains.com/plugin/29915-soap-desk",
+      "name": "Soap Desk",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/29915/1046724/icon/default.svg",
+      "vendor":
+      {
+        "id": 16575,
+        "name": "route_md",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 32553,
+      "productCode": "PSOLIDITY",
+      "link": "https://plugins.jetbrains.com/plugin/32553-solidity-pro",
+      "name": "Solidity Pro",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/32553/1098052/icon/default.svg",
+      "rating": 4.38,
+      "vendor":
+      {
+        "id": 17192,
+        "name": "jetplugins",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 32058,
+      "productCode": "PSONARWHALE",
+      "link": "https://plugins.jetbrains.com/plugin/32058-sonarwhale",
+      "name": "Sonarwhale",
+      "pricingModel": "FREEMIUM",
+      "icon": "https://plugins.jetbrains.com/files/32058/1065394/icon/default.svg",
+      "vendor":
+      {
+        "id": 15271,
+        "name": "yannik-kollmann",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 29710,
+      "productCode": "PSONICPROGRESS",
+      "link": "https://plugins.jetbrains.com/plugin/29710-sonic-progressbar",
+      "name": "Sonic Progressbar",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/29710/930481/icon/default.svg",
+      "vendor":
+      {
+        "id": 16788,
+        "name": "dpt-software",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 23743,
+      "productCode": "PSOTERISECURITY",
+      "link": "https://plugins.jetbrains.com/plugin/23743-soteri-secret-scanner",
+      "name": "Soteri Secret Scanner",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/23743/587653/icon/default.svg",
+      "rating": 4.41,
+      "vendor":
+      {
+        "id": 10405,
+        "name": "soteri",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 27756,
+      "productCode": "PSOURCECODEDOCG",
+      "link": "https://plugins.jetbrains.com/plugin/27756-source-code-doc-generation",
+      "name": "Source Code Doc Generation",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/27756/1012267/icon/default.svg",
+      "vendor":
+      {
+        "id": 15097,
+        "name": "8ab4d346-3140-45cb-a401-e3ac8f068efe",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 22318,
+      "productCode": "PSOURCESYNCPRO",
+      "link": "https://plugins.jetbrains.com/plugin/22318-source-synchronizer-pro",
+      "name": "Source Synchronizer Pro",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/22318/503948/icon/default.svg",
+      "rating": 4.54,
+      "vendor":
+      {
+        "id": 8937,
+        "name": "ioan-faur",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 24541,
+      "productCode": "PLANGUAGEPACKES",
+      "link": "https://plugins.jetbrains.com/plugin/24541-spanish-language-pack--paquete-de-idioma-espa-ol",
+      "name": "Spanish Language Pack / Paquete De Idioma Español",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/24541/1020465/icon/default.svg",
+      "rating": 4.24,
       "vendor":
       {
         "id": 11263,
@@ -5947,70 +6881,284 @@
       }
     },
     {
-      "id": 31564,
-      "productCode": "PEASELY",
-      "link": "https://plugins.jetbrains.com/plugin/31564-easely",
-      "name": "Easely",
+      "id": 26581,
+      "productCode": "PLOCALIZATIONES",
+      "link": "https://plugins.jetbrains.com/plugin/26581-spanish-language-pack-for-ides--plugins",
+      "name": "Spanish Language Pack for IDEs & Plugins",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/31564/1053039/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/26581/972048/icon/default.svg",
       "vendor":
       {
-        "id": 16851,
-        "name": "amplify-human",
+        "id": 261,
+        "name": "Anton_Shuvaev",
         "isVerified": true
       }
     },
     {
-      "id": 31556,
-      "productCode": "PFORGEJO",
-      "link": "https://plugins.jetbrains.com/plugin/31556-forgejo",
-      "name": "Forgejo",
+      "id": 26079,
+      "productCode": "PSPARKSQLHELPER",
+      "link": "https://plugins.jetbrains.com/plugin/26079-spark-sql-helper",
+      "name": "Spark SQL Helper",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/31556/1052378/icon/default.svg",
-      "rating": 4.39,
+      "icon": "https://plugins.jetbrains.com/files/26079/858788/icon/default.svg",
+      "rating": 4.41,
       "vendor":
       {
-        "id": 18654,
-        "name": "jkamsker",
+        "id": 12782,
+        "name": "dogeking",
         "isVerified": true
       }
     },
     {
-      "id": 13587,
-      "productCode": "PGISTSNIPPET",
-      "link": "https://plugins.jetbrains.com/plugin/13587-gist-snippet",
-      "name": "Gist Snippet",
+      "id": 14338,
+      "productCode": "PSPARQL",
+      "link": "https://plugins.jetbrains.com/plugin/14338-sparql",
+      "name": "SPARQL",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/14338/165810/icon/default.svg",
+      "vendor":
+      {
+        "id": 121,
+        "name": "BorderCloud",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 31685,
+      "productCode": "PSPICEDBTOOLKIT",
+      "link": "https://plugins.jetbrains.com/plugin/31685-spicedb-toolkit",
+      "name": "SpiceDB Toolkit",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/31685/1084087/icon/default.svg",
+      "rating": 3.0500000000000003,
+      "vendor":
+      {
+        "id": 18531,
+        "name": "labset",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 18622,
+      "productCode": "PSPRINGBOOTIDEA",
+      "link": "https://plugins.jetbrains.com/plugin/18622-spring-boot-helper",
+      "name": "Spring Boot Helper",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/18622/982257/icon/default.svg",
+      "rating": 4.88,
+      "vendor":
+      {
+        "id": 605,
+        "name": "eltonsandre",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 26854,
+      "productCode": "PSPRINGNAVI",
+      "link": "https://plugins.jetbrains.com/plugin/26854-spring-navigator",
+      "name": "Spring Navigator",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/26854/949851/icon/default.svg",
+      "vendor":
+      {
+        "id": 14011,
+        "name": "leo",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 30212,
+      "productCode": "PSPRINGNAV",
+      "link": "https://plugins.jetbrains.com/plugin/30212-spring-property-navigator",
+      "name": "Spring Property Navigator",
       "pricingModel": "FREEMIUM",
-      "icon": "https://plugins.jetbrains.com/files/13587/1058615/icon/default.svg",
-      "rating": 4.84,
+      "rating": 4.74,
       "vendor":
       {
-        "id": 18842,
-        "name": "chuntungho",
+        "id": 17566,
+        "name": "novaintelix",
         "isVerified": true
       }
     },
     {
-      "id": 31464,
-      "productCode": "PJAVAADKASSISTA",
-      "link": "https://plugins.jetbrains.com/plugin/31464-java-adk-assistant",
-      "name": "Java ADK Assistant",
-      "pricingModel": "FREEMIUM",
-      "icon": "https://plugins.jetbrains.com/files/31464/1050203/icon/default.svg",
-      "vendor":
-      {
-        "id": 18583,
-        "name": "java-adk-assistant",
-        "isVerified": true
-      }
-    },
-    {
-      "id": 31830,
-      "productCode": "PMODELICAHERO",
-      "link": "https://plugins.jetbrains.com/plugin/31830-modelica-hero",
-      "name": "Modelica Hero",
+      "id": 19660,
+      "productCode": "PAWSQLADVISOR",
+      "link": "https://plugins.jetbrains.com/plugin/19660-sql-optimizer-index-advisor-mysql-postgre-oracle-tune-by-pawsql",
+      "name": "SQL Optimizer,Index Advisor MySQL/Postgre/Oracle, Tune by PawSQL",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/31830/1051065/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/19660/889407/icon/default.svg",
+      "rating": 4.14,
+      "vendor":
+      {
+        "id": 833,
+        "name": "pawsql",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 24205,
+      "productCode": "PSQLDEBUGGER",
+      "link": "https://plugins.jetbrains.com/plugin/24205-sqldebugger",
+      "name": "SQLDebugger",
+      "pricingModel": "PAID",
+      "vendor":
+      {
+        "id": 9261,
+        "name": "delicacy",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 20534,
+      "productCode": "PSQLFLUFFLINTER",
+      "link": "https://plugins.jetbrains.com/plugin/20534-sqlfluff-linter-ultimate-edition-",
+      "name": "SQLFluff Linter (Ultimate Edition)",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/20534/1065181/icon/default.svg",
+      "rating": 4.32,
+      "vendor":
+      {
+        "id": 469,
+        "name": "Anbora-labs",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 22742,
+      "productCode": "PSQLFORMATTER",
+      "link": "https://plugins.jetbrains.com/plugin/22742-sqlformatter",
+      "name": "SQLFormatter",
+      "pricingModel": "PAID",
+      "rating": 4.75,
+      "vendor":
+      {
+        "id": 9261,
+        "name": "delicacy",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 32392,
+      "productCode": "PSSHPLUS",
+      "link": "https://plugins.jetbrains.com/plugin/32392-ssh-plus",
+      "name": "SSH Plus",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/32392/1091215/icon/default.svg",
+      "vendor":
+      {
+        "id": 19242,
+        "name": "hanghang",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 22713,
+      "productCode": "PDBSSH",
+      "link": "https://plugins.jetbrains.com/plugin/22713-ssh-tool",
+      "name": "SSH Tool",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/22713/1017213/icon/default.svg",
+      "vendor":
+      {
+        "id": 513,
+        "name": "LeJiu",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 24625,
+      "productCode": "PKUOYGHHDS",
+      "link": "https://plugins.jetbrains.com/plugin/24625-sshmatrix",
+      "name": "SSHMatrix",
+      "pricingModel": "PAID",
+      "rating": 3.81,
+      "vendor":
+      {
+        "id": 11412,
+        "name": "linindoo",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 27279,
+      "productCode": "PSTACKTRACE",
+      "link": "https://plugins.jetbrains.com/plugin/27279-stacktrace",
+      "name": "StackTrace",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/27279/744820/icon/default.svg",
+      "vendor":
+      {
+        "id": 14596,
+        "name": "michael-leitsin",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 29546,
+      "productCode": "PSTICKYNOTES",
+      "link": "https://plugins.jetbrains.com/plugin/29546-stickynotes",
+      "name": "StickyNotes",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/29546/922051/icon/default.svg",
+      "vendor":
+      {
+        "id": 768,
+        "name": "geetesh-gupta-org",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 29351,
+      "productCode": "PSTRUCTURIZRDSL",
+      "link": "https://plugins.jetbrains.com/plugin/29351-structurizr-dsl",
+      "name": "Structurizr DSL",
+      "pricingModel": "FREEMIUM",
+      "icon": "https://plugins.jetbrains.com/files/29351/1071848/icon/default.svg",
+      "rating": 4.29,
+      "vendor":
+      {
+        "id": 16537,
+        "name": "jakub-jirak",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 14482,
+      "productCode": "PSTRKER",
+      "link": "https://plugins.jetbrains.com/plugin/14482-stryker",
+      "name": "Stryker",
+      "pricingModel": "FREEMIUM",
+      "icon": "https://plugins.jetbrains.com/files/14482/134911/icon/default.svg",
+      "rating": 3.56,
+      "vendor":
+      {
+        "id": 396,
+        "name": "Garethp",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 30459,
+      "productCode": "PSUPERVISOR",
+      "link": "https://plugins.jetbrains.com/plugin/30459-supervisor",
+      "name": "SuperVisor",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/30459/975182/icon/default.svg",
+      "vendor":
+      {
+        "id": 17662,
+        "name": "goldentapstudio",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 31546,
+      "productCode": "PSVELTEHERO",
+      "link": "https://plugins.jetbrains.com/plugin/31546-svelte-hero",
+      "name": "Svelte Hero",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/31546/1037150/icon/default.svg",
       "rating": 4.54,
       "vendor":
       {
@@ -6020,13 +7168,142 @@
       }
     },
     {
-      "id": 31943,
-      "productCode": "PMOJOPRO",
-      "link": "https://plugins.jetbrains.com/plugin/31943-mojo-pro",
-      "name": "Mojo Pro",
+      "id": 23458,
+      "productCode": "PSWISSKITCONVER",
+      "link": "https://plugins.jetbrains.com/plugin/23458-swisskit-converter",
+      "name": "SwissKit Converter",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/31943/1059361/icon/default.svg",
-      "rating": 4.39,
+      "icon": "https://plugins.jetbrains.com/files/23458/538669/icon/default.svg",
+      "vendor":
+      {
+        "id": 9906,
+        "name": "codeminds",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 28985,
+      "productCode": "PSYMFONYAPIPOST",
+      "link": "https://plugins.jetbrains.com/plugin/28985-symfony-api-4-postman",
+      "name": "Symfony API 4 Postman",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/28985/892183/icon/default.svg",
+      "vendor":
+      {
+        "id": 15097,
+        "name": "8ab4d346-3140-45cb-a401-e3ac8f068efe",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 7219,
+      "productCode": "PSYMFONYPLUGIN",
+      "link": "https://plugins.jetbrains.com/plugin/7219-symfony-plugin",
+      "name": "Symfony Plugin",
+      "pricingModel": "FREEMIUM",
+      "icon": "https://plugins.jetbrains.com/files/7219/1084861/icon/default.svg",
+      "rating": 4.64,
+      "vendor":
+      {
+        "id": 17,
+        "name": "espend_de",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 28392,
+      "productCode": "PSYSTEMNOTIFIER",
+      "link": "https://plugins.jetbrains.com/plugin/28392-system-notifier",
+      "name": "System Notifier",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/28392/1065921/icon/default.svg",
+      "rating": 4.3100000000000005,
+      "vendor":
+      {
+        "id": 469,
+        "name": "Anbora-labs",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 26514,
+      "productCode": "PSYSTEMVERILOGL",
+      "link": "https://plugins.jetbrains.com/plugin/26514-systemverilog-language-support",
+      "name": "SystemVerilog Language Support",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/26514/1008501/icon/default.svg",
+      "vendor":
+      {
+        "id": 897,
+        "name": "WJCDX",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 14203,
+      "productCode": "PSVERILOG",
+      "link": "https://plugins.jetbrains.com/plugin/14203-systemverilog-studio",
+      "name": "SystemVerilog Studio",
+      "pricingModel": "PAID",
+      "rating": 4.41,
+      "vendor":
+      {
+        "id": 93,
+        "name": "levses",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 30519,
+      "productCode": "PTABGROUPMGR",
+      "link": "https://plugins.jetbrains.com/plugin/30519-tab-group-manager",
+      "name": "Tab Group Manager",
+      "pricingModel": "FREEMIUM",
+      "vendor":
+      {
+        "id": 17842,
+        "name": "myako",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 23937,
+      "productCode": "PTAILWINDFOLD",
+      "link": "https://plugins.jetbrains.com/plugin/23937-tailwind-fold",
+      "name": "Tailwind Fold",
+      "pricingModel": "FREEMIUM",
+      "icon": "https://plugins.jetbrains.com/files/23937/964193/icon/default.svg",
+      "rating": 4.28,
+      "vendor":
+      {
+        "id": 12014,
+        "name": "vladislav-ogorodnik",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 22685,
+      "productCode": "PNEKOCAT",
+      "link": "https://plugins.jetbrains.com/plugin/22685-tamacat-web-browser",
+      "name": "TamaCat Web Browser",
+      "pricingModel": "FREEMIUM",
+      "icon": "https://plugins.jetbrains.com/files/22685/1055870/icon/default.svg",
+      "rating": 4.22,
+      "vendor":
+      {
+        "id": 496,
+        "name": "Samuraism",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 32524,
+      "productCode": "PTANSTACKPRO",
+      "link": "https://plugins.jetbrains.com/plugin/32524-tanstack-pro",
+      "name": "TanStack Pro",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/32524/1089909/icon/default.svg",
+      "rating": 4.38,
       "vendor":
       {
         "id": 17192,
@@ -6035,73 +7312,652 @@
       }
     },
     {
-      "id": 31941,
-      "productCode": "PENVSWITCH",
-      "link": "https://plugins.jetbrains.com/plugin/31941-envswitch",
-      "name": "EnvSwitch",
-      "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/31941/1056112/icon/default.svg",
-      "vendor":
-      {
-        "id": 18969,
-        "name": "luyiming",
-        "isVerified": true
-      }
-    },
-    {
-      "id": 32015,
-      "productCode": "PSCIPIOSC",
-      "link": "https://plugins.jetbrains.com/plugin/32015-flexible-for-openscad",
-      "name": "Flexible For OpenSCAD",
-      "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/32015/1061978/icon/default.svg",
-      "vendor":
-      {
-        "id": 4,
-        "name": "ilscipio",
-        "isVerified": true
-      }
-    },
-    {
-      "id": 31231,
-      "productCode": "PFREEMARKERIDEA",
-      "link": "https://plugins.jetbrains.com/plugin/31231-freemarker-support",
-      "name": "FreeMarker Support",
+      "id": 30202,
+      "productCode": "PDEBTACCOUNTANT",
+      "link": "https://plugins.jetbrains.com/plugin/30202-technical-debt-accountant",
+      "name": "Technical Debt Accountant",
       "pricingModel": "FREEMIUM",
-      "icon": "https://plugins.jetbrains.com/files/31231/1048896/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/30202/1074625/icon/default.svg",
       "vendor":
       {
-        "id": 18388,
-        "name": "toby-tan",
+        "id": 16537,
+        "name": "jakub-jirak",
         "isVerified": true
       }
     },
     {
-      "id": 31844,
-      "productCode": "PHTTPREQUESTGEN",
-      "link": "https://plugins.jetbrains.com/plugin/31844-http-request-generator",
-      "name": "HTTP Request Generator",
+      "id": 30660,
+      "productCode": "PTERMINALBRIDGE",
+      "link": "https://plugins.jetbrains.com/plugin/30660-terminal-bridge",
+      "name": "Terminal Bridge",
       "pricingModel": "FREEMIUM",
-      "icon": "https://plugins.jetbrains.com/files/31844/1053433/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/30660/1089369/icon/default.svg",
       "vendor":
       {
-        "id": 18892,
-        "name": "umarmuhendis",
+        "id": 17942,
+        "name": "llitd",
         "isVerified": true
       }
     },
     {
-      "id": 31649,
-      "productCode": "PNIXPRO",
-      "link": "https://plugins.jetbrains.com/plugin/31649-nix-pro",
-      "name": "Nix Pro",
+      "id": 18857,
+      "productCode": "PTERMINAL",
+      "link": "https://plugins.jetbrains.com/plugin/18857-terminal-pro",
+      "name": "Terminal Pro",
+      "pricingModel": "FREEMIUM",
+      "icon": "https://plugins.jetbrains.com/files/18857/765883/icon/default.svg",
+      "rating": 4.42,
+      "vendor":
+      {
+        "id": 585,
+        "name": "Module-E",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 30203,
+      "productCode": "PTERMINALSAFETY",
+      "link": "https://plugins.jetbrains.com/plugin/30203-terminal-safety-rails",
+      "name": "Terminal Safety Rails",
+      "pricingModel": "FREEMIUM",
+      "icon": "https://plugins.jetbrains.com/files/30203/1074624/icon/default.svg",
+      "vendor":
+      {
+        "id": 16537,
+        "name": "jakub-jirak",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 28859,
+      "productCode": "PTESTPROGRESS",
+      "link": "https://plugins.jetbrains.com/plugin/28859-test-progress-bar",
+      "name": "Test Progress Bar",
       "pricingModel": "PAID",
-      "icon": "https://plugins.jetbrains.com/files/31649/1056927/icon/default.svg",
+      "icon": "https://plugins.jetbrains.com/files/28859/889565/icon/default.svg",
+      "vendor":
+      {
+        "id": 16246,
+        "name": "code-mine",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 28840,
+      "productCode": "PTEXTHIGHLIGHTE",
+      "link": "https://plugins.jetbrains.com/plugin/28840-text-highlighter",
+      "name": "Text Highlighter",
+      "pricingModel": "FREEMIUM",
+      "icon": "https://plugins.jetbrains.com/files/28840/1096459/icon/default.svg",
+      "rating": 3.06,
+      "vendor":
+      {
+        "id": 16407,
+        "name": "samuel-lastrina",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 32461,
+      "productCode": "PTHRIFTHERO",
+      "link": "https://plugins.jetbrains.com/plugin/32461-thrift-hero",
+      "name": "Thrift Hero",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/32461/1085892/icon/default.svg",
       "rating": 4.54,
       "vendor":
       {
+        "id": 15058,
+        "name": "hubl-hero",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 27684,
+      "productCode": "PTHRIFTREQUEST",
+      "link": "https://plugins.jetbrains.com/plugin/27684-thrift-request",
+      "name": "Thrift Request",
+      "pricingModel": "FREEMIUM",
+      "icon": "https://plugins.jetbrains.com/files/27684/831755/icon/default.svg",
+      "vendor":
+      {
+        "id": 15107,
+        "name": "zjay",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 26761,
+      "productCode": "PTIMETRACKERX",
+      "link": "https://plugins.jetbrains.com/plugin/26761-timetracker-x",
+      "name": "TimeTracker X",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/26761/1056951/icon/default.svg",
+      "rating": 4.82,
+      "vendor":
+      {
+        "id": 13931,
+        "name": "vasylenko-denys",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 20050,
+      "productCode": "PTLDRAI",
+      "link": "https://plugins.jetbrains.com/plugin/20050-tldr",
+      "name": "TLDR",
+      "pricingModel": "FREEMIUM",
+      "icon": "https://plugins.jetbrains.com/files/20050/394140/icon/default.svg",
+      "rating": 4.25,
+      "vendor":
+      {
+        "id": 629,
+        "name": "beyondcode",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 30208,
+      "productCode": "PTOLYONIGHT",
+      "link": "https://plugins.jetbrains.com/plugin/30208-tokyo-night-dark-theme",
+      "name": "Tokyo Night Dark Theme",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/30208/1007670/icon/default.svg",
+      "rating": 4.55,
+      "vendor":
+      {
         "id": 17192,
         "name": "jetplugins",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 29475,
+      "productCode": "PTOMCATPROGRESS",
+      "link": "https://plugins.jetbrains.com/plugin/29475-tom-cat-progress",
+      "name": "Tom cat Progress",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/29475/924036/icon/default.svg",
+      "rating": 4.5600000000000005,
+      "vendor":
+      {
+        "id": 16788,
+        "name": "dpt-software",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 30799,
+      "productCode": "PCFLARE",
+      "link": "https://plugins.jetbrains.com/plugin/30799-toolkit-for-cloudflare",
+      "name": "Toolkit for Cloudflare",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/30799/1031131/icon/default.svg",
+      "rating": 4.64,
+      "vendor":
+      {
+        "id": 17192,
+        "name": "jetplugins",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 14384,
+      "productCode": "PTOOLSET",
+      "link": "https://plugins.jetbrains.com/plugin/14384-toolset",
+      "name": "Toolset",
+      "pricingModel": "FREEMIUM",
+      "icon": "https://plugins.jetbrains.com/files/14384/1017937/icon/default.svg",
+      "rating": 4.74,
+      "vendor":
+      {
+        "id": 55,
+        "name": "abc",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 25813,
+      "productCode": "PLANGUAGEPACKTR",
+      "link": "https://plugins.jetbrains.com/plugin/25813-turkish-language-pack--ide-nin-t-rk-e-ye-yerelle-tirilmesi",
+      "name": "Turkish Language Pack / IDE'nin Türkçe'ye Yerelleştirilmesi",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/25813/1020458/icon/default.svg",
+      "vendor":
+      {
+        "id": 11263,
+        "name": "code",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 29606,
+      "productCode": "PUPROGRESSBAR",
+      "link": "https://plugins.jetbrains.com/plugin/29606-ultimate-progress-bar",
+      "name": "Ultimate Progress Bar",
+      "pricingModel": "FREEMIUM",
+      "icon": "https://plugins.jetbrains.com/files/29606/925857/icon/default.svg",
+      "vendor":
+      {
+        "id": 768,
+        "name": "geetesh-gupta-org",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 32235,
+      "productCode": "PUNICODEGUARD",
+      "link": "https://plugins.jetbrains.com/plugin/32235-unicode-guard",
+      "name": "Unicode Guard",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/32235/1079418/icon/default.svg",
+      "vendor":
+      {
+        "id": 469,
+        "name": "Anbora-labs",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 21813,
+      "productCode": "PVERILOGLANGUAG",
+      "link": "https://plugins.jetbrains.com/plugin/21813-verilog-language-support",
+      "name": "Verilog Language Support",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/21813/999919/icon/default.svg",
+      "rating": 3.84,
+      "vendor":
+      {
+        "id": 897,
+        "name": "WJCDX",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 26267,
+      "productCode": "PVHDLLANGUAGESU",
+      "link": "https://plugins.jetbrains.com/plugin/26267-vhdl-language-support",
+      "name": "VHDL Language Support",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/26267/1008516/icon/default.svg",
+      "vendor":
+      {
+        "id": 897,
+        "name": "WJCDX",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 31472,
+      "productCode": "PVGH",
+      "link": "https://plugins.jetbrains.com/plugin/31472-visual-github-actions",
+      "name": "Visual GitHub Actions",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/31472/1056997/icon/default.svg",
+      "vendor":
+      {
+        "id": 229,
+        "name": "meanmail",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 24816,
+      "productCode": "PVSCODEICONS",
+      "link": "https://plugins.jetbrains.com/plugin/24816-vscode-icons",
+      "name": "VSCode Icons",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/24816/810800/icon/default.svg",
+      "rating": 4.3100000000000005,
+      "vendor":
+      {
+        "id": 11489,
+        "name": "jtracker",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 32133,
+      "productCode": "PVUEPRO",
+      "link": "https://plugins.jetbrains.com/plugin/32133-vue-js-pro",
+      "name": "Vue.js Pro",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/32133/1068631/icon/default.svg",
+      "rating": 4.23,
+      "vendor":
+      {
+        "id": 17192,
+        "name": "jetplugins",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 18860,
+      "productCode": "PWIREMOCHA",
+      "link": "https://plugins.jetbrains.com/plugin/18860-wiremocha",
+      "name": "WireMocha",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/18860/982075/icon/default.svg",
+      "vendor":
+      {
+        "id": 546,
+        "name": "TamasBalog",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 7232,
+      "productCode": "PWLANG",
+      "link": "https://plugins.jetbrains.com/plugin/7232-wolfram-language",
+      "name": "Wolfram Language",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/7232/1005998/icon/default.svg",
+      "rating": 4.8100000000000005,
+      "vendor":
+      {
+        "id": 28,
+        "name": "halirutan",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 30513,
+      "productCode": "PCODEGENPRO",
+      "link": "https://plugins.jetbrains.com/plugin/30513-xmcode-generator",
+      "name": "xmCode Generator",
+      "pricingModel": "FREEMIUM",
+      "vendor":
+      {
+        "id": 17822,
+        "name": "xiaomatools",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 30964,
+      "productCode": "PXMLKEYFINDER",
+      "link": "https://plugins.jetbrains.com/plugin/30964-xml-key-finder",
+      "name": "XML Key Finder",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/30964/1008703/icon/default.svg",
+      "vendor":
+      {
+        "id": 12468,
+        "name": "filierafusion",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 28413,
+      "productCode": "PXTENSION",
+      "link": "https://plugins.jetbrains.com/plugin/28413-xross-tools-extension",
+      "name": "Xross Tools Extension",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/28413/1019659/icon/default.svg",
+      "vendor":
+      {
+        "id": 15973,
+        "name": "xrosstools",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 18425,
+      "productCode": "PXSDVISUALIZER",
+      "link": "https://plugins.jetbrains.com/plugin/18425-xsd--wsdl-visualizer",
+      "name": "XSD / WSDL Visualizer",
+      "pricingModel": "FREEMIUM",
+      "icon": "https://plugins.jetbrains.com/files/18425/1031145/icon/default.svg",
+      "rating": 3.27,
+      "vendor":
+      {
+        "id": 520,
+        "name": "FLUXparticle",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 19024,
+      "productCode": "POXYXSDJSONSCH",
+      "link": "https://plugins.jetbrains.com/plugin/19024-xsd-to-json-schema",
+      "name": "XSD to JSON Schema",
+      "pricingModel": "FREEMIUM",
+      "icon": "https://plugins.jetbrains.com/files/19024/627712/icon/default.svg",
+      "rating": 3.84,
+      "vendor":
+      {
+        "id": 577,
+        "name": "SyncroSoft",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 30870,
+      "productCode": "PYAMLKEYFINDER",
+      "link": "https://plugins.jetbrains.com/plugin/30870-yaml-key-finder",
+      "name": "YAML Key Finder",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/30870/999439/icon/default.svg",
+      "vendor":
+      {
+        "id": 12468,
+        "name": "filierafusion",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 26760,
+      "productCode": "PYAMLHELPER",
+      "link": "https://plugins.jetbrains.com/plugin/26760-yamlhelper",
+      "name": "YamlHelper",
+      "pricingModel": "FREEMIUM",
+      "icon": "https://plugins.jetbrains.com/files/26760/745764/icon/default.svg",
+      "vendor":
+      {
+        "id": 14004,
+        "name": "microlight",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 9739,
+      "productCode": "PYAOQIANGBPMN",
+      "link": "https://plugins.jetbrains.com/plugin/9739-yaoqiang-bpmn-editor",
+      "name": "Yaoqiang BPMN Editor",
+      "pricingModel": "PAID",
+      "rating": 3.84,
+      "vendor":
+      {
+        "id": 8904,
+        "name": "Yaoqiang",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 29705,
+      "productCode": "PYARAHERO",
+      "link": "https://plugins.jetbrains.com/plugin/29705-yara-hero",
+      "name": "Yara Hero",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/29705/930712/icon/default.svg",
+      "rating": 4.55,
+      "vendor":
+      {
+        "id": 15058,
+        "name": "hubl-hero",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 23693,
+      "productCode": "PYIIFRAMEWORK",
+      "link": "https://plugins.jetbrains.com/plugin/23693-yii2-framework-support",
+      "name": "Yii2 Framework Support",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/23693/820356/icon/default.svg",
+      "rating": 4.5600000000000005,
+      "vendor":
+      {
+        "id": 10333,
+        "name": "insperedia",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 25388,
+      "productCode": "PYIISOFTFRAMEWO",
+      "link": "https://plugins.jetbrains.com/plugin/25388-yiisoft-framework",
+      "name": "Yiisoft Framework",
+      "pricingModel": "FREEMIUM",
+      "icon": "https://plugins.jetbrains.com/files/25388/937058/icon/default.svg",
+      "rating": 3.56,
+      "vendor":
+      {
+        "id": 12260,
+        "name": "xepozz",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 26463,
+      "productCode": "PYIMICODEGEN",
+      "link": "https://plugins.jetbrains.com/plugin/26463-yimi-crud-generator",
+      "name": "Yimi Crud Generator",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/26463/1098662/icon/default.svg",
+      "vendor":
+      {
+        "id": 13600,
+        "name": "deepblue",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 27570,
+      "productCode": "PYMLHELPER",
+      "link": "https://plugins.jetbrains.com/plugin/27570-ymlhelper",
+      "name": "YmlHelper",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/27570/898407/icon/default.svg",
+      "vendor":
+      {
+        "id": 14943,
+        "name": "qi-shi-shi-bai-yang",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 32519,
+      "productCode": "PYMM",
+      "link": "https://plugins.jetbrains.com/plugin/32519-ymm-structured-ai-assistant",
+      "name": "YMM Structured AI Assistant",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/32519/1089830/icon/default.svg",
+      "vendor":
+      {
+        "id": 18061,
+        "name": "youmeandmyself",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 28535,
+      "productCode": "PYQEXPRESS",
+      "link": "https://plugins.jetbrains.com/plugin/28535-yqexpress",
+      "name": "yqExpress",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/28535/901387/icon/default.svg",
+      "vendor":
+      {
+        "id": 9906,
+        "name": "codeminds",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 12437,
+      "productCode": "PZENUML",
+      "link": "https://plugins.jetbrains.com/plugin/12437-zenuml-support",
+      "name": "ZenUML Support",
+      "pricingModel": "FREEMIUM",
+      "icon": "https://plugins.jetbrains.com/files/12437/760444/icon/default.svg",
+      "rating": 4.57,
+      "vendor":
+      {
+        "id": 60,
+        "name": "ZenUML",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 31171,
+      "productCode": "PEGGSHELL",
+      "link": "https://plugins.jetbrains.com/plugin/31171-eggshell",
+      "name": "EggShell",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/31171/1030253/icon/default.svg",
+      "vendor":
+      {
+        "id": 18346,
+        "name": "best-practice",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 32140,
+      "productCode": "PGITSTRATUM",
+      "link": "https://plugins.jetbrains.com/plugin/32140-gitstratum",
+      "name": "GitStratum",
+      "pricingModel": "PAID",
+      "icon": "https://plugins.jetbrains.com/files/32140/1068829/icon/default.svg",
+      "vendor":
+      {
+        "id": 19130,
+        "name": "gitstratum",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 22282,
+      "productCode": "AIP",
+      "link": "https://plugins.jetbrains.com/plugin/22282-jetbrains-ai-assistant",
+      "name": "JetBrains AI Assistant",
+      "pricingModel": "FREEMIUM",
+      "icon": "https://plugins.jetbrains.com/files/22282/1099081/icon/default.svg",
+      "rating": 2.14,
+      "vendor":
+      {
+        "id": 1,
+        "name": "JetBrains",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 31126,
+      "productCode": "PPKGDEPSEARCH",
+      "link": "https://plugins.jetbrains.com/plugin/31126-package-dependency-explorer",
+      "name": "Package Dependency Explorer",
+      "pricingModel": "FREEMIUM",
+      "icon": "https://plugins.jetbrains.com/files/31126/1012228/icon/default.svg",
+      "rating": 4.54,
+      "vendor":
+      {
+        "id": 18307,
+        "name": "sirius",
+        "isVerified": true
+      }
+    },
+    {
+      "id": 29001,
+      "productCode": "PVULNSPEEDGPUAC",
+      "link": "https://plugins.jetbrains.com/plugin/29001-vulnspeed--gpu-accelerated-sast",
+      "name": "VulnSpeed - GPU-Accelerated SAST",
+      "pricingModel": "FREEMIUM",
+      "icon": "https://plugins.jetbrains.com/files/29001/1084130/icon/default.svg",
+      "vendor":
+      {
+        "id": 16537,
+        "name": "jakub-jirak",
         "isVerified": true
       }
     }
@@ -6110,9 +7966,9 @@
   [
     {
       "oldNum": 0,
-      "addNum": 420,
-      "newNum": 420,
-      "updateTime": "2026-06-05 12:00:00"
+      "addNum": 548,
+      "newNum": 548,
+      "updateTime": "2026-07-06 14:00:00"
     }
   ]
 }
