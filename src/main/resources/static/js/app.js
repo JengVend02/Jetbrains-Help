@@ -251,17 +251,17 @@ const App = {
 
     // 搜索功能
     filterItems(query) {
-      const searchTerm = query.toLowerCase().trim()
+      const searchTerm = query.toLowerCase().trim().replaceAll(' ','')
 
       if (this.currentPage === 'products') {
         this.filteredProducts = this.products.filter((product) =>
-          product.name.toLowerCase().includes(searchTerm) ||
-          (product.description && product.description.toLowerCase().includes(searchTerm))
+          product.name.toLowerCase().replaceAll(' ','').includes(searchTerm) ||
+          (product.description && product.description.toLowerCase().replaceAll(' ','').includes(searchTerm))
         )
       } else if (this.currentPage === 'plugins') {
         this.filteredPlugins = this.plugins.filter((plugin) =>
-          plugin.name.toLowerCase().includes(searchTerm) ||
-          (plugin.description && plugin.description.toLowerCase().includes(searchTerm))
+          plugin.name.toLowerCase().replaceAll(' ','').includes(searchTerm) ||
+          (plugin.description && plugin.description.toLowerCase().replaceAll(' ','').includes(searchTerm))
         )
       }
     },
