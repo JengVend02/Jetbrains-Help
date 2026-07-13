@@ -772,11 +772,31 @@
               </div>
 
               <div v-else>
-                <div class="flex items-center justify-between mb-4">
-                  <p class="text-sm text-gray-600">共 <span class="font-medium text-purple-600">{{ oldGeneratedLicense.length }}</span> 条记录，第 <span class="font-medium text-purple-600">{{ currentPageNum }}</span> / <span class="font-medium text-purple-600">{{ licenseTotalPages }}</span> 页</p>
-                  <button @click="clearAllLicenseRecords" class="px-3 py-1.5 bg-red-100 text-red-600 rounded-lg hover:bg-red-200 transition-colors text-xs font-medium">
-                    <i class="fas fa-trash-alt mr-1"></i>清空记录
-                  </button>
+                <!-- 分页控件 -->
+                <div class="flex items-center justify-between mb-4 bg-gray-50 rounded-xl px-4 h-11 flex-shrink-0">
+                  <div class="flex items-center gap-3 text-sm text-gray-500">
+                    <button @click="prevPage" :disabled="currentPageNum === 1" class="px-3 py-1 rounded-lg border border-gray-300 text-sm font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50">
+                      <i class="fas fa-chevron-left"></i>上一页
+                    </button>
+                    <button v-for="page in licenseTotalPages" :key="page" @click="goToPage(page)"
+                            :class="['w-7 h-7 flex items-center justify-center rounded-lg text-xs font-medium transition-colors',
+                                   currentPageNum === page ? 'bg-purple-600 text-white shadow-sm' : 'border border-gray-200 text-gray-500 hover:bg-gray-100']">
+                      {{ page }}
+                    </button>
+                    <button @click="nextPage" :disabled="currentPageNum === licenseTotalPages" class="px-3 py-1 rounded-lg border border-gray-300 text-sm font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50">
+                      下一页<i class="fas fa-chevron-right"></i>
+                    </button>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <button @click="clearAllLicenseRecords" class="px-3 py-1.5 bg-red-100 text-red-600 rounded-lg hover:bg-red-200 transition-colors text-xs font-medium">
+                      <i class="fas fa-trash-alt mr-1"></i>清空记录
+                    </button>
+                    <span class="text-xs font-medium"><i class="fas fa-database mr-1 text-purple-400"></i>共 <span>{{ oldGeneratedLicense.length }}</span> 条</span>
+                    <span class="text-gray-300">/</span>
+                    <span class="text-xs font-medium"><i class="fas fa-file-alt mr-1 text-purple-400"></i><span>{{ currentPageNum }}</span> / {{ licenseTotalPages }} 页</span>
+                    <span class="text-gray-300">/</span>
+                    <span class="text-xs font-medium">每页 <span>{{ pageSize }}</span> 条</span>
+                  </div>
                 </div>
 
                 <div class="overflow-x-auto no-scrollbar">
@@ -819,41 +839,6 @@
                     </tr>
                     </tbody>
                   </table>
-                </div>
-
-                <!-- 分页控件 -->
-                <div class="mt-6 flex items-center justify-between border-t border-gray-200 pt-4">
-                  <div class="flex items-center space-x-2">
-                    <button
-                            @click="prevPage"
-                            :disabled="currentPageNum === 1"
-                            class="px-3 py-1 rounded-lg border border-gray-300 text-sm font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50">
-                      <i class="fas fa-chevron-left mr-1"></i>上一页
-                    </button>
-
-                    <!-- 页码按钮 -->
-                    <div class="flex space-x-1">
-                      <button
-                              v-for="page in licenseTotalPages"
-                              :key="page"
-                              @click="goToPage(page)"
-                              :class="['px-3 py-1 rounded-lg text-sm font-medium transition-colors',
-                                     currentPageNum === page ? 'bg-purple-600 text-white' : 'border border-gray-300 hover:bg-gray-50']">
-                        {{ page }}
-                      </button>
-                    </div>
-
-                    <button
-                            @click="nextPage"
-                            :disabled="currentPageNum === licenseTotalPages"
-                            class="px-3 py-1 rounded-lg border border-gray-300 text-sm font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50">
-                      下一页<i class="fas fa-chevron-right ml-1"></i>
-                    </button>
-                  </div>
-
-                  <div class="flex items-center gap-3">
-                    <span class="text-sm text-gray-600">每页 {{ pageSize }} 条</span>
-                  </div>
                 </div>
               </div>
             </div>
@@ -917,8 +902,28 @@
               </div>
 
               <div v-else>
-                <div class="flex items-center justify-between mb-4">
-                  <p class="text-sm text-gray-600">共 <span class="font-medium text-purple-600">{{ sortedPluginsUpdateTime.length }}</span> 条记录，第 <span class="font-medium text-purple-600">{{ pluginUpdatePageNum }}</span> / <span class="font-medium text-purple-600">{{ pluginUpdateTotalPages }}</span> 页</p>
+                <!-- 分页控件 -->
+                <div class="flex items-center justify-between mb-4 bg-gray-50 rounded-xl px-4 h-11 flex-shrink-0">
+                  <div class="flex items-center gap-3 text-sm text-gray-500">
+                    <button @click="prevPluginUpdatePage" :disabled="pluginUpdatePageNum === 1" class="px-3 py-1 rounded-lg border border-gray-300 text-sm font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50">
+                      <i class="fas fa-chevron-left mr-1"></i>上一页
+                    </button>
+                    <button v-for="page in pluginUpdateTotalPages" :key="page" @click="goToPluginUpdatePage(page)"
+                            :class="['w-7 h-7 flex items-center justify-center rounded-lg text-xs font-medium transition-colors',
+                                   pluginUpdatePageNum === page ? 'bg-purple-600 text-white shadow-sm' : 'border border-gray-200 text-gray-500 hover:bg-gray-100']">
+                      {{ page }}
+                    </button>
+                    <button @click="nextPluginUpdatePage" :disabled="pluginUpdatePageNum === pluginUpdateTotalPages" class="px-3 py-1 rounded-lg border border-gray-300 text-sm font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50">
+                      下一页<i class="fas fa-chevron-right ml-1"></i>
+                    </button>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-xs font-medium"><i class="fas fa-database mr-1 text-purple-400"></i>共 <span>{{ sortedPluginsUpdateTime.length }}</span> 条</span>
+                    <span class="text-gray-300">/</span>
+                    <span class="text-xs font-medium"><i class="fas fa-file-alt mr-1 text-purple-400"></i><span>{{ pluginUpdatePageNum }}</span> / {{ pluginUpdateTotalPages }} 页</span>
+                    <span class="text-gray-300">/</span>
+                    <span class="text-xs font-medium">每页 <span>{{ pageSize }}</span> 条</span>
+                  </div>
                 </div>
 
                 <div class="overflow-x-auto">
@@ -948,40 +953,6 @@
                     </tr>
                     </tbody>
                   </table>
-                </div>
-
-                <!-- 分页控件 -->
-                <div class="mt-6 flex items-center justify-between border-t border-gray-200 pt-4">
-                  <div class="flex items-center space-x-2">
-                    <button
-                            @click="prevPluginUpdatePage"
-                            :disabled="pluginUpdatePageNum === 1"
-                            class="px-3 py-1 rounded-lg border border-gray-300 text-sm font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50">
-                      <i class="fas fa-chevron-left mr-1"></i>上一页
-                    </button>
-
-                    <div class="flex space-x-1">
-                      <button
-                              v-for="page in pluginUpdateTotalPages"
-                              :key="page"
-                              @click="goToPluginUpdatePage(page)"
-                              :class="['px-3 py-1 rounded-lg text-sm font-medium transition-colors',
-                                     pluginUpdatePageNum === page ? 'bg-purple-600 text-white' : 'border border-gray-300 hover:bg-gray-50']">
-                        {{ page }}
-                      </button>
-                    </div>
-
-                    <button
-                            @click="nextPluginUpdatePage"
-                            :disabled="pluginUpdatePageNum === pluginUpdateTotalPages"
-                            class="px-3 py-1 rounded-lg border border-gray-300 text-sm font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50">
-                      下一页<i class="fas fa-chevron-right ml-1"></i>
-                    </button>
-                  </div>
-
-                  <div class="text-sm text-gray-600">
-                    每页 {{ pageSize }} 条
-                  </div>
                 </div>
               </div>
             </div>
