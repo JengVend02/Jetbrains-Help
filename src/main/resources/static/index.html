@@ -389,19 +389,19 @@
                     <i class="fas fa-exclamation-triangle text-red-600"></i>
                   </div>
                   <div>
-                    <p class="font-bold text-red-700">重启jetbrains产品（重要）</p>
+                    <p class="font-bold text-red-700">重启Jetbrains产品（重要）</p>
                     <p class="text-xs text-red-500 mt-0.5">必须关闭所有jetbrains产品，再重新启动。否则代理配置将无法生效</p>
                   </div>
                 </div>
               </div>
             </div>
 
-            <!-- 第二步：产品激活 -->
+            <!-- 第二步：Jetbrains产品激活 -->
             <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
               <div class="bg-gradient-to-r from-purple-500 to-pink-500 px-6 py-4 flex items-center gap-3">
                 <div class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center text-white font-bold text-lg">2</div>
                 <div class="text-white">
-                  <h3 class="text-lg font-bold">产品激活</h3>
+                  <h3 class="text-lg font-bold">Jetbrains产品激活</h3>
                   <p class="text-sm text-purple-100">选择以下任一方式激活 JetBrains 产品</p>
                 </div>
               </div>
@@ -446,13 +446,25 @@
                   </div>
                 </div>
 
-                <!-- 方式三：JRebel -->
+              </div>
+            </div>
+
+            <!-- 第三步：JRebel 激活 -->
+            <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+              <div class="bg-gradient-to-r from-orange-500 to-red-500 px-6 py-4 flex items-center gap-3">
+                <div class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center text-white font-bold text-lg">3</div>
+                <div class="text-white">
+                  <h3 class="text-lg font-bold">JRebel 激活</h3>
+                  <p class="text-sm text-orange-100">JRebel 热部署工具激活</p>
+                </div>
+              </div>
+              <div class="p-6">
                 <div class="flex items-start gap-4">
                   <div class="w-8 h-8 bg-orange-100 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
                     <i class="fas fa-fire text-orange-600 text-sm"></i>
                   </div>
                   <div class="flex-1">
-                    <p class="font-semibold text-gray-900 mb-2">方式三：JRebel 激活</p>
+                    <p class="font-semibold text-gray-900 mb-2">填入 JRebel 服务器地址</p>
                     <p class="text-sm text-gray-600 mb-3">将以下地址填入 JRebel 的【Team URL】，邮箱随意填写</p>
                     <div class="bg-gray-50 rounded-xl p-3 border border-gray-200">
                       <div class="flex flex-col sm:flex-row gap-2">
@@ -478,32 +490,45 @@
                   <p class="text-sm text-amber-100">激活过程中可能遇到的问题及解决方案</p>
                 </div>
               </div>
-              <div class="p-6 space-y-4">
+              <div class="p-6 space-y-3">
                 <details class="group bg-gray-50 rounded-xl border border-gray-200 overflow-hidden">
-                  <summary class="flex items-center justify-between px-5 py-3 cursor-pointer hover:bg-gray-100 transition-colors font-medium text-gray-800 text-sm">
-                    <span><i class="fas fa-exclamation-circle text-amber-500 mr-2"></i>激活后提示许可证无效</span>
-                    <i class="fas fa-chevron-down text-gray-400 group-open:rotate-180 transition-transform"></i>
+                  <summary class="flex items-center justify-between px-5 py-3.5 cursor-pointer hover:bg-gray-100 transition-colors font-medium text-gray-800 text-sm">
+                    <span class="flex items-center gap-2"><i class="fas fa-circle-check text-green-500"></i>执行过脚本后，如何确认代理配置是否生效</span>
+                    <i class="fas fa-chevron-down text-gray-400 group-open:rotate-180 transition-transform flex-shrink-0"></i>
                   </summary>
-                  <div class="px-5 pb-4 text-sm text-gray-600 border-t border-gray-200 pt-3">
-                    请确认已重启电脑且代理工具正常运行。检查激活码是否正确粘贴，或尝试使用许可证服务器方式重新激活。
+                  <div class="px-5 pb-5 text-sm text-gray-600 border-t border-gray-200 pt-4 space-y-3">
+                    <p class="font-medium text-gray-800">验证步骤：</p>
+                    <div class="flex items-start gap-3">
+                      <span class="w-6 h-6 bg-purple-100 text-purple-700 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">1</span>
+                      <p>打开 JetBrains 产品（IDEA / DataGrip / WebStorm 等）</p>
+                    </div>
+                    <div class="flex items-start gap-3">
+                      <span class="w-6 h-6 bg-purple-100 text-purple-700 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">2</span>
+                      <p>左上角菜单 <span class="font-medium text-gray-800">【帮助 Help】</span> → <span class="font-medium text-gray-800">【编辑自定义虚拟机选项 Edit Custom VM Options】</span></p>
+                    </div>
+                    <div class="flex items-start gap-3">
+                      <span class="w-6 h-6 bg-purple-100 text-purple-700 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">3</span>
+                      <p>如果打开的文件指向代理解压目录下的 <code class="bg-gray-100 px-1.5 py-0.5 rounded border border-gray-200 text-xs">\vmoptions\*.vmoptions</code>，则代理已生效</p>
+                    </div>
+                    <div class="bg-amber-50 border border-amber-200 rounded-lg p-3 mt-2">
+                      <p class="text-xs text-amber-800"><i class="fas fa-lightbulb text-amber-500 mr-1.5"></i><strong>未生效？</strong>关闭所有 JetBrains 产品后重新执行脚本，或执行脚本后重启电脑。</p>
+                    </div>
                   </div>
                 </details>
                 <details class="group bg-gray-50 rounded-xl border border-gray-200 overflow-hidden">
-                  <summary class="flex items-center justify-between px-5 py-3 cursor-pointer hover:bg-gray-100 transition-colors font-medium text-gray-800 text-sm">
-                    <span><i class="fas fa-exclamation-circle text-amber-500 mr-2"></i>代理工具安装后 IDE 无法启动</span>
-                    <i class="fas fa-chevron-down text-gray-400 group-open:rotate-180 transition-transform"></i>
+                  <summary class="flex items-center justify-between px-5 py-3.5 cursor-pointer hover:bg-gray-100 transition-colors font-medium text-gray-800 text-sm">
+                    <span class="flex items-center gap-2"><i class="fas fa-key text-purple-500"></i>填写激活码后提示密钥无效</span>
+                    <i class="fas fa-chevron-down text-gray-400 group-open:rotate-180 transition-transform flex-shrink-0"></i>
                   </summary>
-                  <div class="px-5 pb-4 text-sm text-gray-600 border-t border-gray-200 pt-3">
-                    请确认安装路径不包含中文字符。尝试执行卸载脚本后重新安装，并确保重启电脑。
-                  </div>
-                </details>
-                <details class="group bg-gray-50 rounded-xl border border-gray-200 overflow-hidden">
-                  <summary class="flex items-center justify-between px-5 py-3 cursor-pointer hover:bg-gray-100 transition-colors font-medium text-gray-800 text-sm">
-                    <span><i class="fas fa-exclamation-circle text-amber-500 mr-2"></i>支持哪些版本的 JetBrains IDE？</span>
-                    <i class="fas fa-chevron-down text-gray-400 group-open:rotate-180 transition-transform"></i>
-                  </summary>
-                  <div class="px-5 pb-4 text-sm text-gray-600 border-t border-gray-200 pt-3">
-                    目前支持 <strong>2026.1.2 及以下</strong> 版本。更高版本需自行测试兼容性。
+                  <div class="px-5 pb-5 text-sm text-gray-600 border-t border-gray-200 pt-4 space-y-2">
+                    <div class="flex items-start gap-3">
+                      <span class="w-6 h-6 bg-purple-100 text-purple-700 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">1</span>
+                      <p>先确认代理配置是否生效（参考上方方法）</p>
+                    </div>
+                    <div class="flex items-start gap-3">
+                      <span class="w-6 h-6 bg-purple-100 text-purple-700 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">2</span>
+                      <p>如果代理已生效，请重新获取激活码后再次尝试</p>
+                    </div>
                   </div>
                 </details>
               </div>
