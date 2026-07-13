@@ -99,6 +99,15 @@ h4 {
     margin-bottom: 0.5rem;
 }
 
+/* 隐藏滚动条但保留滚动功能 */
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
 /* 自定义滚动条 */
 ::-webkit-scrollbar {
     width: 8px;

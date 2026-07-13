@@ -29,6 +29,7 @@ const App = {
       currentPageNum: 1,
       pageSize: 10,
       currentRecordTab: 'code', // 当前记录页面的 Tab: 'code' 或 'plugin'
+      pluginUpdatePageNum: 1,
       products: [],
       plugins: [],
       pluginsUpdateTime: [],
@@ -74,9 +75,28 @@ const App = {
       return this.sortedLicenseHistory.slice(start, end);
     },
 
-    // 总页数
-    totalPages() {
+    // 激活码总页数
+    licenseTotalPages() {
       return Math.ceil(this.sortedLicenseHistory.length / this.pageSize);
+    },
+
+    // 插件更新时间倒序排序
+    sortedPluginsUpdateTime() {
+      return [...this.pluginsUpdateTime].sort((a, b) => {
+        return new Date(b.updateTime) - new Date(a.updateTime);
+      });
+    },
+
+    // 插件更新时间分页
+    paginatedPluginsUpdateTime() {
+      const start = (this.pluginUpdatePageNum - 1) * this.pageSize;
+      const end = start + this.pageSize;
+      return this.sortedPluginsUpdateTime.slice(start, end);
+    },
+
+    // 插件更新时间总页数
+    pluginUpdateTotalPages() {
+      return Math.ceil(this.sortedPluginsUpdateTime.length / this.pageSize);
     }
   },
 
@@ -342,7 +362,7 @@ const App = {
 
     // 跳转到指定页
     goToPage(page) {
-      if (page >= 1 && page <= this.totalPages) {
+      if (page >= 1 && page <= this.licenseTotalPages) {
         this.currentPageNum = page;
       }
     },
@@ -356,8 +376,25 @@ const App = {
 
     // 下一页
     nextPage() {
-      if (this.currentPageNum < this.totalPages) {
+      if (this.currentPageNum < this.licenseTotalPages) {
         this.currentPageNum++;
+      }
+    },
+
+    // 插件更新时间分页
+    goToPluginUpdatePage(page) {
+      if (page >= 1 && page <= this.pluginUpdateTotalPages) {
+        this.pluginUpdatePageNum = page;
+      }
+    },
+    prevPluginUpdatePage() {
+      if (this.pluginUpdatePageNum > 1) {
+        this.pluginUpdatePageNum--;
+      }
+    },
+    nextPluginUpdatePage() {
+      if (this.pluginUpdatePageNum < this.pluginUpdateTotalPages) {
+        this.pluginUpdatePageNum++;
       }
     },
 

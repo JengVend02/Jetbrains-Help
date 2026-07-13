@@ -733,7 +733,6 @@
         <div v-else-if="currentPage === 'records'">
           <div class="mb-8">
             <h2 class="text-3xl font-bold text-gray-900 mb-4">历史记录</h2>
-            <p class="text-gray-600 mb-6">查看激活码、插件更新记录</p>
           </div>
 
           <!-- Tab 切换 -->
@@ -775,23 +774,23 @@
               <div v-else>
                 <div class="flex items-center justify-between mb-4">
                   <p class="text-sm text-gray-600">共 <span class="font-medium text-purple-600">{{ oldGeneratedLicense.length }}</span> 条记录，第 <span class="font-medium text-purple-600">{{ currentPageNum }}</span> / <span class="font-medium text-purple-600">{{ licenseTotalPages }}</span> 页</p>
-                  <button @click="clearAllLicenseRecords" class="px-4 py-2 bg-red-100 text-red-600 rounded-lg hover:bg-red-200 transition-colors text-sm font-medium">
-                    <i class="fas fa-trash-alt mr-2"></i>清空所有记录
+                  <button @click="clearAllLicenseRecords" class="px-3 py-1.5 bg-red-100 text-red-600 rounded-lg hover:bg-red-200 transition-colors text-xs font-medium">
+                    <i class="fas fa-trash-alt mr-1"></i>清空记录
                   </button>
                 </div>
 
-                <div class="overflow-x-auto">
+                <div class="overflow-x-auto no-scrollbar">
                   <table class="min-w-full divide-y divide-gray-200">
                     <thead class="bg-gray-50">
                     <tr>
-                      <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">序号</th>
-                      <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">生成时间</th>
-                      <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">许可证名称</th>
-                      <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">被许可人</th>
-                      <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">到期时间</th>
-                      <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">激活产品</th>
-                      <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">激活码</th>
-                      <th class="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">操作</th>
+                      <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">序号</th>
+                      <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">生成时间</th>
+                      <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">许可证名称</th>
+                      <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">被许可人</th>
+                      <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">到期时间</th>
+                      <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">激活产品</th>
+                      <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">激活码</th>
+                      <th class="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">操作</th>
                     </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
@@ -852,8 +851,8 @@
                     </button>
                   </div>
 
-                  <div class="text-sm text-gray-600">
-                    每页 {{ pageSize }} 条
+                  <div class="flex items-center gap-3">
+                    <span class="text-sm text-gray-600">每页 {{ pageSize }} 条</span>
                   </div>
                 </div>
               </div>
@@ -919,7 +918,7 @@
 
               <div v-else>
                 <div class="flex items-center justify-between mb-4">
-                  <p class="text-sm text-gray-600">共 <span class="font-medium text-purple-600">{{ pluginsUpdateTime.length }}</span> 条记录</p>
+                  <p class="text-sm text-gray-600">共 <span class="font-medium text-purple-600">{{ sortedPluginsUpdateTime.length }}</span> 条记录，第 <span class="font-medium text-purple-600">{{ pluginUpdatePageNum }}</span> / <span class="font-medium text-purple-600">{{ pluginUpdateTotalPages }}</span> 页</p>
                 </div>
 
                 <div class="overflow-x-auto">
@@ -934,8 +933,8 @@
                     </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
-                    <tr v-for="(record, index) in pluginsUpdateTime" :key="index" class="hover:bg-gray-50 transition-colors">
-                      <td class="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900">#{{ index + 1 }}</td>
+                    <tr v-for="(record, index) in paginatedPluginsUpdateTime" :key="index" class="hover:bg-gray-50 transition-colors">
+                      <td class="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900">#{{ (pluginUpdatePageNum - 1) * pageSize + index + 1 }}</td>
                       <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-900">
                         <span class="px-2 py-1 text-xs bg-blue-100 text-blue-700 rounded-full">{{ record.oldNum }}</span>
                       </td>
@@ -949,6 +948,40 @@
                     </tr>
                     </tbody>
                   </table>
+                </div>
+
+                <!-- 分页控件 -->
+                <div class="mt-6 flex items-center justify-between border-t border-gray-200 pt-4">
+                  <div class="flex items-center space-x-2">
+                    <button
+                            @click="prevPluginUpdatePage"
+                            :disabled="pluginUpdatePageNum === 1"
+                            class="px-3 py-1 rounded-lg border border-gray-300 text-sm font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50">
+                      <i class="fas fa-chevron-left mr-1"></i>上一页
+                    </button>
+
+                    <div class="flex space-x-1">
+                      <button
+                              v-for="page in pluginUpdateTotalPages"
+                              :key="page"
+                              @click="goToPluginUpdatePage(page)"
+                              :class="['px-3 py-1 rounded-lg text-sm font-medium transition-colors',
+                                     pluginUpdatePageNum === page ? 'bg-purple-600 text-white' : 'border border-gray-300 hover:bg-gray-50']">
+                        {{ page }}
+                      </button>
+                    </div>
+
+                    <button
+                            @click="nextPluginUpdatePage"
+                            :disabled="pluginUpdatePageNum === pluginUpdateTotalPages"
+                            class="px-3 py-1 rounded-lg border border-gray-300 text-sm font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50">
+                      下一页<i class="fas fa-chevron-right ml-1"></i>
+                    </button>
+                  </div>
+
+                  <div class="text-sm text-gray-600">
+                    每页 {{ pageSize }} 条
+                  </div>
                 </div>
               </div>
             </div>
