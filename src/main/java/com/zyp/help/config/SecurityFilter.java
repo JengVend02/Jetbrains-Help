@@ -71,8 +71,8 @@ public class SecurityFilter {
          * 用于检测和阻止类似 ../../../etc/passwd 的攻击载荷
          */
         private static final Pattern PATH_TRAVERSAL_PATTERN = Pattern.compile(
-            "(\\.\\./|\\.\\.\\\\|%2e%2e%2f|%2e%2e/|\\.\\.%2f|%2e%2e%5c)", 
-            Pattern.CASE_INSENSITIVE
+                "(\\.\\./|\\.\\.\\\\|%2e%2e%2f|%2e%2e/|\\.\\.%2f|%2e%2e%5c|\\.\\.%5f|%2e%2e%5f|etc/passwd)",
+                Pattern.CASE_INSENSITIVE
         );
 
         /**
@@ -145,10 +145,11 @@ public class SecurityFilter {
                 response.getWriter().write("400 Bad Request - JNDI Injection Detected");
                 return;
             }
-            
-            // 2.1 检查URL解码后的内容
-            String decodedUri = decodeUrl(uri);
-            String decodedQuery = decodeUrl(queryString);
+
+            // 2.1 升级：使用全量/循环解码，彻底把多重编码打回原形
+            String decodedUri = decodeUrlFully(uri);
+            String decodedQuery = decodeUrlFully(queryString);
+            // 检查解码后的 JNDI 注入
             if (containsJndiInjection(decodedUri) || containsJndiInjection(decodedQuery)) {
                 // log.warn("⚠️  [SECURITY] 检测到JNDI注入攻击尝试 (Decoded): {} | DecodedQuery: {} | IP: {}", uri, decodedQuery, remoteAddr);
                 response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
@@ -156,7 +157,7 @@ public class SecurityFilter {
                 response.getWriter().write("400 Bad Request - JNDI Injection Detected");
                 return;
             }
-            
+
             // 2.2 检查所有请求参数
             if (hasJndiInParameters(request)) {
                 // log.warn("⚠️  [SECURITY] 检测到JNDI注入攻击尝试 (Parameters): {} | IP: {}", uri, remoteAddr);
@@ -175,11 +176,25 @@ public class SecurityFilter {
                 return;
             }
             
-            // 4. 检查路径遍历攻击 - 检查原始URI和清理后的URI
-            // 注意：Tomcat可能会自动清理/../ ，所以我们需要检查多个来源
+            // 4.
             if (containsPathTraversal(rawUri) || containsPathTraversal(uri) || 
                 containsPathTraversal(queryString)) {
                 // log.warn("⚠️  [SECURITY] 检测到路径遍历攻击尝试: Raw={} | Cleaned={} | IP: {}", rawUri, uri, remoteAddr);
+                response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+                response.setContentType("text/plain;charset=UTF-8");
+                response.getWriter().write("403 Forbidden - Path Traversal Detected");
+                return;
+            }
+
+            // 4. 检查路径遍历攻击
+            // 检查原始URI和清理后的URI:   注意：Tomcat可能会自动清理/../ ，所以我们需要检查多个来源
+            // 增加对深度解码后内容的过滤:  这样黑客的 .%252e/ 无论藏在原始 URI 还是变体里，解完码变成 ../ 就会在这里被直接干掉！
+            if (containsPathTraversal(rawUri) ||
+                containsPathTraversal(uri) ||
+                containsPathTraversal(queryString) ||
+                containsPathTraversal(decodedUri) ||
+                containsPathTraversal(decodedQuery)) {
+
                 response.setStatus(HttpServletResponse.SC_FORBIDDEN);
                 response.setContentType("text/plain;charset=UTF-8");
                 response.getWriter().write("403 Forbidden - Path Traversal Detected");
@@ -236,6 +251,32 @@ public class SecurityFilter {
                 return value;
             }
         }
+
+        /**
+         * 深度/循环 URL 解码（对付黑客的双重或多重 URL 编码绕过）
+         * 彻底还原例如：%252e -> %2e -> .
+         *
+         * @param value 待解码的字符串
+         * @return 完全解码后的字符串
+         */
+        private String decodeUrlFully(String value) {
+            if (value == null || value.isEmpty()) {
+                return value;
+            }
+            String decoded = value;
+            String previous;
+            try {
+                int count = 0;
+                do {
+                    previous = decoded;
+                    decoded = URLDecoder.decode(decoded, "UTF-8");
+                    count++;
+                } while (!decoded.equals(previous) && count < 3);
+            } catch (Exception e) {
+                return value;
+            }
+            return decoded;
+        }
         
         /**
          * 检查请求参数中是否包含JNDI注入
@@ -256,7 +297,7 @@ public class SecurityFilter {
                             return true;
                         }
                         // 也检查解码后的值
-                        String decodedValue = decodeUrl(paramValue);
+                        String decodedValue = decodeUrlFully(paramValue);
                         if (containsJndiInjection(decodedValue)) {
                             // log.debug("检测到JNDI注入参数(解码后): {}={}", paramName, decodedValue);
                             return true;

@@ -128,6 +128,10 @@
     <!-- BouncyCastle日志级别 -->
     <logger name="org.bouncycastle" level="WARN" />
     
-    <!-- Tomcat HTTP 解析错误日志（恶意请求）- 降低为 DEBUG 级别 -->
-    <logger name="org.apache.coyote.http11.Http11Processor" level="ERROR" />
+    <!-- Tomcat HTTP 协议解析异常（如黑客发畸形请求引发的协议解析警告，仅保留严重错误） -->
+    <logger name="org.apache.coyote.http11.Http11Processor" level="WARN" />
+    <!-- 屏蔽网络扫描产生的畸形 Cookie 警告日志 (Log4Shell 盲扫等) -->
+    <logger name="org.apache.tomcat.util.http.parser.Cookie" level="WARN" />
+    <!-- 屏蔽 Spring 默认拦截 405/404 等请求方法不支持时产生的 WARN 噪音 -->
+    <logger name="org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver" level="ERROR" />
 </configuration>

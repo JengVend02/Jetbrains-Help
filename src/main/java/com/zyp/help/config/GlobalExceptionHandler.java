@@ -70,7 +70,7 @@ public class GlobalExceptionHandler {
     public ResponseEntity<Map<String, Object>> handleMethodNotSupportedException(
             HttpRequestMethodNotSupportedException e, HttpServletRequest request) {
         
-        log.warn("不支持的HTTP方法: {} from {}", e.getMethod(), request.getRemoteAddr());
+        log.debug("不支持的HTTP方法: {} from {}", e.getMethod(), request.getRemoteAddr());
         
         Map<String, Object> errorResponse = new HashMap<>();
         errorResponse.put("success", false);
