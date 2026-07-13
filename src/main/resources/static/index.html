@@ -149,7 +149,7 @@
                 <h3 class="text-lg font-bold text-gray-900">使用说明</h3>
               </div>
               <div class="flex items-center gap-2">
-                <button @click="showUsageModal = true" class="w-1/2 px-4 py-2.5 text-sm text-white bg-gradient-to-r from-purple-500 to-indigo-600 hover:from-purple-600 hover:to-indigo-700 font-medium rounded-lg inline-flex items-center justify-center gap-2 transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
+                <button @click="navigateTo('usage')" class="w-1/2 px-4 py-2.5 text-sm text-white bg-gradient-to-r from-purple-500 to-indigo-600 hover:from-purple-600 hover:to-indigo-700 font-medium rounded-lg inline-flex items-center justify-center gap-2 transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
                   <i class="fas fa-question-circle"></i>
                   <span>查看详细说明</span>
                 </button>
@@ -243,6 +243,273 @@
 
           </div>
 
+        </div>
+
+        <!-- 使用说明页面 -->
+        <div v-else-if="currentPage === 'usage'">
+          <div class="mb-8">
+            <div class="flex items-center gap-4 mb-2">
+              <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center shadow-md">
+                <i class="fas fa-book-open text-white text-xl"></i>
+              </div>
+              <div>
+                <h2 class="text-3xl font-bold text-gray-900">使用说明</h2>
+                <p class="text-gray-500 text-sm">详细的激活步骤和配置说明</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="space-y-6 md:space-y-8">
+            <!-- 报告问题横幅 -->
+            <div class="bg-gradient-to-r from-red-500 to-red-600 rounded-2xl p-5 shadow-lg flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div class="flex items-center gap-3 text-white">
+                <div class="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <i class="fas fa-bug text-lg"></i>
+                </div>
+                <div>
+                  <p class="font-bold">遇到激活问题？</p>
+                  <p class="text-sm text-red-100">在 GitHub 提交 Issue，我们会尽快处理</p>
+                </div>
+              </div>
+              <a href="https://github.com/JengVend02/Jetbrains-Help/issues/new" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 bg-white text-red-600 rounded-lg hover:bg-red-50 transition-all text-sm font-bold shadow-md hover:shadow-lg transform hover:-translate-y-0.5 whitespace-nowrap">
+                <i class="fas fa-external-link-alt mr-1.5"></i>提交 Issue
+              </a>
+            </div>
+
+            <!-- 第一步：代理配置 -->
+            <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+              <div class="bg-gradient-to-r from-indigo-500 to-purple-600 px-6 py-4 flex items-center gap-3">
+                <div class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center text-white font-bold text-lg">1</div>
+                <div class="text-white">
+                  <h3 class="text-lg font-bold">代理配置</h3>
+                </div>
+              </div>
+              <div class="p-6 space-y-5">
+                <!-- 下载 -->
+                <div class="flex items-start gap-4">
+                  <div class="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <i class="fas fa-download text-purple-600 text-sm"></i>
+                  </div>
+                  <div class="flex-1">
+                    <p class="font-semibold text-gray-900 mb-2">下载工具包</p>
+                    <button @click="downloadAgent" class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-purple-600 bg-purple-50 hover:bg-purple-100 border border-purple-200 rounded-lg transition-all hover:shadow-md transform hover:-translate-y-0.5">
+                      <i class="fas fa-download"></i>
+                      <span>ja-netfilter.zip</span>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- 解压 -->
+                <div class="flex items-start gap-4">
+                  <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <i class="fas fa-folder-open text-blue-600 text-sm"></i>
+                  </div>
+                  <div class="flex-1">
+                    <p class="font-semibold text-gray-900 mb-1">解压到 <strong class="text-red-600">不包含中文路径</strong> 的目录</p>
+                    <p class="text-sm text-gray-500">例如：<code class="bg-gray-100 px-2 py-0.5 rounded text-xs">D:\Tools\ja-netfilter</code></p>
+                  </div>
+                </div>
+
+                <!-- 安装脚本 -->
+                <div class="flex items-start gap-4">
+                  <div class="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <i class="fas fa-terminal text-green-600 text-sm"></i>
+                  </div>
+                  <div class="flex-1">
+                    <p class="font-semibold text-gray-900 mb-3">执行安装脚本</p>
+                    <div class="space-y-4">
+                      <!-- Windows -->
+                      <div class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+                        <div class="flex items-center gap-2 mb-3">
+                          <i class="fab fa-windows text-blue-500 text-lg"></i>
+                          <span class="font-bold text-sm text-gray-800">Windows</span>
+                          <span class="text-xs text-gray-400 ml-1">双击 .vbs 脚本即可运行</span>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs text-gray-600">
+                          <div class="bg-white rounded-lg p-3 border border-gray-200">
+                            <div class="flex items-center gap-1.5 mb-1.5">
+                              <i class="fas fa-check-circle text-green-500"></i>
+                              <span class="font-bold text-gray-800 text-sm">以前没装过</span>
+                            </div>
+                            <p>直接执行 <code class="bg-gray-100 px-1.5 py-0.5 rounded border border-gray-200">/scripts/install-current-user.vbs</code>，弹出 <code class="bg-green-100 px-1.5 py-0.5 rounded text-green-700">Done</code> 即完成</p>
+                          </div>
+                          <div class="bg-white rounded-lg p-3 border border-gray-200">
+                            <div class="flex items-center gap-1.5 mb-1.5">
+                              <i class="fas fa-redo text-orange-500"></i>
+                              <span class="font-bold text-gray-800 text-sm">以前装过，要重装 / 更新</span>
+                            </div>
+                            <p>① 先执行 <code class="bg-gray-100 px-1.5 py-0.5 rounded border border-gray-200">/scripts/uninstall-all-users.vbs</code> 卸载旧版</p>
+                            <p class="mt-1">② 再执行 <code class="bg-gray-100 px-1.5 py-0.5 rounded border border-gray-200">/scripts/install-current-user.vbs</code> 安装新版</p>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- Mac -->
+                      <div class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+                        <div class="flex items-center gap-2 mb-3">
+                          <i class="fab fa-apple text-gray-700 text-lg"></i>
+                          <span class="font-bold text-sm text-gray-800">macOS</span>
+                          <span class="text-xs text-gray-400 ml-1">需在终端执行 .sh 脚本</span>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs text-gray-600">
+                          <div class="bg-amber-50 rounded-lg p-3 border border-amber-200">
+                            <div class="flex items-center gap-1.5 mb-1.5">
+                              <i class="fas fa-lock-open text-amber-500"></i>
+                              <span class="font-bold text-gray-800 text-sm">先赋权（仅一次）</span>
+                            </div>
+                            <p class="mb-1.5">进入 scripts 目录执行：</p>
+                            <code class="block bg-gray-900 text-green-400 px-3 py-2 rounded-lg font-mono text-sm">chmod +x *.sh</code>
+                          </div>
+                          <div class="bg-white rounded-lg p-3 border border-gray-200">
+                            <div class="flex items-center gap-1.5 mb-1.5">
+                              <i class="fas fa-check-circle text-green-500"></i>
+                              <span class="font-bold text-gray-800 text-sm">以前没装过</span>
+                            </div>
+                            <p class="mb-1.5">进入 scripts 目录执行：</p>
+                            <code class="block bg-gray-900 text-green-400 px-3 py-2 rounded-lg font-mono text-sm">./install.sh</code>
+                          </div>
+                          <div class="bg-white rounded-lg p-3 border border-gray-200">
+                            <div class="flex items-center gap-1.5 mb-1.5">
+                              <i class="fas fa-redo text-orange-500"></i>
+                              <span class="font-bold text-gray-800 text-sm">以前装过，要重装 / 更新</span>
+                            </div>
+                            <p class="mb-1.5">① 进入 scripts 目录，先执行卸载：</p>
+                            <code class="block bg-gray-900 text-green-400 px-3 py-2 rounded-lg font-mono text-sm">./uninstall.sh</code>
+                            <p class="mt-2 mb-1.5">② 进入 scripts 目录，再执行安装：</p>
+                            <code class="block bg-gray-900 text-green-400 px-3 py-2 rounded-lg font-mono text-sm">./install.sh</code>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 重启提示 -->
+                <div class="bg-red-50 border border-red-200 rounded-xl p-4 flex items-center gap-3">
+                  <div class="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center flex-shrink-0">
+                    <i class="fas fa-exclamation-triangle text-red-600"></i>
+                  </div>
+                  <div>
+                    <p class="font-bold text-red-700">重启jetbrains产品（重要）</p>
+                    <p class="text-xs text-red-500 mt-0.5">必须关闭所有jetbrains产品，再重新启动。否则代理配置将无法生效</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 第二步：产品激活 -->
+            <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+              <div class="bg-gradient-to-r from-purple-500 to-pink-500 px-6 py-4 flex items-center gap-3">
+                <div class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center text-white font-bold text-lg">2</div>
+                <div class="text-white">
+                  <h3 class="text-lg font-bold">产品激活</h3>
+                  <p class="text-sm text-purple-100">选择以下任一方式激活 JetBrains 产品</p>
+                </div>
+              </div>
+              <div class="p-6 space-y-5">
+                <!-- 方式一：激活码 -->
+                <div class="flex items-start gap-4">
+                  <div class="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <i class="fas fa-key text-purple-600 text-sm"></i>
+                  </div>
+                  <div class="flex-1">
+                    <p class="font-semibold text-gray-900 mb-2">方式一：激活码</p>
+                    <p class="text-sm text-gray-600 mb-3">在激活产品页面生成产品或插件激活码，粘贴到软件中即可</p>
+                    <div class="flex flex-wrap gap-2">
+                      <button @click="navigateTo('products')" class="inline-flex items-center gap-1.5 px-4 py-2 text-sm font-medium text-purple-600 bg-purple-50 hover:bg-purple-100 border border-purple-200 rounded-lg transition-all hover:shadow-md">
+                        <i class="fas fa-cube"></i>
+                        <span>激活产品</span>
+                      </button>
+                      <button @click="navigateTo('plugins')" class="inline-flex items-center gap-1.5 px-4 py-2 text-sm font-medium text-indigo-600 bg-indigo-50 hover:bg-indigo-100 border border-indigo-200 rounded-lg transition-all hover:shadow-md">
+                        <i class="fas fa-puzzle-piece"></i>
+                        <span>激活插件</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 方式二：许可证服务器 -->
+                <div class="flex items-start gap-4">
+                  <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <i class="fas fa-server text-blue-600 text-sm"></i>
+                  </div>
+                  <div class="flex-1">
+                    <p class="font-semibold text-gray-900 mb-2">方式二：许可证服务器</p>
+                    <p class="text-sm text-gray-600 mb-3">将以下地址填入 JetBrains 软件的【许可证服务器 → 服务器地址】</p>
+                    <div class="bg-gray-50 rounded-xl p-3 border border-gray-200">
+                      <div class="flex flex-col sm:flex-row gap-2">
+                        <input :value="serverUrl" readonly class="flex-1 bg-white border border-gray-300 rounded-lg px-3 py-2 text-sm min-w-0 font-mono" />
+                        <button @click="copyToClipboard(serverUrl)" class="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors whitespace-nowrap text-sm font-medium" title="复制">
+                          <i class="fas fa-copy mr-1"></i>复制
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 方式三：JRebel -->
+                <div class="flex items-start gap-4">
+                  <div class="w-8 h-8 bg-orange-100 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <i class="fas fa-fire text-orange-600 text-sm"></i>
+                  </div>
+                  <div class="flex-1">
+                    <p class="font-semibold text-gray-900 mb-2">方式三：JRebel 激活</p>
+                    <p class="text-sm text-gray-600 mb-3">将以下地址填入 JRebel 的【Team URL】，邮箱随意填写</p>
+                    <div class="bg-gray-50 rounded-xl p-3 border border-gray-200">
+                      <div class="flex flex-col sm:flex-row gap-2">
+                        <input :value="jrebelServerUrl" readonly class="flex-1 bg-white border border-gray-300 rounded-lg px-3 py-2 text-sm min-w-0 font-mono" />
+                        <button @click="copyToClipboard(jrebelServerUrl)" class="px-4 py-2 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition-colors whitespace-nowrap text-sm font-medium" title="复制">
+                          <i class="fas fa-copy mr-1"></i>复制
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 常见问题 -->
+            <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+              <div class="bg-gradient-to-r from-amber-500 to-orange-500 px-6 py-4 flex items-center gap-3">
+                <div class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
+                  <i class="fas fa-question-circle text-white text-lg"></i>
+                </div>
+                <div class="text-white">
+                  <h3 class="text-lg font-bold">常见问题</h3>
+                  <p class="text-sm text-amber-100">激活过程中可能遇到的问题及解决方案</p>
+                </div>
+              </div>
+              <div class="p-6 space-y-4">
+                <details class="group bg-gray-50 rounded-xl border border-gray-200 overflow-hidden">
+                  <summary class="flex items-center justify-between px-5 py-3 cursor-pointer hover:bg-gray-100 transition-colors font-medium text-gray-800 text-sm">
+                    <span><i class="fas fa-exclamation-circle text-amber-500 mr-2"></i>激活后提示许可证无效</span>
+                    <i class="fas fa-chevron-down text-gray-400 group-open:rotate-180 transition-transform"></i>
+                  </summary>
+                  <div class="px-5 pb-4 text-sm text-gray-600 border-t border-gray-200 pt-3">
+                    请确认已重启电脑且代理工具正常运行。检查激活码是否正确粘贴，或尝试使用许可证服务器方式重新激活。
+                  </div>
+                </details>
+                <details class="group bg-gray-50 rounded-xl border border-gray-200 overflow-hidden">
+                  <summary class="flex items-center justify-between px-5 py-3 cursor-pointer hover:bg-gray-100 transition-colors font-medium text-gray-800 text-sm">
+                    <span><i class="fas fa-exclamation-circle text-amber-500 mr-2"></i>代理工具安装后 IDE 无法启动</span>
+                    <i class="fas fa-chevron-down text-gray-400 group-open:rotate-180 transition-transform"></i>
+                  </summary>
+                  <div class="px-5 pb-4 text-sm text-gray-600 border-t border-gray-200 pt-3">
+                    请确认安装路径不包含中文字符。尝试执行卸载脚本后重新安装，并确保重启电脑。
+                  </div>
+                </details>
+                <details class="group bg-gray-50 rounded-xl border border-gray-200 overflow-hidden">
+                  <summary class="flex items-center justify-between px-5 py-3 cursor-pointer hover:bg-gray-100 transition-colors font-medium text-gray-800 text-sm">
+                    <span><i class="fas fa-exclamation-circle text-amber-500 mr-2"></i>支持哪些版本的 JetBrains IDE？</span>
+                    <i class="fas fa-chevron-down text-gray-400 group-open:rotate-180 transition-transform"></i>
+                  </summary>
+                  <div class="px-5 pb-4 text-sm text-gray-600 border-t border-gray-200 pt-3">
+                    目前支持 <strong>2026.1.2 及以下</strong> 版本。更高版本需自行测试兼容性。
+                  </div>
+                </details>
+              </div>
+            </div>
+
+          </div>
         </div>
 
         <!-- 产品页面 -->
@@ -877,142 +1144,7 @@
     </div>
   </transition>
 
-  <!-- 使用说明模态框 -->
-  <transition name="modal">
-    <div v-if="showUsageModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 p-4">
-      <div class="bg-white rounded-2xl w-full max-w-4xl shadow-2xl max-h-[90vh] flex flex-col">
-        <!-- 固定顶部区域（包含关闭按钮） -->
-        <div class="sticky top-0 z-10 bg-white rounded-t-2xl px-6 md:px-8 py-4 border-b border-gray-100 flex items-center justify-between">
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 bg-gradient-to-r from-blue-400 to-indigo-500 rounded-full flex items-center justify-center">
-              <i class="fas fa-book text-white"></i>
-            </div>
-            <div>
-              <h2 class="text-xl font-bold text-gray-900">使用说明</h2>
-              <p class="text-xs text-gray-500">详细的激活步骤和配置说明</p>
-            </div>
-          </div>
-          <button @click="showUsageModal = false" class="w-10 h-10 bg-gray-100 hover:bg-gray-200 rounded-full flex items-center justify-center transition-all group" title="关闭">
-            <i class="fas fa-times text-gray-600 group-hover:text-gray-800 text-lg"></i>
-          </button>
-        </div>
 
-        <div class="space-y-6 text-left">
-          <div class="rounded-lg p-5 border-l-4">
-            <p class="w-full px-4 py-2.5 text-sm text-white bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 font-medium rounded-lg inline-flex items-center justify-center gap-2 transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
-              <a href="https://github.com/JengVend02/Jetbrains-Help/issues/new" target="_blank" rel="noopener noreferrer">
-                <i class="fas fa-bug mr-1"></i>
-                <span>报告激活问题</span>
-              </a>
-            </p>
-          </div>
-        </div>
-
-        <!-- 可滚动内容区域 -->
-        <div class="overflow-y-auto p-6 md:p-8">
-          <div class="space-y-6 text-left">
-            <!-- 代理配置 -->
-            <div class="bg-gradient-to-r from-green-50 to-blue-50 rounded-lg p-5 border-l-4 border-green-500">
-              <h3 class="text-lg font-bold text-gray-900 mb-3 flex items-center">
-                <i class="fas fa-cog text-purple-600 mr-2"></i>
-                代理配置
-              </h3>
-              <ol class="space-y-3 text-sm text-gray-700 list-decimal list-inside">
-                <li class="pl-2">
-                  <span class="font-medium">下载</span>
-                  <button @click="downloadAgent" class="inline-flex items-center gap-1.5 px-3 py-1.5 ml-2 text-xs font-medium text-purple-600 bg-purple-50 hover:bg-purple-100 border border-purple-200 rounded-lg transition-all">
-                    <i class="fas fa-download"></i>
-                    <span>ja-netfilter.zip</span>
-                  </button>
-                  <span class="font-medium">工具包</span>
-                </li>
-                <li class="pl-2"><span class="font-medium">解压后放入</span> <strong class="text-red-600">不包含中文路径</strong> <span class="font-medium">的任意目录</span></li>
-                <li class="pl-2">
-                  <span class="font-medium">之前使用过代理工具：</span>
-                  <ul class="list-disc list-inside ml-4 mt-1 space-y-1 text-xs">
-                    <li>
-                      windows
-                      <ul class="list-disc list-inside ml-4 mt-1 space-y-1 text-xs">
-                        <li>先执行 <code class="bg-gray-100 px-1.5 py-0.5 rounded">/scripts/uninstall-all-users.vbs</code> 等待 <code class="bg-green-100 px-1.5 py-0.5 rounded">Done</code> 弹窗</li>
-                        <li>再执行 <code class="bg-gray-100 px-1.5 py-0.5 rounded">/scripts/install-current-user.vbs</code> 等待 <code class="bg-green-100 px-1.5 py-0.5 rounded">Done</code> 弹窗</li>
-                      </ul>
-                    </li>
-                    <li>
-                      mac
-                      <ul class="list-disc list-inside ml-4 mt-1 space-y-1 text-xs">
-                        <li>调用控制台执行 <code class="bg-gray-100 px-1.5 py-0.5 rounded">/scripts/uninstall.sh</code> 等待 <code class="bg-green-100 px-1.5 py-0.5 rounded">Done</code> 输出</li>
-                        <li>再调用控制台执行 <code class="bg-gray-100 px-1.5 py-0.5 rounded">/scripts/install.sh</code> 等待 <code class="bg-green-100 px-1.5 py-0.5 rounded">Done</code> 输出</li>
-                      </ul>
-                    </li>
-                  </ul>
-                </li>
-                <li class="pl-2">
-                  <span class="font-medium">之前未使用过代理工具：</span>
-                  <ul class="list-disc list-inside ml-4 mt-1 text-xs">
-                    <li>
-                      windows
-                      <ul class="list-disc list-inside ml-4 mt-1 text-xs">
-                        <li>执行 <code class="bg-gray-100 px-1.5 py-0.5 rounded">/scripts/install-current-user.vbs</code> 等待 <code class="bg-green-100 px-1.5 py-0.5 rounded">Done</code> 弹窗</li>
-                      </ul>
-                    </li>
-                    <li>
-                      mac
-                      <ul class="list-disc list-inside ml-4 mt-1 text-xs">
-                        <li>调用控制台执行 <code class="bg-gray-100 px-1.5 py-0.5 rounded">/scripts/install.sh</code> 等待 <code class="bg-green-100 px-1.5 py-0.5 rounded">Done</code> 输出</li>
-                      </ul>
-                    </li>
-                  </ul>
-                </li>
-                <li class="pl-2">
-                  <div class="mt-3 p-3 bg-red-50 border-l-4 border-red-500 rounded-r-lg">
-                    <div class="flex items-center gap-2">
-                      <i class="fas fa-exclamation-triangle text-red-600"></i>
-                      <span class="font-bold text-red-700">重启电脑（重要）</span>
-                    </div>
-                    <p class="text-xs text-red-600 mt-1 ml-6">必须重启才能使配置生效！</p>
-                  </div>
-                </li>
-              </ol>
-            </div>
-
-            <!-- 产品激活 -->
-            <div class="bg-purple-50 rounded-lg p-5 border-l-4 border-purple-500">
-              <h3 class="text-lg font-bold text-gray-900 mb-3 flex items-center">
-                <i class="fas fa-key text-purple-600 mr-2"></i>
-                产品激活
-              </h3>
-              <ol class="space-y-3 text-sm text-gray-700 list-decimal list-inside">
-                <li class="pl-2">
-                  <span class="font-medium">激活码方式：</span>在
-                  <button @click="navigateTo('products')" class="inline-flex items-center gap-1.5 px-3 py-1.5 ml-2 text-xs font-medium text-purple-600 bg-purple-50 hover:bg-purple-100 border border-purple-200 rounded-lg transition-all">
-                    <i class="fas fa-cube mr-2"></i>
-                    激活产品
-                  </button>
-                  页面生成产品或插件激活码
-                </li>
-                <li class="pl-2">
-                  <span class="font-medium">服务器方式：</span>将
-                  <input :value="serverUrl" readonly class="flex-1 bg-white border border-gray-300 rounded-lg px-3 py-2 text-sm min-w-0" />
-                  <button @click="copyToClipboard(serverUrl)" class="px-3 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors whitespace-nowrap" title="复制">
-                    <i class="fas fa-copy"></i>
-                  </button>
-                  填入【许可证服务器-服务器地址】
-                </li>
-                <li class="pl-2">
-                  <span class="font-medium">JRebel激活：</span>将
-                  <input :value="jrebelServerUrl" readonly class="flex-1 bg-white border border-gray-300 rounded-lg px-3 py-2 text-sm min-w-0" />
-                  <button @click="copyToClipboard(jrebelServerUrl)" class="px-3 py-2 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition-colors whitespace-nowrap" title="复制">
-                    <i class="fas fa-copy"></i>
-                  </button>
-                  填入【Team URL】，邮箱随意填写
-                </li>
-              </ol>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </transition>
 
   <!-- 返回顶部按钮 -->
   <div @click="scrollToTop" class="back-to-top" :class="showBackToTop ? 'show' : ''">

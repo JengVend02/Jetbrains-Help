@@ -10,7 +10,7 @@ const App = {
       showLicenseModal: false,
       showResultModal: false,
       showPowerConfModal: false,
-      showUsageModal: true,
+
       powerConfContent: '',
       isGenerating: false,
       config: {
@@ -40,6 +40,7 @@ const App = {
       searchQuery: '',
       navItems: [
         { id: 'home', name: '首页', icon: 'fas fa-home' },
+        { id: 'usage', name: '说明', icon: 'fas fa-book' },
         { id: 'products', name: '产品', icon: 'fas fa-cube' },
         { id: 'plugins', name: '插件', icon: 'fas fa-puzzle-piece' },
         { id: 'records', name: '记录', icon: 'fas fa-history' },
@@ -171,7 +172,6 @@ const App = {
       this.showLicenseModal = false
       this.showResultModal = false
       this.showPowerConfModal = false
-      this.showUsageModal = false
     },
     
     // 配置相关
