@@ -549,7 +549,7 @@
               </button>
             </div>-->
 
-            <!-- 搜索框 -->
+            <!-- 搜索框 + 内置统计 -->
             <div class="search-container max-w-md relative">
               <i class="fas fa-search search-icon absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 transition-colors"></i>
               <input
@@ -558,19 +558,22 @@
                       placeholder="搜索产品..."
                       class="search-input w-full px-8 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all shadow-sm"
                       :class="{'border-purple-300': searchQuery.length > 0}" />
-              <button
-                      v-if="searchQuery.length > 0"
-                      @click="searchQuery = ''"
-                      class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors"
-                      title="清除搜索">
-                <i class="fas fa-times-circle"></i>
-              </button>
+              <div class="absolute right-3 top-1/2 transform -translate-y-1/2 flex items-center gap-2">
+                <span v-if="searchQuery.length > 0" class="px-3 py-1 rounded-full text-base font-extrabold bg-gradient-to-r from-purple-600 to-indigo-600 text-white whitespace-nowrap shadow-lg">
+                  <i class="fas fa-search mr-1 text-sm"></i>{{ filteredProducts.length }}/{{ products.length }}
+                </span>
+                <span v-else class="px-3 py-1 rounded-full text-base font-extrabold bg-gradient-to-r from-purple-600 to-indigo-600 text-white whitespace-nowrap shadow-lg">
+                  <i class="fas fa-cubes mr-1 text-sm"></i>{{ products.length }} 个产品
+                </span>
+                <button
+                        v-if="searchQuery.length > 0"
+                        @click="searchQuery = ''"
+                        class="text-gray-400 hover:text-gray-600 transition-colors"
+                        title="清除搜索">
+                  <i class="fas fa-times-circle"></i>
+                </button>
+              </div>
             </div>
-          </div>
-
-          <!-- 搜索结果统计 -->
-          <div v-if="searchQuery.length > 0" class="mb-6 text-sm text-gray-500">
-            找到 <span class="font-medium text-purple-600">{{ filteredProducts.length }}</span> 个匹配的产品
           </div>
 
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -634,7 +637,7 @@
               </button>
             </div>
 
-            <!-- 搜索框 -->
+            <!-- 搜索框 + 内置统计 -->
             <div class="search-container max-w-md relative">
               <i class="fas fa-search search-icon absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 transition-colors"></i>
               <input
@@ -643,19 +646,22 @@
                       placeholder="搜索插件..."
                       class="search-input w-full px-8 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all shadow-sm"
                       :class="{'border-purple-300': searchQuery.length > 0}" />
-              <button
-                      v-if="searchQuery.length > 0"
-                      @click="searchQuery = ''"
-                      class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors"
-                      title="清除搜索">
-                <i class="fas fa-times-circle"></i>
-              </button>
+              <div class="absolute right-3 top-1/2 transform -translate-y-1/2 flex items-center gap-2">
+                <span v-if="searchQuery.length > 0" class="px-3 py-1 rounded-full text-base font-extrabold bg-gradient-to-r from-purple-600 to-indigo-600 text-white whitespace-nowrap shadow-lg">
+                  <i class="fas fa-search mr-1 text-sm"></i>{{ filteredPlugins.length }}/{{ plugins.length }}
+                </span>
+                <span v-else class="px-3 py-1 rounded-full text-base font-extrabold bg-gradient-to-r from-purple-600 to-indigo-600 text-white whitespace-nowrap shadow-lg">
+                  <i class="fas fa-puzzle-piece mr-1 text-sm"></i>{{ plugins.length }} 个插件
+                </span>
+                <button
+                        v-if="searchQuery.length > 0"
+                        @click="searchQuery = ''"
+                        class="text-gray-400 hover:text-gray-600 transition-colors"
+                        title="清除搜索">
+                  <i class="fas fa-times-circle"></i>
+                </button>
+              </div>
             </div>
-          </div>
-
-          <!-- 搜索结果统计 -->
-          <div v-if="searchQuery.length > 0" class="mb-6 text-sm text-gray-500">
-            找到 <span class="font-medium text-purple-600">{{ filteredPlugins.length }}</span> 个匹配的插件
           </div>
 
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
