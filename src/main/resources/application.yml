@@ -4,11 +4,22 @@ spring:
 server:
   port: 10768
 
+
 help:
-  # 证书信息配置
+  # SSL证书信息配置(有证书信息时可访问https,否则只能访问http),证书来源cf,15年有效期
+  ssl:
+    # 证书路径
+    path: /etc/ssl/cloudflare/keystore.p12
+    # 证书密码
+    password: cf-cert
+    # 证书别名
+    alias: cloudflare
+
+  # ja-netfilter.zip证书信息配置
   certificate:
     # 是否使用通用证书（true/false）当为false时自动生成新的证书
     common: true
+
   # 产品信息配置
   product:
     # 是否启用定时刷新任务（true/false）
