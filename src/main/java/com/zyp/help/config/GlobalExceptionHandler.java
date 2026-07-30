@@ -132,7 +132,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(ClientAbortException.class)
     public void handleClientAbortException(ClientAbortException e, HttpServletRequest request) {
         // 仅记录 info 或 debug 日志，无需回写任何响应体
-        log.info("客户端已断开连接: {}", request.getRequestURI());
+        log.info("客户端已断开连接: {} from {}", request.getRequestURI(), request.getRemoteAddr());
     }
 
     /**
