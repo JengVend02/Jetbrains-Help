@@ -1,6 +1,7 @@
 package com.zyp.help.config;
 
 import lombok.extern.slf4j.Slf4j;
+import org.apache.catalina.connector.ClientAbortException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -123,6 +124,15 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(status)
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(errorResponse);
+    }
+
+    /**
+     * 捕获客户端中途断开连接的异常，避免打印大量无用堆栈
+     */
+    @ExceptionHandler(ClientAbortException.class)
+    public void handleClientAbortException(ClientAbortException e, HttpServletRequest request) {
+        // 仅记录 info 或 debug 日志，无需回写任何响应体
+        log.info("客户端已断开连接: {}", request.getRequestURI());
     }
 
     /**
