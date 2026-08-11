@@ -3,10 +3,7 @@ package com.zyp.help;
 import cn.hutool.core.text.CharSequenceUtil;
 import cn.hutool.core.thread.ThreadUtil;
 import cn.hutool.extra.spring.SpringUtil;
-import com.zyp.help.context.AgentContextHolder;
-import com.zyp.help.context.CertificateContextHolder;
-import com.zyp.help.context.PluginsContextHolder;
-import com.zyp.help.context.ProductsContextHolder;
+import com.zyp.help.context.*;
 import com.zyp.help.context.plugin.PluginConfig;
 import java.net.InetAddress;
 
@@ -88,6 +85,7 @@ public class JetbrainsHelpApplication {
         PluginsContextHolder.init();      // 初始化插件信息上下文
         CertificateContextHolder.init();  // 初始化证书和密钥上下文
         AgentContextHolder.init();        // 初始化ja-netfilter代理上下文
+        CommonContextHolder.init();       // 初始化通用信息
         
         // 获取本地IP地址和端口号，构建访问URL
         InetAddress localHost = InetAddress.getLocalHost();

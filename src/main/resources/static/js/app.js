@@ -38,6 +38,7 @@ const App = {
       filteredPlugins: [],
       lastPluginUpdateTime: "",
       lastProductUpdateTime: "",
+      version: "",
       searchQuery: '',
       navItems: [
         { id: 'home', name: '首页', icon: 'fas fa-home' },
@@ -116,11 +117,19 @@ const App = {
   },
 
   mounted() {
+    // 加载激活配置项
     this.loadConfig()
+    // 加载产品列表
     this.loadProducts()
+    // 加载插件列表
     this.loadPlugins()
-    this.loadPluginUpdateTime()
+    // 加载产品更新时间
     this.loadProductUpdateTime()
+    // 加载插件更新时间
+    this.loadPluginUpdateTime()
+    // 加载支持的最高激活版本
+    this.loadCommonVersion()
+    // 设置默认过期时间
     this.setDefaultExpiryDate()
 
     // 加载主题设置
@@ -267,6 +276,14 @@ const App = {
     async getProductUpdateTime() {
       await this.loadProductUpdateTime()
       Utils.showNotification('更新时间已刷新', 'success')
+    },
+
+    async loadCommonVersion() {
+      try {
+        this.version = await ApiService.getCommonVersion()
+      } catch (error) {
+        console.error('加载版本失败:', error)
+      }
     },
 
     // 搜索功能

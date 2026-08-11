@@ -256,6 +256,11 @@ const ApiService = {
     return await this.get('/api/products/lastUpdateTime')
   },
 
+  // 获取最高支持插件版本
+  async getCommonVersion() {
+    return await this.getText('/api/common/version')
+  },
+
   // 生成产品激活码
   async generateLicense(productCode, licenseeName, assigneeName, expiryDate, licenseType, userCount, activationProduct) {
     const params = new URLSearchParams({

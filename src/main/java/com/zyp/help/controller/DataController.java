@@ -1,5 +1,6 @@
 package com.zyp.help.controller;
 
+import com.zyp.help.context.CommonContextHolder;
 import com.zyp.help.context.plugin.PluginConfig;
 import com.zyp.help.context.plugin.model.PluginCache;
 import com.zyp.help.context.common.UpdateTimeCache;
@@ -143,5 +144,11 @@ public class DataController {
     @GetMapping("/products/lastUpdateTime")
     public List<UpdateTimeCache> getProductLastUpdateTime() {
         return ProductConfig.productCache.getUpdateTime();
+    }
+
+
+    @GetMapping("/common/version")
+    public String getCommonVersion() {
+        return CommonContextHolder.version;
     }
 }
