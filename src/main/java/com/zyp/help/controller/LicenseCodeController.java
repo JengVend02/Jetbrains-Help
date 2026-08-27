@@ -251,6 +251,9 @@ public class LicenseCodeController {
 
         // 最终的激活码
         respBody.setActivationCode(LicenseContextHolder.generateLicense(body,productCodeSet));
+
+        //
+        LicenseContextHolder.saveNewLicenseHistories(respBody);
         return respBody;
     }
 }

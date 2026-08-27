@@ -1,6 +1,7 @@
 package com.zyp.help.controller;
 
 import com.zyp.help.context.CommonContextHolder;
+import com.zyp.help.context.license.LicenseConfig;
 import com.zyp.help.context.plugin.PluginConfig;
 import com.zyp.help.context.plugin.model.PluginCache;
 import com.zyp.help.context.common.UpdateTimeCache;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 数据接口控制器
@@ -150,5 +152,10 @@ public class DataController {
     @GetMapping("/common/version")
     public String getCommonVersion() {
         return CommonContextHolder.version;
+    }
+
+    @GetMapping("/license/history")
+    public Map<String, List<Map<String,String>>> getLicenseHistory() {
+        return LicenseConfig.licenseHistory;
     }
 }

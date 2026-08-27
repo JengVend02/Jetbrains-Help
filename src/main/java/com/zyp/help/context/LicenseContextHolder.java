@@ -12,6 +12,15 @@ import cn.hutool.json.JSONUtil;
 import java.util.stream.Collectors;
 
 import com.zyp.help.context.certificate.CertificateConfig;
+import com.zyp.help.context.common.UpdateTimeCache;
+import com.zyp.help.context.license.LicenseConfig;
+import com.zyp.help.context.plugin.PluginConfig;
+import com.zyp.help.context.plugin.model.PluginCache;
+import com.zyp.help.context.plugin.service.PluginCacheService;
+import com.zyp.help.context.product.ProductConfig;
+import com.zyp.help.context.product.model.ProductCache;
+import com.zyp.help.context.product.service.LicenseCacheService;
+import com.zyp.help.context.product.service.ProductCacheService;
 import com.zyp.help.controller.LicenseCodeController;
 import lombok.AccessLevel;
 import lombok.Data;
@@ -61,6 +70,19 @@ import static cn.hutool.crypto.asymmetric.SignAlgorithm.SHA1withRSA;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)  // 防止实例化
 public class LicenseContextHolder {
 
+    public static void init() {
+        log.info("开始初始化授权上下文...");
+        try {
+            // 从缓存加载授权历史数据
+            LicenseConfig.licenseHistory = LicenseCacheService.loadFromLicenseCache();
+            log.info("授权上下文初始化成功！加载授权记录数量: {}", LicenseConfig.licenseHistory.size());
+        } catch (Exception e) {
+            log.error("产品上下文初始化失败", e);
+            throw e;
+        }
+    }
+
+
     /**
      * 生成JetBrains产品激活码
      * 
@@ -90,11 +112,11 @@ public class LicenseContextHolder {
         String expiryDate = body.getExpiryDate();
         log.info("开始生成许可证 - 许可证名称: {}, 被授权人: {}, 过期日期: {}, 激活内容: {}",
                  licensesName, assigneeName, expiryDate, body.getActivationProduct());
-        
+
         // 1. 生成唯一的许可证ID
         String licenseId = IdUtil.fastSimpleUUID();
         log.debug("生成许可证ID: {}", licenseId);
-        
+
         // 2. 构建产品列表，为每个产品设置相同的过期日期
         List<Product> products = productCodeSet.stream()
             .map(productCode -> new Product()
@@ -141,6 +163,25 @@ public class LicenseContextHolder {
         log.info("许可证生成成功 - 激活码长度: {} 字符", activationCode.length());
         
         return activationCode;
+    }
+
+    /**
+     * 保存新授权信息到缓存
+     * @param body 授权信息
+     */
+    public static void saveNewLicenseHistories(LicenseCodeController.GenerateLicenseRespBody body) {
+        if (body == null) {
+            log.info("没有新的授权需要保存");
+            return;
+        }
+
+        // 合并到内存缓存
+        LicenseConfig.addLicenseHistoryCache(body);
+
+        // 保存到文件
+        LicenseCacheService.saveToCache(LicenseConfig.licenseHistory);
+
+        // log.info("产品缓存已更新，当前总数: {}, 更新时间: {}", updateTimeCache.getNewNum(), updateTimeCache.getUpdateTime());
     }
 
     // ==================== 内部数据类 ====================

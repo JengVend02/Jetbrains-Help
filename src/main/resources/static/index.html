@@ -822,7 +822,7 @@
                     <tbody class="bg-white divide-y divide-gray-200">
                     <tr v-for="(record, index) in paginatedLicenseHistory" :key="index" class="hover:bg-gray-50 transition-colors">
                       <td class="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900">#{{ (currentPageNum - 1) * pageSize + index + 1 }}</td>
-                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600">{{ formatDate(record.generationTime) }}</td>
+                      <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600">{{ record.generationTime }}</td>
                       <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-900">{{ record.licenseName }}</td>
                       <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-900">{{ record.assigneeName }}</td>
                       <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-900">{{ record.expiryDate }}</td>
