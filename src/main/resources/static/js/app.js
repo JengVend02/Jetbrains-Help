@@ -17,6 +17,7 @@ const App = {
         licenseName: '',
         assigneeName: ''
       },
+      configKey: "",
       licenseConfig: {
         expiryDate: '',
         licenseType: 'PERPETUAL',
@@ -24,7 +25,7 @@ const App = {
       },
       licenseTypes: Object.values(Utils.LicenseType),
       selectedItem: null,
-      oldGeneratedLicense: [],
+      licenseHistory: [],
       generatedLicense: '',
       currentPageNum: 1,
       pageSize: 10,
@@ -64,8 +65,13 @@ const App = {
 
     // 排序后的历史记录（按生成时间倒序）
     sortedLicenseHistory() {
-      return [...this.oldGeneratedLicense].sort((a, b) => {
-        return new Date(b.generationTime) - new Date(a.generationTime);
+      // 防御性校验：如果还没加载完成或不是数组，直接返回空数组，彻底避免抛错
+      if (!Array.isArray(this.licenseHistory)) {
+        return [];
+      }
+
+      return [...this.licenseHistory].sort((a, b) => {
+        return new Date(b.generationTime || 0) - new Date(a.generationTime || 0);
       });
     },
 
@@ -129,16 +135,14 @@ const App = {
     this.loadPluginUpdateTime()
     // 加载支持的最高激活版本
     this.loadCommonVersion()
+    // 加载授权历史
+    this.loadLicenseHistory()
     // 设置默认过期时间
     this.setDefaultExpiryDate()
 
     // 加载主题设置
     Utils.loadTheme()
     
-    // 如果当前页面是记录页面，加载历史记录
-    if (this.currentPage === 'records') {
-      this.loadLicenseHistory()
-    }
 
     // 监听路由变化
     this.handleHashChange = () => {
@@ -147,10 +151,6 @@ const App = {
       // 重置过滤结果
       this.filteredProducts = [...this.products]
       this.filteredPlugins = [...this.plugins]
-      // 切换到记录页面时加载历史记录
-      if (this.currentPage === 'records') {
-        this.loadLicenseHistory()
-      }
     }
 
     Utils.onHashChange(this.handleHashChange)
@@ -213,6 +213,16 @@ const App = {
         this.config = config
       } else {
         this.showConfigModal = true
+      }
+
+      const configKey = StorageService.getConfigKey()
+      if (configKey) {
+        this.configKey = configKey
+      }
+      // configKey不存在,但config存在
+      else if (StorageService.isConfigured()){
+        StorageService.saveConfigKey(config.licenseName,config.assigneeName);
+        this.configKey = StorageService.getConfigKey()
       }
     },
 
@@ -335,6 +345,7 @@ const App = {
       this.isGenerating = true
       try {
         const result = await ApiService.generateLicense(
+            this.configKey,
             this.selectedItem.productCode,
             this.config.licenseName,
             this.config.assigneeName,
@@ -345,11 +356,6 @@ const App = {
         )
         this.generatedLicense = result.activationCode
         
-        // 保存激活码历史记录到 localStorage
-        const licenseHistory = JSON.parse(localStorage.getItem('licenseHistory') || '[]');
-        licenseHistory.push(result);
-        localStorage.setItem('licenseHistory', JSON.stringify(licenseHistory));
-        
         this.showLicenseModal = false
         this.showResultModal = true
       } catch (error) {
@@ -357,6 +363,8 @@ const App = {
         Utils.showNotification('生成激活码失败，请重试', 'error')
       } finally {
         this.isGenerating = false
+        // 更新当前显示的数据
+        this.getLicenseHistory();
       }
     },
 
@@ -375,11 +383,29 @@ const App = {
     },
 
     // 加载历史记录（用于记录页面）
-    loadLicenseHistory() {
-      this.oldGeneratedLicense = JSON.parse(localStorage.getItem('licenseHistory') || '[]');
+    async loadLicenseHistory() {
+      await this.getLicenseHistory();
       this.currentPageNum = 1; // 重置到第一页
     },
+    async getLicenseHistory(){
+      try {
+        // 1. 必须加 await 等待异步网络请求返回结果
+        const res = await ApiService.getLicenseHistory(this.configKey);
 
+        // 2. 兼容 axios 各种返回格式 (例如 res 或者是 res.data)
+        const data = res && res.data !== undefined ? res.data : res;
+
+        // 3. 校验数据格式，确保赋给 licenseHistory 的一定是数组
+        if (Array.isArray(data)) {
+          this.licenseHistory = data;
+        } else {
+          this.licenseHistory = [];
+        }
+      } catch (error) {
+        console.error('加载历史记录失败:', error);
+        this.licenseHistory = [];
+      }
+    },
     // 跳转到指定页
     goToPage(page) {
       if (page >= 1 && page <= this.licenseTotalPages) {
@@ -460,32 +486,27 @@ const App = {
     },
 
     // 删除单条激活码记录
-    deleteLicenseRecord(index) {
+    deleteLicenseRecord(delKey) {
       if (confirm('确定要删除这条激活码记录吗？')) {
-        const licenseHistory = JSON.parse(localStorage.getItem('licenseHistory') || '[]');
-        // 获取当前显示的数据（已排序）
-        const currentRecord = this.paginatedLicenseHistory[index];
-        // 在原始数据中找到该记录的索引
-        const originalIndex = licenseHistory.findIndex(item => item.activationCode === currentRecord.activationCode);
-        if (originalIndex !== -1) {
-          licenseHistory.splice(originalIndex, 1);
-          localStorage.setItem('licenseHistory', JSON.stringify(licenseHistory));
-          // 更新当前显示的数据
-          this.oldGeneratedLicense = licenseHistory;
-          // 如果当前页没有数据了，跳转到上一页
-          if (this.paginatedLicenseHistory.length === 0 && this.currentPageNum > 1) {
-            this.currentPageNum--;
-          }
-          Utils.showNotification('删除成功');
+        // 删除缓存中的记录
+        ApiService.delLicenseHistory(this.configKey,delKey)
+
+        // 更新当前显示的数据
+        this.getLicenseHistory();
+        // 如果当前页没有数据了，跳转到上一页
+        if (this.paginatedLicenseHistory.length === 0 && this.currentPageNum > 1) {
+          this.currentPageNum--;
         }
+        Utils.showNotification('删除成功');
       }
     },
 
     // 清空所有激活码记录
     clearAllLicenseRecords() {
       if (confirm('确定要清空所有激活码记录吗？此操作不可恢复。')) {
-        localStorage.removeItem('licenseHistory');
-        this.oldGeneratedLicense = [];
+        // 删除缓存中的记录
+        ApiService.delLicenseHistory(this.configKey,'all')
+        this.licenseHistory = [];
         this.currentPageNum = 1;
         Utils.showNotification('已清空所有记录');
       }

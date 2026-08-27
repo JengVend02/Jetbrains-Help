@@ -7,6 +7,7 @@ import cn.hutool.core.lang.TypeReference;
 import cn.hutool.core.text.CharSequenceUtil;
 import cn.hutool.json.JSONUtil;
 import com.zyp.help.context.license.LicenseConfig;
+import com.zyp.help.context.license.model.GenerateLicenseBody;
 import com.zyp.help.util.FileTools;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -45,19 +46,19 @@ public class LicenseCacheService {
      * @return 授权历史缓存列表
      * @throws IllegalArgumentException 当文件读取失败时
      */
-    public static Map<String, List<Map<String,String>>> loadFromLicenseCache() {
+    public static LinkedHashMap<String, List<GenerateLicenseBody>> loadFromLicenseCache() {
         initCacheFile();
         try {
             String jsonContent = IoUtil.readUtf8(FileUtil.getInputStream(cacheFile));
 
             if (CharSequenceUtil.isBlank(jsonContent) || !JSONUtil.isTypeJSON(jsonContent)) {
                 log.warn("授权缓存文件为空或格式错误，返回空列表");
-                return new HashMap<>();
+                return new LinkedHashMap<>();
             }
 
-            Map<String, List<Map<String,String>>> cache = JSONUtil.toBean(
+            LinkedHashMap<String, List<GenerateLicenseBody>> cache = JSONUtil.toBean(
                         jsonContent,
-                        new TypeReference<LinkedHashMap<String, List<Map<String, String>>>>() {},
+                        new TypeReference<LinkedHashMap<String, List<GenerateLicenseBody>>>() {},
                         true
                 );
             log.info("从缓存加载授权历史成功，授权人数: {}", cache.size());
@@ -76,7 +77,7 @@ public class LicenseCacheService {
      * @param cache 要保存的授权历史数据列表
      * @throws IllegalArgumentException 当文件写入失败时
      */
-    public static void saveToCache(Map<String, List<Map<String,String>>> cache) {
+    public static void saveToCache(LinkedHashMap<String, List<GenerateLicenseBody>> cache) {
         initCacheFile();
 
         try {

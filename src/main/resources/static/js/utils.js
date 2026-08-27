@@ -262,9 +262,10 @@ const ApiService = {
   },
 
   // 生成产品激活码
-  async generateLicense(productCode, licenseeName, assigneeName, expiryDate, licenseType, userCount, activationProduct) {
+  async generateLicense(configKey,productCode, licenseeName, assigneeName, expiryDate, licenseType, userCount, activationProduct) {
     const params = new URLSearchParams({
       ...(productCode && { productCode }),
+      configKey,
       licenseeName,
       assigneeName,
       expiryDate,
@@ -273,6 +274,23 @@ const ApiService = {
       activationProduct
     })
     return await this.get(`/license-code/generate?${params}`)
+  },
+
+  // 获取授权历史
+  getLicenseHistory(configKey) {
+    const params = new URLSearchParams({
+      configKey
+    })
+    return this.get(`/api/license/history/configKey?${params}`)
+  },
+
+  // 删除授权历史
+  async delLicenseHistory(configKey,delKey) {
+    const params = new URLSearchParams({
+      configKey,
+      delKey
+    })
+    await this.get(`/api/license/history/del?${params}`)
   },
 
   // 下载代理工具
@@ -287,8 +305,14 @@ const StorageService = {
   saveConfig(licenseName, assigneeName) {
     localStorage.setItem('licenseName', licenseName)
     localStorage.setItem('assigneeName', assigneeName)
+    // configKey不存在
+    if (!this.getConfigKey()) {
+      this.saveConfigKey(licenseName,assigneeName);
+    }
   },
-
+  saveConfigKey(licenseName, assigneeName) {
+    localStorage.setItem('configKey', licenseName + "," + assigneeName)
+  },
   // 获取配置
   getConfig() {
     return {
@@ -301,6 +325,11 @@ const StorageService = {
   isConfigured() {
     const config = this.getConfig()
     return config.licenseName && config.assigneeName
+  },
+
+  // 获取并检查原始key配置
+  getConfigKey() {
+    return localStorage.getItem('configKey') || ''
   },
 
   // 清除配置

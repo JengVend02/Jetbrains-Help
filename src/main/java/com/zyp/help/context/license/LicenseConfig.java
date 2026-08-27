@@ -1,14 +1,17 @@
 package com.zyp.help.context.license;
 
 import cn.hutool.extra.spring.SpringUtil;
-import com.zyp.help.controller.LicenseCodeController;
+import com.zyp.help.context.license.model.GenerateLicenseBody;
+import com.zyp.help.context.product.service.LicenseCacheService;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.env.Environment;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
 
 @Slf4j(topic = "授权配置")
 @Getter
@@ -23,25 +26,39 @@ public class LicenseConfig {
     // ==================== 静态字段 ====================
 
     /** 授权历史信息缓存列表，存储所有授权历史记录 */
-    public static Map<String, List<Map<String,String>>> licenseHistory;
+    public static LinkedHashMap<String, List<GenerateLicenseBody>> licenseCache;
 
-    public static void addLicenseHistoryCache(LicenseCodeController.GenerateLicenseRespBody body){
-        String licensesName = body.getLicenseName();
-        String assigneeName = body.getAssigneeName();
-        String key = licensesName +"," + assigneeName;
-        List<Map<String, String>> list = licenseHistory.get(key);
-        if(list == null){
-            list = new ArrayList<>();
+    public static void addLicenseCache(GenerateLicenseBody body) {
+        String key = body.getConfigKey();
+
+        if (licenseCache.containsKey(key)) {
+            licenseCache.get(key).add(body);
+        } else {
+            List<GenerateLicenseBody> list = new ArrayList<>();
+            list.add(body);
+            licenseCache.put(key, list);
         }
-        Map<String, String> map = new LinkedHashMap<>();
-        map.put("请求时间",body.getGenerationTime());
-        map.put("许可证名称",licensesName);
-        map.put("被授权人",assigneeName);
-        map.put("过期日期",body.getExpiryDate());
-        map.put("激活内容",body.getActivationProduct());
-        list.add(map);
-        licenseHistory.put(key, list);
     }
+
+    public static void delLicenseCache(String key,String delKey) {
+        if (licenseCache.containsKey(key)) {
+            if ("all".equals(delKey)) {
+                licenseCache.get(key).clear();
+            } else{
+                licenseCache.get(key).removeIf(body -> delKey.equals(body.getGenerationTime()));
+            }
+            // 保存到文件
+            LicenseCacheService.saveToCache(licenseCache);
+        }
+    }
+
+    public static List<GenerateLicenseBody> getLicenseCache(String key) {
+        if (licenseCache.containsKey(key)) {
+            return licenseCache.get(key);
+        }
+        return new ArrayList<>();
+    }
+
 
     // ==================== 单例实现 ====================
     private static volatile LicenseConfig instance;
