@@ -499,7 +499,7 @@ const App = {
     deleteLicenseRecord(delKey) {
       if (confirm('确定要删除这条激活码记录吗？')) {
         // 删除缓存中的记录
-        ApiService.delLicenseHistory(this.configKey,delKey)
+        this.delLicenseHistory(this.configKey,delKey)
 
         // 更新当前显示的数据
         this.getLicenseHistoryConfigKey();
@@ -515,11 +515,14 @@ const App = {
     clearAllLicenseRecords() {
       if (confirm('确定要清空所有激活码记录吗？此操作不可恢复。')) {
         // 删除缓存中的记录
-        ApiService.delLicenseHistory(this.configKey,'all')
+        this.delLicenseHistory(this.configKey,'all')
         this.licenseHistoryConfigKey = [];
         this.currentPageNum = 1;
         Utils.showNotification('已清空所有记录');
       }
+    },
+    delLicenseHistory(configKey,delKey) {
+      ApiService.delLicenseHistory(configKey,delKey)
     }
   }
 }
