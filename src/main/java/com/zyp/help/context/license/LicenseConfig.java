@@ -33,6 +33,7 @@ public class LicenseConfig {
         String key = body.getConfigKey();
         if (ObjectUtils.isEmpty(key)) {
             key = body.getLicenseName() + "," +body.getAssigneeName();
+            body.setConfigKey(key);
         }
 
         if (licenseCache.containsKey(key)) {
