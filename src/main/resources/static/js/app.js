@@ -410,17 +410,7 @@ const App = {
     async getLicenseHistory(){
       try {
         // 1. 必须加 await 等待异步网络请求返回结果
-        const res = await ApiService.getLicenseHistory();
-
-        // 2. 兼容 axios 各种返回格式 (例如 res 或者是 res.data)
-        const data = res && res.data !== undefined ? res.data : res;
-
-        // 3. 校验数据格式，确保赋给 licenseHistory 的一定是数组
-        if (Array.isArray(data)) {
-          this.licenseHistory = data;
-        } else {
-          this.licenseHistory = [];
-        }
+        this.licenseHistory = await ApiService.getLicenseHistory();
       } catch (error) {
         console.error('加载历史记录失败:', error);
         this.licenseHistory = [];
