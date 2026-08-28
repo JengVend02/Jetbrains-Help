@@ -768,7 +768,7 @@
 
             <!-- 激活码历史 Tab -->
             <div v-show="currentRecordTab === 'code'" class="p-6 md:p-8">
-              <div v-if="licenseHistory.length === 0" class="text-center py-12">
+              <div v-if="licenseHistoryConfigKey.length === 0" class="text-center py-12">
                 <i class="fas fa-inbox text-gray-300 text-5xl mb-4"></i>
                 <h3 class="text-lg font-medium text-gray-700 mb-2">暂无激活码记录</h3>
                 <p class="text-gray-500 mb-6">生成激活码后，记录将显示在这里</p>
@@ -797,7 +797,7 @@
                     <button @click="clearAllLicenseRecords" class="px-3 py-1.5 bg-red-100 text-red-600 rounded-lg hover:bg-red-200 transition-colors text-xs font-medium">
                       <i class="fas fa-trash-alt mr-1"></i>清空记录
                     </button>
-                    <span class="text-xs font-medium"><i class="fas fa-database mr-1 text-purple-400"></i>共 <span>{{ licenseHistory.length }}</span> 条</span>
+                    <span class="text-xs font-medium"><i class="fas fa-database mr-1 text-purple-400"></i>共 <span>{{ licenseHistoryConfigKey.length }}</span> 条</span>
                     <span class="text-gray-300">/</span>
                     <span class="text-xs font-medium"><i class="fas fa-file-alt mr-1 text-purple-400"></i><span>{{ currentPageNum }}</span> / {{ licenseTotalPages }} 页</span>
                     <span class="text-gray-300">/</span>

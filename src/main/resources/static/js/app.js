@@ -26,6 +26,7 @@ const App = {
       licenseTypes: Object.values(Utils.LicenseType),
       selectedItem: null,
       licenseHistory: [],
+      licenseHistoryConfigKey: [],
       generatedLicense: '',
       currentPageNum: 1,
       pageSize: 10,
@@ -66,11 +67,11 @@ const App = {
     // 排序后的历史记录（按生成时间倒序）
     sortedLicenseHistory() {
       // 防御性校验：如果还没加载完成或不是数组，直接返回空数组，彻底避免抛错
-      if (!Array.isArray(this.licenseHistory)) {
+      if (!Array.isArray(this.licenseHistoryConfigKey)) {
         return [];
       }
 
-      return [...this.licenseHistory].sort((a, b) => {
+      return [...this.licenseHistoryConfigKey].sort((a, b) => {
         return new Date(b.generationTime || 0) - new Date(a.generationTime || 0);
       });
     },
@@ -384,13 +385,32 @@ const App = {
 
     // 加载历史记录（用于记录页面）
     async loadLicenseHistory() {
-      await this.getLicenseHistory();
+      await this.getLicenseHistoryConfigKey();
       this.currentPageNum = 1; // 重置到第一页
+    },
+    async getLicenseHistoryConfigKey(){
+      try {
+        // 1. 必须加 await 等待异步网络请求返回结果
+        const res = await ApiService.getLicenseHistoryConfigKey(this.configKey);
+
+        // 2. 兼容 axios 各种返回格式 (例如 res 或者是 res.data)
+        const data = res && res.data !== undefined ? res.data : res;
+
+        // 3. 校验数据格式，确保赋给 licenseHistoryConfigKey 的一定是数组
+        if (Array.isArray(data)) {
+          this.licenseHistoryConfigKey = data;
+        } else {
+          this.licenseHistoryConfigKey = [];
+        }
+      } catch (error) {
+        console.error('加载历史记录失败:', error);
+        this.licenseHistoryConfigKey = [];
+      }
     },
     async getLicenseHistory(){
       try {
         // 1. 必须加 await 等待异步网络请求返回结果
-        const res = await ApiService.getLicenseHistory(this.configKey);
+        const res = await ApiService.getLicenseHistory();
 
         // 2. 兼容 axios 各种返回格式 (例如 res 或者是 res.data)
         const data = res && res.data !== undefined ? res.data : res;
@@ -492,7 +512,7 @@ const App = {
         ApiService.delLicenseHistory(this.configKey,delKey)
 
         // 更新当前显示的数据
-        this.getLicenseHistory();
+        this.getLicenseHistoryConfigKey();
         // 如果当前页没有数据了，跳转到上一页
         if (this.paginatedLicenseHistory.length === 0 && this.currentPageNum > 1) {
           this.currentPageNum--;
@@ -506,7 +526,7 @@ const App = {
       if (confirm('确定要清空所有激活码记录吗？此操作不可恢复。')) {
         // 删除缓存中的记录
         ApiService.delLicenseHistory(this.configKey,'all')
-        this.licenseHistory = [];
+        this.licenseHistoryConfigKey = [];
         this.currentPageNum = 1;
         Utils.showNotification('已清空所有记录');
       }

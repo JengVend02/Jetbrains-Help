@@ -277,7 +277,12 @@ const ApiService = {
   },
 
   // 获取授权历史
-  getLicenseHistory(configKey) {
+  async getLicenseHistory() {
+    return await this.get('/api/license/history')
+  },
+
+  // 获取授权历史(指定用户)
+  getLicenseHistoryConfigKey(configKey) {
     const params = new URLSearchParams({
       configKey
     })
