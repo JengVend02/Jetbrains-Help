@@ -8,6 +8,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.env.Environment;
+import org.springframework.util.ObjectUtils;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -30,6 +31,9 @@ public class LicenseConfig {
 
     public static void addLicenseCache(GenerateLicenseBody body) {
         String key = body.getConfigKey();
+        if (ObjectUtils.isEmpty(key)) {
+            key = body.getLicenseName() + "," +body.getAssigneeName();
+        }
 
         if (licenseCache.containsKey(key)) {
             licenseCache.get(key).add(body);
