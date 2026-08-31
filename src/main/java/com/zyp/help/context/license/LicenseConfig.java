@@ -31,11 +31,6 @@ public class LicenseConfig {
 
     public static void addLicenseCache(GenerateLicenseBody body) {
         String key = body.getConfigKey();
-        if (ObjectUtils.isEmpty(key)) {
-            key = body.getLicenseName() + "," +body.getAssigneeName();
-            body.setConfigKey(key);
-        }
-
         if (licenseCache.containsKey(key)) {
             licenseCache.get(key).add(body);
         } else {

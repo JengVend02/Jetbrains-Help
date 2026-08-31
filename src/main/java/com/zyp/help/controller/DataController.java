@@ -89,7 +89,8 @@ public class DataController {
     }
 
     @GetMapping("/license/history/del")
-    public void delLicenseHistory(@RequestParam String configKey,@RequestParam String delKey) {
+    public String delLicenseHistory(@RequestParam String configKey,@RequestParam String delKey) {
         LicenseConfig.delLicenseCache(configKey,delKey);
+        return "success";
     }
 }

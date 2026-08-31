@@ -17,7 +17,6 @@ const App = {
         licenseName: '',
         assigneeName: ''
       },
-      configKey: "",
       licenseConfig: {
         expiryDate: '',
         licenseType: 'PERPETUAL',
@@ -216,11 +215,9 @@ const App = {
         this.showConfigModal = true
       }
 
-      this.configKey = StorageService.getConfigKey()
       // configKey不存在,但config存在
-      if (!this.configKey && StorageService.isConfigured()){
+      if (!StorageService.getConfigKey() && StorageService.isConfigured()){
         StorageService.saveConfigKey(config.licenseName,config.assigneeName);
-        this.configKey = StorageService.getConfigKey()
       }
     },
 
@@ -340,10 +337,15 @@ const App = {
 
     // 生成激活码
     async generateLicense() {
+      if (!StorageService.getConfigKey()) {
+        Utils.showNotification('缺少唯一标识，请使用ctrl+F5强制刷新', 'error')
+        return
+      }
+
       this.isGenerating = true
       try {
         const result = await ApiService.generateLicense(
-            this.configKey,
+            StorageService.getConfigKey(),
             this.selectedItem.productCode,
             this.config.licenseName,
             this.config.assigneeName,
@@ -357,7 +359,6 @@ const App = {
         this.showLicenseModal = false
         this.showResultModal = true
       } catch (error) {
-        console.error('生成激活码失败:', error)
         Utils.showNotification('生成激活码失败，请重试', 'error')
       } finally {
         this.isGenerating = false
@@ -368,11 +369,7 @@ const App = {
 
     async viewPowerConf() {
       try {
-        const response = await fetch(`${ApiService.baseURL}/power-conf`)
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`)
-        }
-        this.powerConfContent = await response.text()
+        this.powerConfContent = await ApiService.getPowerConf()
         this.showPowerConfModal = true
       } catch (error) {
         console.error('获取 power.conf 失败:', error)
@@ -388,7 +385,7 @@ const App = {
     async getLicenseHistoryConfigKey(){
       try {
         // 1. 必须加 await 等待异步网络请求返回结果
-        const res = await ApiService.getLicenseHistoryConfigKey(this.configKey);
+        const res = await ApiService.getLicenseHistoryConfigKey();
 
         // 2. 兼容 axios 各种返回格式 (例如 res 或者是 res.data)
         const data = res && res.data !== undefined ? res.data : res;
@@ -493,18 +490,25 @@ const App = {
     },
 
     // 删除单条激活码记录
-    deleteLicenseRecord(delKey) {
-      if (confirm('确定要删除这条激活码记录吗？')) {
-        // 删除缓存中的记录
-        this.delLicenseHistory(this.configKey,delKey)
+    async deleteLicenseRecord(delKey) {
+      if (!confirm('确定要删除这条激活码记录吗？')) {
+        return
+      }
 
-        // 更新当前显示的数据
-        this.getLicenseHistoryConfigKey();
+      try {
+        // ✅ 等待删除完成
+        await this.delLicenseHistory(delKey);
+
+        // ✅ 删除成功后刷新数据
+        await this.getLicenseHistoryConfigKey();
+
         // 如果当前页没有数据了，跳转到上一页
         if (this.paginatedLicenseHistory.length === 0 && this.currentPageNum > 1) {
           this.currentPageNum--;
         }
         Utils.showNotification('删除成功');
+      } catch (error) {
+        Utils.showNotification('删除失败，请重试', 'error');
       }
     },
 
@@ -512,14 +516,19 @@ const App = {
     clearAllLicenseRecords() {
       if (confirm('确定要清空所有激活码记录吗？此操作不可恢复。')) {
         // 删除缓存中的记录
-        this.delLicenseHistory(this.configKey,'all')
+        this.delLicenseHistory('all')
         this.licenseHistoryConfigKey = [];
         this.currentPageNum = 1;
         Utils.showNotification('已清空所有记录');
       }
     },
-    delLicenseHistory(configKey,delKey) {
-      ApiService.delLicenseHistory(configKey,delKey)
+    async delLicenseHistory(delKey) {
+      try {
+        await ApiService.delLicenseHistory(delKey);
+      } catch (error) {
+        console.error('删除 API 调用失败:', error);
+        throw error; // 抛出错误让上层处理
+      }
     }
   }
 }

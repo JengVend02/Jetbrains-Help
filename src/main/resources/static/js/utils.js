@@ -261,6 +261,10 @@ const ApiService = {
     return await this.getText('/api/common/version')
   },
 
+  async getPowerConf() {
+    return await this.getText('/power-conf')
+  },
+
   // 生成产品激活码
   async generateLicense(configKey,productCode, licenseeName, assigneeName, expiryDate, licenseType, userCount, activationProduct) {
     const params = new URLSearchParams({
@@ -282,7 +286,8 @@ const ApiService = {
   },
 
   // 获取授权历史(指定用户)
-  getLicenseHistoryConfigKey(configKey) {
+  getLicenseHistoryConfigKey() {
+    const configKey = StorageService.getConfigKey();
     const params = new URLSearchParams({
       configKey
     })
@@ -290,12 +295,13 @@ const ApiService = {
   },
 
   // 删除授权历史
-  async delLicenseHistory(configKey,delKey) {
+  async delLicenseHistory(delKey) {
+    const configKey = StorageService.getConfigKey()
     const params = new URLSearchParams({
       configKey,
       delKey
     })
-    await this.get(`/api/license/history/del?${params}`)
+    await this.getText(`/api/license/history/del?${params}`)
   },
 
   // 下载代理工具
