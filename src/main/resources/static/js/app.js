@@ -216,12 +216,9 @@ const App = {
         this.showConfigModal = true
       }
 
-      const configKey = StorageService.getConfigKey()
-      if (configKey) {
-        this.configKey = configKey
-      }
+      this.configKey = StorageService.getConfigKey()
       // configKey不存在,但config存在
-      else if (StorageService.isConfigured()){
+      if (!this.configKey && StorageService.isConfigured()){
         StorageService.saveConfigKey(config.licenseName,config.assigneeName);
         this.configKey = StorageService.getConfigKey()
       }
@@ -365,7 +362,7 @@ const App = {
       } finally {
         this.isGenerating = false
         // 更新当前显示的数据
-        this.getLicenseHistory();
+        this.getLicenseHistoryConfigKey();
       }
     },
 
