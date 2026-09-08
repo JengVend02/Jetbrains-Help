@@ -55,9 +55,12 @@ public class LicenseConfig {
     public static void delLicenseCache(String key,String delKey) {
         if (licenseCache.get(POWER_CONF_MD5).containsKey(key)) {
             if ("all".equals(delKey)) {
-                licenseCache.get(POWER_CONF_MD5).get(key).clear();
+                licenseCache.get(POWER_CONF_MD5).remove(key);
             } else{
                 licenseCache.get(POWER_CONF_MD5).get(key).removeIf(body -> delKey.equals(body.getGenerationTime()));
+                if (licenseCache.get(POWER_CONF_MD5).get(key).isEmpty()) {
+                    licenseCache.get(POWER_CONF_MD5).remove(key);
+                }
             }
             // 保存到文件
             LicenseCacheService.saveToCache(licenseCache);
