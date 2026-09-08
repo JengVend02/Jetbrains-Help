@@ -1,6 +1,8 @@
 package com.zyp.help.context.license;
 
+import cn.hutool.crypto.SecureUtil;
 import cn.hutool.extra.spring.SpringUtil;
+import com.zyp.help.context.AgentContextHolder;
 import com.zyp.help.context.license.model.GenerateLicenseBody;
 import com.zyp.help.context.product.service.LicenseCacheService;
 import lombok.AccessLevel;
@@ -8,11 +10,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.env.Environment;
-import org.springframework.util.ObjectUtils;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 @Slf4j(topic = "授权配置")
 @Getter
@@ -22,39 +24,53 @@ public class LicenseConfig {
 
     /** 授权历史信息配置文件路径 */
     public static final String LICENSE_JSON_FILE_NAME = "external/data/licenseHistory.json";
+    public static final String POWER_CONF_MD5 = SecureUtil.md5(AgentContextHolder.getPowerConfContent());
 
 
     // ==================== 静态字段 ====================
 
     /** 授权历史信息缓存列表，存储所有授权历史记录 */
-    public static LinkedHashMap<String, List<GenerateLicenseBody>> licenseCache;
+    public static LinkedHashMap<String, LinkedHashMap<String, List<GenerateLicenseBody>>> licenseCache;
 
     public static void addLicenseCache(GenerateLicenseBody body) {
         String key = body.getConfigKey();
-        if (licenseCache.containsKey(key)) {
-            licenseCache.get(key).add(body);
+        body.setPowerConf(null);
+        if (licenseCache.containsKey(POWER_CONF_MD5)) {
+            if (licenseCache.get(POWER_CONF_MD5).containsKey(key)) {
+                licenseCache.get(POWER_CONF_MD5).get(key).add(body);
+            }else {
+                List<GenerateLicenseBody> list = new ArrayList<>();
+                list.add(body);
+                licenseCache.get(POWER_CONF_MD5).put(key, list);
+            }
         } else {
             List<GenerateLicenseBody> list = new ArrayList<>();
             list.add(body);
-            licenseCache.put(key, list);
+            LinkedHashMap<String, List<GenerateLicenseBody>> linkedHashMap = new LinkedHashMap<>();
+            linkedHashMap.put(key, list);
+            licenseCache.put(POWER_CONF_MD5, linkedHashMap);
         }
     }
 
     public static void delLicenseCache(String key,String delKey) {
-        if (licenseCache.containsKey(key)) {
+        if (licenseCache.get(POWER_CONF_MD5).containsKey(key)) {
             if ("all".equals(delKey)) {
-                licenseCache.get(key).clear();
+                licenseCache.get(POWER_CONF_MD5).get(key).clear();
             } else{
-                licenseCache.get(key).removeIf(body -> delKey.equals(body.getGenerationTime()));
+                licenseCache.get(POWER_CONF_MD5).get(key).removeIf(body -> delKey.equals(body.getGenerationTime()));
             }
             // 保存到文件
             LicenseCacheService.saveToCache(licenseCache);
         }
     }
 
+    public static LinkedHashMap<String, List<GenerateLicenseBody>> getLicenseCache() {
+        return licenseCache.get(POWER_CONF_MD5);
+    }
+
     public static List<GenerateLicenseBody> getLicenseCache(String key) {
-        if (licenseCache.containsKey(key)) {
-            return licenseCache.get(key);
+        if (licenseCache.get(POWER_CONF_MD5).containsKey(key)) {
+            return licenseCache.get(POWER_CONF_MD5).get(key);
         }
         return new ArrayList<>();
     }

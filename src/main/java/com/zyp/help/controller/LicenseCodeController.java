@@ -1,5 +1,6 @@
 package com.zyp.help.controller;
 
+import com.zyp.help.context.AgentContextHolder;
 import com.zyp.help.context.LicenseContextHolder;
 
 
@@ -8,6 +9,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  * 许可证代码生成控制器
@@ -58,7 +62,9 @@ public class LicenseCodeController {
             @RequestParam String activationProduct) {
 
         GenerateLicenseBody body = new GenerateLicenseBody();
+        body.setPowerConf(AgentContextHolder.getPowerConfContent());
         body.setConfigKey(configKey);
+        body.setGenerationTime(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
         body.setProductCode(productCode);
         body.setLicenseName(licenseeName);
         body.setAssigneeName(assigneeName);

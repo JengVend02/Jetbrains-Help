@@ -112,10 +112,6 @@ public class LicenseContextHolder {
         // 定义产品代码集合，用于存储所有需要包含在许可证中的产品代码
         Set<String> productCodeSet;
 
-        // 定义返回值
-        body.setGenerationTime(DateUtil.format(new Date(), "yyyy-MM-dd HH:mm:ss"));
-        body.setPowerConf(AgentContextHolder.getPowerConfContent());
-
         // 判断是否指定了产品代码
         if (CharSequenceUtil.isBlank(body.getProductCode())) {
             // 未指定产品代码，自动包含所有可用产品

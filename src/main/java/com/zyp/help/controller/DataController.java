@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Collections;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -79,8 +80,8 @@ public class DataController {
     }
 
     @GetMapping("/license/history")
-    public Map<String, List<GenerateLicenseBody>> getLicenseHistory() {
-        return LicenseConfig.licenseCache;
+    public LinkedHashMap<String, List<GenerateLicenseBody>> getLicenseHistory() {
+        return LicenseConfig.getLicenseCache();
     }
 
     @GetMapping("/license/history/configKey")

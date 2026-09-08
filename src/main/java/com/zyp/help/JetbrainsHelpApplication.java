@@ -81,13 +81,13 @@ public class JetbrainsHelpApplication {
         log.info("开始初始化应用程序组件...");
         
         // 按顺序初始化各个上下文组件
-        LicenseContextHolder.init();      // 初始化授权上下文
         ProductsContextHolder.init();     // 初始化产品信息上下文
         PluginsContextHolder.init();      // 初始化插件信息上下文
         CertificateContextHolder.init();  // 初始化证书和密钥上下文
         AgentContextHolder.init();        // 初始化ja-netfilter代理上下文
         CommonContextHolder.init();       // 初始化通用信息
-        
+        LicenseContextHolder.init();      // 初始化授权上下文
+
         // 获取本地IP地址和端口号，构建访问URL
         InetAddress localHost = InetAddress.getLocalHost();
         String serverPort = SpringUtil.getProperty("server.port");

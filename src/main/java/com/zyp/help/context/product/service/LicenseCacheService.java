@@ -46,7 +46,7 @@ public class LicenseCacheService {
      * @return 授权历史缓存列表
      * @throws IllegalArgumentException 当文件读取失败时
      */
-    public static LinkedHashMap<String, List<GenerateLicenseBody>> loadFromLicenseCache() {
+    public static LinkedHashMap<String, LinkedHashMap<String, List<GenerateLicenseBody>>> loadFromLicenseCache() {
         initCacheFile();
         try {
             String jsonContent = IoUtil.readUtf8(FileUtil.getInputStream(cacheFile));
@@ -56,9 +56,9 @@ public class LicenseCacheService {
                 return new LinkedHashMap<>();
             }
 
-            LinkedHashMap<String, List<GenerateLicenseBody>> cache = JSONUtil.toBean(
+            LinkedHashMap<String, LinkedHashMap<String, List<GenerateLicenseBody>>> cache = JSONUtil.toBean(
                         jsonContent,
-                        new TypeReference<LinkedHashMap<String, List<GenerateLicenseBody>>>() {},
+                        new TypeReference<LinkedHashMap<String, LinkedHashMap<String, List<GenerateLicenseBody>>>>() {},
                         true
                 );
             log.info("从缓存加载授权历史成功，授权人数: {}", cache.size());
@@ -77,7 +77,7 @@ public class LicenseCacheService {
      * @param cache 要保存的授权历史数据列表
      * @throws IllegalArgumentException 当文件写入失败时
      */
-    public static void saveToCache(LinkedHashMap<String, List<GenerateLicenseBody>> cache) {
+    public static void saveToCache(LinkedHashMap<String, LinkedHashMap<String, List<GenerateLicenseBody>>> cache) {
         initCacheFile();
 
         try {
