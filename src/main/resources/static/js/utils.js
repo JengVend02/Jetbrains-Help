@@ -316,13 +316,10 @@ const StorageService = {
   saveConfig(licenseName, assigneeName) {
     localStorage.setItem('licenseName', licenseName)
     localStorage.setItem('assigneeName', assigneeName)
-    // configKey不存在
-    if (!this.getConfigKey()) {
-      this.saveConfigKey(licenseName,assigneeName);
-    }
   },
-  saveConfigKey(licenseName, assigneeName) {
-    localStorage.setItem('configKey', licenseName + "," + assigneeName)
+  // 保存设备指纹作为 configKey
+  saveConfigKey(visitorId) {
+    localStorage.setItem('configKey', visitorId)
   },
   // 获取配置
   getConfig() {

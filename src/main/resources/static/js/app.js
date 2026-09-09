@@ -123,6 +123,8 @@ const App = {
   },
 
   mounted() {
+    // 初始化设备指纹
+    this.initFingerprint()
     // 加载激活配置项
     this.loadConfig()
     // 加载产品列表
@@ -206,6 +208,31 @@ const App = {
       this.showPowerConfModal = false
     },
     
+    // 初始化 FingerprintJS 生成设备唯一标识
+    async initFingerprint() {
+      if (StorageService.getConfigKey()) {
+        return;
+      }
+      try {
+        const fp = await FingerprintJS.load();
+        const result = await fp.get();
+        const visitorId = result.visitorId;
+        console.log('Visitor ID:', visitorId);
+        StorageService.saveConfigKey(visitorId);
+      } catch (error) {
+        console.warn('FingerprintJS 初始化失败，使用 UUID 降级:', error);
+        StorageService.saveConfigKey(Utils.generateUUID());
+      }
+    },
+
+    // 等待唯一标识就绪
+    async ensureConfigKey() {
+      if (!StorageService.getConfigKey()) {
+        await this.initFingerprint();
+      }
+      return StorageService.getConfigKey();
+    },
+
     // 配置相关
     loadConfig() {
       const config = StorageService.getConfig()
@@ -213,11 +240,6 @@ const App = {
         this.config = config
       } else {
         this.showConfigModal = true
-      }
-
-      // configKey不存在,但config存在
-      if (!StorageService.getConfigKey() && StorageService.isConfigured()){
-        StorageService.saveConfigKey(config.licenseName,config.assigneeName);
       }
     },
 
@@ -337,7 +359,8 @@ const App = {
 
     // 生成激活码
     async generateLicense() {
-      if (!StorageService.getConfigKey()) {
+      const configKey = await this.ensureConfigKey();
+      if (!configKey) {
         Utils.showNotification('缺少唯一标识，请使用ctrl+F5强制刷新', 'error')
         return
       }
@@ -345,7 +368,7 @@ const App = {
       this.isGenerating = true
       try {
         const result = await ApiService.generateLicense(
-            StorageService.getConfigKey(),
+            configKey,
             this.selectedItem.productCode,
             this.config.licenseName,
             this.config.assigneeName,
