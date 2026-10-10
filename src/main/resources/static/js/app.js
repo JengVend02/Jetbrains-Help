@@ -217,7 +217,6 @@ const App = {
         const fp = await FingerprintJS.load();
         const result = await fp.get();
         const visitorId = result.visitorId;
-        console.log('Visitor ID:', visitorId);
         StorageService.saveConfigKey(visitorId);
       } catch (error) {
         console.warn('FingerprintJS 初始化失败，使用 UUID 降级:', error);
