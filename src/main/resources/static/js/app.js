@@ -244,10 +244,23 @@ const App = {
     },
 
     saveConfig() {
+      // 清洗函数：替换换行符、制表符、双引号和反斜杠为空，并去除首尾空格
+      const cleanText = (str) => {
+        if (!str) return '';
+        return String(str)
+            .replace(/[\r\n\t"\\]/g, '') // 去除 \r, \n, \t, " 以及 \
+            .trim();                     // 去除首尾多余空格
+      };
+      this.config.licenseName = cleanText(this.config.licenseName);
+      this.config.assigneeName = cleanText(this.config.assigneeName);
+
       if (this.config.licenseName && this.config.assigneeName) {
         StorageService.saveConfig(this.config.licenseName, this.config.assigneeName)
         this.showConfigModal = false
         Utils.showNotification('配置保存成功')
+      }else {
+        // 可选：增加未通过校验时的提示
+        Utils.showNotification('授权名称与被授权人不能为空', 'warning');
       }
     },
 
