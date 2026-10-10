@@ -76,7 +76,7 @@ public class LicenseContextHolder {
         try {
             // 从缓存加载授权历史数据
             LicenseConfig.licenseCache = LicenseCacheService.loadFromLicenseCache();
-            log.info("授权上下文初始化成功！加载授权记录数量: {}", LicenseConfig.licenseCache.size());
+            log.info("授权上下文初始化成功！加载授权记录数量: {}", LicenseConfig.licenseCache.get(LicenseConfig.POWER_CONF_MD5).size());
         } catch (Exception e) {
             log.error("产品上下文初始化失败", e);
             throw e;

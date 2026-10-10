@@ -59,7 +59,7 @@ public class LicenseCacheService {
                         new TypeReference<LinkedHashMap<String, LinkedHashMap<String, List<GenerateLicenseBody>>>>() {},
                         true
                 );
-            log.info("从缓存加载授权历史成功，授权人数: {}", cache.size());
+            log.info("从缓存加载授权历史成功，授权人数: {}", cache.get(LicenseConfig.POWER_CONF_MD5).size());
             return cache;
 
         } catch (IORuntimeException e) {
