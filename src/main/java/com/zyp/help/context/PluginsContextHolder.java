@@ -118,27 +118,25 @@ public class PluginsContextHolder {
      * @param newPlugins 新获取的插件列表
      */
     private static void saveNewPlugins(List<PluginCache> newPlugins) {
-        if (newPlugins == null || newPlugins.isEmpty()) {
-            log.info("没有新的插件需要保存");
-            return;
-        }
-
         Integer oldNum = PluginConfig.pluginCache.getPlugin().size();
-        Integer addNum = newPlugins.size();
-        log.info("源大小 => [{}], 新增大小 => [{}]", oldNum, addNum);
+        int addNum = (newPlugins == null) ? 0 : newPlugins.size();
 
-        // 新增插件合并到内存缓存
-        PluginConfig.pluginCache.addPluginCache(newPlugins);
+        // 仅在有新插件时合并新增数据和更新时间
+        if (addNum > 0) {
+            log.info("源大小 => [{}], 新增大小 => [{}]", oldNum, addNum);
+            // 新增插件合并到内存缓存
+            PluginConfig.pluginCache.addPluginCache(newPlugins);
 
-        // 创建更新时间缓存
-        UpdateTimeCache updateTimeCache = new UpdateTimeCache(oldNum, addNum);
-        // 更新时间合并到内存缓存
-        PluginConfig.pluginCache.addUpdateTime(updateTimeCache);
-
+            // 创建更新时间缓存
+            UpdateTimeCache updateTimeCache = new UpdateTimeCache(oldNum, addNum);
+            // 更新时间合并到内存缓存
+            PluginConfig.pluginCache.addUpdateTime(updateTimeCache);
+            log.info("插件缓存已更新，当前总数: {}, 更新时间: {}", updateTimeCache.getNewNum(),updateTimeCache.getUpdateTime());
+        } else {
+            log.info("没有新增插件，仅更新已存在插件的评分/图标等信息");
+        }
         // 保存到文件
         PluginCacheService.saveToCache(PluginConfig.pluginCache);
-
-        log.info("插件缓存已更新，当前总数: {}, 更新时间: {}", updateTimeCache.getNewNum(),updateTimeCache.getUpdateTime());
     }
 
     /**

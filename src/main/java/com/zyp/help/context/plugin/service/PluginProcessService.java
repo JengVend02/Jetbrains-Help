@@ -108,6 +108,7 @@ public class PluginProcessService {
                 log.warn("插件产品代码为空，跳过插件: {}", plugin.getName());
                 return null;
             }
+
             return new PluginCache()
                     .setId(plugin.getId())
                     .setProductCode(productCode)
@@ -116,14 +117,13 @@ public class PluginProcessService {
                     .setPricingModel(plugin.getPricingModel())
                     .setIcon(buildUrl(pluginInfo.getIcon()))
                     .setRating(plugin.getRating())
+                    .setRatingObject(PluginApiService.bayesianRating(plugin.getId()))
                     .setVendor(
                         new PluginCache.VendorInfo()
                         .setId(pluginInfo.getVendor().getId())
                         .setName(pluginInfo.getVendor().getName())
                         .setIsVerified(pluginInfo.getVendor().getIsVerified())
                     );
-
-
         } catch (Exception e) {
             log.error("转换插件信息失败: {} (ID: {})", plugin.getName(), plugin.getId(), e);
             return null;
@@ -160,7 +160,10 @@ public class PluginProcessService {
         if (!ObjectUtils.isEmpty(index)) {
             // 更新插件评分
             PluginConfig.pluginCache.getPlugin().get(index).setRating(plugin.getRating());
+            // 更新插件图标
             PluginConfig.pluginCache.getPlugin().get(index).setIcon(buildUrl(plugin.getIcon()));
+            // 更新插件贝叶斯评分
+            PluginConfig.pluginCache.getPlugin().get(index).setRatingObject(PluginApiService.bayesianRating(plugin.getId()));
             return true;
         }
         return false;

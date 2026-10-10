@@ -5,6 +5,7 @@ import cn.hutool.core.text.CharSequenceUtil;
 import cn.hutool.http.HttpUtil;
 import cn.hutool.json.JSONUtil;
 import com.zyp.help.context.plugin.PluginConfig;
+import com.zyp.help.context.plugin.model.PluginCache;
 import com.zyp.help.context.plugin.model.PluginInfo;
 import com.zyp.help.context.plugin.model.PluginList;
 import lombok.AccessLevel;
@@ -198,5 +199,33 @@ public class PluginApiService {
         } catch (Exception e) {
             log.error("获取插件过程中发生异常", e);
         }
+    }
+
+
+    /**
+     * 获取插件的贝叶斯评分
+     *
+     * @param id 插件ID
+     * @return 插件的贝叶斯评分
+     */
+    public static PluginCache.RatingObject bayesianRating(Long id) {
+        String url = String.format(PluginConfig.PLUGIN_RATING_URL, id);
+
+        return HttpUtil.createGet(url)
+                .timeout(config.getTimeout())
+                .thenFunction(response -> {
+                    try (InputStream is = response.bodyStream()) {
+                        if (!response.isOk()) {
+                            throw new IllegalArgumentException(
+                                    CharSequenceUtil.format("{} 请求失败! = {}", url, response));
+                        }
+
+                        return JSONUtil.toBean(IoUtil.readUtf8(is), PluginCache.RatingObject.class);
+
+                    } catch (IOException e) {
+                        throw new IllegalArgumentException(
+                                CharSequenceUtil.format("{} 请求IO读取失败!", url), e);
+                    }
+                });
     }
 }

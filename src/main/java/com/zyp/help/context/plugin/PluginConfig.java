@@ -36,6 +36,10 @@ public class PluginConfig {
     /** 插件详情API地址模板 */
     public static final String PLUGIN_INFO_URL = PLUGIN_BASIC_URL + "/api/plugins/";
 
+    /** 插件评分 */
+    public static final String PLUGIN_RATING_URL = PLUGIN_BASIC_URL + "/api/plugins/%d/rating";
+
+
     /** 插件信息缓存文件路径 */
     public static final String PLUGIN_JSON_FILE_NAME = "external/data/plugin.json";
 
