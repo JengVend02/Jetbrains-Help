@@ -17,6 +17,7 @@ public class JrebelService {
 
     @SneakyThrows
     public void jrebelLeasesHandler(HttpServletRequest request, HttpServletResponse response) {
+        response.setHeader("Cache-Control", "no-transform");
         response.setContentType("application/json; charset=utf-8");
         response.setStatus(HttpServletResponse.SC_OK);
         String clientRandomness = request.getParameter("randomness");
@@ -67,6 +68,7 @@ public class JrebelService {
 
     @SneakyThrows
     public void jrebelValidateHandler(HttpServletRequest request, HttpServletResponse response) {
+        response.setHeader("Cache-Control", "no-transform");
         response.setContentType("application/json; charset=utf-8");
         response.setStatus(HttpServletResponse.SC_OK);
         JSONObject jsonObject = JSONUtil.createObj().set("serverVersion", "3.2.4")
@@ -84,6 +86,7 @@ public class JrebelService {
 
     @SneakyThrows
     public void jrebelLeases1Handler(HttpServletRequest request, HttpServletResponse response) {
+        response.setHeader("Cache-Control", "no-transform");
         response.setContentType("application/json; charset=utf-8");
         response.setStatus(HttpServletResponse.SC_OK);
         JSONObject jsonObject = JSONUtil.createObj().set("serverVersion", "3.2.4")
